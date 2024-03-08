@@ -8,33 +8,33 @@
 import SwiftUI
 
 struct AccidentsView: View {
-    @ObservedObject var viewModel: AccidentListViewModel
-    @EnvironmentObject var router: Router
-    
-    var body: some View {
-        NavigationView {
-            List {
-                ForEach(viewModel.accidentReports) { accident in
-                    AccidentListItemView(accident: accident) // Display each accident
-                }
-            }
-            .navigationTitle("Accidents")
-            .refreshable { // Allow refreshing to potentially fetch new data
-                viewModel.fetchAccidents() // Call the view model's fetch method
-            }
-            .navigationBarItems(trailing:
-                Button(action: {
-                    router.navigate(to: .location) // Delegate navigation to view model
-                }) {
-                    Label("New Accident", systemImage: "plus") // Label and icon
-                }
-            )
+  @ObservedObject var accidentsViewModel: AccidentsViewModel
+
+  var body: some View {
+    NavigationView {
+      List {
+        ForEach(accidentsViewModel.accidentReports) { accident in
+          AccidentListItemView(accident: accident)
         }
+      }
+      .navigationTitle("Accidents")
+      .refreshable {
+        accidentsViewModel.fetchAccidents()
+      }
+      .navigationBarItems(trailing:
+        Button(action: {
+          accidentsViewModel.startAccidentReporting()
+        }) {
+          Label("New Accident", systemImage: "plus")
+        }
+      )
     }
+  }
 }
 
-#Preview {
-    var sampleViewModel = AccidentListViewModel()
-    sampleViewModel.accidentReports = [AccidentReport.sampleData]
-    return AccidentsView(viewModel: sampleViewModel)
-}
+//#Preview {
+//    let coordinator: AccidentReportCoordinator
+//    var sampleViewModel = AccidentsViewModel(coordinator: coordinator)
+//    sampleViewModel.accidentReports = [AccidentReport.sampleData]
+//    return AccidentsView(accidentsViewModel: sampleViewModel)
+//}

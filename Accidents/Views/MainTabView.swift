@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @EnvironmentObject var router: Router
-    @StateObject var accidentListViewModel = AccidentListViewModel()
+    @StateObject private var coordinator = AccidentReportCoordinator(
+        accidentReportService: AccidentReportService(),
+        locationService: LocationService(),
+        driver1DataService: DriverDataService(),
+        driver2DataService: DriverDataService()
+    )
     
+    private var accidentsViewModel: AccidentsViewModel {
+        AccidentsViewModel(coordinator: coordinator)
+    }
+
     var body: some View {
-        NavigationStack(path: $router.navPath) {
+        NavigationStack(path: $coordinator.navPath) {
             TabView {
-                AccidentsView(viewModel: accidentListViewModel)
+                AccidentsView(accidentsViewModel: accidentsViewModel)
                     .tabItem {
                         Label("Accidents", systemImage: "car.2.fill")
                     }
@@ -27,12 +35,13 @@ struct MainTabView: View {
                         Label("Settings", systemImage: "gear")
                     }
             }
-            .navigationDestination(for: Router.Destination.self) { destination in
-                router.getViewForDestination(destination)
+            .navigationDestination(for: AccidentReportFillingState.self) { state in
+                coordinator.getViewForState(state)
             }
         }
     }
 }
+
 
 #Preview {
     MainTabView()

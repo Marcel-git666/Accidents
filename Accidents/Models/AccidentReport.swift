@@ -26,7 +26,6 @@ struct AccidentReport: Identifiable {
     }
     static var sampleData: AccidentReport {
         let date = Date()
-        let timeInterval = date.timeIntervalSince1970
 
         let sampleAccidentReport = AccidentReport(
             driver: Driver(
@@ -40,9 +39,9 @@ struct AccidentReport: Identifiable {
             ),
             accidentLocation: AccidentLocation(
                 date: date,
-                time: timeInterval,
                 city: "Prague",
-                street: "Wenceslas Square"
+                street: "Wenceslas Square",
+                houseNumber: "1a"
             ),
             accidentDescription: AccidentDescription(
                 description: "Minor collision at an intersection",
@@ -56,10 +55,9 @@ struct AccidentReport: Identifiable {
 
 struct AccidentLocation {
   var date: Date
-  var time: TimeInterval
   var city: String
   var street: String
-  var houseNumber: String?
+  var houseNumber: String
   var kilometerReading: Double?
 }
 
@@ -77,10 +75,16 @@ struct Driver {
     var vehicleRegistrationPlate: String
     var insuranceCompany: String
     var insurancePolicyNumber: String
+    var isAtFault: Bool?
 }
 
 struct Witness {
     var name: String
     var address: String
     var phoneNumber: String
+}
+
+enum DriverType {
+  case driver1
+  case driver2
 }

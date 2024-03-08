@@ -9,12 +9,10 @@ import SwiftUI
 
 @main
 struct AccidentsApp: App {
-    @StateObject var router = Router()
-    
+        
     var body: some Scene {
         WindowGroup {
             MainTabView()
         }
-        .environmentObject(router)
     }
 }

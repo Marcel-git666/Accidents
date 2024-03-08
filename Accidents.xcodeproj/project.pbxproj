@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F191E942B9A354900F56C44 /* AccidentReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F191E932B9A354900F56C44 /* AccidentReportService.swift */; };
+		1F191E962B9A356400F56C44 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F191E952B9A356400F56C44 /* LocationService.swift */; };
+		1F191E982B9A357800F56C44 /* DriverDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F191E972B9A357800F56C44 /* DriverDataService.swift */; };
 		1FAEBB8C2B96159500659397 /* AccidentsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8B2B96159500659397 /* AccidentsApp.swift */; };
 		1FAEBB8E2B96159500659397 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8D2B96159500659397 /* MainTabView.swift */; };
 		1FAEBB902B96159700659397 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8F2B96159700659397 /* Assets.xcassets */; };
@@ -14,14 +17,18 @@
 		1FAEBB9D2B96159700659397 /* AccidentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBB9C2B96159700659397 /* AccidentsTests.swift */; };
 		1FAEBBA72B96159700659397 /* AccidentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBA62B96159700659397 /* AccidentsUITests.swift */; };
 		1FAEBBA92B96159700659397 /* AccidentsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBA82B96159700659397 /* AccidentsUITestsLaunchTests.swift */; };
-		1FAEBBB62B9615B400659397 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBB52B9615B400659397 /* Router.swift */; };
 		1FAEBBB82B9616C500659397 /* AccidentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBB72B9616C500659397 /* AccidentsView.swift */; };
 		1FAEBBBC2B9617E500659397 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBBB2B9617E500659397 /* SettingsView.swift */; };
 		1FAEBBBE2B96183600659397 /* PreloadDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBBD2B96183600659397 /* PreloadDataView.swift */; };
 		1FAEBBC12B96197E00659397 /* AccidentReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBC02B96197E00659397 /* AccidentReport.swift */; };
 		1FAEBBC32B961EA700659397 /* AccidentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBC22B961EA700659397 /* AccidentLocationView.swift */; };
-		1FAEBBC62B9624DF00659397 /* AccidentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBC52B9624DF00659397 /* AccidentListViewModel.swift */; };
+		1FAEBBC62B9624DF00659397 /* AccidentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBC52B9624DF00659397 /* AccidentsViewModel.swift */; };
 		1FAEBBC82B964E4300659397 /* AccidentListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */; };
+		1FBE2FFA2B9720C600BF1980 /* AccidentReportFillingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */; };
+		1FBE2FFC2B97219000BF1980 /* AccidentLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2FFB2B97219000BF1980 /* AccidentLocationViewModel.swift */; };
+		1FBE2FFE2B97332B00BF1980 /* DriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2FFD2B97332A00BF1980 /* DriverView.swift */; };
+		1FD58B222B9877D4009C12DC /* AccidentReportCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD58B212B9877D4009C12DC /* AccidentReportCoordinator.swift */; };
+		1FD58B242B9877FF009C12DC /* DriverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD58B232B9877FF009C12DC /* DriverViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F191E932B9A354900F56C44 /* AccidentReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportService.swift; sourceTree = "<group>"; };
+		1F191E952B9A356400F56C44 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		1F191E972B9A357800F56C44 /* DriverDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDataService.swift; sourceTree = "<group>"; };
 		1FAEBB882B96159500659397 /* Accidents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accidents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAEBB8B2B96159500659397 /* AccidentsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsApp.swift; sourceTree = "<group>"; };
 		1FAEBB8D2B96159500659397 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -52,14 +62,18 @@
 		1FAEBBA22B96159700659397 /* AccidentsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccidentsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAEBBA62B96159700659397 /* AccidentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsUITests.swift; sourceTree = "<group>"; };
 		1FAEBBA82B96159700659397 /* AccidentsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		1FAEBBB52B9615B400659397 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1FAEBBB72B9616C500659397 /* AccidentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsView.swift; sourceTree = "<group>"; };
 		1FAEBBBB2B9617E500659397 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1FAEBBBD2B96183600659397 /* PreloadDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadDataView.swift; sourceTree = "<group>"; };
 		1FAEBBC02B96197E00659397 /* AccidentReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReport.swift; sourceTree = "<group>"; };
 		1FAEBBC22B961EA700659397 /* AccidentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentLocationView.swift; sourceTree = "<group>"; };
-		1FAEBBC52B9624DF00659397 /* AccidentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentListViewModel.swift; sourceTree = "<group>"; };
+		1FAEBBC52B9624DF00659397 /* AccidentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsViewModel.swift; sourceTree = "<group>"; };
 		1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentListItemView.swift; sourceTree = "<group>"; };
+		1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportFillingState.swift; sourceTree = "<group>"; };
+		1FBE2FFB2B97219000BF1980 /* AccidentLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentLocationViewModel.swift; sourceTree = "<group>"; };
+		1FBE2FFD2B97332A00BF1980 /* DriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverView.swift; sourceTree = "<group>"; };
+		1FD58B212B9877D4009C12DC /* AccidentReportCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportCoordinator.swift; sourceTree = "<group>"; };
+		1FD58B232B9877FF009C12DC /* DriverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +101,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F191E922B9A353900F56C44 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1F191E932B9A354900F56C44 /* AccidentReportService.swift */,
+				1F191E952B9A356400F56C44 /* LocationService.swift */,
+				1F191E972B9A357800F56C44 /* DriverDataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		1FAEBB7F2B96159500659397 = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +137,8 @@
 				1FAEBB8B2B96159500659397 /* AccidentsApp.swift */,
 				1FAEBBC42B9624CC00659397 /* ViewModels */,
 				1FAEBBBF2B96196700659397 /* Models */,
-				1FAEBBBA2B96172E00659397 /* Routing */,
+				1F191E922B9A353900F56C44 /* Services */,
+				1FD58B202B9877B1009C12DC /* Coordinators */,
 				1FAEBBB92B96171D00659397 /* Views */,
 				1FAEBB8F2B96159700659397 /* Assets.xcassets */,
 				1FAEBB912B96159700659397 /* Preview Content */,
@@ -155,22 +180,16 @@
 				1FAEBBBB2B9617E500659397 /* SettingsView.swift */,
 				1FAEBBC22B961EA700659397 /* AccidentLocationView.swift */,
 				1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */,
+				1FBE2FFD2B97332A00BF1980 /* DriverView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		1FAEBBBA2B96172E00659397 /* Routing */ = {
-			isa = PBXGroup;
-			children = (
-				1FAEBBB52B9615B400659397 /* Router.swift */,
-			);
-			path = Routing;
 			sourceTree = "<group>";
 		};
 		1FAEBBBF2B96196700659397 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				1FAEBBC02B96197E00659397 /* AccidentReport.swift */,
+				1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,9 +197,19 @@
 		1FAEBBC42B9624CC00659397 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				1FAEBBC52B9624DF00659397 /* AccidentListViewModel.swift */,
+				1FAEBBC52B9624DF00659397 /* AccidentsViewModel.swift */,
+				1FBE2FFB2B97219000BF1980 /* AccidentLocationViewModel.swift */,
+				1FD58B232B9877FF009C12DC /* DriverViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1FD58B202B9877B1009C12DC /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				1FD58B212B9877D4009C12DC /* AccidentReportCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,13 +345,20 @@
 				1FAEBBBE2B96183600659397 /* PreloadDataView.swift in Sources */,
 				1FAEBBBC2B9617E500659397 /* SettingsView.swift in Sources */,
 				1FAEBB8E2B96159500659397 /* MainTabView.swift in Sources */,
-				1FAEBBB62B9615B400659397 /* Router.swift in Sources */,
+				1F191E942B9A354900F56C44 /* AccidentReportService.swift in Sources */,
+				1FBE2FFE2B97332B00BF1980 /* DriverView.swift in Sources */,
+				1FBE2FFA2B9720C600BF1980 /* AccidentReportFillingState.swift in Sources */,
 				1FAEBBC32B961EA700659397 /* AccidentLocationView.swift in Sources */,
-				1FAEBBC62B9624DF00659397 /* AccidentListViewModel.swift in Sources */,
+				1FAEBBC62B9624DF00659397 /* AccidentsViewModel.swift in Sources */,
 				1FAEBBC82B964E4300659397 /* AccidentListItemView.swift in Sources */,
 				1FAEBB8C2B96159500659397 /* AccidentsApp.swift in Sources */,
+				1F191E962B9A356400F56C44 /* LocationService.swift in Sources */,
+				1FD58B242B9877FF009C12DC /* DriverViewModel.swift in Sources */,
 				1FAEBBB82B9616C500659397 /* AccidentsView.swift in Sources */,
+				1F191E982B9A357800F56C44 /* DriverDataService.swift in Sources */,
+				1FBE2FFC2B97219000BF1980 /* AccidentLocationViewModel.swift in Sources */,
 				1FAEBBC12B96197E00659397 /* AccidentReport.swift in Sources */,
+				1FD58B222B9877D4009C12DC /* AccidentReportCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
