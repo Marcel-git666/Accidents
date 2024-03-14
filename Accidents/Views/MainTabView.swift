@@ -8,23 +8,21 @@
 import SwiftUI
 
 struct MainTabView: View {
-
+    
     var body: some View {
-        NavigationStack {
-            TabView {
-                AccidentsView()
-                    .tabItem {
-                        Label("Accidents", systemImage: "car.2.fill")
-                    }
-                PreloadDataView()
-                    .tabItem {
-                        Label("Data", systemImage: "filemenu.and.cursorarrow")
-                    }
-                SettingsView()
-                    .tabItem {
-                        Label("Settings", systemImage: "gear")
-                    }
-            }
+        TabView {
+            AccidentsView()
+                .tabItem {
+                    Label("Accidents", systemImage: "car.2.fill")
+                }
+            PreloadDataView()
+                .tabItem {
+                    Label("Data", systemImage: "filemenu.and.cursorarrow")
+                }
+            SettingsView()
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
+                }
         }
     }
 }

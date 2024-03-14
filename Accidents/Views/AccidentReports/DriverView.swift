@@ -15,32 +15,27 @@ struct DriverView: View {
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
-                Text("Driver \(driverType == .driver1 ? "1" : "2") Information")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding()
-                
                 VStack(alignment: .leading) {
-                    TextField("Full Name", text: $presenter.accidentDriver.name)
+                    TextField("Full Name", text: presenter.viewState == .driver1 ? $presenter.accidentDriver1.name : $presenter.accidentDriver2.name)
                         .padding(.bottom)
                     
-                    TextField("Address", text: $presenter.accidentDriver.address)
+                    TextField("Address", text: presenter.viewState == .driver1 ? $presenter.accidentDriver1.address : $presenter.accidentDriver2.address)
                         .padding(.bottom)
                     
-                    TextField("Driver's License Number", text: $presenter.accidentDriver.driverLicenseNumber)
+                    TextField("Driver's License Number", text: presenter.viewState == .driver1 ? $presenter.accidentDriver1.driverLicenseNumber : $presenter.accidentDriver2.driverLicenseNumber)
                         .padding(.bottom)
                     
-                    TextField("Phone Number", text: $presenter.accidentDriver.phoneNumber)
+                    TextField("Phone Number", text: presenter.viewState == .driver1 ? $presenter.accidentDriver1.phoneNumber : $presenter.accidentDriver2.phoneNumber)
                         .keyboardType(.phonePad)
                         .padding(.bottom)
                     
-                    TextField("Vehicle Registration Plate", text: $presenter.accidentDriver.vehicleRegistrationPlate)
+                    TextField("Vehicle Registration Plate", text: presenter.viewState == .driver1 ? $presenter.accidentDriver1.vehicleRegistrationPlate : $presenter.accidentDriver2.vehicleRegistrationPlate)
                         .padding(.bottom)
                     
-                    TextField("Insurance Company", text: $presenter.accidentDriver.insuranceCompany)
+                    TextField("Insurance Company", text: presenter.viewState == .driver1 ? $presenter.accidentDriver1.insuranceCompany : $presenter.accidentDriver2.insuranceCompany)
                         .padding(.bottom)
                     
-                    TextField("Insurance Policy Number", text: $presenter.accidentDriver.insurancePolicyNumber)
+                    TextField("Insurance Policy Number", text: presenter.viewState == .driver1 ? $presenter.accidentDriver1.insurancePolicyNumber : $presenter.accidentDriver2.insurancePolicyNumber)
                         .padding(.bottom)
                     
                     Button(action: {
@@ -67,5 +62,8 @@ struct DriverView: View {
 }
 
 #Preview {
-    DriverView(presenter: AccidentsPresenter(), driverType: .driver2)
+    NavigationStack {
+        DriverView(presenter: AccidentsPresenter(), driverType: .driver2)
+            .navigationTitle("Test Driver 99")
+    }
 }

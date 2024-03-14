@@ -17,7 +17,9 @@ class AccidentsPresenter: ObservableObject {
         houseNumber: "",
         kilometerReading: 0.0
     )
-    @Published var accidentDriver: Driver = Driver(name: "John", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: "")
+    @Published var accidentDriver1: Driver = Driver(name: "Johny", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: "")
+    @Published var accidentDriver2: Driver = Driver(name: "Cash", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: "")
+
     @Published var accidentDescription: AccidentDescription = AccidentDescription(description: "dummy description", vehicleDamage: "no damage")
     private var _viewState: AccidentReportFillingState = .accidentList
     
@@ -43,7 +45,7 @@ class AccidentsPresenter: ObservableObject {
     }
     
     func saveReport() {
-        let report = AccidentReport(driver: accidentDriver, accidentLocation: accidentLocation, accidentDescription: accidentDescription)
+        let report = AccidentReport(accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription)
         accidentReports.append(report)
     }
     

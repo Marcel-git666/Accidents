@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct AccidentReport: Identifiable {
+struct AccidentReport: Identifiable, Hashable {
+        
     let id: UUID
     var accidentLocation: AccidentLocation
     var driver: Driver
@@ -18,17 +19,32 @@ struct AccidentReport: Identifiable {
     var driverSignature: Data?
     var otherDriverSignature: Data?
     
-    init(driver: Driver, accidentLocation: AccidentLocation, accidentDescription: AccidentDescription) {
+    init(accidentLocation: AccidentLocation, driver: Driver, otherDriver: Driver, accidentDescription: AccidentDescription) {
         self.id = UUID()
         self.accidentLocation = accidentLocation
         self.accidentDescription = accidentDescription
         self.driver = driver
+        self.otherDriver = otherDriver
     }
+    
+    static func == (lhs: AccidentReport, rhs: AccidentReport) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     static var sampleData: AccidentReport {
         let date = Date()
 
         let sampleAccidentReport = AccidentReport(
-            driver: Driver(
+            accidentLocation: AccidentLocation(
+                date: date,
+                city: "Prague",
+                street: "Wenceslas Square",
+                houseNumber: "1a"
+            ), driver: Driver(
                 name: "John Doe",
                 address: "123 Main Street",
                 phoneNumber: "12313245646",
@@ -36,12 +52,14 @@ struct AccidentReport: Identifiable {
                 vehicleRegistrationPlate: "5464645",
                 insuranceCompany: "Kooperativa",
                 insurancePolicyNumber: "aswerwedf"
-            ),
-            accidentLocation: AccidentLocation(
-                date: date,
-                city: "Prague",
-                street: "Wenceslas Square",
-                houseNumber: "1a"
+            ), otherDriver: Driver(
+                name: "Maverick",
+                address: "555 Main Street",
+                phoneNumber: "999999999",
+                driverLicenseNumber: "4wedf456",
+                vehicleRegistrationPlate: "fw645",
+                insuranceCompany: "Kooperativa",
+                insurancePolicyNumber: "as44564556wedf"
             ),
             accidentDescription: AccidentDescription(
                 description: "Minor collision at an intersection",

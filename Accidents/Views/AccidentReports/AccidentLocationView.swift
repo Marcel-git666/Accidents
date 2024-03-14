@@ -12,11 +12,7 @@ extension AccidentsView {
     var accidentLocationView: some View {
         ZStack {
             VStack(alignment: .leading) {
-                Text("Accident Location")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding()
-                
+                               
                 VStack(alignment: .leading) {
                     DatePicker("Date and Time", selection: $presenter.accidentLocation.date, displayedComponents: [.date, .hourAndMinute])
                         .datePickerStyle(.compact)
@@ -57,6 +53,8 @@ extension AccidentsView {
                 .padding()
                 Spacer()
             }
+            .navigationTitle("\(presenter.viewState.rawValue)")
         }
     }
 }
+
