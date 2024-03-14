@@ -24,8 +24,6 @@ struct AccidentListItemView: View {
   var body: some View {
     HStack {
       VStack(alignment: .leading) {
-//        Text(accident.id.uuidString) 
-//          .font(.headline)
         Text(formattedDate)
       }
       Spacer()

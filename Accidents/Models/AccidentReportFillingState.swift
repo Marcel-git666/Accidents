@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-enum AccidentReportFillingState: Codable, Hashable {
-    case accidentList
-    case location
-    case driver1
-    case driver2
-    case description
+enum AccidentReportFillingState: String {
+    case accidentList = "Reports"
+    case location = "Location"
+    case driver1 = "Driver 1"
+    case driver2 = "Driver 2"
+    case description = "Description"
     case complete
 }
-

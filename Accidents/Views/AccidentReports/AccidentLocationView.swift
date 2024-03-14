@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-struct AccidentLocationView<ViewModel: AccidentLocationViewModelProtocol>: View {
-    @ObservedObject var viewModel: ViewModel
-    let coordinator: AccidentReportCoordinatorProtocol
-    
-    var body: some View {
+extension AccidentsView {
+    @ViewBuilder
+    var accidentLocationView: some View {
         ZStack {
             VStack(alignment: .leading) {
                 Text("Accident Location")
@@ -20,38 +18,33 @@ struct AccidentLocationView<ViewModel: AccidentLocationViewModelProtocol>: View 
                     .padding()
                 
                 VStack(alignment: .leading) {
-                    DatePicker("Date and Time", selection: $viewModel.accidentLocation.date, displayedComponents: [.date, .hourAndMinute])
+                    DatePicker("Date and Time", selection: $presenter.accidentLocation.date, displayedComponents: [.date, .hourAndMinute])
                         .datePickerStyle(.compact)
                     
                     Text("Address")
                         .font(.headline)
                         .padding(.bottom)
                     
-                    TextField("City", text: $viewModel.accidentLocation.city)
+                    TextField("City", text: $presenter.accidentLocation.city)
                         .padding(.bottom)
                     
-                    TextField("Street", text: $viewModel.accidentLocation.street)
+                    TextField("Street", text: $presenter.accidentLocation.street)
                         .padding(.bottom)
                     
-                    TextField("House Number", text: $viewModel.accidentLocation.houseNumber)
+                    TextField("House Number", text: $presenter.accidentLocation.houseNumber)
                         .padding(.bottom)
                     
                     Text("Kilometer Reading (optional)")
                         .font(.footnote)
                         .padding(.bottom)
                     
-                    TextField("e.g., 12345.6", value: $viewModel.accidentLocation.kilometerReading, format: .number)
+                    TextField("e.g., 12345.6", value: $presenter.accidentLocation.kilometerReading, format: .number)
                         .keyboardType(.decimalPad)
                         .padding(.bottom)
                     
                     Button(action: {
-                        viewModel.saveLocation { location in
-                                // Handle the location callback if needed
-                                // For example, you can print the location:
-                                print("Location saved in view:", location)
-                            coordinator.proceedToDriver1()
-                            }
-                        
+                        presenter.saveLocation()
+                        presenter.viewState = .driver1
                     }) {
                         Label("Save Location", systemImage: "checkmark.circle")
                             .foregroundColor(.white)
@@ -67,9 +60,3 @@ struct AccidentLocationView<ViewModel: AccidentLocationViewModelProtocol>: View 
         }
     }
 }
-
-//#Preview {
-//    var coordinator = AccidentReportCoordinator()
-//    coordinator.accidentLocation = AccidentLocation(date: Date.now, city: "Brno", street: "nam. Svobody", houseNumber: "2a", kilometerReading: nil)
-//    return AccidentLocationView(viewModel: viewModel)
-//}
