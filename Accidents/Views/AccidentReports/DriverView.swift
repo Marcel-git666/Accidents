@@ -5,6 +5,7 @@
 //  Created by Marcel Mravec on 05.03.2024.
 //
 
+import CoreData
 import SwiftUI
 
 struct DriverView: View {
@@ -43,7 +44,7 @@ struct DriverView: View {
                             presenter.viewState = .driver2
                         } else {
                             presenter.saveReport()
-                            presenter.viewState = .description
+                            presenter.viewState = .accidentList
                         }
                     }) {
                         Label("Save Driver \(driverType == .driver1 ? "1" : "2") Information", systemImage: "checkmark.circle")
@@ -63,7 +64,7 @@ struct DriverView: View {
 
 #Preview {
     NavigationStack {
-        DriverView(presenter: AccidentsPresenter(), driverType: .driver2)
+        DriverView(presenter: AccidentsPresenter(repository: CoreDataRepository()), driverType: .driver2)
             .navigationTitle("Test Driver 99")
     }
 }

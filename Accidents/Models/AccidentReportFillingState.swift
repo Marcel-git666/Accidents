@@ -13,5 +13,4 @@ enum AccidentReportFillingState: String {
     case driver1 = "Driver 1"
     case driver2 = "Driver 2"
     case description = "Description"
-    case complete
 }

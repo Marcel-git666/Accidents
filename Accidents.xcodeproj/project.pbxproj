@@ -22,7 +22,11 @@
 		1FAEBBC82B964E4300659397 /* AccidentListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */; };
 		1FBE2FFA2B9720C600BF1980 /* AccidentReportFillingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */; };
 		1FBE2FFE2B97332B00BF1980 /* DriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2FFD2B97332A00BF1980 /* DriverView.swift */; };
-		1FDC67FE2B9B9F5800AC55DF /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC67FD2B9B9F5800AC55DF /* PlaceholderView.swift */; };
+		1FD319B72BA48B4F00B9CEE6 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD319B62BA48B4F00B9CEE6 /* CoreDataRepository.swift */; };
+		1FD319BA2BA4944600B9CEE6 /* Accidents.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FD319B82BA4944500B9CEE6 /* Accidents.xcdatamodeld */; };
+		1FD319C02BA49EA000B9CEE6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD319BF2BA49EA000B9CEE6 /* Constants.swift */; };
+		1FD319C32BA4C79C00B9CEE6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD319C22BA4C79C00B9CEE6 /* CoreDataManager.swift */; };
+		1FD6109B2BA48AC4008992B3 /* AccidentReportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6109A2BA48AC4008992B3 /* AccidentReportRepository.swift */; };
 		1FF2CD992BA35CBF001E1478 /* AccidentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF2CD982BA35CBF001E1478 /* AccidentsPresenter.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +66,11 @@
 		1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentListItemView.swift; sourceTree = "<group>"; };
 		1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportFillingState.swift; sourceTree = "<group>"; };
 		1FBE2FFD2B97332A00BF1980 /* DriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverView.swift; sourceTree = "<group>"; };
-		1FDC67FD2B9B9F5800AC55DF /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
+		1FD319B62BA48B4F00B9CEE6 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		1FD319B92BA4944600B9CEE6 /* Accidents.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Accidents.xcdatamodel; sourceTree = "<group>"; };
+		1FD319BF2BA49EA000B9CEE6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1FD319C22BA4C79C00B9CEE6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		1FD6109A2BA48AC4008992B3 /* AccidentReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportRepository.swift; sourceTree = "<group>"; };
 		1FF2CD982BA35CBF001E1478 /* AccidentsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,8 +123,12 @@
 			isa = PBXGroup;
 			children = (
 				1FAEBB8B2B96159500659397 /* AccidentsApp.swift */,
+				1FD319C12BA4C79100B9CEE6 /* Managers */,
+				1FD319B82BA4944500B9CEE6 /* Accidents.xcdatamodeld */,
+				1FD610992BA48AAB008992B3 /* Repositories */,
 				1FAEBBC42B9624CC00659397 /* Presenters */,
 				1FAEBBBF2B96196700659397 /* Models */,
+				1FD319BE2BA49E8D00B9CEE6 /* Utils */,
 				1FAEBBB92B96171D00659397 /* Views */,
 				1FAEBB8F2B96159700659397 /* Assets.xcassets */,
 				1FAEBB912B96159700659397 /* Preview Content */,
@@ -156,7 +168,6 @@
 				1FF2CD9A2BA35CF3001E1478 /* PreloadData */,
 				1FF2CD9C2BA35D5A001E1478 /* AccidentReports */,
 				1FF2CD9B2BA35D01001E1478 /* Settings */,
-				1FDC67FD2B9B9F5800AC55DF /* PlaceholderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,6 +187,31 @@
 				1FF2CD982BA35CBF001E1478 /* AccidentsPresenter.swift */,
 			);
 			path = Presenters;
+			sourceTree = "<group>";
+		};
+		1FD319BE2BA49E8D00B9CEE6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1FD319BF2BA49EA000B9CEE6 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		1FD319C12BA4C79100B9CEE6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				1FD319C22BA4C79C00B9CEE6 /* CoreDataManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		1FD610992BA48AAB008992B3 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				1FD6109A2BA48AC4008992B3 /* AccidentReportRepository.swift */,
+				1FD319B62BA48B4F00B9CEE6 /* CoreDataRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		1FF2CD9A2BA35CF3001E1478 /* PreloadData */ = {
@@ -335,18 +371,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FD319BA2BA4944600B9CEE6 /* Accidents.xcdatamodeld in Sources */,
 				1FAEBBBE2B96183600659397 /* PreloadDataView.swift in Sources */,
 				1FAEBBBC2B9617E500659397 /* SettingsView.swift in Sources */,
 				1FAEBB8E2B96159500659397 /* MainTabView.swift in Sources */,
 				1FBE2FFE2B97332B00BF1980 /* DriverView.swift in Sources */,
 				1FBE2FFA2B9720C600BF1980 /* AccidentReportFillingState.swift in Sources */,
 				1FAEBBC32B961EA700659397 /* AccidentLocationView.swift in Sources */,
-				1FDC67FE2B9B9F5800AC55DF /* PlaceholderView.swift in Sources */,
+				1FD319C02BA49EA000B9CEE6 /* Constants.swift in Sources */,
+				1FD319B72BA48B4F00B9CEE6 /* CoreDataRepository.swift in Sources */,
 				1FAEBBC82B964E4300659397 /* AccidentListItemView.swift in Sources */,
 				1FAEBB8C2B96159500659397 /* AccidentsApp.swift in Sources */,
 				1FF2CD992BA35CBF001E1478 /* AccidentsPresenter.swift in Sources */,
 				1FAEBBB82B9616C500659397 /* AccidentsView.swift in Sources */,
 				1FAEBBC12B96197E00659397 /* AccidentReport.swift in Sources */,
+				1FD319C32BA4C79C00B9CEE6 /* CoreDataManager.swift in Sources */,
+				1FD6109B2BA48AC4008992B3 /* AccidentReportRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +558,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -547,6 +588,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -676,6 +718,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1FD319B82BA4944500B9CEE6 /* Accidents.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1FD319B92BA4944600B9CEE6 /* Accidents.xcdatamodel */,
+			);
+			currentVersion = 1FD319B92BA4944600B9CEE6 /* Accidents.xcdatamodel */;
+			name = Accidents.xcdatamodeld;
+			path = /Users/marcel/Developer/Accidents/Accidents/Accidents.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1FAEBB802B96159500659397 /* Project object */;
 }

@@ -5,4 +5,25 @@
 //  Created by Marcel Mravec on 15.03.2024.
 //
 
-import Foundation
+import CoreData
+
+class CoreDataManager {
+
+  static let shared = CoreDataManager() // Singleton instance
+
+  private let persistentContainer: NSPersistentContainer
+
+  init() {
+    persistentContainer = NSPersistentContainer(name: K.containerName)
+    persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
+      if let error = error as NSError? {
+        // Handle loading errors
+        fatalError("Unresolved error \(error), \(error.userInfo)")
+      }
+    })
+  }
+
+  func viewContext() -> NSManagedObjectContext {
+    return persistentContainer.viewContext
+  }
+}

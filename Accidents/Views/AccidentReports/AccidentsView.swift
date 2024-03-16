@@ -5,15 +5,12 @@
 //  Created by Marcel Mravec on 04.03.2024.
 //
 
+import CoreData
 import SwiftUI
 
 struct AccidentsView: View {
     @ObservedObject var presenter: AccidentsPresenter
-    
-    init() {
-        presenter = AccidentsPresenter()
-    }
-    
+      
     var body: some View {
         NavigationStack {
             VStack {
@@ -27,6 +24,9 @@ struct AccidentsView: View {
                 default:
                     accidentsView
                 }
+            }
+            .onAppear { 
+                    presenter.fetchAccidents()
             }
             .navigationTitle("\(presenter.viewState.rawValue)")
         }
@@ -57,5 +57,23 @@ extension AccidentsView {
 }
 
 #Preview {
-    AccidentsView()
+    AccidentsView(presenter: MockPresenter(repository: MockDataRepository()))
+}
+
+class MockPresenter: AccidentsPresenter {
+    init(repository: MockDataRepository) {
+        super.init(repository: repository)
+        self.accidentReports = [AccidentReport.sampleData]
+    }
+}
+
+struct MockDataRepository: AccidentReportRepository {
+  func fetchAll(completion: @escaping ([AccidentReport], (any Error)?) -> Void) {
+    completion(([AccidentReport.sampleData]), (any Error)?.self as? Error)
+  }
+   
+  func save(_ report: AccidentReport, completion: @escaping (Error?) -> Void) {
+    // No-op for preview context
+    completion(nil)
+  }
 }

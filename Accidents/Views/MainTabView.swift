@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct MainTabView: View {
+//    @Environment(\.managedObjectContext) var moc
+    @StateObject private var presenter = AccidentsPresenter(
+        repository: CoreDataRepository()
+    )
     
     var body: some View {
         TabView {
-            AccidentsView()
+            AccidentsView(presenter: presenter)
                 .tabItem {
                     Label("Accidents", systemImage: "car.2.fill")
                 }
@@ -26,7 +31,6 @@ struct MainTabView: View {
         }
     }
 }
-
 
 #Preview {
     MainTabView()

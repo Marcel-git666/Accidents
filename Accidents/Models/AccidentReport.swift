@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct AccidentReport: Identifiable, Hashable {
+struct AccidentReport: Identifiable, Hashable, Codable {
         
     let id: UUID
     var accidentLocation: AccidentLocation
     var driver: Driver
     var otherDriver: Driver?
-    var witnesses: [Witness]?
+//    var witnesses: [Witness]?
     var accidentDescription: AccidentDescription
-    var sketch: UIImage?
-    var driverSignature: Data?
-    var otherDriverSignature: Data?
+//    var sketch: UIImage?
+//    var driverSignature: Data?
+//    var otherDriverSignature: Data?
     
     init(accidentLocation: AccidentLocation, driver: Driver, otherDriver: Driver, accidentDescription: AccidentDescription) {
         self.id = UUID()
@@ -62,7 +62,7 @@ struct AccidentReport: Identifiable, Hashable {
                 insurancePolicyNumber: "as44564556wedf"
             ),
             accidentDescription: AccidentDescription(
-                description: "Minor collision at an intersection",
+                accidentDescription: "Minor collision at an intersection",
                 vehicleDamage: "Scratches on the bumper"
             )
         )
@@ -71,7 +71,7 @@ struct AccidentReport: Identifiable, Hashable {
     }
 }
 
-struct AccidentLocation {
+struct AccidentLocation: Codable {
   var date: Date
   var city: String
   var street: String
@@ -79,13 +79,13 @@ struct AccidentLocation {
   var kilometerReading: Double?
 }
 
-struct AccidentDescription {
-    var description: String
+struct AccidentDescription: Codable {
+    var accidentDescription: String
     var vehicleDamage: String
     var injuries: String?
 }
 
-struct Driver {
+struct Driver: Codable {
     var name: String
     var address: String
     var phoneNumber: String
@@ -96,11 +96,11 @@ struct Driver {
     var isAtFault: Bool?
 }
 
-struct Witness {
-    var name: String
-    var address: String
-    var phoneNumber: String
-}
+//struct Witness: Codable {
+//    var name: String
+//    var address: String
+//    var phoneNumber: String
+//}
 
 enum DriverType {
   case driver1

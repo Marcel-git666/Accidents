@@ -1,2 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23D60" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier=""/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23D60" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="AccidentDescriptionData" representedClassName="AccidentDescriptionData" syncable="YES" codeGenerationType="class">
+        <attribute name="accidentDescription" attributeType="String"/>
+        <attribute name="injuries" optional="YES" attributeType="String"/>
+        <attribute name="vehicleDamage" attributeType="String"/>
+    </entity>
+    <entity name="AccidentLocationData" representedClassName="AccidentLocationData" syncable="YES" codeGenerationType="class">
+        <attribute name="city" attributeType="String"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="houseNumber" attributeType="String"/>
+        <attribute name="kilometerReading" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="street" attributeType="String"/>
+    </entity>
+    <entity name="AccidentReportData" representedClassName="AccidentReportData" syncable="YES" codeGenerationType="class">
+        <relationship name="accidentDescription" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccidentDescriptionData"/>
+        <relationship name="accidentLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccidentLocationData"/>
+        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DriverData"/>
+        <relationship name="otherDriver" maxCount="1" deletionRule="Nullify" destinationEntity="DriverData"/>
+    </entity>
+    <entity name="DriverData" representedClassName="DriverData" syncable="YES" codeGenerationType="class">
+        <attribute name="address" attributeType="String"/>
+        <attribute name="driverLicenseNumber" attributeType="String"/>
+        <attribute name="insuranceCompany" attributeType="String"/>
+        <attribute name="insurancePolicyNumber" attributeType="String"/>
+        <attribute name="isAtFault" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="phoneNumber" attributeType="String"/>
+        <attribute name="vehicleRegistrationPlate" attributeType="String"/>
+    </entity>
+</model>
