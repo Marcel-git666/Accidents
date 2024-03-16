@@ -17,7 +17,6 @@ class CoreDataRepository: AccidentReportRepository {
     func save(_ report: AccidentReport, completion: @escaping (Error?) -> Void) {
         let newReport = NSEntityDescription.insertNewObject(forEntityName: "AccidentReportData", into: context) as! AccidentReportData
         
-        // Create a new AccidentLocationData object
         let newLocation = NSEntityDescription.insertNewObject(forEntityName: "AccidentLocationData", into: context) as! AccidentLocationData
         newLocation.date = report.accidentLocation.date // Assuming optional unwrapping or handling
         newLocation.city = report.accidentLocation.city
@@ -25,10 +24,7 @@ class CoreDataRepository: AccidentReportRepository {
         newLocation.houseNumber = report.accidentLocation.houseNumber
         newLocation.kilometerReading = report.accidentLocation.kilometerReading!
         
-        // Establish relationship between AccidentReportData and AccidentLocationData
         newReport.accidentLocation = newLocation
-        
-        // Handle Driver (assuming a DriverData entity with appropriate attributes)
         
         let newDriverData = NSEntityDescription.insertNewObject(forEntityName: "DriverData", into: context) as! DriverData
         newDriverData.name = report.driver.name
@@ -40,11 +36,8 @@ class CoreDataRepository: AccidentReportRepository {
         newDriverData.insurancePolicyNumber = report.driver.insurancePolicyNumber
         newDriverData.isAtFault = report.driver.isAtFault ?? false
         
-        // Establish relationship between AccidentReportData and DriverData (if applicable)
         newReport.driver = newDriverData
         
-        
-        // Handle otherDriver (similar logic as driver, assuming it's optional)
         if let otherDriver = report.otherDriver {
             let newOtherDriverData = NSEntityDescription.insertNewObject(forEntityName: "DriverData", into: context) as! DriverData
             newOtherDriverData.name = otherDriver.name
@@ -56,17 +49,14 @@ class CoreDataRepository: AccidentReportRepository {
             newOtherDriverData.insurancePolicyNumber = otherDriver.insurancePolicyNumber
             newOtherDriverData.isAtFault = otherDriver.isAtFault ?? false
             
-            // Establish relationship between AccidentReportData and otherDriver (if applicable)
             newReport.otherDriver = newOtherDriverData
         }
         
-        // Handle accidentDescription (assuming an AccidentDescriptionData entity)
         let newDescriptionData = NSEntityDescription.insertNewObject(forEntityName: "AccidentDescriptionData", into: context) as! AccidentDescriptionData
         newDescriptionData.accidentDescription = report.accidentDescription.accidentDescription
         newDescriptionData.vehicleDamage = report.accidentDescription.vehicleDamage
         newDescriptionData.injuries = report.accidentDescription.injuries
         
-        // Establish relationship between AccidentReportData and AccidentDescriptionData (if applicable)
         newReport.accidentDescription = newDescriptionData
         
         do {
@@ -87,7 +77,6 @@ class CoreDataRepository: AccidentReportRepository {
                 var driver: Driver?
                 var otherDriver: Driver?
                 
-                // Access driver through relationship
                 if let driverData = fetchedReport.driver {
                     driver = Driver(
                         name: driverData.name!,
@@ -101,7 +90,6 @@ class CoreDataRepository: AccidentReportRepository {
                     )
                 }
                 
-                // Access otherDriver through relationship (assuming it exists)
                 if let otherDriverData = fetchedReport.otherDriver {
                     otherDriver = Driver(
                         name: otherDriverData.name!,
@@ -136,13 +124,5 @@ class CoreDataRepository: AccidentReportRepository {
         } catch {
             completion([], error)
         }
-    }
-    
-    // ... other methods as needed ...
-}
-
-extension Encodable {
-    func encoded() throws -> Data {
-        return try JSONEncoder().encode(self)
     }
 }
