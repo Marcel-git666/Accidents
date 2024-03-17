@@ -11,7 +11,7 @@ import SwiftUI
 struct DriverView: View {
     @ObservedObject var presenter: AccidentsPresenter
     let driverType: DriverType
-    
+    @Environment(\.presentationMode) var presentationMode
         
     var body: some View {
         ZStack {
@@ -43,8 +43,7 @@ struct DriverView: View {
                         if presenter.viewState == .driver1 {
                             presenter.viewState = .driver2
                         } else {
-                            presenter.saveReport()
-                            presenter.viewState = .accidentList
+                            saveReportAction()
                         }
                     }) {
                         Label("Save Driver \(driverType == .driver1 ? "1" : "2") Information", systemImage: "checkmark.circle")
@@ -54,17 +53,29 @@ struct DriverView: View {
                             .background(.black)
                             .cornerRadius(15)
                     }
+                    .alert(isPresented: $presenter.isErrorPresented) {
+                          Alert(
+                            title: Text("Error saving data"),
+                            message: Text(presenter.errorMessage ?? "An unexpected error occurred."),
+                            dismissButton: .default(Text("OK"))
+                          )
+                        }
                 }
                 .padding()
                 Spacer()
             }
         }
     }
+    
+    func saveReportAction() {
+        presenter.saveReport()
+        presenter.viewState = .accidentList
+    }
 }
 
 #Preview {
     NavigationStack {
-        DriverView(presenter: AccidentsPresenter(repository: CoreDataRepository()), driverType: .driver2)
+        DriverView(presenter: AccidentsPresenter(repository: CoreDataRepository(), errorHandlingService: CoreDataErrorHandlingService()), driverType: .driver2)
             .navigationTitle("Test Driver 99")
     }
 }

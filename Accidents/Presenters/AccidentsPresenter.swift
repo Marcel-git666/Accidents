@@ -7,18 +7,13 @@
 
 import SwiftUI
 
-//protocol AccidentsPresenterProtocol: ObservableObject {
-//  var accidentReports: [AccidentReport] { get set }
-//  func fetchAccidents()
-//  func saveLocation() // ...
-//  func saveReport() // ...
-//}
-
 class AccidentsPresenter: ObservableObject {
     private let repository: AccidentReportRepository
+    private let errorHandlingService: CoreDataErrorHandlingService
     
-    init(repository: AccidentReportRepository) {
+    init(repository: AccidentReportRepository, errorHandlingService: CoreDataErrorHandlingService) {
         self.repository = repository
+        self.errorHandlingService = errorHandlingService
     }
     
     @Published var accidentReports: [AccidentReport] = []
@@ -31,8 +26,11 @@ class AccidentsPresenter: ObservableObject {
     )
     @Published var accidentDriver1: Driver = Driver(name: "Johny", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: "")
     @Published var accidentDriver2: Driver = Driver(name: "Cash", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: "")
-
+    
     @Published var accidentDescription: AccidentDescription = AccidentDescription(accidentDescription: "dummy description", vehicleDamage: "no damage")
+    @Published var errorMessage: String? = nil
+    @Published var isErrorPresented = false
+    
     private var _viewState: AccidentReportFillingState = .accidentList
     
     var viewState: AccidentReportFillingState {
@@ -50,8 +48,8 @@ class AccidentsPresenter: ObservableObject {
     
     func fetchAccidents() {
         repository.fetchAll { reports, error in
-            if let error = error {
-                // Handle fetching errors
+            if let error = error as? CoreDataError {
+                print(error.rawValue)
             } else {
                 self.accidentReports = reports
             }
@@ -63,15 +61,17 @@ class AccidentsPresenter: ObservableObject {
     }
     
     func saveReport() {
-      let report = AccidentReport(accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription)
-      repository.save(report) { [weak self] error in
-        if let error {
-          print(error.localizedDescription)
-        } else {
-          // Update your list of reports here
-          self?.accidentReports.append(report)
+        let report = AccidentReport(accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription)
+        repository.save(report) { [weak self] error in
+            if let error = error as? CoreDataError {
+                self?.errorMessage = error.rawValue
+                self?.isErrorPresented = true
+            } else {
+                self?.errorMessage = nil
+                self?.isErrorPresented = false
+                self?.accidentReports.append(report)
+            }
         }
-      }
     }
     
 }

@@ -63,7 +63,7 @@ class CoreDataRepository: AccidentReportRepository {
             try context.save()
             completion(nil)
         } catch {
-            completion(error)
+            completion(CoreDataError.coreDataSaveError)
         }
     }
     
@@ -122,7 +122,7 @@ class CoreDataRepository: AccidentReportRepository {
             }
             completion(reports, nil)
         } catch {
-            completion([], error)
+            completion([], CoreDataError.coreDataFetchError)
         }
     }
 }

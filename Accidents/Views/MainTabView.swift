@@ -11,7 +11,7 @@ import CoreData
 struct MainTabView: View {
 //    @Environment(\.managedObjectContext) var moc
     @StateObject private var presenter = AccidentsPresenter(
-        repository: CoreDataRepository()
+        repository: CoreDataRepository(), errorHandlingService: CoreDataErrorHandlingService()
     )
     
     var body: some View {
