@@ -9,11 +9,9 @@ import SwiftUI
 
 class AccidentsPresenter: ObservableObject {
     private let repository: AccidentReportRepository
-    private let errorHandlingService: CoreDataErrorHandlingService
-    
-    init(repository: AccidentReportRepository, errorHandlingService: CoreDataErrorHandlingService) {
+        
+    init(repository: AccidentReportRepository) {
         self.repository = repository
-        self.errorHandlingService = errorHandlingService
     }
     
     @Published var accidentReports: [AccidentReport] = []

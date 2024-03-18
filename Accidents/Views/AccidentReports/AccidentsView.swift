@@ -61,7 +61,7 @@ extension AccidentsView {
 
 class MockPresenter: AccidentsPresenter {
     init(repository: MockDataRepository) {
-        super.init(repository: repository, errorHandlingService: CoreDataErrorHandlingService())
+        super.init(repository: repository)
         self.accidentReports = [AccidentReport.sampleData]
     }
 }

@@ -74,7 +74,7 @@ struct DriverView: View {
 
 #Preview {
     NavigationStack {
-        DriverView(presenter: AccidentsPresenter(repository: CoreDataRepository(), errorHandlingService: CoreDataErrorHandlingService()), driverType: .driver2)
+        DriverView(presenter: AccidentsPresenter(repository: CoreDataRepository()), driverType: .driver2)
             .navigationTitle("Test Driver 99")
     }
 }
