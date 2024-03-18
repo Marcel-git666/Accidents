@@ -64,6 +64,7 @@
 		1FCDA7D42BA87C1700D98A73 /* AccidentsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsPresenterTests.swift; sourceTree = "<group>"; };
 		1FCDA7D72BA87D0100D98A73 /* MockAccidentReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccidentReportRepository.swift; sourceTree = "<group>"; };
 		1FCDA7D92BA884B100D98A73 /* MockErrorHandlingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockErrorHandlingService.swift; sourceTree = "<group>"; };
+		1FCDA7DB2BA8980D00D98A73 /* Accidents.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Accidents.xctestplan; sourceTree = "<group>"; };
 		1FD319B62BA48B4F00B9CEE6 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		1FD319B92BA4944600B9CEE6 /* Accidents.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Accidents.xcdatamodel; sourceTree = "<group>"; };
 		1FD319BF2BA49EA000B9CEE6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -137,6 +138,7 @@
 		1FAEBB9B2B96159700659397 /* AccidentsTests */ = {
 			isa = PBXGroup;
 			children = (
+				1FCDA7DB2BA8980D00D98A73 /* Accidents.xctestplan */,
 				1FCDA7D62BA87CE900D98A73 /* Mocks */,
 				1FCDA7D42BA87C1700D98A73 /* AccidentsPresenterTests.swift */,
 			);

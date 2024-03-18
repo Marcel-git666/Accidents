@@ -45,11 +45,14 @@ class AccidentsPresenter: ObservableObject {
     }
     
     func fetchAccidents() {
-        repository.fetchAll { reports, error in
+        repository.fetchAll { [weak self] reports, error in
             if let error = error as? CoreDataError {
-                print(error.rawValue)
+                self?.errorMessage = error.rawValue
+                self?.isErrorPresented = true
             } else {
-                self.accidentReports = reports
+                self?.errorMessage = nil
+                self?.isErrorPresented = false
+                self?.accidentReports = reports
             }
         }
     }
@@ -71,5 +74,4 @@ class AccidentsPresenter: ObservableObject {
             }
         }
     }
-    
 }

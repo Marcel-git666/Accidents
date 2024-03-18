@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "48360D17-3665-457E-841B-72DF61FEC1FA",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Accidents.xcodeproj",
+      "identifier" : "1FAEBB872B96159500659397",
+      "name" : "Accidents"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Accidents.xcodeproj",
+        "identifier" : "1FAEBB972B96159700659397",
+        "name" : "AccidentsTests"
+      }
+    }
+  ],
+  "version" : 1
+}
