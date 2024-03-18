@@ -15,9 +15,9 @@ class CoreDataRepository: AccidentReportRepository {
     }
     
     func save(_ report: AccidentReport, completion: @escaping (Error?) -> Void) {
-        let newReport = NSEntityDescription.insertNewObject(forEntityName: "AccidentReportData", into: context) as! AccidentReportData
+        let newReport = NSEntityDescription.insertNewObject(forEntityName: K.reportEntity, into: context) as! AccidentReportData
         
-        let newLocation = NSEntityDescription.insertNewObject(forEntityName: "AccidentLocationData", into: context) as! AccidentLocationData
+        let newLocation = NSEntityDescription.insertNewObject(forEntityName: K.locationEntity, into: context) as! AccidentLocationData
         newLocation.date = report.accidentLocation.date // Assuming optional unwrapping or handling
         newLocation.city = report.accidentLocation.city
         newLocation.street = report.accidentLocation.street
@@ -26,7 +26,7 @@ class CoreDataRepository: AccidentReportRepository {
         
         newReport.accidentLocation = newLocation
         
-        let newDriverData = NSEntityDescription.insertNewObject(forEntityName: "DriverData", into: context) as! DriverData
+        let newDriverData = NSEntityDescription.insertNewObject(forEntityName: K.driverEntity, into: context) as! DriverData
         newDriverData.name = report.driver.name
         newDriverData.address = report.driver.address
         newDriverData.phoneNumber = report.driver.phoneNumber
@@ -39,7 +39,7 @@ class CoreDataRepository: AccidentReportRepository {
         newReport.driver = newDriverData
         
         if let otherDriver = report.otherDriver {
-            let newOtherDriverData = NSEntityDescription.insertNewObject(forEntityName: "DriverData", into: context) as! DriverData
+            let newOtherDriverData = NSEntityDescription.insertNewObject(forEntityName: K.driverEntity, into: context) as! DriverData
             newOtherDriverData.name = otherDriver.name
             newOtherDriverData.address = otherDriver.address
             newOtherDriverData.phoneNumber = otherDriver.phoneNumber // typo fixed here (was newDriverData)
@@ -52,7 +52,7 @@ class CoreDataRepository: AccidentReportRepository {
             newReport.otherDriver = newOtherDriverData
         }
         
-        let newDescriptionData = NSEntityDescription.insertNewObject(forEntityName: "AccidentDescriptionData", into: context) as! AccidentDescriptionData
+        let newDescriptionData = NSEntityDescription.insertNewObject(forEntityName: K.descriptionEntity, into: context) as! AccidentDescriptionData
         newDescriptionData.accidentDescription = report.accidentDescription.accidentDescription
         newDescriptionData.vehicleDamage = report.accidentDescription.vehicleDamage
         newDescriptionData.injuries = report.accidentDescription.injuries
@@ -69,7 +69,7 @@ class CoreDataRepository: AccidentReportRepository {
     
     
     func fetchAll(completion: @escaping ([AccidentReport], Error?) -> Void) {
-        let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: "AccidentReportData")
+        let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: K.reportEntity)
         
         do {
             let fetchedReports = try context.fetch(fetchRequest)

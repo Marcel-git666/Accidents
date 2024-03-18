@@ -5,7 +5,6 @@
 //  Created by Marcel Mravec on 04.03.2024.
 //
 
-import CoreData
 import SwiftUI
 
 struct AccidentsView: View {

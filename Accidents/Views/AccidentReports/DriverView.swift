@@ -5,7 +5,6 @@
 //  Created by Marcel Mravec on 05.03.2024.
 //
 
-import CoreData
 import SwiftUI
 
 struct DriverView: View {

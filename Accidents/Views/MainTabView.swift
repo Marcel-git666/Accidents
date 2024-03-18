@@ -6,10 +6,8 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct MainTabView: View {
-//    @Environment(\.managedObjectContext) var moc
     @StateObject private var presenter = AccidentsPresenter(
         repository: CoreDataRepository(), errorHandlingService: CoreDataErrorHandlingService()
     )
