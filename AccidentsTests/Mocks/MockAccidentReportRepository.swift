@@ -16,6 +16,7 @@ class MockAccidentReportRepository: AccidentReportRepository {
     // Track the number of times saveReport was called
     var saveReportCalled = false
     var reports: [AccidentReport] = []
+    var fetchAllCalled = false
     
     func save(_ report: AccidentReport, completion: @escaping (Error?) -> Void) {
         saveReportCalled = true
@@ -28,6 +29,7 @@ class MockAccidentReportRepository: AccidentReportRepository {
     }
     
     func fetchAll(completion: @escaping ([AccidentReport], Error?) -> Void) {
+        fetchAllCalled = true
         if let result = fetchAllResult {
             switch result {
             case .success(let reports):

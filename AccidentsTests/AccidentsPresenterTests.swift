@@ -28,6 +28,7 @@ final class AccidentsPresenterTests: XCTestCase {
         
         // Then
         XCTAssertEqual(sut.accidentReports.count, 0)
+        XCTAssertTrue(mockRepository.fetchAllCalled)
         XCTAssertNil(sut.errorMessage)
         XCTAssertFalse(sut.isErrorPresented)
     }
