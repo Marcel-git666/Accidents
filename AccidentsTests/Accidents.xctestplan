@@ -1,22 +1,26 @@
 {
   "configurations" : [
     {
-      "id" : "48360D17-3665-457E-841B-72DF61FEC1FA",
-      "name" : "Test Scheme Action",
+      "id" : "F2855663-AD98-429E-BCB6-A34F83417B79",
+      "name" : "Configuration 1",
       "options" : {
-
+        "targetForVariableExpansion" : {
+          "containerPath" : "container:Accidents.xcodeproj",
+          "identifier" : "1FAEBB972B96159700659397",
+          "name" : "AccidentsTests"
+        }
       }
     }
   ],
   "defaultOptions" : {
-    "targetForVariableExpansion" : {
-      "containerPath" : "container:Accidents.xcodeproj",
-      "identifier" : "1FAEBB872B96159500659397",
-      "name" : "Accidents"
-    }
+
   },
   "testTargets" : [
     {
+      "skippedTests" : [
+        "CoreDataRepositoryTests\/test_givenSaveError_whenSave_thenReturnsError()",
+        "CoreDataRepositoryTests\/test_givenValidReport_whenSave_thenReturnsNilError()"
+      ],
       "target" : {
         "containerPath" : "container:Accidents.xcodeproj",
         "identifier" : "1FAEBB972B96159700659397",

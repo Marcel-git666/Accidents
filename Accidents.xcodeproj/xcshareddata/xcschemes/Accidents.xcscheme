@@ -30,7 +30,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:Accidents.xctestplan"
+            reference = "container:AccidentsTests/Accidents.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

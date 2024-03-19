@@ -53,8 +53,9 @@ final class AccidentsPresenterTests: XCTestCase {
         // When
         sut.fetchAccidents()
         
-        // Then - While we're not using errorHandlingService directly, we can still assert that the error message is set
-        XCTAssertNotNil(sut.errorMessage) // You might want to check the specific error message if needed
+        // Then
+        XCTAssertNotNil(sut.errorMessage)
+        XCTAssertEqual(sut.errorMessage, "There was an error fetching your data from your device.")
         XCTAssertTrue(sut.isErrorPresented)
     }
     
