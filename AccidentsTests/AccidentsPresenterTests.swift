@@ -120,13 +120,17 @@ final class AccidentsPresenterTests: XCTestCase {
         let existingReport = AccidentReport.sampleData
         mockRepository.reports = [existingReport]
         sut.accidentReports = [existingReport]
+    
         
         // When
         sut.removeReport(existingReport)
         
+        
         // Then
-        XCTAssertFalse(mockRepository.removeReportCalled) // It will fail here as removeReport isn't implemented yet
-//        XCTAssertEmpty(sut.accidentReports) // It will also fail as the reports weren't updated
+    
+        XCTAssertFalse(mockRepository.removeReportCalled)
+        XCTAssertEqual(mockRepository.reports, [])
+        XCTAssertEqual(sut.accidentReports, [])
     }
 
     

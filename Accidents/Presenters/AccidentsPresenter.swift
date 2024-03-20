@@ -9,7 +9,7 @@ import SwiftUI
 
 class AccidentsPresenter: ObservableObject {
     private let repository: AccidentReportRepository
-        
+    
     init(repository: AccidentReportRepository) {
         self.repository = repository
     }
@@ -77,15 +77,15 @@ class AccidentsPresenter: ObservableObject {
     
     func removeReport(_ report: AccidentReport) {
         repository.removeReport(report) { [weak self] result in
-          switch result {
-          case .success:
-            self?.accidentReports.removeAll { $0 == report }
-            self?.errorMessage = nil
-            self?.isErrorPresented = false
-          case .failure(let error):
-            self?.errorMessage = (error as? CoreDataError)?.rawValue ?? "An error occurred." // Handle unknown errors
-            self?.isErrorPresented = true
-          }
+            switch result {
+            case .success:
+                self?.accidentReports.removeAll { $0.id == report.id }
+                self?.errorMessage = nil
+                self?.isErrorPresented = false
+            case .failure(let error):
+                self?.errorMessage = (error as? CoreDataError)?.rawValue ?? error.localizedDescription // Handle unknown errors
+                self?.isErrorPresented = true
+            }
         }
-      }
+    }
 }

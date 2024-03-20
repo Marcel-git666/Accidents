@@ -10,10 +10,7 @@ import Foundation
 @testable import Accidents
 
 class MockAccidentReportRepository: AccidentReportRepository {
-    func removeReport(_ report: Accidents.AccidentReport, completion: @escaping (Result<Void, any Error>) -> Void) {
-        //
-    }
-    
+        
     // Store mock data or behavior
     var fetchAllResult: Result<[AccidentReport], Error>?
     var saveResult: Result<Void, Error>?
@@ -45,6 +42,11 @@ class MockAccidentReportRepository: AccidentReportRepository {
         } else {
             completion([], nil) // No pre-defined result, return empty list without error
         }
+    }
+    
+    func removeReport(_ report: Accidents.AccidentReport, completion: @escaping (Result<Void, any Error>) -> Void) {
+        reports.removeAll { $0.id == report.id }
+        completion(.success(()))
     }
 }
 

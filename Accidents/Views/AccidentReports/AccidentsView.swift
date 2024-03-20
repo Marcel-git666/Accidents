@@ -24,7 +24,10 @@ struct AccidentsView: View {
                     accidentsView
                 }
             }
-            .onAppear { 
+            .alert(isPresented: $presenter.isErrorPresented) {
+                Alert(title: Text("Error"), message: Text(presenter.errorMessage ?? "An unknown error occurred."), dismissButton: .default(Text("OK")))
+            }
+            .onAppear {
                     presenter.fetchAccidents()
             }
             .navigationTitle("\(presenter.viewState.rawValue)")

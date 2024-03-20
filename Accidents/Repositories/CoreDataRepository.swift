@@ -67,6 +67,7 @@ class CoreDataRepository: AccidentReportRepository {
         let newReportData = createAccidentReportData(from: report)
         
         do {
+            context.insert(newReportData)
             try context.save()
             completion(nil)
         } catch {
