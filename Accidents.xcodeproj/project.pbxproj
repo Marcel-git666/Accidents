@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F703A722BAB36AC009CD10A /* AccidentsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A712BAB36AC009CD10A /* AccidentsListView.swift */; };
+		1F703A752BAB3A05009CD10A /* MockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A742BAB3A05009CD10A /* MockPresenter.swift */; };
+		1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A762BAB3A3E009CD10A /* MockDataRepository.swift */; };
 		1FAEBB8C2B96159500659397 /* AccidentsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8B2B96159500659397 /* AccidentsApp.swift */; };
 		1FAEBB8E2B96159500659397 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8D2B96159500659397 /* MainTabView.swift */; };
 		1FAEBB902B96159700659397 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8F2B96159700659397 /* Assets.xcassets */; };
@@ -44,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		1F3FD9C32BA9B15000F0F07F /* Accidents.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Accidents.xctestplan; path = AccidentsTests/Accidents.xctestplan; sourceTree = "<group>"; };
+		1F703A712BAB36AC009CD10A /* AccidentsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsListView.swift; sourceTree = "<group>"; };
+		1F703A742BAB3A05009CD10A /* MockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPresenter.swift; sourceTree = "<group>"; };
+		1F703A762BAB3A3E009CD10A /* MockDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataRepository.swift; sourceTree = "<group>"; };
 		1FAEBB882B96159500659397 /* Accidents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accidents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAEBB8B2B96159500659397 /* AccidentsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsApp.swift; sourceTree = "<group>"; };
 		1FAEBB8D2B96159500659397 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -89,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F703A732BAB39E7009CD10A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				1F703A742BAB3A05009CD10A /* MockPresenter.swift */,
+				1F703A762BAB3A3E009CD10A /* MockDataRepository.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		1FAEBB7F2B96159500659397 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +161,7 @@
 		1FAEBBB92B96171D00659397 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1F703A732BAB39E7009CD10A /* Mocks */,
 				1FAEBB8D2B96159500659397 /* MainTabView.swift */,
 				1FF2CD9A2BA35CF3001E1478 /* PreloadData */,
 				1FF2CD9C2BA35D5A001E1478 /* AccidentReports */,
@@ -234,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				1FAEBBB72B9616C500659397 /* AccidentsView.swift */,
+				1F703A712BAB36AC009CD10A /* AccidentsListView.swift */,
 				1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */,
 				1FAEBBC22B961EA700659397 /* AccidentLocationView.swift */,
 				1FBE2FFD2B97332A00BF1980 /* DriverView.swift */,
@@ -357,9 +374,12 @@
 				1FBDAF542BA71A1A00B494B2 /* CoreDataError.swift in Sources */,
 				1FAEBBB82B9616C500659397 /* AccidentsView.swift in Sources */,
 				1FAEBBC12B96197E00659397 /* AccidentReport.swift in Sources */,
+				1F703A752BAB3A05009CD10A /* MockPresenter.swift in Sources */,
 				1FD319C32BA4C79C00B9CEE6 /* CoreDataManager.swift in Sources */,
 				1FBDAF592BA71EF400B494B2 /* CoreDataHandlingService.swift in Sources */,
 				1FD6109B2BA48AC4008992B3 /* AccidentReportRepository.swift in Sources */,
+				1F703A722BAB36AC009CD10A /* AccidentsListView.swift in Sources */,
+				1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

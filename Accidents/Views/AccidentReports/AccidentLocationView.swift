@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-extension AccidentsView {
-    @ViewBuilder
-    var accidentLocationView: some View {
+struct AccidentLocationView: View {
+    @ObservedObject var presenter: AccidentsPresenter
+    
+    var body: some View {
         ZStack {
             VStack(alignment: .leading) {
                                
@@ -58,3 +59,6 @@ extension AccidentsView {
     }
 }
 
+#Preview {
+    AccidentsView(presenter: MockPresenter(repository: MockDataRepository()))
+}

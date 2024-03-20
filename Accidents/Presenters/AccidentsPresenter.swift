@@ -28,21 +28,8 @@ class AccidentsPresenter: ObservableObject {
     @Published var accidentDescription: AccidentDescription = AccidentDescription(accidentDescription: "dummy description", vehicleDamage: "no damage")
     @Published var errorMessage: String? = nil
     @Published var isErrorPresented = false
+    @Published var viewState: AccidentReportFillingState = .accidentList
     
-    private var _viewState: AccidentReportFillingState = .accidentList
-    
-    var viewState: AccidentReportFillingState {
-        get {
-            return _viewState
-        }
-        set {
-            // Update state only if it's different
-            if _viewState != newValue {
-                _viewState = newValue
-                objectWillChange.send() // Notify observers
-            }
-        }
-    }
     
     func fetchAccidents() {
         repository.fetchAll { [weak self] reports, error in

@@ -10,7 +10,6 @@ import SwiftUI
 struct DriverView: View {
     @ObservedObject var presenter: AccidentsPresenter
     let driverType: DriverType
-    @Environment(\.presentationMode) var presentationMode
         
     var body: some View {
         ZStack {
