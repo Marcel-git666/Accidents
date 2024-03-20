@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AccidentsView: View {
     @ObservedObject var presenter: AccidentsPresenter
-      
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -28,6 +28,7 @@ struct AccidentsView: View {
                     presenter.fetchAccidents()
             }
             .navigationTitle("\(presenter.viewState.rawValue)")
+            .navigationBarItems(trailing: EditButton())
         }
     }
 }
@@ -39,6 +40,13 @@ extension AccidentsView {
             List {
                 ForEach(presenter.accidentReports) { accident in
                     AccidentListItemView(accident: accident)
+                        .swipeActions(allowsFullSwipe: false) {
+                            Button(role: .destructive) {
+                                presenter.removeReport(accident)
+                            } label: {
+                                Label("Delete", systemImage: "trash.fill")
+                            }
+                        }
                 }
             }
             
@@ -67,6 +75,10 @@ class MockPresenter: AccidentsPresenter {
 }
 
 struct MockDataRepository: AccidentReportRepository {
+    func removeReport(_ report: AccidentReport, completion: @escaping (Result<Void, any Error>) -> Void) {
+        // test
+    }
+    
   func fetchAll(completion: @escaping ([AccidentReport], (any Error)?) -> Void) {
     completion(([AccidentReport.sampleData]), (any Error)?.self as? Error)
   }

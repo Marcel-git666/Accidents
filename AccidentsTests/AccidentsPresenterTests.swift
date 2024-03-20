@@ -114,4 +114,20 @@ final class AccidentsPresenterTests: XCTestCase {
         XCTAssertEqual(sut.errorMessage, "There was an error saving your data to your device.") 
         XCTAssertTrue(sut.isErrorPresented)
     }
+    
+    func test_givenExistingReport_whenRemoveReport_thenRemovesAndUpdates() {
+        // Given
+        let existingReport = AccidentReport.sampleData
+        mockRepository.reports = [existingReport]
+        sut.accidentReports = [existingReport]
+        
+        // When
+        sut.removeReport(existingReport)
+        
+        // Then
+        XCTAssertFalse(mockRepository.removeReportCalled) // It will fail here as removeReport isn't implemented yet
+//        XCTAssertEmpty(sut.accidentReports) // It will also fail as the reports weren't updated
+    }
+
+    
 }

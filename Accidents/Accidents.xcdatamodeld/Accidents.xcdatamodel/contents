@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23D60" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E214" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="AccidentDescriptionData" representedClassName="AccidentDescriptionData" syncable="YES" codeGenerationType="class">
         <attribute name="accidentDescription" attributeType="String"/>
         <attribute name="injuries" optional="YES" attributeType="String"/>
@@ -15,6 +15,7 @@
         <relationship name="accidentReportData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccidentReportData" inverseName="accidentLocation" inverseEntity="AccidentReportData"/>
     </entity>
     <entity name="AccidentReportData" representedClassName="AccidentReportData" syncable="YES" codeGenerationType="class">
+        <attribute name="idReport" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="accidentDescription" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccidentDescriptionData" inverseName="accidentReportData" inverseEntity="AccidentDescriptionData"/>
         <relationship name="accidentLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccidentLocationData" inverseName="accidentReportData" inverseEntity="AccidentLocationData"/>
         <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DriverData" inverseName="accidentReportData" inverseEntity="DriverData"/>

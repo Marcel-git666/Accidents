@@ -10,11 +10,16 @@ import Foundation
 @testable import Accidents
 
 class MockAccidentReportRepository: AccidentReportRepository {
+    func removeReport(_ report: Accidents.AccidentReport, completion: @escaping (Result<Void, any Error>) -> Void) {
+        //
+    }
+    
     // Store mock data or behavior
     var fetchAllResult: Result<[AccidentReport], Error>?
     var saveResult: Result<Void, Error>?
     // Track the number of times saveReport was called
     var saveReportCalled = false
+    var removeReportCalled = false
     var reports: [AccidentReport] = []
     var fetchAllCalled = false
     

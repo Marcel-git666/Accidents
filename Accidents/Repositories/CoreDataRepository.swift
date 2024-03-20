@@ -13,51 +13,58 @@ class CoreDataRepository: AccidentReportRepository {
     init() {
         self.context = CoreDataManager.shared.viewContext()
     }
+    func createAccidentReportData(from report: AccidentReport) -> AccidentReportData {
+        let newReportData = NSEntityDescription.insertNewObject(forEntityName: K.reportEntity, into: context) as! AccidentReportData
+        
+        // Populate AccidentReportData properties using AccidentReport data
+        newReportData.accidentLocation = createAccidentLocationData(from: report.accidentLocation)
+        newReportData.driver = createDriverData(from: report.driver)
+        newReportData.otherDriver = report.otherDriver.map { createDriverData(from: $0) }
+        newReportData.accidentDescription = createAccidentDescriptionData(from: report.accidentDescription)
+        newReportData.idReport = report.id
+        return newReportData
+    }
+    
+    // Helper methods for creating related Core Data objects
+    private func createAccidentLocationData(from accidentLocation: AccidentLocation) -> AccidentLocationData {
+        let newAccidentLocationData = NSEntityDescription.insertNewObject(forEntityName: K.locationEntity, into: context) as! AccidentLocationData
+        
+        newAccidentLocationData.date = accidentLocation.date
+        newAccidentLocationData.city = accidentLocation.city
+        newAccidentLocationData.street = accidentLocation.street
+        newAccidentLocationData.houseNumber = accidentLocation.houseNumber
+        newAccidentLocationData.kilometerReading = accidentLocation.kilometerReading ?? 0
+        
+        return newAccidentLocationData
+    }
+    
+    private func createDriverData(from driver: Driver) -> DriverData {
+        let newDriverData = NSEntityDescription.insertNewObject(forEntityName: K.driverEntity, into: context) as! DriverData
+        
+        newDriverData.name = driver.name
+        newDriverData.address = driver.address
+        newDriverData.phoneNumber = driver.phoneNumber
+        newDriverData.driverLicenseNumber = driver.driverLicenseNumber
+        newDriverData.vehicleRegistrationPlate = driver.vehicleRegistrationPlate
+        newDriverData.insuranceCompany = driver.insuranceCompany
+        newDriverData.insurancePolicyNumber = driver.insurancePolicyNumber
+        newDriverData.isAtFault = driver.isAtFault ?? false
+        
+        return newDriverData
+    }
+    
+    private func createAccidentDescriptionData(from accidentDescription: AccidentDescription) -> AccidentDescriptionData {
+        let newAccidentDescriptionData = NSEntityDescription.insertNewObject(forEntityName: K.descriptionEntity, into: context) as! AccidentDescriptionData
+        
+        newAccidentDescriptionData.accidentDescription = accidentDescription.accidentDescription
+        newAccidentDescriptionData.vehicleDamage = accidentDescription.vehicleDamage
+        newAccidentDescriptionData.injuries = accidentDescription.injuries
+        
+        return newAccidentDescriptionData
+    }
     
     func save(_ report: AccidentReport, completion: @escaping (Error?) -> Void) {
-        let newReport = NSEntityDescription.insertNewObject(forEntityName: K.reportEntity, into: context) as! AccidentReportData
-        
-        let newLocation = NSEntityDescription.insertNewObject(forEntityName: K.locationEntity, into: context) as! AccidentLocationData
-        newLocation.date = report.accidentLocation.date // Assuming optional unwrapping or handling
-        newLocation.city = report.accidentLocation.city
-        newLocation.street = report.accidentLocation.street
-        newLocation.houseNumber = report.accidentLocation.houseNumber
-        newLocation.kilometerReading = report.accidentLocation.kilometerReading!
-        
-        newReport.accidentLocation = newLocation
-        
-        let newDriverData = NSEntityDescription.insertNewObject(forEntityName: K.driverEntity, into: context) as! DriverData
-        newDriverData.name = report.driver.name
-        newDriverData.address = report.driver.address
-        newDriverData.phoneNumber = report.driver.phoneNumber
-        newDriverData.driverLicenseNumber = report.driver.driverLicenseNumber
-        newDriverData.vehicleRegistrationPlate = report.driver.vehicleRegistrationPlate
-        newDriverData.insuranceCompany = report.driver.insuranceCompany
-        newDriverData.insurancePolicyNumber = report.driver.insurancePolicyNumber
-        newDriverData.isAtFault = report.driver.isAtFault ?? false
-        
-        newReport.driver = newDriverData
-        
-        if let otherDriver = report.otherDriver {
-            let newOtherDriverData = NSEntityDescription.insertNewObject(forEntityName: K.driverEntity, into: context) as! DriverData
-            newOtherDriverData.name = otherDriver.name
-            newOtherDriverData.address = otherDriver.address
-            newOtherDriverData.phoneNumber = otherDriver.phoneNumber // typo fixed here (was newDriverData)
-            newOtherDriverData.driverLicenseNumber = otherDriver.driverLicenseNumber
-            newOtherDriverData.vehicleRegistrationPlate = otherDriver.vehicleRegistrationPlate
-            newOtherDriverData.insuranceCompany = otherDriver.insuranceCompany
-            newOtherDriverData.insurancePolicyNumber = otherDriver.insurancePolicyNumber
-            newOtherDriverData.isAtFault = otherDriver.isAtFault ?? false
-            
-            newReport.otherDriver = newOtherDriverData
-        }
-        
-        let newDescriptionData = NSEntityDescription.insertNewObject(forEntityName: K.descriptionEntity, into: context) as! AccidentDescriptionData
-        newDescriptionData.accidentDescription = report.accidentDescription.accidentDescription
-        newDescriptionData.vehicleDamage = report.accidentDescription.vehicleDamage
-        newDescriptionData.injuries = report.accidentDescription.injuries
-        
-        newReport.accidentDescription = newDescriptionData
+        let newReportData = createAccidentReportData(from: report)
         
         do {
             try context.save()
@@ -69,60 +76,89 @@ class CoreDataRepository: AccidentReportRepository {
     
     
     func fetchAll(completion: @escaping ([AccidentReport], Error?) -> Void) {
-        let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: K.reportEntity)
-        
-        do {
-            let fetchedReports = try context.fetch(fetchRequest)
-            let reports = fetchedReports.map { fetchedReport in
-                var driver: Driver?
-                var otherDriver: Driver?
-                
-                if let driverData = fetchedReport.driver {
-                    driver = Driver(
-                        name: driverData.name!,
-                        address: driverData.address!,
-                        phoneNumber: driverData.phoneNumber!,
-                        driverLicenseNumber: driverData.driverLicenseNumber!,
-                        vehicleRegistrationPlate: driverData.vehicleRegistrationPlate!,
-                        insuranceCompany: driverData.insuranceCompany!,
-                        insurancePolicyNumber: driverData.insurancePolicyNumber!,
-                        isAtFault: driverData.isAtFault
-                    )
-                }
-                
-                if let otherDriverData = fetchedReport.otherDriver {
-                    otherDriver = Driver(
-                        name: otherDriverData.name!,
-                        address: otherDriverData.address!,
-                        phoneNumber: otherDriverData.phoneNumber!,
-                        driverLicenseNumber: otherDriverData.driverLicenseNumber!,
-                        vehicleRegistrationPlate: otherDriverData.vehicleRegistrationPlate!,
-                        insuranceCompany: otherDriverData.insuranceCompany!,
-                        insurancePolicyNumber: otherDriverData.insurancePolicyNumber!,
-                        isAtFault: otherDriverData.isAtFault
-                    )
-                }
-                
-                return AccidentReport(
-                    accidentLocation: AccidentLocation(
-                        date: fetchedReport.accidentLocation?.date! ?? Date(),
-                        city: fetchedReport.accidentLocation?.city! ?? "",
-                        street: fetchedReport.accidentLocation?.street! ?? "",
-                        houseNumber: fetchedReport.accidentLocation?.houseNumber! ?? "",
-                        kilometerReading: fetchedReport.accidentLocation?.kilometerReading
-                    ),
-                    driver: driver ?? Driver(name: "", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: ""),
-                    otherDriver: otherDriver ?? Driver(name: "", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: ""),
-                    accidentDescription: AccidentDescription(
-                        accidentDescription: fetchedReport.accidentDescription!.accidentDescription!,
-                        vehicleDamage: fetchedReport.accidentDescription!.vehicleDamage!,
-                        injuries: fetchedReport.accidentDescription!.injuries
-                    )
-                )
-            }
-            completion(reports, nil)
-        } catch {
-            completion([], CoreDataError.coreDataFetchError)
+      let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: K.reportEntity)
+
+      do {
+        let fetchedReports = try context.fetch(fetchRequest)
+        let reports = fetchedReports.map { fetchedReportData in
+          // Convert Core Data object to AccidentReport
+          return convertFromCoreData(fetchedReportData: fetchedReportData)
         }
+        completion(reports, nil)
+      } catch {
+        completion([], CoreDataError.coreDataFetchError)
+      }
     }
+
+    // Helper method to convert from Core Data object to AccidentReport
+    private func convertFromCoreData(fetchedReportData: AccidentReportData) -> AccidentReport {
+      var driver: Driver?
+      var otherDriver: Driver?
+      
+      if let driverData = fetchedReportData.driver {
+        driver = Driver(
+          name: driverData.name!,
+          address: driverData.address!,
+          phoneNumber: driverData.phoneNumber!,
+          driverLicenseNumber: driverData.driverLicenseNumber!,
+          vehicleRegistrationPlate: driverData.vehicleRegistrationPlate!,
+          insuranceCompany: driverData.insuranceCompany!,
+          insurancePolicyNumber: driverData.insurancePolicyNumber!,
+          isAtFault: driverData.isAtFault
+        )
+      }
+      
+      if let otherDriverData = fetchedReportData.otherDriver {
+        otherDriver = Driver(
+          name: otherDriverData.name!,
+          address: otherDriverData.address!,
+          phoneNumber: otherDriverData.phoneNumber!,
+          driverLicenseNumber: otherDriverData.driverLicenseNumber!,
+          vehicleRegistrationPlate: otherDriverData.vehicleRegistrationPlate!,
+          insuranceCompany: otherDriverData.insuranceCompany!,
+          insurancePolicyNumber: otherDriverData.insurancePolicyNumber!,
+          isAtFault: otherDriverData.isAtFault
+        )
+      }
+      
+      return AccidentReport(
+        accidentLocation: AccidentLocation(
+          date: fetchedReportData.accidentLocation?.date ?? Date(),
+          city: fetchedReportData.accidentLocation?.city! ?? "",
+          street: fetchedReportData.accidentLocation?.street! ?? "",
+          houseNumber: fetchedReportData.accidentLocation?.houseNumber! ?? "",
+          kilometerReading: fetchedReportData.accidentLocation?.kilometerReading
+        ),
+        driver: driver ?? Driver(name: "", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: ""),
+        otherDriver: otherDriver ?? Driver(name: "", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: ""),
+        accidentDescription: AccidentDescription(
+          accidentDescription: fetchedReportData.accidentDescription!.accidentDescription!,
+          vehicleDamage: fetchedReportData.accidentDescription!.vehicleDamage!,
+          injuries: fetchedReportData.accidentDescription!.injuries
+        )
+      )
+    }
+    
+    func removeReport(_ report: AccidentReport, completion: @escaping (Result<Void, Error>) -> Void) {
+      let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: K.reportEntity)
+
+      // Add a predicate to filter based on report properties (assuming unique identifier)
+        fetchRequest.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(AccidentReportData.idReport), report.id])
+      do {
+        let fetchedReports = try context.fetch(fetchRequest)
+
+        guard let reportToDelete = fetchedReports.first else {
+          completion(.failure(CoreDataError.coreDataRemoveError))
+          return
+        }
+
+        context.delete(reportToDelete)
+
+        try context.save()
+        completion(.success(Void()))
+      } catch {
+        completion(.failure(error)) // Pass along any CoreData errors
+      }
+    }
+
 }
