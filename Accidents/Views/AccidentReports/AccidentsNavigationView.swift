@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AccidentsView: View {
+struct AccidentsNavigationView: View {
     @ObservedObject var presenter: AccidentsPresenter
     
     var body: some View {
@@ -24,11 +24,10 @@ struct AccidentsView: View {
                     AccidentsListView(presenter: presenter)
                 }
             }
-            .alert(isPresented: $presenter.isErrorPresented) {
-                Alert(title: Text("Error"), message: Text(presenter.errorMessage ?? "An unknown error occurred."), dismissButton: .default(Text("OK")))
-            }
-            .onAppear {
-                    presenter.fetchAccidents()
+            Spacer()
+            VStack {
+                if let errorMessage = presenter.errorMessage { ARErrorBlock(errorMessage: errorMessage)
+                }
             }
             .navigationTitle("\(presenter.viewState.rawValue)")
         }
@@ -36,5 +35,5 @@ struct AccidentsView: View {
 }
 
 #Preview {
-    AccidentsView(presenter: MockPresenter(repository: MockDataRepository()))
+    AccidentsNavigationView(presenter: MockPresenter(repository: MockDataRepository()))
 }

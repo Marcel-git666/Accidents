@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1961F82BAD95F200AFDD32 /* ARErrorBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961F72BAD95F200AFDD32 /* ARErrorBlock.swift */; };
 		1F703A722BAB36AC009CD10A /* AccidentsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A712BAB36AC009CD10A /* AccidentsListView.swift */; };
 		1F703A752BAB3A05009CD10A /* MockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A742BAB3A05009CD10A /* MockPresenter.swift */; };
 		1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A762BAB3A3E009CD10A /* MockDataRepository.swift */; };
@@ -14,7 +15,7 @@
 		1FAEBB8E2B96159500659397 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8D2B96159500659397 /* MainTabView.swift */; };
 		1FAEBB902B96159700659397 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8F2B96159700659397 /* Assets.xcassets */; };
 		1FAEBB932B96159700659397 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FAEBB922B96159700659397 /* Preview Assets.xcassets */; };
-		1FAEBBB82B9616C500659397 /* AccidentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBB72B9616C500659397 /* AccidentsView.swift */; };
+		1FAEBBB82B9616C500659397 /* AccidentsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBB72B9616C500659397 /* AccidentsNavigationView.swift */; };
 		1FAEBBBC2B9617E500659397 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBBB2B9617E500659397 /* SettingsView.swift */; };
 		1FAEBBBE2B96183600659397 /* PreloadDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBBD2B96183600659397 /* PreloadDataView.swift */; };
 		1FAEBBC12B96197E00659397 /* AccidentReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBC02B96197E00659397 /* AccidentReport.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F1961F72BAD95F200AFDD32 /* ARErrorBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARErrorBlock.swift; sourceTree = "<group>"; };
 		1F3FD9C32BA9B15000F0F07F /* Accidents.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Accidents.xctestplan; path = AccidentsTests/Accidents.xctestplan; sourceTree = "<group>"; };
 		1F703A712BAB36AC009CD10A /* AccidentsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsListView.swift; sourceTree = "<group>"; };
 		1F703A742BAB3A05009CD10A /* MockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPresenter.swift; sourceTree = "<group>"; };
@@ -56,7 +58,7 @@
 		1FAEBB8F2B96159700659397 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FAEBB922B96159700659397 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1FAEBB982B96159700659397 /* AccidentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccidentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FAEBBB72B9616C500659397 /* AccidentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsView.swift; sourceTree = "<group>"; };
+		1FAEBBB72B9616C500659397 /* AccidentsNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsNavigationView.swift; sourceTree = "<group>"; };
 		1FAEBBBB2B9617E500659397 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1FAEBBBD2B96183600659397 /* PreloadDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadDataView.swift; sourceTree = "<group>"; };
 		1FAEBBC02B96197E00659397 /* AccidentReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReport.swift; sourceTree = "<group>"; };
@@ -95,6 +97,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F1961F52BAD95CE00AFDD32 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1F1961F62BAD95D600AFDD32 /* ErrorBlock */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1F1961F62BAD95D600AFDD32 /* ErrorBlock */ = {
+			isa = PBXGroup;
+			children = (
+				1F1961F72BAD95F200AFDD32 /* ARErrorBlock.swift */,
+			);
+			path = ErrorBlock;
+			sourceTree = "<group>";
+		};
 		1F703A732BAB39E7009CD10A /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +179,7 @@
 		1FAEBBB92B96171D00659397 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1F1961F52BAD95CE00AFDD32 /* Components */,
 				1F703A732BAB39E7009CD10A /* Mocks */,
 				1FAEBB8D2B96159500659397 /* MainTabView.swift */,
 				1FF2CD9A2BA35CF3001E1478 /* PreloadData */,
@@ -249,7 +268,7 @@
 		1FF2CD9C2BA35D5A001E1478 /* AccidentReports */ = {
 			isa = PBXGroup;
 			children = (
-				1FAEBBB72B9616C500659397 /* AccidentsView.swift */,
+				1FAEBBB72B9616C500659397 /* AccidentsNavigationView.swift */,
 				1F703A712BAB36AC009CD10A /* AccidentsListView.swift */,
 				1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */,
 				1FAEBBC22B961EA700659397 /* AccidentLocationView.swift */,
@@ -372,12 +391,13 @@
 				1FBDAF572BA71EC700B494B2 /* ErrorHandlingService.swift in Sources */,
 				1FF2CD992BA35CBF001E1478 /* AccidentsPresenter.swift in Sources */,
 				1FBDAF542BA71A1A00B494B2 /* CoreDataError.swift in Sources */,
-				1FAEBBB82B9616C500659397 /* AccidentsView.swift in Sources */,
+				1FAEBBB82B9616C500659397 /* AccidentsNavigationView.swift in Sources */,
 				1FAEBBC12B96197E00659397 /* AccidentReport.swift in Sources */,
 				1F703A752BAB3A05009CD10A /* MockPresenter.swift in Sources */,
 				1FD319C32BA4C79C00B9CEE6 /* CoreDataManager.swift in Sources */,
 				1FBDAF592BA71EF400B494B2 /* CoreDataHandlingService.swift in Sources */,
 				1FD6109B2BA48AC4008992B3 /* AccidentReportRepository.swift in Sources */,
+				1F1961F82BAD95F200AFDD32 /* ARErrorBlock.swift in Sources */,
 				1F703A722BAB36AC009CD10A /* AccidentsListView.swift in Sources */,
 				1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */,
 			);

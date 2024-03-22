@@ -51,13 +51,6 @@ struct DriverView: View {
                             .background(.black)
                             .cornerRadius(15)
                     }
-                    .alert(isPresented: $presenter.isErrorPresented) {
-                          Alert(
-                            title: Text("Error saving data"),
-                            message: Text(presenter.errorMessage ?? "An unexpected error occurred."),
-                            dismissButton: .default(Text("OK"))
-                          )
-                        }
                 }
                 .padding()
                 Spacer()
@@ -66,7 +59,7 @@ struct DriverView: View {
     }
     
     func saveReportAction() {
-        presenter.saveReport()
+        presenter.createReportAndSave()
         presenter.goNext()
     }
 }

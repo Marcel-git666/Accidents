@@ -40,7 +40,6 @@ struct AccidentLocationView: View {
                         .padding(.bottom)
                     
                     Button(action: {
-                        presenter.saveLocation()
                         presenter.goNext()
                     }) {
                         Label("Save Location", systemImage: "checkmark.circle")
@@ -60,5 +59,7 @@ struct AccidentLocationView: View {
 }
 
 #Preview {
-    AccidentsView(presenter: MockPresenter(repository: MockDataRepository()))
+    NavigationView {
+        AccidentLocationView(presenter: MockPresenter(repository: MockDataRepository()))
+    }
 }

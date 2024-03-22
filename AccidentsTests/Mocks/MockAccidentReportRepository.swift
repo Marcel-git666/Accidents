@@ -10,43 +10,34 @@ import Foundation
 @testable import Accidents
 
 class MockAccidentReportRepository: AccidentReportRepository {
-        
     // Store mock data or behavior
-    var fetchAllResult: Result<[AccidentReport], Error>?
-    var saveResult: Result<Void, Error>?
-    // Track the number of times saveReport was called
-    var saveReportCalled = false
-    var removeReportCalled = false
-    var reports: [AccidentReport] = []
-    var fetchAllCalled = false
-    
-    func save(_ report: AccidentReport, completion: @escaping (Error?) -> Void) {
-        saveReportCalled = true
-        if case let .failure(error) = saveResult { // Pattern match on .failure
-            completion(error)
-        } else {
-            reports.append(report)
-            completion(nil) // No error in saveResult
+    var savedReport: AccidentReport?
+    var fetchedReports: [AccidentReport] = []
+    var removedReport: AccidentReport?
+    var fetchError: Error?
+    var saveError: Error?
+    var removeError: Error?
+
+    func save(_ report: AccidentReport) async throws {
+        if let error = saveError {
+            throw error
         }
+        savedReport = report
+        
     }
-    
-    func fetchAll(completion: @escaping ([AccidentReport], Error?) -> Void) {
-        fetchAllCalled = true
-        if let result = fetchAllResult {
-            switch result {
-            case .success(let reports):
-                completion(reports, nil) // Access success value with .success
-            case .failure(let error):
-                completion([], error)
-            }
-        } else {
-            completion([], nil) // No pre-defined result, return empty list without error
+
+    func fetchAll() async throws -> [AccidentReport] {
+        if let error = fetchError {
+            throw error
         }
+        return fetchedReports
+        
     }
-    
-    func removeReport(_ report: Accidents.AccidentReport, completion: @escaping (Result<Void, any Error>) -> Void) {
-        reports.removeAll { $0.id == report.id }
-        completion(.success(()))
+
+    func removeReport(_ report: AccidentReport) async throws {
+        if let error = removeError {
+            throw error
+        }
+        removedReport = report
     }
 }
-

@@ -63,31 +63,30 @@ class CoreDataRepository: AccidentReportRepository {
         return newAccidentDescriptionData
     }
     
-    func save(_ report: AccidentReport, completion: @escaping (Error?) -> Void) {
+    func save(_ report: AccidentReport) async throws {
         let newReportData = createAccidentReportData(from: report)
         do {
             context.insert(newReportData)
             try context.save()
-            completion(nil)
         } catch {
-            completion(CoreDataError.coreDataSaveError)
+            throw CoreDataError.coreDataSaveError
         }
     }
     
     
-    func fetchAll(completion: @escaping ([AccidentReport], Error?) -> Void) {
-      let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: K.reportEntity)
-
-      do {
-        let fetchedReports = try context.fetch(fetchRequest)
-        let reports = fetchedReports.map { fetchedReportData in
-          // Convert Core Data object to AccidentReport
-          return convertFromCoreData(fetchedReportData: fetchedReportData)
+    func fetchAll() async throws -> [AccidentReport] {
+        let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: K.reportEntity)
+        
+        do {
+            let fetchedReports = try context.fetch(fetchRequest)
+            let reports = fetchedReports.map { fetchedReportData in
+                // Convert Core Data object to AccidentReport
+                return convertFromCoreData(fetchedReportData: fetchedReportData)
+            }
+            return reports
+        } catch {
+            throw CoreDataError.coreDataFetchError
         }
-        completion(reports, nil)
-      } catch {
-        completion([], CoreDataError.coreDataFetchError)
-      }
     }
 
     // Helper method to convert from Core Data object to AccidentReport
@@ -140,7 +139,7 @@ class CoreDataRepository: AccidentReportRepository {
       )
     }
     
-    func removeReport(_ report: AccidentReport, completion: @escaping (Result<Void, Error>) -> Void) {
+    func removeReport(_ report: AccidentReport) async throws {
       let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: K.reportEntity)
 
       // Add a predicate to filter based on report properties (assuming unique identifier)
@@ -149,16 +148,13 @@ class CoreDataRepository: AccidentReportRepository {
         let fetchedReports = try context.fetch(fetchRequest)
 
         guard let reportToDelete = fetchedReports.first else {
-          completion(.failure(CoreDataError.coreDataRemoveError))
-          return
+          throw CoreDataError.coreDataRemoveError
         }
-
         context.delete(reportToDelete)
-
         try context.save()
-        completion(.success(Void()))
+        
       } catch {
-        completion(.failure(error)) // Pass along any CoreData errors
+          throw CoreDataError.coreDataRemoveError
       }
     }
 

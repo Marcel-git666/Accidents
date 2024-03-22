@@ -8,16 +8,17 @@
 import Foundation
 
 struct MockDataRepository: AccidentReportRepository {
-    func removeReport(_ report: AccidentReport, completion: @escaping (Result<Void, any Error>) -> Void) {
+    var reports: [AccidentReport] = []
+    
+    func removeReport(_ report: AccidentReport) throws {
         // test
     }
     
-  func fetchAll(completion: @escaping ([AccidentReport], (any Error)?) -> Void) {
-    completion(([AccidentReport.sampleData]), (any Error)?.self as? Error)
+  func fetchAll() throws -> [AccidentReport] {
+       reports
   }
    
-  func save(_ report: AccidentReport, completion: @escaping (Error?) -> Void) {
+  func save(_ report: AccidentReport) throws {
     // No-op for preview context
-    completion(nil)
   }
 }

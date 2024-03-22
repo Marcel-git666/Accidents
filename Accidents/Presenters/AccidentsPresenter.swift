@@ -7,13 +7,10 @@
 
 import SwiftUI
 
+@MainActor
 class AccidentsPresenter: ObservableObject {
     private let repository: AccidentReportRepository
-    
-    init(repository: AccidentReportRepository) {
-        self.repository = repository
-    }
-    
+        
     @Published var accidentReports: [AccidentReport] = []
     @Published var accidentLocation: AccidentLocation = AccidentLocation( // Empty accidentLocation
         date: Date(),
@@ -27,25 +24,34 @@ class AccidentsPresenter: ObservableObject {
     
     @Published var accidentDescription: AccidentDescription = AccidentDescription(accidentDescription: "dummy description", vehicleDamage: "no damage")
     @Published var errorMessage: String? = nil
-    @Published var isErrorPresented = false
+    
     @Published var viewState: AccidentReportFillingState = .accidentList
     
     
-    func fetchAccidents() {
-        repository.fetchAll { [weak self] reports, error in
-            if let error = error as? CoreDataError {
-                self?.errorMessage = error.rawValue
-                self?.isErrorPresented = true
-            } else {
-                self?.errorMessage = nil
-                self?.isErrorPresented = false
-                self?.accidentReports = reports
-            }
+    init(repository: AccidentReportRepository) {
+        self.repository = repository
+        setUp()
+    }
+    
+    func setUp() {
+        Task {
+            await self.fetchAccidents()
         }
     }
     
-    func saveLocation() {
-        print("Saving location where it is needed....")
+    func fetchAccidents() async {
+        
+            do {
+                let fetchedReports = try await repository.fetchAll()
+                DispatchQueue.main.async {
+                    self.accidentReports = fetchedReports
+                }
+            } catch let error as CoreDataError {
+                errorMessage = error.rawValue
+            } catch {
+                errorMessage = error.localizedDescription
+            }
+        
     }
     
     func goNext() {
@@ -63,30 +69,36 @@ class AccidentsPresenter: ObservableObject {
         }
     }
     
-    func saveReport() {
+    func createReportAndSave() {
         let report = AccidentReport(id: UUID(), accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription)
-        repository.save(report) { [weak self] error in
-            if let error = error as? CoreDataError {
-                self?.errorMessage = error.rawValue
-                self?.isErrorPresented = true
-            } else {
-                self?.errorMessage = nil
-                self?.isErrorPresented = false
-                self?.accidentReports.append(report)
+        saveReport(report)
+    }
+    
+    func saveReport(_ report: AccidentReport) {
+        Task {
+            
+            do {
+                try await repository.save(report)
+                errorMessage = nil
+                accidentReports.append(report)
+            } catch let error as CoreDataError {
+                errorMessage = error.rawValue
+            } catch {
+                errorMessage = error.localizedDescription
             }
         }
     }
     
+    
     func removeReport(_ report: AccidentReport) {
-        repository.removeReport(report) { [weak self] result in
-            switch result {
-            case .success:
-                self?.accidentReports.removeAll { $0.id == report.id }
-                self?.errorMessage = nil
-                self?.isErrorPresented = false
-            case .failure(let error):
-                self?.errorMessage = (error as? CoreDataError)?.rawValue ?? error.localizedDescription // Handle unknown errors
-                self?.isErrorPresented = true
+        Task {
+            do {
+                try await repository.removeReport(report)
+                self.accidentReports.removeAll { $0.id == report.id }
+            } catch let error as CoreDataError {
+                errorMessage = error.rawValue
+            } catch {
+                errorMessage = error.localizedDescription
             }
         }
     }

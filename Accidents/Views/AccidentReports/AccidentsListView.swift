@@ -25,7 +25,7 @@ struct AccidentsListView: View {
         }
         
         .refreshable {
-            presenter.fetchAccidents()
+            await presenter.fetchAccidents()
         }
         .navigationBarItems(trailing:
                                 Button(action: {

@@ -13,7 +13,7 @@ struct MainTabView: View {
     
     var body: some View {
         TabView {
-            AccidentsView(presenter: presenter)
+            AccidentsNavigationView(presenter: presenter)
                 .tabItem {
                     Label("Accidents", systemImage: "car.2.fill")
                 }
