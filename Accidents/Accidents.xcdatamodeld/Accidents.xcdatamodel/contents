@@ -2,7 +2,6 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E214" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="AccidentDescriptionData" representedClassName="AccidentDescriptionData" syncable="YES" codeGenerationType="class">
         <attribute name="accidentDescription" attributeType="String"/>
-        <attribute name="injuries" optional="YES" attributeType="String"/>
         <attribute name="vehicleDamage" attributeType="String"/>
         <relationship name="accidentReportData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AccidentReportData" inverseName="accidentDescription" inverseEntity="AccidentReportData"/>
     </entity>
@@ -10,6 +9,7 @@
         <attribute name="city" attributeType="String"/>
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="houseNumber" attributeType="String"/>
+        <attribute name="injuries" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="kilometerReading" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="street" attributeType="String"/>
         <relationship name="accidentReportData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AccidentReportData" inverseName="accidentLocation" inverseEntity="AccidentReportData"/>

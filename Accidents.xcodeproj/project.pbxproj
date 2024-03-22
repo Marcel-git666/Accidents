@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1F1961F82BAD95F200AFDD32 /* ARErrorBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961F72BAD95F200AFDD32 /* ARErrorBlock.swift */; };
+		1F1961FA2BAE0A6A00AFDD32 /* TickBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961F92BAE0A6A00AFDD32 /* TickBox.swift */; };
+		1F1961FD2BAE0B3700AFDD32 /* iOSCheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961FC2BAE0B3700AFDD32 /* iOSCheckboxToggleStyle.swift */; };
+		1F1961FF2BAE0E2F00AFDD32 /* YesNoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961FE2BAE0E2F00AFDD32 /* YesNoView.swift */; };
 		1F703A722BAB36AC009CD10A /* AccidentsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A712BAB36AC009CD10A /* AccidentsListView.swift */; };
 		1F703A752BAB3A05009CD10A /* MockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A742BAB3A05009CD10A /* MockPresenter.swift */; };
 		1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A762BAB3A3E009CD10A /* MockDataRepository.swift */; };
@@ -48,6 +51,9 @@
 
 /* Begin PBXFileReference section */
 		1F1961F72BAD95F200AFDD32 /* ARErrorBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARErrorBlock.swift; sourceTree = "<group>"; };
+		1F1961F92BAE0A6A00AFDD32 /* TickBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickBox.swift; sourceTree = "<group>"; };
+		1F1961FC2BAE0B3700AFDD32 /* iOSCheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSCheckboxToggleStyle.swift; sourceTree = "<group>"; };
+		1F1961FE2BAE0E2F00AFDD32 /* YesNoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesNoView.swift; sourceTree = "<group>"; };
 		1F3FD9C32BA9B15000F0F07F /* Accidents.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Accidents.xctestplan; path = AccidentsTests/Accidents.xctestplan; sourceTree = "<group>"; };
 		1F703A712BAB36AC009CD10A /* AccidentsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsListView.swift; sourceTree = "<group>"; };
 		1F703A742BAB3A05009CD10A /* MockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPresenter.swift; sourceTree = "<group>"; };
@@ -100,7 +106,10 @@
 		1F1961F52BAD95CE00AFDD32 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				1F1961FB2BAE0B2100AFDD32 /* Styles */,
 				1F1961F62BAD95D600AFDD32 /* ErrorBlock */,
+				1F1961F92BAE0A6A00AFDD32 /* TickBox.swift */,
+				1F1961FE2BAE0E2F00AFDD32 /* YesNoView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -111,6 +120,14 @@
 				1F1961F72BAD95F200AFDD32 /* ARErrorBlock.swift */,
 			);
 			path = ErrorBlock;
+			sourceTree = "<group>";
+		};
+		1F1961FB2BAE0B2100AFDD32 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				1F1961FC2BAE0B3700AFDD32 /* iOSCheckboxToggleStyle.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		1F703A732BAB39E7009CD10A /* Mocks */ = {
@@ -378,9 +395,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FD319BA2BA4944600B9CEE6 /* Accidents.xcdatamodeld in Sources */,
+				1F1961FD2BAE0B3700AFDD32 /* iOSCheckboxToggleStyle.swift in Sources */,
 				1FAEBBBE2B96183600659397 /* PreloadDataView.swift in Sources */,
 				1FAEBBBC2B9617E500659397 /* SettingsView.swift in Sources */,
 				1FAEBB8E2B96159500659397 /* MainTabView.swift in Sources */,
+				1F1961FF2BAE0E2F00AFDD32 /* YesNoView.swift in Sources */,
+				1F1961FA2BAE0A6A00AFDD32 /* TickBox.swift in Sources */,
 				1FBE2FFE2B97332B00BF1980 /* DriverView.swift in Sources */,
 				1FBE2FFA2B9720C600BF1980 /* AccidentReportFillingState.swift in Sources */,
 				1FAEBBC32B961EA700659397 /* AccidentLocationView.swift in Sources */,

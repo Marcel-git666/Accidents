@@ -31,6 +31,7 @@ struct AccidentListItemView: View {
                 Text(accident.otherDriver?.name ?? "No driver")
                 Text(formattedPlace)
             }
+            .foregroundColor(accident.accidentLocation.injuries ?? false ? .red : .primary)
         }
     }
 }

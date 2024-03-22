@@ -34,6 +34,7 @@ class CoreDataRepository: AccidentReportRepository {
         newAccidentLocationData.street = accidentLocation.street
         newAccidentLocationData.houseNumber = accidentLocation.houseNumber
         newAccidentLocationData.kilometerReading = accidentLocation.kilometerReading ?? 0
+        newAccidentLocationData.injuries = accidentLocation.injuries ?? false
         
         return newAccidentLocationData
     }
@@ -58,7 +59,6 @@ class CoreDataRepository: AccidentReportRepository {
         
         newAccidentDescriptionData.accidentDescription = accidentDescription.accidentDescription
         newAccidentDescriptionData.vehicleDamage = accidentDescription.vehicleDamage
-        newAccidentDescriptionData.injuries = accidentDescription.injuries
         
         return newAccidentDescriptionData
     }
@@ -127,14 +127,14 @@ class CoreDataRepository: AccidentReportRepository {
           city: fetchedReportData.accidentLocation?.city! ?? "",
           street: fetchedReportData.accidentLocation?.street! ?? "",
           houseNumber: fetchedReportData.accidentLocation?.houseNumber! ?? "",
-          kilometerReading: fetchedReportData.accidentLocation?.kilometerReading
+          kilometerReading: fetchedReportData.accidentLocation?.kilometerReading,
+          injuries: fetchedReportData.accidentLocation?.injuries
         ),
         driver: driver ?? Driver(name: "", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: ""),
         otherDriver: otherDriver ?? Driver(name: "", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: ""),
         accidentDescription: AccidentDescription(
           accidentDescription: fetchedReportData.accidentDescription!.accidentDescription!,
-          vehicleDamage: fetchedReportData.accidentDescription!.vehicleDamage!,
-          injuries: fetchedReportData.accidentDescription!.injuries
+          vehicleDamage: fetchedReportData.accidentDescription!.vehicleDamage!
         )
       )
     }

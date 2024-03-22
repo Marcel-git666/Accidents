@@ -73,17 +73,17 @@ struct AccidentReport: Identifiable, Hashable, Codable {
 }
 
 struct AccidentLocation: Codable {
-  var date: Date
-  var city: String
-  var street: String
-  var houseNumber: String
-  var kilometerReading: Double?
+    var date: Date
+    var city: String
+    var street: String
+    var houseNumber: String
+    var kilometerReading: Double?
+    var injuries: Bool?
 }
 
 struct AccidentDescription: Codable {
     var accidentDescription: String
     var vehicleDamage: String
-    var injuries: String?
 }
 
 struct Driver: Codable {

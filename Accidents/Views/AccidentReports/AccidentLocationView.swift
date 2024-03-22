@@ -10,6 +10,17 @@ import SwiftUI
 struct AccidentLocationView: View {
     @ObservedObject var presenter: AccidentsPresenter
     
+    @State private var injury: Bool = false
+    private var injuriesBinding: Binding<String?> {
+      Binding<String?>(
+        get: {
+          return injury ? "yes" : "no"
+        },
+        set: { newValue in
+          injury = newValue == "yes"
+        }
+      )
+    }
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
@@ -38,8 +49,14 @@ struct AccidentLocationView: View {
                     TextField("e.g., 12345.6", value: $presenter.accidentLocation.kilometerReading, format: .number)
                         .keyboardType(.decimalPad)
                         .padding(.bottom)
-                    
+                    HStack(alignment: .center) {
+                        YesNoView(question: "Injuries?", injury: $injury)
+                            .frame(maxWidth: .infinity)
+                            .padding(.bottom)
+                    }
+                    Text("\(presenter.accidentLocation.injuries ?? false)")
                     Button(action: {
+                        presenter.accidentLocation.injuries = injury ? true : false
                         presenter.goNext()
                     }) {
                         Label("Save Location", systemImage: "checkmark.circle")
@@ -49,6 +66,7 @@ struct AccidentLocationView: View {
                             .background(.black)
                             .cornerRadius(15)
                     }
+                    
                 }
                 .padding()
                 Spacer()
