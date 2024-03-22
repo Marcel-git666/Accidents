@@ -65,7 +65,6 @@ class CoreDataRepository: AccidentReportRepository {
     
     func save(_ report: AccidentReport, completion: @escaping (Error?) -> Void) {
         let newReportData = createAccidentReportData(from: report)
-        
         do {
             context.insert(newReportData)
             try context.save()
@@ -123,6 +122,7 @@ class CoreDataRepository: AccidentReportRepository {
       }
       
       return AccidentReport(
+        id: fetchedReportData.idReport!,
         accidentLocation: AccidentLocation(
           date: fetchedReportData.accidentLocation?.date ?? Date(),
           city: fetchedReportData.accidentLocation?.city! ?? "",

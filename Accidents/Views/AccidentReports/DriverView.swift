@@ -39,7 +39,7 @@ struct DriverView: View {
                     
                     Button(action: {
                         if presenter.viewState == .driver1 {
-                            presenter.viewState = .driver2
+                            presenter.goNext()
                         } else {
                             saveReportAction()
                         }
@@ -67,7 +67,7 @@ struct DriverView: View {
     
     func saveReportAction() {
         presenter.saveReport()
-        presenter.viewState = .accidentList
+        presenter.goNext()
     }
 }
 

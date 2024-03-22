@@ -41,7 +41,7 @@ struct AccidentLocationView: View {
                     
                     Button(action: {
                         presenter.saveLocation()
-                        presenter.viewState = .driver1
+                        presenter.goNext()
                     }) {
                         Label("Save Location", systemImage: "checkmark.circle")
                             .foregroundColor(.white)

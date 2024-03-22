@@ -29,7 +29,7 @@ struct AccidentsListView: View {
         }
         .navigationBarItems(trailing:
                                 Button(action: {
-            presenter.viewState = .location
+            presenter.goNext()
         }) {
             Label("New Accident", systemImage: "plus")
         }

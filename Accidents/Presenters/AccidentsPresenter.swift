@@ -48,8 +48,23 @@ class AccidentsPresenter: ObservableObject {
         print("Saving location where it is needed....")
     }
     
+    func goNext() {
+        switch viewState {
+        case .accidentList:
+            viewState = .location
+        case .location:
+            viewState = .driver1
+        case .driver1:
+            viewState = .driver2
+        case .driver2:
+            viewState = .accidentList
+        case .description:
+            viewState = .accidentList
+        }
+    }
+    
     func saveReport() {
-        let report = AccidentReport(accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription)
+        let report = AccidentReport(id: UUID(), accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription)
         repository.save(report) { [weak self] error in
             if let error = error as? CoreDataError {
                 self?.errorMessage = error.rawValue

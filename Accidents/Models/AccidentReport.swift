@@ -19,8 +19,8 @@ struct AccidentReport: Identifiable, Hashable, Codable {
 //    var driverSignature: Data?
 //    var otherDriverSignature: Data?
     
-    init(accidentLocation: AccidentLocation, driver: Driver, otherDriver: Driver, accidentDescription: AccidentDescription) {
-        self.id = UUID()
+    init(id: UUID, accidentLocation: AccidentLocation, driver: Driver, otherDriver: Driver, accidentDescription: AccidentDescription) {
+        self.id = id
         self.accidentLocation = accidentLocation
         self.accidentDescription = accidentDescription
         self.driver = driver
@@ -39,6 +39,7 @@ struct AccidentReport: Identifiable, Hashable, Codable {
         let date = Date()
 
         let sampleAccidentReport = AccidentReport(
+            id: UUID(),
             accidentLocation: AccidentLocation(
                 date: date,
                 city: "Prague",
