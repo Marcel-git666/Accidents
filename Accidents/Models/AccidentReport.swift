@@ -13,7 +13,6 @@ struct AccidentReport: Identifiable, Hashable, Codable {
     var accidentLocation: AccidentLocation
     var driver: Driver
     var otherDriver: Driver?
-//    var witnesses: [Witness]?
     var accidentDescription: AccidentDescription
 //    var sketch: UIImage?
 //    var driverSignature: Data?
@@ -79,6 +78,9 @@ struct AccidentLocation: Codable {
     var houseNumber: String
     var kilometerReading: Double?
     var injuries: Bool?
+    var witnesses: [Witness]?
+    var otherDamage: Bool?
+    var policeInvolved: Bool?
 }
 
 struct AccidentDescription: Codable {
@@ -97,11 +99,13 @@ struct Driver: Codable {
     var isAtFault: Bool?
 }
 
-//struct Witness: Codable {
-//    var name: String
-//    var address: String
-//    var phoneNumber: String
-//}
+struct Witness: Codable {
+    var name: String
+    var address: String
+    var phoneNumber: String
+    
+    static let sample = Witness(name: "Rabi Lowe", address: "Poland", phoneNumber: "456789456")
+}
 
 enum DriverType {
   case driver1

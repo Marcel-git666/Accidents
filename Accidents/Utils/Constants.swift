@@ -13,4 +13,5 @@ class K {
     static let locationEntity = "AccidentLocationData"
     static let driverEntity = "DriverData"
     static let descriptionEntity = "AccidentDescriptionData"
+    static let witnessEntity = "WitnessData"
 }

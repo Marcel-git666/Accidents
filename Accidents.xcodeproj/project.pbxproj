@@ -36,6 +36,7 @@
 		1FD319C02BA49EA000B9CEE6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD319BF2BA49EA000B9CEE6 /* Constants.swift */; };
 		1FD319C32BA4C79C00B9CEE6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD319C22BA4C79C00B9CEE6 /* CoreDataManager.swift */; };
 		1FD6109B2BA48AC4008992B3 /* AccidentReportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6109A2BA48AC4008992B3 /* AccidentReportRepository.swift */; };
+		1FF1FB6D2BAF375C00E0CA88 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1FB6C2BAF375C00E0CA88 /* EmptyListView.swift */; };
 		1FF2CD992BA35CBF001E1478 /* AccidentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF2CD982BA35CBF001E1478 /* AccidentsPresenter.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		1FD319BF2BA49EA000B9CEE6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1FD319C22BA4C79C00B9CEE6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1FD6109A2BA48AC4008992B3 /* AccidentReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportRepository.swift; sourceTree = "<group>"; };
+		1FF1FB6C2BAF375C00E0CA88 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		1FF2CD982BA35CBF001E1478 /* AccidentsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +112,7 @@
 				1F1961F62BAD95D600AFDD32 /* ErrorBlock */,
 				1F1961F92BAE0A6A00AFDD32 /* TickBox.swift */,
 				1F1961FE2BAE0E2F00AFDD32 /* YesNoView.swift */,
+				1FF1FB6C2BAF375C00E0CA88 /* EmptyListView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				1F1961F82BAD95F200AFDD32 /* ARErrorBlock.swift in Sources */,
 				1F703A722BAB36AC009CD10A /* AccidentsListView.swift in Sources */,
 				1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */,
+				1FF1FB6D2BAF375C00E0CA88 /* EmptyListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -44,7 +44,7 @@ struct DriverView: View {
                             saveReportAction()
                         }
                     }) {
-                        Label("Save Driver \(driverType == .driver1 ? "1" : "2") Information", systemImage: "checkmark.circle")
+                        Label("Save Driver \(driverType == .driver1 ? "A" : "B") Information", systemImage: "checkmark.circle")
                             .foregroundColor(.white)
                             .font(.system(size: 16, weight: .semibold))
                             .frame(maxWidth: .infinity, minHeight: 52)

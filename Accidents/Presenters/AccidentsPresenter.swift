@@ -17,7 +17,8 @@ class AccidentsPresenter: ObservableObject {
         city: "",
         street: "",
         houseNumber: "",
-        kilometerReading: 0.0
+        kilometerReading: 0.0,
+        witnesses: [Witness.sample]
     )
     @Published var accidentDriver1: Driver = Driver(name: "Johny", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: "")
     @Published var accidentDriver2: Driver = Driver(name: "Cash", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: "")

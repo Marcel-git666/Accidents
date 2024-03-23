@@ -11,29 +11,32 @@ struct AccidentsListView: View {
     @ObservedObject var presenter: AccidentsPresenter
     
     var body: some View {
-        List {
-            ForEach(presenter.accidentReports) { accident in
-                AccidentListItemView(accident: accident)
-                    .swipeActions(allowsFullSwipe: false) {
-                        Button(role: .destructive) {
-                            presenter.removeReport(accident)
-                        } label: {
-                            Label("Delete", systemImage: "trash.fill")
+        ZStack {
+            List {
+                ForEach(presenter.accidentReports) { accident in
+                    AccidentListItemView(accident: accident)
+                        .swipeActions(allowsFullSwipe: false) {
+                            Button(role: .destructive) {
+                                presenter.removeReport(accident)
+                            } label: {
+                                Label("Delete", systemImage: "trash.fill")
+                            }
                         }
-                    }
+                }
             }
-        }
-        
-        .refreshable {
-            await presenter.fetchAccidents()
-        }
-        .navigationBarItems(trailing:
-                                Button(action: {
-            presenter.goNext()
-        }) {
-            Label("New Accident", systemImage: "plus")
-        }
+            
+            .refreshable {
+                await presenter.fetchAccidents()
+            }
+            .navigationBarItems(trailing:
+                                    Button(action: {
+                presenter.goNext()
+            }) {
+                Label("New Accident", systemImage: "plus")
+            }
         )
+            EmptyListView().opacity(presenter.accidentReports.isEmpty ? 1 : 0)
+        }
     }
 }
 
