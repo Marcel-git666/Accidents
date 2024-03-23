@@ -8,6 +8,10 @@
 import Foundation
 
 struct MockDataRepository: AccidentReportRepository {
+    func updateReport(_ updatedReport: AccidentReport) async throws {
+        
+    }
+    
     var reports: [AccidentReport] = []
     
     func removeReport(_ report: AccidentReport) throws {
@@ -18,7 +22,7 @@ struct MockDataRepository: AccidentReportRepository {
        reports
   }
    
-  func save(_ report: AccidentReport) throws {
+  func saveReport(_ report: AccidentReport) throws {
     // No-op for preview context
   }
 }

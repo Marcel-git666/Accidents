@@ -6,7 +6,8 @@
 //
 
 protocol AccidentReportRepository {
-    func save(_ report: AccidentReport) async throws
+    func saveReport(_ report: AccidentReport) async throws
     func fetchAll() async throws -> [AccidentReport]
     func removeReport(_ report: AccidentReport) async throws
+    func updateReport(_ updatedReport: AccidentReport) async throws
 }

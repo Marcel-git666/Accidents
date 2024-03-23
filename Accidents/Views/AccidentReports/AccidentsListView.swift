@@ -22,6 +22,9 @@ struct AccidentsListView: View {
                                 Label("Delete", systemImage: "trash.fill")
                             }
                         }
+                        .onTapGesture {
+                            presenter.editReport(accident)
+                        }
                 }
             }
             

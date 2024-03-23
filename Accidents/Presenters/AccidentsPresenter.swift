@@ -25,7 +25,7 @@ class AccidentsPresenter: ObservableObject {
     
     @Published var accidentDescription: AccidentDescription = AccidentDescription(accidentDescription: "dummy description", vehicleDamage: "no damage")
     @Published var errorMessage: String? = nil
-    
+    @Published var selectedAccident: AccidentReport? = nil
     @Published var viewState: AccidentReportFillingState = .accidentList
     
     
@@ -71,6 +71,23 @@ class AccidentsPresenter: ObservableObject {
     }
     
     func createReportAndSave() {
+        if let selectedAccident = selectedAccident {
+            Task {
+                let report = AccidentReport(id: selectedAccident.id, accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription)
+                if let index = accidentReports.firstIndex(where: { $0.id == report.id }) {
+                    // The index variable now holds the index of the report in the array
+                    print("Index of report with ID \(report): \(index)")
+                    self.accidentReports[index] = report
+                } else {
+                    // The report with the specified ID was not found in the array
+                    print("Report with ID \(report) not found")
+                }
+                await updateReportAndSave(report: report)
+            }
+            self.selectedAccident = nil
+            return
+        }
+        
         let report = AccidentReport(id: UUID(), accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription)
         saveReport(report)
     }
@@ -79,7 +96,7 @@ class AccidentsPresenter: ObservableObject {
         Task {
             
             do {
-                try await repository.save(report)
+                try await repository.saveReport(report)
                 errorMessage = nil
                 accidentReports.append(report)
             } catch let error as CoreDataError {
@@ -99,6 +116,33 @@ class AccidentsPresenter: ObservableObject {
             } catch let error as CoreDataError {
                 errorMessage = error.rawValue
             } catch {
+                errorMessage = error.localizedDescription
+            }
+        }
+    }
+    
+    func editReport(_ report: AccidentReport) {
+        selectedAccident = report
+        accidentLocation = report.accidentLocation
+        accidentDriver1 = report.driver
+        accidentDriver2 = report.otherDriver!
+        accidentDescription = report.accidentDescription
+        goNext()
+        // Optionally transition state based on desired editing behavior
+        // viewState = .location // Uncomment if editing starts from location
+    }
+    
+    func updateReportAndSave(report: AccidentReport) async {
+        do {
+            try await repository.updateReport(report)
+            errorMessage = nil
+            await fetchAccidents()
+            
+        } catch {
+            // Handle errors more specifically
+            if let coreDataError = error as? CoreDataError {
+                errorMessage = coreDataError.rawValue
+            } else {
                 errorMessage = error.localizedDescription
             }
         }

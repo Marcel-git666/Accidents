@@ -18,7 +18,7 @@ class MockAccidentReportRepository: AccidentReportRepository {
     var saveError: Error?
     var removeError: Error?
 
-    func save(_ report: AccidentReport) async throws {
+    func saveReport(_ report: AccidentReport) async throws {
         if let error = saveError {
             throw error
         }

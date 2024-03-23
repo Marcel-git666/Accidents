@@ -85,7 +85,7 @@ class CoreDataRepository: AccidentReportRepository {
         return newAccidentDescriptionData
     }
     
-    func save(_ report: AccidentReport) async throws {
+    func saveReport(_ report: AccidentReport) async throws {
         let newReportData = createAccidentReportData(from: report)
         do {
             context.insert(newReportData)
@@ -185,4 +185,31 @@ class CoreDataRepository: AccidentReportRepository {
         }
     }
     
+    func updateReport(_ updatedReport: AccidentReport) async throws {
+        let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: K.reportEntity)
+        fetchRequest.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(AccidentReportData.idReport), updatedReport.id])
+        
+        do {
+            let fetchedReports = try context.fetch(fetchRequest)
+            guard let reportToUpdate = fetchedReports.first else {
+                throw CoreDataError.failedToFindReportToUpdate
+            }
+
+            // Update Core Data objects for AccidentLocation, Driver, OtherDriver, AccidentDescription
+            reportToUpdate.accidentLocation = createAccidentLocationData(from: updatedReport.accidentLocation)
+            reportToUpdate.driver = createDriverData(from: updatedReport.driver)
+            if let otherDriver = updatedReport.otherDriver {
+              reportToUpdate.otherDriver = createDriverData(from: otherDriver)
+            } else {
+              // Handle case where otherDriver is nil (optional)
+              reportToUpdate.otherDriver = nil // Or create a default driver object
+            }
+            reportToUpdate.accidentDescription = createAccidentDescriptionData(from: updatedReport.accidentDescription)
+            reportToUpdate.idReport = updatedReport.id
+
+            try context.save()
+        } catch {
+           throw CoreDataError.coreDataUpdateError
+        }
+    }
 }
