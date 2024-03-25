@@ -60,9 +60,10 @@ struct DescriptionView: View {
                     }
                 }
 
-        Button(action: {
-          presenter.goNext()
-        }) {
+                Button(action: {
+                    presenter.createReportAndSave()
+                    presenter.goNext()
+                }) {
           Label("Save Description", systemImage: "checkmark.circle")
             .foregroundColor(.white)
             .font(.system(size: 16, weight: .semibold))

@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct ARErrorBlock: View {
-    let errorMessage: String
-    var body: some View {
-        RoundedRectangle(cornerRadius: 5)
-            .foregroundColor(.red)
-            .overlay {
-                Text(errorMessage)
-            }
-            .frame(width: .infinity, height: 50)
-            .foregroundColor(.white)
-            .padding()
-    }
+  let errorMessage: String
+
+  var body: some View {
+    RoundedRectangle(cornerRadius: 5)
+      .foregroundColor(.red)
+      .overlay {
+        Text(errorMessage)
+          .foregroundColor(.white)
+      }
+      .frame(maxWidth: .infinity, maxHeight: 50) 
+      .padding()
+  }
 }
 
 #Preview {

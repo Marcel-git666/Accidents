@@ -106,6 +106,7 @@ class AccidentsPresenter: ObservableObject {
                 errorMessage = nil
                 accidentReports.append(report)
             } catch let error as CoreDataError {
+                print(error.localizedDescription)
                 errorMessage = error.rawValue
             } catch {
                 errorMessage = error.localizedDescription

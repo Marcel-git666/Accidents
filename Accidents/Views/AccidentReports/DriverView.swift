@@ -38,11 +38,7 @@ struct DriverView: View {
                         .padding(.bottom)
                     
                     Button(action: {
-                        if presenter.selectedTab == .driver1 {
-                            presenter.goNext()
-                        } else {
-                            saveReportAction()
-                        }
+                        presenter.goNext()
                     }) {
                         Label("Save Driver \(driverType == .driver1 ? "A" : "B") Information", systemImage: "checkmark.circle")
                             .foregroundColor(.white)
@@ -56,11 +52,6 @@ struct DriverView: View {
                 Spacer()
             }
         }
-    }
-    
-    func saveReportAction() {
-        presenter.createReportAndSave()
-        presenter.goNext()
     }
 }
 

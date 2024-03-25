@@ -87,12 +87,12 @@ struct AccidentDescription: Codable {
     var vehicleDamage1: [Bool]
     var vehicleDamage2: [Bool]
     
-    init(notes1: String = "", notes2: String = "", vehicleDamage1: [Bool] = Array(repeating: false, count: 17), vehicleDamage2: [Bool] = Array(repeating: false, count: 17)) {
-        self.notes1 = notes1
-        self.notes2 = notes2
-        self.vehicleDamage1 = vehicleDamage1
-        self.vehicleDamage2 = vehicleDamage2
-    }
+//    init(notes1: String = "", notes2: String = "", vehicleDamage1: [Bool] = Array(repeating: false, count: 17), vehicleDamage2: [Bool] = Array(repeating: false, count: 17)) {
+//        self.notes1 = notes1
+//        self.notes2 = notes2
+//        self.vehicleDamage1 = vehicleDamage1
+//        self.vehicleDamage2 = vehicleDamage2
+//    }
 }
 
 struct Driver: Codable {
