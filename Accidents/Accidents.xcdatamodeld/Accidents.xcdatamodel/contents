@@ -1,47 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E214" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="AccidentDescriptionData" representedClassName="AccidentDescriptionData" syncable="YES" codeGenerationType="class">
-        <attribute name="notes1" attributeType="String"/>
-        <attribute name="notes2" optional="YES" attributeType="String"/>
-        <attribute name="vehicleDamage1" attributeType="Transformable" valueTransformerName="" customClassName="[Bool]"/>
-        <attribute name="vehicleDamage2" attributeType="Transformable" valueTransformerName="" customClassName="[Bool]"/>
-        <relationship name="accidentReportData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AccidentReportData" inverseName="accidentDescription" inverseEntity="AccidentReportData"/>
-    </entity>
-    <entity name="AccidentLocationData" representedClassName="AccidentLocationData" syncable="YES" codeGenerationType="class">
-        <attribute name="city" attributeType="String"/>
-        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="houseNumber" attributeType="String"/>
-        <attribute name="injuries" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="kilometerReading" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="otherDamage" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="policeInvolved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="street" attributeType="String"/>
-        <relationship name="accidentReportData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AccidentReportData" inverseName="accidentLocation" inverseEntity="AccidentReportData"/>
-        <relationship name="witnesses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="WitnessData" inverseName="accidentLocationData" inverseEntity="WitnessData"/>
-    </entity>
     <entity name="AccidentReportData" representedClassName="AccidentReportData" syncable="YES" codeGenerationType="class">
         <attribute name="idReport" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="accidentDescription" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AccidentDescriptionData" inverseName="accidentReportData" inverseEntity="AccidentDescriptionData"/>
-        <relationship name="accidentLocation" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AccidentLocationData" inverseName="accidentReportData" inverseEntity="AccidentLocationData"/>
-        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DriverData" inverseName="accidentReportData" inverseEntity="DriverData"/>
-        <relationship name="otherDriver" maxCount="1" deletionRule="Cascade" destinationEntity="DriverData" inverseName="otherDriverToARD" inverseEntity="DriverData"/>
-    </entity>
-    <entity name="DriverData" representedClassName="DriverData" syncable="YES" codeGenerationType="class">
-        <attribute name="address" attributeType="String"/>
-        <attribute name="driverLicenseNumber" attributeType="String"/>
-        <attribute name="insuranceCompany" attributeType="String"/>
-        <attribute name="insurancePolicyNumber" attributeType="String"/>
-        <attribute name="isAtFault" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="name" attributeType="String"/>
-        <attribute name="phoneNumber" attributeType="String"/>
-        <attribute name="vehicleRegistrationPlate" attributeType="String"/>
-        <relationship name="accidentReportData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AccidentReportData" inverseName="driver" inverseEntity="AccidentReportData"/>
-        <relationship name="otherDriverToARD" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AccidentReportData" inverseName="otherDriver" inverseEntity="AccidentReportData"/>
-    </entity>
-    <entity name="WitnessData" representedClassName="WitnessData" syncable="YES" codeGenerationType="class">
-        <attribute name="address" optional="YES" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="phoneNumber" optional="YES" attributeType="String"/>
-        <relationship name="accidentLocationData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccidentLocationData" inverseName="witnesses" inverseEntity="AccidentLocationData"/>
+        <attribute name="reportData" optional="YES" attributeType="Binary"/>
     </entity>
 </model>
