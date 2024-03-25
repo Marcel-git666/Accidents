@@ -12,7 +12,7 @@ struct TickBox: View {
   @Binding var isSelected: Bool
 
   var body: some View {
-    Toggle(isOn: $isSelected) { // Directly bind to isSelected
+    Toggle(isOn: $isSelected) { 
       Text(text)
     }
     .toggleStyle(iOSCheckboxToggleStyle())

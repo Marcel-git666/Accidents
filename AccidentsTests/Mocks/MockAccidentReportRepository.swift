@@ -10,6 +10,7 @@ import Foundation
 @testable import Accidents
 
 class MockAccidentReportRepository: AccidentReportRepository {
+  
     // Store mock data or behavior
     var savedReport: AccidentReport?
     var fetchedReports: [AccidentReport] = []
@@ -39,5 +40,9 @@ class MockAccidentReportRepository: AccidentReportRepository {
             throw error
         }
         removedReport = report
+    }
+    
+    func updateReport(_ updatedReport: Accidents.AccidentReport) async throws {
+        
     }
 }

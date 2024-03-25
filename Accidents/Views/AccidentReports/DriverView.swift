@@ -15,30 +15,30 @@ struct DriverView: View {
         ZStack {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
-                    TextField("Full Name", text: presenter.viewState == .driver1 ? $presenter.accidentDriver1.name : $presenter.accidentDriver2.name)
+                    TextField("Full Name", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.name : $presenter.accidentDriver2.name)
                         .padding(.bottom)
                     
-                    TextField("Address", text: presenter.viewState == .driver1 ? $presenter.accidentDriver1.address : $presenter.accidentDriver2.address)
+                    TextField("Address", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.address : $presenter.accidentDriver2.address)
                         .padding(.bottom)
                     
-                    TextField("Driver's License Number", text: presenter.viewState == .driver1 ? $presenter.accidentDriver1.driverLicenseNumber : $presenter.accidentDriver2.driverLicenseNumber)
+                    TextField("Driver's License Number", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.driverLicenseNumber : $presenter.accidentDriver2.driverLicenseNumber)
                         .padding(.bottom)
                     
-                    TextField("Phone Number", text: presenter.viewState == .driver1 ? $presenter.accidentDriver1.phoneNumber : $presenter.accidentDriver2.phoneNumber)
+                    TextField("Phone Number", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.phoneNumber : $presenter.accidentDriver2.phoneNumber)
                         .keyboardType(.phonePad)
                         .padding(.bottom)
                     
-                    TextField("Vehicle Registration Plate", text: presenter.viewState == .driver1 ? $presenter.accidentDriver1.vehicleRegistrationPlate : $presenter.accidentDriver2.vehicleRegistrationPlate)
+                    TextField("Vehicle Registration Plate", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.vehicleRegistrationPlate : $presenter.accidentDriver2.vehicleRegistrationPlate)
                         .padding(.bottom)
                     
-                    TextField("Insurance Company", text: presenter.viewState == .driver1 ? $presenter.accidentDriver1.insuranceCompany : $presenter.accidentDriver2.insuranceCompany)
+                    TextField("Insurance Company", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.insuranceCompany : $presenter.accidentDriver2.insuranceCompany)
                         .padding(.bottom)
                     
-                    TextField("Insurance Policy Number", text: presenter.viewState == .driver1 ? $presenter.accidentDriver1.insurancePolicyNumber : $presenter.accidentDriver2.insurancePolicyNumber)
+                    TextField("Insurance Policy Number", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.insurancePolicyNumber : $presenter.accidentDriver2.insurancePolicyNumber)
                         .padding(.bottom)
                     
                     Button(action: {
-                        if presenter.viewState == .driver1 {
+                        if presenter.selectedTab == .driver1 {
                             presenter.goNext()
                         } else {
                             saveReportAction()

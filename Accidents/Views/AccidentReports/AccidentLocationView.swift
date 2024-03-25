@@ -10,17 +10,6 @@ import SwiftUI
 struct AccidentLocationView: View {
     @ObservedObject var presenter: AccidentsPresenter
     
-    @State private var injury: Bool = false
-    private var injuriesBinding: Binding<String?> {
-      Binding<String?>(
-        get: {
-          return injury ? "yes" : "no"
-        },
-        set: { newValue in
-          injury = newValue == "yes"
-        }
-      )
-    }
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
@@ -50,13 +39,11 @@ struct AccidentLocationView: View {
                         .keyboardType(.decimalPad)
                         .padding(.bottom)
                     HStack(alignment: .center) {
-                        YesNoView(question: "Injuries?", injury: $injury)
+                        YesNoView(question: "Injuries?", injury: $presenter.accidentLocation.injuries)
                             .frame(maxWidth: .infinity)
                             .padding(.bottom)
                     }
-                    Text("\(presenter.accidentLocation.injuries ?? false)")
                     Button(action: {
-                        presenter.accidentLocation.injuries = injury ? true : false
                         presenter.goNext()
                     }) {
                         Label("Save Location", systemImage: "checkmark.circle")
@@ -71,7 +58,7 @@ struct AccidentLocationView: View {
                 .padding()
                 Spacer()
             }
-            .navigationTitle("\(presenter.viewState.rawValue)")
+//            .navigationTitle("\(presenter.viewState.rawValue)")
         }
     }
 }

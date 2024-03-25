@@ -43,7 +43,8 @@ struct AccidentReport: Identifiable, Hashable, Codable {
                 date: date,
                 city: "Prague",
                 street: "Wenceslas Square",
-                houseNumber: "1a"
+                houseNumber: "1a",
+                injuries: false
             ), driver: Driver(
                 name: "John Doe",
                 address: "123 Main Street",
@@ -77,7 +78,7 @@ struct AccidentLocation: Codable {
     var street: String
     var houseNumber: String
     var kilometerReading: Double?
-    var injuries: Bool?
+    var injuries: Bool
     var witnesses: [Witness]?
     var otherDamage: Bool?
     var policeInvolved: Bool?

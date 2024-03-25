@@ -152,7 +152,7 @@ class CoreDataRepository: AccidentReportRepository {
                 street: fetchedReportData.accidentLocation?.street! ?? "",
                 houseNumber: fetchedReportData.accidentLocation?.houseNumber! ?? "",
                 kilometerReading: fetchedReportData.accidentLocation?.kilometerReading,
-                injuries: fetchedReportData.accidentLocation?.injuries,
+                injuries: fetchedReportData.accidentLocation?.injuries ?? false,
                 witnesses: witnessModels,
                 otherDamage: fetchedReportData.accidentLocation?.otherDamage ?? false,
                 policeInvolved: fetchedReportData.accidentLocation?.policeInvolved ?? false

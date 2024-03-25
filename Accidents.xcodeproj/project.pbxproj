@@ -29,6 +29,7 @@
 		1FBDAF592BA71EF400B494B2 /* CoreDataHandlingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBDAF582BA71EF400B494B2 /* CoreDataHandlingService.swift */; };
 		1FBE2FFA2B9720C600BF1980 /* AccidentReportFillingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */; };
 		1FBE2FFE2B97332B00BF1980 /* DriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2FFD2B97332A00BF1980 /* DriverView.swift */; };
+		1FC5C3662BB18A7D0032B50F /* UpperTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5C3652BB18A7D0032B50F /* UpperTabBarView.swift */; };
 		1FCDA7D52BA87C1700D98A73 /* AccidentsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDA7D42BA87C1700D98A73 /* AccidentsPresenterTests.swift */; };
 		1FCDA7D82BA87D0100D98A73 /* MockAccidentReportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDA7D72BA87D0100D98A73 /* MockAccidentReportRepository.swift */; };
 		1FD319B72BA48B4F00B9CEE6 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD319B62BA48B4F00B9CEE6 /* CoreDataRepository.swift */; };
@@ -76,6 +77,7 @@
 		1FBDAF582BA71EF400B494B2 /* CoreDataHandlingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandlingService.swift; sourceTree = "<group>"; };
 		1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportFillingState.swift; sourceTree = "<group>"; };
 		1FBE2FFD2B97332A00BF1980 /* DriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverView.swift; sourceTree = "<group>"; };
+		1FC5C3652BB18A7D0032B50F /* UpperTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperTabBarView.swift; sourceTree = "<group>"; };
 		1FCDA7D42BA87C1700D98A73 /* AccidentsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsPresenterTests.swift; sourceTree = "<group>"; };
 		1FCDA7D72BA87D0100D98A73 /* MockAccidentReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccidentReportRepository.swift; sourceTree = "<group>"; };
 		1FD319B62BA48B4F00B9CEE6 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		1F1961F52BAD95CE00AFDD32 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				1FC5C3642BB1837B0032B50F /* Buttons */,
 				1F1961FB2BAE0B2100AFDD32 /* Styles */,
 				1F1961F62BAD95D600AFDD32 /* ErrorBlock */,
 				1F1961F92BAE0A6A00AFDD32 /* TickBox.swift */,
@@ -202,6 +205,7 @@
 				1F1961F52BAD95CE00AFDD32 /* Components */,
 				1F703A732BAB39E7009CD10A /* Mocks */,
 				1FAEBB8D2B96159500659397 /* MainTabView.swift */,
+				1FC5C3652BB18A7D0032B50F /* UpperTabBarView.swift */,
 				1FF2CD9A2BA35CF3001E1478 /* PreloadData */,
 				1FF2CD9C2BA35D5A001E1478 /* AccidentReports */,
 				1FF2CD9B2BA35D01001E1478 /* Settings */,
@@ -233,6 +237,13 @@
 				1FBDAF582BA71EF400B494B2 /* CoreDataHandlingService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		1FC5C3642BB1837B0032B50F /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		1FCDA7D62BA87CE900D98A73 /* Mocks */ = {
@@ -404,6 +415,7 @@
 				1FAEBB8E2B96159500659397 /* MainTabView.swift in Sources */,
 				1F1961FF2BAE0E2F00AFDD32 /* YesNoView.swift in Sources */,
 				1F1961FA2BAE0A6A00AFDD32 /* TickBox.swift in Sources */,
+				1FC5C3662BB18A7D0032B50F /* UpperTabBarView.swift in Sources */,
 				1FBE2FFE2B97332B00BF1980 /* DriverView.swift in Sources */,
 				1FBE2FFA2B9720C600BF1980 /* AccidentReportFillingState.swift in Sources */,
 				1FAEBBC32B961EA700659397 /* AccidentLocationView.swift in Sources */,

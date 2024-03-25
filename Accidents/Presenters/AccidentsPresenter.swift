@@ -18,6 +18,7 @@ class AccidentsPresenter: ObservableObject {
         street: "",
         houseNumber: "",
         kilometerReading: 0.0,
+        injuries: false,
         witnesses: [Witness.sample]
     )
     @Published var accidentDriver1: Driver = Driver(name: "Johny", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: "")
@@ -26,8 +27,8 @@ class AccidentsPresenter: ObservableObject {
     @Published var accidentDescription: AccidentDescription = AccidentDescription(accidentDescription: "dummy description", vehicleDamage: "no damage")
     @Published var errorMessage: String? = nil
     @Published var selectedAccident: AccidentReport? = nil
-    @Published var viewState: AccidentReportFillingState = .accidentList
-    
+    @Published var viewState: AccidentReportNavigationState = .accidentList
+    @Published var selectedTab: AccidentReportFillingState = .location
     
     init(repository: AccidentReportRepository) {
         self.repository = repository
@@ -58,16 +59,21 @@ class AccidentsPresenter: ObservableObject {
     func goNext() {
         switch viewState {
         case .accidentList:
-            viewState = .location
-        case .location:
-            viewState = .driver1
-        case .driver1:
-            viewState = .driver2
-        case .driver2:
-            viewState = .accidentList
-        case .description:
-            viewState = .accidentList
+            selectedTab = .location
+            viewState = .start
+        case .start:
+            switch selectedTab {
+            case .location:
+                selectedTab = .driver1
+            case .driver1:
+                selectedTab = .driver2
+            case .driver2:
+                viewState = .accidentList
+            case .description:
+                print("TO DO")
+            }
         }
+        
     }
     
     func createReportAndSave() {

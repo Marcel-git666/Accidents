@@ -14,12 +14,8 @@ struct AccidentsNavigationView: View {
         NavigationStack {
             VStack {
                 switch presenter.viewState {
-                case .location:
-                    AccidentLocationView(presenter: presenter)
-                case .driver1:
-                    DriverView(presenter: presenter, driverType: .driver1)
-                case .driver2:
-                    DriverView(presenter: presenter, driverType: .driver2)
+                case .start:
+                    UpperTabBarView(presenter: presenter)
                 default:
                     AccidentsListView(presenter: presenter)
                 }
@@ -29,7 +25,7 @@ struct AccidentsNavigationView: View {
                 if let errorMessage = presenter.errorMessage { ARErrorBlock(errorMessage: errorMessage)
                 }
             }
-            .navigationTitle("\(presenter.viewState.rawValue)")
+            .navigationTitle(presenter.viewState != .start ? "Reports" : "")
         }
     }
 }

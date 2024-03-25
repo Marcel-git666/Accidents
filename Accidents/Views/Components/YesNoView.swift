@@ -10,14 +10,27 @@ import SwiftUI
 struct YesNoView: View {
     let question: String
     @Binding var injury: Bool
-    
+    @State private var noInjury = false
     
   var body: some View {
     VStack {
       Text(question)
       HStack {
-        TickBox(text: "yes", isSelected: $injury) // Bind to selection state
-          TickBox(text: "no", isSelected: .constant(!injury))
+        TickBox(text: "yes", isSelected: $injury)
+          TickBox(text: "no", isSelected: $noInjury)
+      }
+      .onChange(of: injury) { newValue in
+          if newValue {
+              noInjury = false
+          }
+      }
+      .onChange(of: noInjury) { newValue in
+          if newValue {
+              injury = false
+          }
+      }
+      .onAppear() {
+          noInjury = !injury
       }
     }
   }
@@ -28,5 +41,5 @@ struct YesNoView: View {
 
 
 #Preview {
-  YesNoView(question: "Injuries?", injury: .constant(false)) // Constant binding (limited)
+    YesNoView(question: "Injuries?", injury: .constant(true)) // Constant binding (limited)
 }

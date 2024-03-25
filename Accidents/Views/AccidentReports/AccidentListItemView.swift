@@ -32,7 +32,7 @@ struct AccidentListItemView: View {
                 Text(formattedPlace)
             }
         }
-        .foregroundColor(accident.accidentLocation.injuries ?? false ? .red : .primary)
+        .foregroundColor(accident.accidentLocation.injuries ? .red : .primary)
     }
 }
 
