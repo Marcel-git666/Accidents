@@ -3,8 +3,8 @@
     <entity name="AccidentDescriptionData" representedClassName="AccidentDescriptionData" syncable="YES" codeGenerationType="class">
         <attribute name="notes1" attributeType="String"/>
         <attribute name="notes2" optional="YES" attributeType="String"/>
-        <attribute name="vehicleDamage1" attributeType="Transformable" valueTransformerName="BoolArrayTransformer"/>
-        <attribute name="vehicleDamage2" attributeType="Transformable" valueTransformerName="BoolArrayTransformer"/>
+        <attribute name="vehicleDamage1" attributeType="Transformable" valueTransformerName="" customClassName="[Bool]"/>
+        <attribute name="vehicleDamage2" attributeType="Transformable" valueTransformerName="" customClassName="[Bool]"/>
         <relationship name="accidentReportData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AccidentReportData" inverseName="accidentDescription" inverseEntity="AccidentReportData"/>
     </entity>
     <entity name="AccidentLocationData" representedClassName="AccidentLocationData" syncable="YES" codeGenerationType="class">

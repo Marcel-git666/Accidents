@@ -82,9 +82,8 @@ class CoreDataRepository: AccidentReportRepository {
         newAccidentDescriptionData.notes1 = accidentDescription.notes1
         newAccidentDescriptionData.notes2 = accidentDescription.notes2
         
-        let transformer = BoolArrayTransformer()
-        newAccidentDescriptionData.vehicleDamage1 = transformer.transformedValue(accidentDescription.vehicleDamage1) as? NSData
-        newAccidentDescriptionData.vehicleDamage2 = transformer.transformedValue(accidentDescription.vehicleDamage2) as? NSData
+        newAccidentDescriptionData.vehicleDamage1 = accidentDescription.vehicleDamage1
+        newAccidentDescriptionData.vehicleDamage2 = accidentDescription.vehicleDamage2
 
         return newAccidentDescriptionData
     }
@@ -119,6 +118,7 @@ class CoreDataRepository: AccidentReportRepository {
     private func convertFromCoreData(fetchedReportData: AccidentReportData) -> AccidentReport {
         var driver: Driver?
         var otherDriver: Driver?
+        var accidentDescription: AccidentDescription
         
         if let driverData = fetchedReportData.driver {
             driver = Driver(
@@ -147,12 +147,9 @@ class CoreDataRepository: AccidentReportRepository {
         }
         let witnesses = fetchedReportData.accidentLocation?.witnesses?.allObjects as? [WitnessData] ?? []
         let witnessModels = witnesses.map { Witness(name: $0.name ?? "", address: $0.address ?? "", phoneNumber: $0.phoneNumber ?? "") }
-        let vehicleDamageData1 = fetchedReportData.accidentDescription?.vehicleDamage1 as? Data ?? Data()
-        let vehicleDamageData2 = fetchedReportData.accidentDescription?.vehicleDamage2 as? Data ?? Data()
-        let boolArrayTransformer = BoolArrayTransformer()
-        let vehicleDamage1 = boolArrayTransformer.reverseTransformedValue(vehicleDamageData1) as? [Bool] ?? []
-        let vehicleDamage2 = boolArrayTransformer.reverseTransformedValue(vehicleDamageData2) as? [Bool] ?? []
         
+        let accidentDescriptionData = fetchedReportData.accidentDescription
+        accidentDescription = AccidentDescription(notes1: accidentDescriptionData?.notes1 ?? "", notes2: accidentDescriptionData?.notes2 ?? "", vehicleDamage1: (accidentDescriptionData?.vehicleDamage1!)!, vehicleDamage2: (accidentDescriptionData?.vehicleDamage2!)!)
         
         return AccidentReport(
             id: fetchedReportData.idReport!,
@@ -169,12 +166,7 @@ class CoreDataRepository: AccidentReportRepository {
             ),
             driver: driver ?? Driver(name: "", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: ""),
             otherDriver: otherDriver ?? Driver(name: "", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: ""),
-            accidentDescription: AccidentDescription(
-                notes1: fetchedReportData.accidentDescription!.notes1!,
-                notes2: fetchedReportData.accidentDescription!.notes2!,
-                vehicleDamage1: vehicleDamage1,
-                vehicleDamage2: vehicleDamage2
-            )
+            accidentDescription: accidentDescription
         )
     }
     

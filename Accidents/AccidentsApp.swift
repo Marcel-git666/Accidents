@@ -9,9 +9,7 @@ import SwiftUI
 
 @main
 struct AccidentsApp: App {
-    init() {
-        BoolArrayTransformer.register()
-    }
+
     var body: some Scene {
         WindowGroup {
             MainTabView()
