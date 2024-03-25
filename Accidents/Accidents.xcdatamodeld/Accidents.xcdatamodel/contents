@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E214" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="AccidentDescriptionData" representedClassName="AccidentDescriptionData" syncable="YES" codeGenerationType="class">
-        <attribute name="accidentDescription" attributeType="String"/>
-        <attribute name="vehicleDamage" attributeType="String"/>
+        <attribute name="notes1" attributeType="String"/>
+        <attribute name="notes2" optional="YES" attributeType="String"/>
+        <attribute name="vehicleDamage1" attributeType="Transformable"/>
+        <attribute name="vehicleDamage2" attributeType="Transformable" valueTransformerName="BoolArrayTransformer"/>
         <relationship name="accidentReportData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AccidentReportData" inverseName="accidentDescription" inverseEntity="AccidentReportData"/>
     </entity>
     <entity name="AccidentLocationData" representedClassName="AccidentLocationData" syncable="YES" codeGenerationType="class">

@@ -24,7 +24,7 @@ class AccidentsPresenter: ObservableObject {
     @Published var accidentDriver1: Driver = Driver(name: "Johny", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: "")
     @Published var accidentDriver2: Driver = Driver(name: "Cash", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: "")
     
-    @Published var accidentDescription: AccidentDescription = AccidentDescription(accidentDescription: "dummy description", vehicleDamage: "no damage")
+    @Published var accidentDescription: AccidentDescription = AccidentDescription(notes1: "notes 1", notes2: "notes 2", vehicleDamage1: Array(repeating: false, count: 17), vehicleDamage2: Array(repeating: false, count: 17))
     @Published var errorMessage: String? = nil
     @Published var selectedAccident: AccidentReport? = nil
     @Published var viewState: AccidentReportNavigationState = .accidentList
@@ -68,9 +68,9 @@ class AccidentsPresenter: ObservableObject {
             case .driver1:
                 selectedTab = .driver2
             case .driver2:
-                viewState = .accidentList
+                selectedTab = .description
             case .description:
-                print("TO DO")
+                viewState = .accidentList
             }
         }
         

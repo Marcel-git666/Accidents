@@ -16,8 +16,8 @@ struct YesNoView: View {
     VStack {
       Text(question)
       HStack {
-        TickBox(text: "yes", isSelected: $injury)
-          TickBox(text: "no", isSelected: $noInjury)
+          TickBox(text: "yes", isSelected: $injury, frameColor: .primary)
+          TickBox(text: "no", isSelected: $noInjury, frameColor: .primary)
       }
       .onChange(of: injury) { newValue in
           if newValue {

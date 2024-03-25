@@ -30,6 +30,8 @@
 		1FBE2FFA2B9720C600BF1980 /* AccidentReportFillingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */; };
 		1FBE2FFE2B97332B00BF1980 /* DriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2FFD2B97332A00BF1980 /* DriverView.swift */; };
 		1FC5C3662BB18A7D0032B50F /* UpperTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5C3652BB18A7D0032B50F /* UpperTabBarView.swift */; };
+		1FC5C3682BB1BEAA0032B50F /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5C3672BB1BEAA0032B50F /* DescriptionView.swift */; };
+		1FC5C36A2BB1C1D40032B50F /* BoolArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5C3692BB1C1D40032B50F /* BoolArrayTransformer.swift */; };
 		1FCDA7D52BA87C1700D98A73 /* AccidentsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDA7D42BA87C1700D98A73 /* AccidentsPresenterTests.swift */; };
 		1FCDA7D82BA87D0100D98A73 /* MockAccidentReportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDA7D72BA87D0100D98A73 /* MockAccidentReportRepository.swift */; };
 		1FD319B72BA48B4F00B9CEE6 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD319B62BA48B4F00B9CEE6 /* CoreDataRepository.swift */; };
@@ -78,6 +80,8 @@
 		1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportFillingState.swift; sourceTree = "<group>"; };
 		1FBE2FFD2B97332A00BF1980 /* DriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverView.swift; sourceTree = "<group>"; };
 		1FC5C3652BB18A7D0032B50F /* UpperTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperTabBarView.swift; sourceTree = "<group>"; };
+		1FC5C3672BB1BEAA0032B50F /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		1FC5C3692BB1C1D40032B50F /* BoolArrayTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolArrayTransformer.swift; sourceTree = "<group>"; };
 		1FCDA7D42BA87C1700D98A73 /* AccidentsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsPresenterTests.swift; sourceTree = "<group>"; };
 		1FCDA7D72BA87D0100D98A73 /* MockAccidentReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccidentReportRepository.swift; sourceTree = "<group>"; };
 		1FD319B62BA48B4F00B9CEE6 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				1FD319C22BA4C79C00B9CEE6 /* CoreDataManager.swift */,
+				1FC5C3692BB1C1D40032B50F /* BoolArrayTransformer.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 				1F703A712BAB36AC009CD10A /* AccidentsListView.swift */,
 				1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */,
 				1FAEBBC22B961EA700659397 /* AccidentLocationView.swift */,
+				1FC5C3672BB1BEAA0032B50F /* DescriptionView.swift */,
 				1FBE2FFD2B97332A00BF1980 /* DriverView.swift */,
 			);
 			path = AccidentReports;
@@ -413,6 +419,7 @@
 				1FAEBBBE2B96183600659397 /* PreloadDataView.swift in Sources */,
 				1FAEBBBC2B9617E500659397 /* SettingsView.swift in Sources */,
 				1FAEBB8E2B96159500659397 /* MainTabView.swift in Sources */,
+				1FC5C36A2BB1C1D40032B50F /* BoolArrayTransformer.swift in Sources */,
 				1F1961FF2BAE0E2F00AFDD32 /* YesNoView.swift in Sources */,
 				1F1961FA2BAE0A6A00AFDD32 /* TickBox.swift in Sources */,
 				1FC5C3662BB18A7D0032B50F /* UpperTabBarView.swift in Sources */,
@@ -434,6 +441,7 @@
 				1FD6109B2BA48AC4008992B3 /* AccidentReportRepository.swift in Sources */,
 				1F1961F82BAD95F200AFDD32 /* ARErrorBlock.swift in Sources */,
 				1F703A722BAB36AC009CD10A /* AccidentsListView.swift in Sources */,
+				1FC5C3682BB1BEAA0032B50F /* DescriptionView.swift in Sources */,
 				1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */,
 				1FF1FB6D2BAF375C00E0CA88 /* EmptyListView.swift in Sources */,
 			);

@@ -41,6 +41,14 @@ struct UpperTabBarView: View {
                     presenter.selectedTab = .driver2
                 }
                 Spacer()
+                VStack {
+                    Image(systemName: "person.fill")
+                        .foregroundColor(presenter.selectedTab == .description ? Color.accentColor : Color.secondary)
+                    Text("\(AccidentReportFillingState.description.rawValue)")
+                }
+                .onTapGesture {
+                    presenter.selectedTab = .description
+                }
             }
             .padding(.bottom)
             .background(Color.teal.edgesIgnoringSafeArea(.all))
@@ -55,7 +63,7 @@ struct UpperTabBarView: View {
             case .driver2:
                 DriverView(presenter: presenter, driverType: .driver2)
             case .description:
-                EmptyListView()
+                DescriptionView(presenter: presenter)
             }
         }
     }
