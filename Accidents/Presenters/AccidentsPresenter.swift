@@ -17,7 +17,7 @@ class AccidentsPresenter: ObservableObject {
         city: "",
         street: "",
         houseNumber: "",
-        kilometerReading: 0.0,
+        kilometerReading: "0.0",
         injuries: false,
         witnesses: [Witness.sample]
     )
@@ -57,23 +57,24 @@ class AccidentsPresenter: ObservableObject {
     }
     
     func goNext() {
-        switch viewState {
-        case .accidentList:
-            selectedTab = .location
-            viewState = .start
-        case .start:
-            switch selectedTab {
-            case .location:
-                selectedTab = .driver1
-            case .driver1:
-                selectedTab = .driver2
-            case .driver2:
-                selectedTab = .description
-            case .description:
-                viewState = .accidentList
+        withAnimation {
+            switch viewState {
+            case .accidentList:
+                selectedTab = .location
+                viewState = .start
+            case .start:
+                switch selectedTab {
+                case .location:
+                    selectedTab = .driver1
+                case .driver1:
+                    selectedTab = .driver2
+                case .driver2:
+                    selectedTab = .description
+                case .description:
+                    viewState = .accidentList
+                }
             }
         }
-        
     }
     
     func createReportAndSave() {

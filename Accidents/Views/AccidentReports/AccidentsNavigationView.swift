@@ -15,9 +15,11 @@ struct AccidentsNavigationView: View {
             VStack {
                 switch presenter.viewState {
                 case .start:
-                    UpperTabBarView(presenter: presenter)
+                        UpperTabBarView(presenter: presenter)
+                            .transition(.slide)
                 default:
                     AccidentsListView(presenter: presenter)
+                        .transition(.move(edge: .top))
                 }
             }
             Spacer()

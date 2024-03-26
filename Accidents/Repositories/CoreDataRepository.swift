@@ -53,7 +53,7 @@ class CoreDataRepository: AccidentReportRepository {
     func removeReport(_ report: AccidentReport) async throws {
         let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: K.reportEntity)
         
-        // Add a predicate to filter based on report properties (assuming unique identifier)
+        // Add a predicate to filter based on report properties 
         fetchRequest.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(AccidentReportData.idReport), report.id])
         do {
             let fetchedReports = try context.fetch(fetchRequest)

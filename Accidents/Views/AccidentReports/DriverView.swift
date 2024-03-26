@@ -14,42 +14,31 @@ struct DriverView: View {
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
-                VStack(alignment: .leading) {
-                    TextField("Full Name", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.name : $presenter.accidentDriver2.name)
-                        .padding(.bottom)
+                ScrollView {
+                    TitledBorderTextField(title: "Full Name", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.name : $presenter.accidentDriver2.name, placeholder: "Full name", titleColor: .accentColor)
+                        .padding(.top)
+                    TitledBorderTextField(title: "Address", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.address : $presenter.accidentDriver2.address, placeholder: "Address", titleColor: .accentColor)
                     
-                    TextField("Address", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.address : $presenter.accidentDriver2.address)
-                        .padding(.bottom)
+                    TitledBorderTextField(title: "Driver's License Number", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.driverLicenseNumber : $presenter.accidentDriver2.driverLicenseNumber, placeholder: "Driver's license number", titleColor: .accentColor)
                     
-                    TextField("Driver's License Number", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.driverLicenseNumber : $presenter.accidentDriver2.driverLicenseNumber)
-                        .padding(.bottom)
-                    
-                    TextField("Phone Number", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.phoneNumber : $presenter.accidentDriver2.phoneNumber)
+                    TitledBorderTextField(title: "Phone Number", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.phoneNumber : $presenter.accidentDriver2.phoneNumber, placeholder: "Phone Number", titleColor: .accentColor)
                         .keyboardType(.phonePad)
-                        .padding(.bottom)
                     
-                    TextField("Vehicle Registration Plate", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.vehicleRegistrationPlate : $presenter.accidentDriver2.vehicleRegistrationPlate)
-                        .padding(.bottom)
+                    TitledBorderTextField(title: "Vehicle Registration Plate", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.vehicleRegistrationPlate : $presenter.accidentDriver2.vehicleRegistrationPlate, placeholder: "Vehicle Registration Plate", titleColor: .accentColor)
                     
-                    TextField("Insurance Company", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.insuranceCompany : $presenter.accidentDriver2.insuranceCompany)
-                        .padding(.bottom)
+                    TitledBorderTextField(title: "Insurance Company", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.insuranceCompany : $presenter.accidentDriver2.insuranceCompany, placeholder: "Insurance Company", titleColor: .accentColor)
                     
-                    TextField("Insurance Policy Number", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.insurancePolicyNumber : $presenter.accidentDriver2.insurancePolicyNumber)
-                        .padding(.bottom)
+                    TitledBorderTextField(title: "Insurance Policy Number", text: presenter.selectedTab == .driver1 ? $presenter.accidentDriver1.insurancePolicyNumber : $presenter.accidentDriver2.insurancePolicyNumber, placeholder: "Insurance Policy Number", titleColor: .accentColor)
+                        
                     
-                    Button(action: {
-                        presenter.goNext()
-                    }) {
-                        Label("Save Driver \(driverType == .driver1 ? "A" : "B") Information", systemImage: "checkmark.circle")
-                            .foregroundColor(.white)
-                            .font(.system(size: 16, weight: .semibold))
-                            .frame(maxWidth: .infinity, minHeight: 52)
-                            .background(.black)
-                            .cornerRadius(15)
-                    }
+                    
                 }
                 .padding()
                 Spacer()
+                SaveButton(label: "Save Driver \(driverType == .driver1 ? "A" : "B") Information", systemImage: "checkmark.circle", action: {
+                    presenter.goNext()
+                })
+                .padding()
             }
         }
     }
@@ -58,6 +47,6 @@ struct DriverView: View {
 #Preview {
     NavigationStack {
         DriverView(presenter: AccidentsPresenter(repository: CoreDataRepository()), driverType: .driver2)
-            .navigationTitle("Test Driver 99")
+            .navigationTitle("Driver A")
     }
 }

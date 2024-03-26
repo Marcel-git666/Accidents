@@ -10,15 +10,13 @@ import SwiftUI
 struct TickBox: View {
     let text: String
     @Binding var isSelected: Bool
-    let frameColor: Color
     
     var body: some View {
         Toggle(isOn: $isSelected) {
             Text(text)
         }
         .toggleStyle(iOSCheckboxToggleStyle())
-        .frame(maxWidth: 150, minHeight: 52)
-        .overlay(Rectangle().stroke(lineWidth: 3).foregroundColor(frameColor))
+        
     }
 }
 
@@ -26,9 +24,9 @@ struct TickBox: View {
 #Preview {
     Group {
         // Preview showing "yes" selected
-        TickBox(text: "yes", isSelected: .constant(true), frameColor: .primary)
+        TickBox(text: "yes", isSelected: .constant(true))
         
         // Preview showing "no" selected (using constant binding)
-        TickBox(text: "no", isSelected: .constant(false), frameColor: .clear)
+        TickBox(text: "no", isSelected: .constant(false))
     }
 }

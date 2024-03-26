@@ -27,7 +27,8 @@ struct AccidentsListView: View {
                         }
                 }
             }
-            
+            .scrollContentBackground(.hidden)
+            .background(Color.listBackground)
             .refreshable {
                 await presenter.fetchAccidents()
             }

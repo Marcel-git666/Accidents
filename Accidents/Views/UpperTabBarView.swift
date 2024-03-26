@@ -16,7 +16,7 @@ struct UpperTabBarView: View {
                 Spacer()
                 VStack {
                     Image(systemName: "airplane")
-                        .foregroundColor(presenter.selectedTab == .location ? Color.accentColor : Color.secondary)
+                        .foregroundColor(presenter.selectedTab == .location ? Color.white : Color.secondary)
                     Text("\(AccidentReportFillingState.location.rawValue)")
                 }
                 .onTapGesture {
@@ -25,7 +25,7 @@ struct UpperTabBarView: View {
                 Spacer()
                 VStack {
                     Image(systemName: "person.fill")
-                        .foregroundColor(presenter.selectedTab == .driver1 ? Color.accentColor : Color.secondary)
+                        .foregroundColor(presenter.selectedTab == .driver1 ? Color.white : Color.secondary)
                     Text("\(AccidentReportFillingState.driver1.rawValue)")
                 }
                 .onTapGesture {
@@ -34,7 +34,7 @@ struct UpperTabBarView: View {
                 Spacer()
                 VStack {
                     Image(systemName: "person.fill")
-                        .foregroundColor(presenter.selectedTab == .driver2 ? Color.accentColor : Color.secondary)
+                        .foregroundColor(presenter.selectedTab == .driver2 ? Color.white : Color.secondary)
                     Text("\(AccidentReportFillingState.driver2.rawValue)")
                 }
                 .onTapGesture {
@@ -43,7 +43,7 @@ struct UpperTabBarView: View {
                 Spacer()
                 VStack {
                     Image(systemName: "person.fill")
-                        .foregroundColor(presenter.selectedTab == .description ? Color.accentColor : Color.secondary)
+                        .foregroundColor(presenter.selectedTab == .description ? Color.white : Color.secondary)
                     Text("\(AccidentReportFillingState.description.rawValue)")
                 }
                 .onTapGesture {
@@ -51,19 +51,26 @@ struct UpperTabBarView: View {
                 }
             }
             .padding(.bottom)
-            .background(Color.teal.edgesIgnoringSafeArea(.all))
+            .background(LinearGradient(colors: [.orange, .accentColor], startPoint: .topLeading, endPoint: .top).edgesIgnoringSafeArea(.all))
             
             Spacer()
             switch presenter.selectedTab {
             
             case .location:
-                AccidentLocationView(presenter: presenter)
+                    AccidentLocationView(presenter: presenter)
+                        .transition(.scale)
             case .driver1:
-                DriverView(presenter: presenter, driverType: .driver1)
+                    DriverView(presenter: presenter, driverType: .driver1)
+                        .transition(.scale)
+                
             case .driver2:
-                DriverView(presenter: presenter, driverType: .driver2)
+                    DriverView(presenter: presenter, driverType: .driver2)
+                        .transition(.scale)
+                
             case .description:
-                DescriptionView(presenter: presenter)
+                    DescriptionView(presenter: presenter)
+                        .transition(.scale)
+                
             }
         }
     }

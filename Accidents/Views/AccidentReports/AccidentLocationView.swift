@@ -14,51 +14,35 @@ struct AccidentLocationView: View {
         ZStack {
             VStack(alignment: .leading) {
                                
-                VStack(alignment: .leading) {
+                ScrollView {
                     DatePicker("Date and Time", selection: $presenter.accidentLocation.date, displayedComponents: [.date, .hourAndMinute])
                         .datePickerStyle(.compact)
                     
                     Text("Address")
                         .font(.headline)
-                        .padding(.bottom)
                     
-                    TextField("City", text: $presenter.accidentLocation.city)
-                        .padding(.bottom)
+                    TitledBorderTextField(title: "City", text: $presenter.accidentLocation.city, placeholder: "Your city", titleColor: .accentColor)
                     
-                    TextField("Street", text: $presenter.accidentLocation.street)
-                        .padding(.bottom)
                     
-                    TextField("House Number", text: $presenter.accidentLocation.houseNumber)
-                        .padding(.bottom)
+                    TitledBorderTextField(title: "Street", text: $presenter.accidentLocation.street, placeholder: "Street", titleColor: .accentColor)
                     
-                    Text("Kilometer Reading (optional)")
-                        .font(.footnote)
-                        .padding(.bottom)
+                    TitledBorderTextField(title: "House Number", text: $presenter.accidentLocation.houseNumber, placeholder: "House number", titleColor: .accentColor)
                     
-                    TextField("e.g., 12345.6", value: $presenter.accidentLocation.kilometerReading, format: .number)
+                    TitledBorderTextField(title: "Kilometer Reading (optional)", text: $presenter.accidentLocation.kilometerReading, placeholder: "0", titleColor: .accentColor)
                         .keyboardType(.decimalPad)
-                        .padding(.bottom)
+                    
                     HStack(alignment: .center) {
                         YesNoView(question: "Injuries?", injury: $presenter.accidentLocation.injuries)
                             .frame(maxWidth: .infinity)
                             .padding(.bottom)
                     }
-                    Button(action: {
+                }
+                    SaveButton(label: "Save Location", systemImage: "checkmark.circle") {
                         presenter.goNext()
-                    }) {
-                        Label("Save Location", systemImage: "checkmark.circle")
-                            .foregroundColor(.white)
-                            .font(.system(size: 16, weight: .semibold))
-                            .frame(maxWidth: .infinity, minHeight: 52)
-                            .background(.black)
-                            .cornerRadius(15)
                     }
                     
                 }
                 .padding()
-                Spacer()
-            }
-//            .navigationTitle("\(presenter.viewState.rawValue)")
         }
     }
 }
