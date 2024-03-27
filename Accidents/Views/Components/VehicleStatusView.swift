@@ -13,14 +13,16 @@ struct VehicleStatusView: View {
     @Binding var isSelected2: Bool
     
     var body: some View {
-        HStack(alignment: .center, spacing: 16) {
+        HStack(alignment: .center, spacing: 10) {
             TickBox(text: "", isSelected: $isSelected1)
             Spacer()
             Text(vehicleStatusDescription)
+                .multilineTextAlignment(.center)
+                .foregroundColor(.accentColor)
             Spacer()
             TickBox(text: "", isSelected: $isSelected2)
         }
-        .padding(.horizontal)
+        .padding(.bottom)
     }
 }
 

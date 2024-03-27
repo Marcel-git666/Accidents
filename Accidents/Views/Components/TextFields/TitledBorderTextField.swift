@@ -18,8 +18,7 @@ struct TitledBorderTextField: View {
             TextField(placeholder, text: $text)
                 .foregroundColor(.primary)
                 .padding(17)
-                .border(LinearGradient(colors: [.orange, titleColor], startPoint: .topLeading, endPoint: .top), width: 3)
-                .padding(.horizontal)
+                .border(LinearGradient(colors: [Color(UIColor.systemGray), titleColor], startPoint: .topLeading, endPoint: .top), width: 3)
             
             Text(title)
                 .font(.headline)

@@ -17,6 +17,8 @@ struct AccidentLocationView: View {
                 ScrollView {
                     DatePicker("Date and Time", selection: $presenter.accidentLocation.date, displayedComponents: [.date, .hourAndMinute])
                         .datePickerStyle(.compact)
+                        .padding(.horizontal)
+                        .background(RoundedRectangle(cornerRadius: 8, style: .continuous).fill(LinearGradient(colors: [.blue, .accentColor], startPoint: .topLeading, endPoint: .top)))
                     
                     Text("Address")
                         .font(.headline)
@@ -32,9 +34,14 @@ struct AccidentLocationView: View {
                         .keyboardType(.decimalPad)
                     
                     HStack(alignment: .center) {
-                        YesNoView(question: "Injuries?", injury: $presenter.accidentLocation.injuries)
-                            .frame(maxWidth: .infinity)
-                            .padding(.bottom)
+                        TickBox(text: "Injuries?", isSelected:  $presenter.accidentLocation.injuries)
+                        
+                    }
+                    HStack(alignment: .center) {
+                        TickBox(text: "Was police involved?", isSelected:  $presenter.accidentLocation.policeInvolved)
+                    }
+                    HStack(alignment: .center) {
+                        TickBox(text: "Other damage than vehicle A and B?", isSelected:  $presenter.accidentLocation.otherDamage)
                     }
                 }
                     SaveButton(label: "Save Location", systemImage: "checkmark.circle") {

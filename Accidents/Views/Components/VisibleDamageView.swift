@@ -22,6 +22,7 @@ struct VisibleDamageView: View {
                 TitledBorderTextField(title: "Vehicle 2", text: $notes2, placeholder: "Add some damage", titleColor: .accentColor)
             }
         }
+        .padding(.horizontal)
     }
 }
 

@@ -11,6 +11,8 @@
 		1F1961FA2BAE0A6A00AFDD32 /* TickBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961F92BAE0A6A00AFDD32 /* TickBox.swift */; };
 		1F1961FD2BAE0B3700AFDD32 /* iOSCheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961FC2BAE0B3700AFDD32 /* iOSCheckboxToggleStyle.swift */; };
 		1F1961FF2BAE0E2F00AFDD32 /* YesNoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961FE2BAE0E2F00AFDD32 /* YesNoView.swift */; };
+		1F1B5C3E2BB4148D00681429 /* UpperTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B5C3D2BB4148D00681429 /* UpperTabBarButton.swift */; };
+		1F1B5C402BB44ADE00681429 /* AccidentCrashPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B5C3F2BB44ADE00681429 /* AccidentCrashPointView.swift */; };
 		1F5164BE2BB2BE2300FC4FB8 /* VisibleDamageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5164BD2BB2BE2300FC4FB8 /* VisibleDamageView.swift */; };
 		1F5164C12BB2D97000FC4FB8 /* VehicleStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5164C02BB2D97000FC4FB8 /* VehicleStatusView.swift */; };
 		1F5164C42BB30B7300FC4FB8 /* TitledBorderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5164C32BB30B7300FC4FB8 /* TitledBorderTextField.swift */; };
@@ -61,6 +63,8 @@
 		1F1961F92BAE0A6A00AFDD32 /* TickBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickBox.swift; sourceTree = "<group>"; };
 		1F1961FC2BAE0B3700AFDD32 /* iOSCheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSCheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		1F1961FE2BAE0E2F00AFDD32 /* YesNoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesNoView.swift; sourceTree = "<group>"; };
+		1F1B5C3D2BB4148D00681429 /* UpperTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperTabBarButton.swift; sourceTree = "<group>"; };
+		1F1B5C3F2BB44ADE00681429 /* AccidentCrashPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentCrashPointView.swift; sourceTree = "<group>"; };
 		1F3FD9C32BA9B15000F0F07F /* Accidents.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Accidents.xctestplan; path = AccidentsTests/Accidents.xctestplan; sourceTree = "<group>"; };
 		1F5164BD2BB2BE2300FC4FB8 /* VisibleDamageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleDamageView.swift; sourceTree = "<group>"; };
 		1F5164C02BB2D97000FC4FB8 /* VehicleStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStatusView.swift; sourceTree = "<group>"; };
@@ -264,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				1FBD04702BB3599400719A16 /* SaveButton.swift */,
+				1F1B5C3D2BB4148D00681429 /* UpperTabBarButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				1FAEBBC22B961EA700659397 /* AccidentLocationView.swift */,
 				1FC5C3672BB1BEAA0032B50F /* DescriptionView.swift */,
 				1FBE2FFD2B97332A00BF1980 /* DriverView.swift */,
+				1F1B5C3F2BB44ADE00681429 /* AccidentCrashPointView.swift */,
 			);
 			path = AccidentReports;
 			sourceTree = "<group>";
@@ -461,8 +467,10 @@
 				1F5164BE2BB2BE2300FC4FB8 /* VisibleDamageView.swift in Sources */,
 				1F5164C12BB2D97000FC4FB8 /* VehicleStatusView.swift in Sources */,
 				1FBD04712BB3599400719A16 /* SaveButton.swift in Sources */,
+				1F1B5C3E2BB4148D00681429 /* UpperTabBarButton.swift in Sources */,
 				1FC5C3682BB1BEAA0032B50F /* DescriptionView.swift in Sources */,
 				1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */,
+				1F1B5C402BB44ADE00681429 /* AccidentCrashPointView.swift in Sources */,
 				1FF1FB6D2BAF375C00E0CA88 /* EmptyListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

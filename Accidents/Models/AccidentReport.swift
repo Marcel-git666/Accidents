@@ -40,28 +40,11 @@ struct AccidentReport: Identifiable, Hashable, Codable {
         let sampleAccidentReport = AccidentReport(
             id: UUID(),
             accidentLocation: AccidentLocation(
-                date: date,
-                city: "Prague",
-                street: "Wenceslas Square",
-                houseNumber: "1a",
-                kilometerReading: "0",
-                injuries: false
+                date: date, city: "Prague", street: "Wenceslas Square", houseNumber: "1a", kilometerReading: "0", injuries: false, otherDamage: false, policeInvolved: true
             ), driver: Driver(
-                name: "John Doe",
-                address: "123 Main Street",
-                phoneNumber: "12313245646",
-                driverLicenseNumber: "456456",
-                vehicleRegistrationPlate: "5464645",
-                insuranceCompany: "Kooperativa",
-                insurancePolicyNumber: "aswerwedf"
+                name: "John Doe", address: "123 Main Street", phoneNumber: "12313245646", driverLicenseNumber: "456456", vehicleRegistrationPlate: "5464645", insuranceCompany: "Kooperativa", insurancePolicyNumber: "aswerwedf"
             ), otherDriver: Driver(
-                name: "Maverick",
-                address: "555 Main Street",
-                phoneNumber: "999999999",
-                driverLicenseNumber: "4wedf456",
-                vehicleRegistrationPlate: "fw645",
-                insuranceCompany: "Kooperativa",
-                insurancePolicyNumber: "as44564556wedf"
+                name: "Maverick", address: "555 Main Street", phoneNumber: "999999999", driverLicenseNumber: "4wedf456", vehicleRegistrationPlate: "fw645", insuranceCompany: "Kooperativa", insurancePolicyNumber: "as44564556wedf"
             ),
             accidentDescription: AccidentDescription(notes1: "", notes2: "", vehicleDamage1: Array(repeating: false, count: 17), vehicleDamage2: Array(repeating: false, count: 17))
         )
@@ -78,8 +61,8 @@ struct AccidentLocation: Codable {
     var kilometerReading: String
     var injuries: Bool
     var witnesses: [Witness]?
-    var otherDamage: Bool?
-    var policeInvolved: Bool?
+    var otherDamage: Bool
+    var policeInvolved: Bool
 }
 
 struct AccidentDescription: Codable {
