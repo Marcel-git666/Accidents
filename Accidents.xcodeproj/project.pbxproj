@@ -38,6 +38,7 @@
 		1FBE2FFE2B97332B00BF1980 /* DriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2FFD2B97332A00BF1980 /* DriverView.swift */; };
 		1FC5C3662BB18A7D0032B50F /* UpperTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5C3652BB18A7D0032B50F /* UpperTabBarView.swift */; };
 		1FC5C3682BB1BEAA0032B50F /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5C3672BB1BEAA0032B50F /* DescriptionView.swift */; };
+		1FCB61C02BB6211600E0B49A /* DraggableArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCB61BF2BB6211600E0B49A /* DraggableArrowView.swift */; };
 		1FCDA7D52BA87C1700D98A73 /* AccidentsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDA7D42BA87C1700D98A73 /* AccidentsPresenterTests.swift */; };
 		1FCDA7D82BA87D0100D98A73 /* MockAccidentReportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDA7D72BA87D0100D98A73 /* MockAccidentReportRepository.swift */; };
 		1FD319B72BA48B4F00B9CEE6 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD319B62BA48B4F00B9CEE6 /* CoreDataRepository.swift */; };
@@ -93,6 +94,7 @@
 		1FBE2FFD2B97332A00BF1980 /* DriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverView.swift; sourceTree = "<group>"; };
 		1FC5C3652BB18A7D0032B50F /* UpperTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperTabBarView.swift; sourceTree = "<group>"; };
 		1FC5C3672BB1BEAA0032B50F /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		1FCB61BF2BB6211600E0B49A /* DraggableArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableArrowView.swift; sourceTree = "<group>"; };
 		1FCDA7D42BA87C1700D98A73 /* AccidentsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsPresenterTests.swift; sourceTree = "<group>"; };
 		1FCDA7D72BA87D0100D98A73 /* MockAccidentReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccidentReportRepository.swift; sourceTree = "<group>"; };
 		1FD319B62BA48B4F00B9CEE6 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				1FF1FB6C2BAF375C00E0CA88 /* EmptyListView.swift */,
 				1F5164BD2BB2BE2300FC4FB8 /* VisibleDamageView.swift */,
 				1F5164C02BB2D97000FC4FB8 /* VehicleStatusView.swift */,
+				1FCB61BF2BB6211600E0B49A /* DraggableArrowView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				1F791F592BB5FFFA003EB908 /* Accidents.xcdatamodeld in Sources */,
 				1FD319C02BA49EA000B9CEE6 /* Constants.swift in Sources */,
 				1FD319B72BA48B4F00B9CEE6 /* CoreDataRepository.swift in Sources */,
+				1FCB61C02BB6211600E0B49A /* DraggableArrowView.swift in Sources */,
 				1FAEBBC82B964E4300659397 /* AccidentListItemView.swift in Sources */,
 				1FAEBB8C2B96159500659397 /* AccidentsApp.swift in Sources */,
 				1FBDAF572BA71EC700B494B2 /* ErrorHandlingService.swift in Sources */,
