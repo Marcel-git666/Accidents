@@ -9,49 +9,55 @@ import SwiftUI
 
 struct AccidentCrashPointView: View {
     
-    @State private var crashPoint: CGPoint = CGPoint(x: 100, y: 100) // Initial crash point
+    @State private var crashPoint: CGPoint = CGPoint(x: 200, y: 200) // Initial crash point
     @State private var arrowRotation: Double = 0.0 // Arrow rotation
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
+                VStack {
+                    Text("Indicate the points of collision with an arrow.")
+                        .font(.title)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                    Spacer()
+                }
                 Rectangle() // Background (optional)
                     .foregroundColor(.clear)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                 
-                // Vehicles (scaled down 1/3)
-                Image("motorcycle") 
+                
+                Image("van")
                         .resizable()
+                        .aspectRatio(contentMode: .fit)
                         .frame(width: 80, height: 200)
+                        .position(x: 250, y: 350)
                 
-                Rectangle()
-                    .fill(Color.blue)
-                    .frame(width: 60 / 3, height: 330 / 3)
-                    .position(calculateVehiclePosition(geometry: geometry, type: .motorcycle))
+                Image("car")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 80, height: 150)
+                        .position(x: 150, y: 350)
                 
-                Rectangle()
-                    .fill(Color.red)
-                    .frame(width: 100 / 3, height: 400 / 3)
-                    .position(calculateVehiclePosition(geometry: geometry, type: .car))
-                
-                Rectangle()
-                    .fill(Color.yellow)
-                    .frame(width: 120 / 3, height: 450 / 3)
-                    .position(calculateVehiclePosition(geometry: geometry, type: .van))
                 
                 DraggableArrowView(crashPoint: crashPoint, arrowRotation: arrowRotation)
                 
                 HStack {
+                    Spacer()
                     Button(action: {
                         arrowRotation -= 5 // Rotate counter-clockwise by 5 degrees
                     }) {
-                        Image(systemName: "arrowtriangle.left.fill") // Replace with icon
+                        Image(systemName: "arrowtriangle.left.fill")
+                            .scaleEffect(x: 4, y: 4)
                     }
+                    Spacer()
                     Button(action: {
                         arrowRotation += 5 // Rotate clockwise by 5 degrees
                     }) {
-                        Image(systemName: "arrowtriangle.right.fill") // Replace with icon
+                        Image(systemName: "arrowtriangle.right.fill")
+                            .scaleEffect(x: 4, y: 4)
                     }
+                    Spacer()
                 }
                 .position(x: geometry.size.width / 2, y: geometry.size.height - 50) // Adjust position
             }
