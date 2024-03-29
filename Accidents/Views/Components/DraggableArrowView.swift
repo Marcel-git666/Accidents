@@ -9,11 +9,13 @@ import SwiftUI
 
 struct DraggableArrowView: View {
     
-    @State private var crashPoint: CGPoint
+    let crashPoint: CGPoint
+    let scale: CGFloat
     let arrowRotation: Double
     
-    init(crashPoint: CGPoint, arrowRotation: Double) {
+    init(crashPoint: CGPoint, scale: Double, arrowRotation: Double) {
         self.crashPoint = crashPoint
+        self.scale = scale
         self.arrowRotation = arrowRotation
     }
     
@@ -21,18 +23,11 @@ struct DraggableArrowView: View {
         Image(systemName: "arrow.down") 
             .resizable()
             .frame(width: 50, height: 100)
-            .rotationEffect(.degrees(arrowRotation))
-            .position(crashPoint)
-            .gesture(
-                DragGesture()
-                    .onChanged { value in
-                        crashPoint = value.location
-                    }
-            )
+            
     }
 }
 
 
 #Preview {
-    DraggableArrowView(crashPoint: CGPoint(x: 200, y: 200), arrowRotation: 45)
+    DraggableArrowView(crashPoint: CGPoint(x: 200, y: 200), scale: 1, arrowRotation: 45)
 }

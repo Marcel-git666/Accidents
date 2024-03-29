@@ -13,6 +13,8 @@
 		1F1961FF2BAE0E2F00AFDD32 /* YesNoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961FE2BAE0E2F00AFDD32 /* YesNoView.swift */; };
 		1F1B5C3E2BB4148D00681429 /* UpperTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B5C3D2BB4148D00681429 /* UpperTabBarButton.swift */; };
 		1F1B5C402BB44ADE00681429 /* AccidentCrashPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B5C3F2BB44ADE00681429 /* AccidentCrashPointView.swift */; };
+		1F2A9C7B2BB6C8260039E269 /* AccidentGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A9C7A2BB6C8260039E269 /* AccidentGradient.swift */; };
+		1F2A9C7D2BB6CD740039E269 /* AccidentReportNavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A9C7C2BB6CD740039E269 /* AccidentReportNavigationState.swift */; };
 		1F5164BE2BB2BE2300FC4FB8 /* VisibleDamageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5164BD2BB2BE2300FC4FB8 /* VisibleDamageView.swift */; };
 		1F5164C12BB2D97000FC4FB8 /* VehicleStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5164C02BB2D97000FC4FB8 /* VehicleStatusView.swift */; };
 		1F5164C42BB30B7300FC4FB8 /* TitledBorderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5164C32BB30B7300FC4FB8 /* TitledBorderTextField.swift */; };
@@ -66,6 +68,8 @@
 		1F1961FE2BAE0E2F00AFDD32 /* YesNoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesNoView.swift; sourceTree = "<group>"; };
 		1F1B5C3D2BB4148D00681429 /* UpperTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperTabBarButton.swift; sourceTree = "<group>"; };
 		1F1B5C3F2BB44ADE00681429 /* AccidentCrashPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentCrashPointView.swift; sourceTree = "<group>"; };
+		1F2A9C7A2BB6C8260039E269 /* AccidentGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentGradient.swift; sourceTree = "<group>"; };
+		1F2A9C7C2BB6CD740039E269 /* AccidentReportNavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportNavigationState.swift; sourceTree = "<group>"; };
 		1F3FD9C32BA9B15000F0F07F /* Accidents.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Accidents.xctestplan; path = AccidentsTests/Accidents.xctestplan; sourceTree = "<group>"; };
 		1F5164BD2BB2BE2300FC4FB8 /* VisibleDamageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleDamageView.swift; sourceTree = "<group>"; };
 		1F5164C02BB2D97000FC4FB8 /* VehicleStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStatusView.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 				1F5164BD2BB2BE2300FC4FB8 /* VisibleDamageView.swift */,
 				1F5164C02BB2D97000FC4FB8 /* VehicleStatusView.swift */,
 				1FCB61BF2BB6211600E0B49A /* DraggableArrowView.swift */,
+				1F2A9C7A2BB6C8260039E269 /* AccidentGradient.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 			children = (
 				1FAEBBC02B96197E00659397 /* AccidentReport.swift */,
 				1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */,
+				1F2A9C7C2BB6CD740039E269 /* AccidentReportNavigationState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -466,9 +472,11 @@
 				1FD319C32BA4C79C00B9CEE6 /* CoreDataManager.swift in Sources */,
 				1FBDAF592BA71EF400B494B2 /* CoreDataHandlingService.swift in Sources */,
 				1FD6109B2BA48AC4008992B3 /* AccidentReportRepository.swift in Sources */,
+				1F2A9C7B2BB6C8260039E269 /* AccidentGradient.swift in Sources */,
 				1F1961F82BAD95F200AFDD32 /* ARErrorBlock.swift in Sources */,
 				1F703A722BAB36AC009CD10A /* AccidentsListView.swift in Sources */,
 				1F5164BE2BB2BE2300FC4FB8 /* VisibleDamageView.swift in Sources */,
+				1F2A9C7D2BB6CD740039E269 /* AccidentReportNavigationState.swift in Sources */,
 				1F5164C12BB2D97000FC4FB8 /* VehicleStatusView.swift in Sources */,
 				1FBD04712BB3599400719A16 /* SaveButton.swift in Sources */,
 				1F1B5C3E2BB4148D00681429 /* UpperTabBarButton.swift in Sources */,
@@ -634,7 +642,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -664,7 +672,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

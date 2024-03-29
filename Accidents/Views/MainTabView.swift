@@ -17,8 +17,7 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Accidents", systemImage: "car.2.fill")
                 }
-//            PreloadDataView()
-            AccidentCrashPointView()
+            PreloadDataView()
                 .tabItem {
                     Label("Data", systemImage: "filemenu.and.cursorarrow")
                 }

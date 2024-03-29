@@ -73,6 +73,10 @@ class AccidentsPresenter: ObservableObject {
                 case .driver2:
                     selectedTab = .description
                 case .description:
+                    selectedTab = .pointOfImpact1
+                case .pointOfImpact1:
+                    selectedTab = .pointOfImpact2
+                case .pointOfImpact2:
                     viewState = .accidentList
                 }
             }

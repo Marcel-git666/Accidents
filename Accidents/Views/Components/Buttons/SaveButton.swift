@@ -18,7 +18,7 @@ struct SaveButton: View {
                 .foregroundColor(.primary)
                 .font(.system(size: 16, weight: .semibold))
                 .frame(maxWidth: .infinity, minHeight: 52)
-                .background(LinearGradient(colors: [.blue, .accentColor], startPoint: .topLeading, endPoint: .top))
+                .background(AccidentGradient())
                 .cornerRadius(15)
         }
     }

@@ -14,7 +14,8 @@ struct AccidentReport: Identifiable, Hashable, Codable {
     var driver: Driver
     var otherDriver: Driver?
     var accidentDescription: AccidentDescription
-//    var sketch: UIImage?
+    var pointsOfImpact1: Data?
+    var pointsOfImpact2: Data?
 //    var driverSignature: Data?
 //    var otherDriverSignature: Data?
     
