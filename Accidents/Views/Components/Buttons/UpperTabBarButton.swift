@@ -22,7 +22,6 @@ struct UpperTabBarButton: View {
             Text(text)
                 .font(.caption)
         }
-        
     }
 }
 

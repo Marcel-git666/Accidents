@@ -31,6 +31,8 @@ class AccidentsPresenter: ObservableObject {
     @Published var selectedAccident: AccidentReport? = nil
     @Published var viewState: AccidentReportNavigationState = .accidentList
     @Published var selectedTab: AccidentReportFillingState = .location
+    @Published var pointOfImpactImage1: UIImage?
+    @Published var pointOfImpactImage2: UIImage?
     
     init(repository: AccidentReportRepository) {
         self.repository = repository
@@ -142,8 +144,6 @@ class AccidentsPresenter: ObservableObject {
         accidentDriver2 = report.otherDriver!
         accidentDescription = report.accidentDescription
         goNext()
-        // Optionally transition state based on desired editing behavior
-        // viewState = .location // Uncomment if editing starts from location
     }
     
     func updateReportAndSave(report: AccidentReport) async {
