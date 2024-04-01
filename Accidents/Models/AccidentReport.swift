@@ -16,8 +16,6 @@ struct AccidentReport: Identifiable, Hashable, Codable {
     var accidentDescription: AccidentDescription
     var pointsOfImpact1: Data?
     var pointsOfImpact2: Data?
-//    var driverSignature: Data?
-//    var otherDriverSignature: Data?
     
     init(id: UUID, accidentLocation: AccidentLocation, driver: Driver, otherDriver: Driver, accidentDescription: AccidentDescription) {
         self.id = id

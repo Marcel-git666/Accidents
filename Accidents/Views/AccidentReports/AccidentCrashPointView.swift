@@ -30,20 +30,20 @@ struct AccidentCrashPointView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 80, height: 200)
-//                        .position(x: geometry.size.width / 1.2, y: geometry.size.height / 2)
+                    //                        .position(x: geometry.size.width / 1.2, y: geometry.size.height / 2)
                         .position(vanPosition)
                     
                     Image("car")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 80, height: 140)
-//                        .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
+                    //                        .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                         .position(carPosition)
                     Image("motorcycle")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 80, height: 120)
-//                        .position(x: geometry.size.width / 4.5, y: geometry.size.height / 2)
+                    //                        .position(x: geometry.size.width / 4.5, y: geometry.size.height / 2)
                         .position(motorcyclePosition)
                     
                     DraggableArrowView(crashPoint: crashPoint, scale: scale, arrowRotation: arrowRotation)
@@ -58,7 +58,7 @@ struct AccidentCrashPointView: View {
                         )
                         .gesture(MagnifyGesture()
                             .onChanged({ value in
-                                if value.magnification > 0.5 {
+                                if value.magnification > 0.5 && value.magnification < 1.7 {
                                     scale = value.magnification
                                 }
                             })
@@ -80,6 +80,28 @@ struct AccidentCrashPointView: View {
                                 .scaleEffect(x: 3, y: 3)
                         }
                         Spacer()
+                        
+                        Button(action: {
+                            if scale < 1.7 {
+                                scale += 0.25
+                            }
+                        }) {
+                            Image(systemName: "arrowtriangle.up.fill")
+                                .foregroundColor(.accentColor)
+                                .scaleEffect(CGSize(width: 3, height: 3))
+                        }
+                        Spacer()
+                        Button(action: {                   
+                            if scale > 0.4 {
+                                scale -= 0.25
+                            }
+                        }) {
+                            Image(systemName: "arrowtriangle.down.fill")
+                                .foregroundColor(.accentColor)
+                                .scaleEffect(CGSize(width: 3, height: 3))
+                        }
+                        Spacer()
+                        
                         Button(action: {
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 crashPoint = CGPoint(x: 200, y: 100)
@@ -108,8 +130,8 @@ struct AccidentCrashPointView: View {
                     if let image = presenter.pointOfImpactImage1 {
                         Image(uiImage: image)
                             .resizable()
-                              .scaledToFit()
-                              .frame(width: 350, height: 350)
+                            .scaledToFit()
+                            .frame(width: 350, height: 350)
                     }
                 }
             }
@@ -146,7 +168,7 @@ struct AccidentCrashPointView: View {
                         .rotationEffect(.degrees(arrowRotation), anchor: .bottom)
                         .scaleEffect(scale)
                         .position(crashPoint)
-                        
+                    
                     
                     
                 }
