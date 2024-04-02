@@ -135,6 +135,7 @@
 				1F1961FB2BAE0B2100AFDD32 /* Styles */,
 				1F1961F62BAD95D600AFDD32 /* ErrorBlock */,
 				1F1961F92BAE0A6A00AFDD32 /* TickBox.swift */,
+				1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */,
 				1F1961FE2BAE0E2F00AFDD32 /* YesNoView.swift */,
 				1FF1FB6C2BAF375C00E0CA88 /* EmptyListView.swift */,
 				1F5164BD2BB2BE2300FC4FB8 /* VisibleDamageView.swift */,
@@ -167,6 +168,23 @@
 				1F5164C32BB30B7300FC4FB8 /* TitledBorderTextField.swift */,
 			);
 			path = TextFields;
+			sourceTree = "<group>";
+		};
+		1F68E4AB2BBC7A4A00B24269 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1FAEBBBB2B9617E500659397 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		1F68E4AC2BBC7A6000B24269 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				1FF2CD9A2BA35CF3001E1478 /* PreloadData */,
+				1F68E4AB2BBC7A4A00B24269 /* Settings */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		1F703A732BAB39E7009CD10A /* Mocks */ = {
@@ -208,6 +226,7 @@
 				1FAEBBC42B9624CC00659397 /* Presenters */,
 				1FAEBBBF2B96196700659397 /* Models */,
 				1FD319BE2BA49E8D00B9CEE6 /* Utils */,
+				1F68E4AC2BBC7A6000B24269 /* Screens */,
 				1FAEBBB92B96171D00659397 /* Views */,
 				1FAEBB8F2B96159700659397 /* Assets.xcassets */,
 				1FAEBB912B96159700659397 /* Preview Content */,
@@ -239,9 +258,7 @@
 				1F703A732BAB39E7009CD10A /* Mocks */,
 				1FAEBB8D2B96159500659397 /* MainTabView.swift */,
 				1FC5C3652BB18A7D0032B50F /* UpperTabBarView.swift */,
-				1FF2CD9A2BA35CF3001E1478 /* PreloadData */,
 				1FF2CD9C2BA35D5A001E1478 /* AccidentReports */,
-				1FF2CD9B2BA35D01001E1478 /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,20 +341,11 @@
 			path = PreloadData;
 			sourceTree = "<group>";
 		};
-		1FF2CD9B2BA35D01001E1478 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				1FAEBBBB2B9617E500659397 /* SettingsView.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		1FF2CD9C2BA35D5A001E1478 /* AccidentReports */ = {
 			isa = PBXGroup;
 			children = (
 				1FAEBBB72B9616C500659397 /* AccidentsNavigationView.swift */,
 				1F703A712BAB36AC009CD10A /* AccidentsListView.swift */,
-				1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */,
 				1FAEBBC22B961EA700659397 /* AccidentLocationView.swift */,
 				1FC5C3672BB1BEAA0032B50F /* DescriptionView.swift */,
 				1FBE2FFD2B97332A00BF1980 /* DriverView.swift */,

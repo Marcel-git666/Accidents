@@ -20,7 +20,7 @@ struct UpperTabBarView: View {
                                           text: tab.rawValue,
                                           isActive: presenter.selectedTab == tab)
                         .onTapGesture {
-                            presenter.selectedTab = tab
+                            presenter.handleSelectedTab(tab)
                         }
                     }
                     

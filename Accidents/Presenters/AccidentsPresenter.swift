@@ -60,6 +60,12 @@ class AccidentsPresenter: ObservableObject {
         
     }
     
+    func handleSelectedTab(_ tab: AccidentReportFillingState) {
+        withAnimation {
+            selectedTab = tab
+        }
+    }
+    
     func goNext() {
         withAnimation {
             switch viewState {
