@@ -10,15 +10,17 @@ import Foundation
 @testable import Accidents
 
 class MockAccidentReportRepository: AccidentReportRepository {
-  
+    
     // Store mock data or behavior
     var savedReport: AccidentReport?
+    var updatedReport: AccidentReport?
     var fetchedReports: [AccidentReport] = []
     var removedReport: AccidentReport?
     var fetchError: Error?
     var saveError: Error?
     var removeError: Error?
-
+    var updateError: Error?
+    
     func saveReport(_ report: AccidentReport) async throws {
         if let error = saveError {
             throw error
@@ -26,7 +28,7 @@ class MockAccidentReportRepository: AccidentReportRepository {
         savedReport = report
         
     }
-
+    
     func fetchAll() async throws -> [AccidentReport] {
         if let error = fetchError {
             throw error
@@ -34,7 +36,7 @@ class MockAccidentReportRepository: AccidentReportRepository {
         return fetchedReports
         
     }
-
+    
     func removeReport(_ report: AccidentReport) async throws {
         if let error = removeError {
             throw error
@@ -43,6 +45,13 @@ class MockAccidentReportRepository: AccidentReportRepository {
     }
     
     func updateReport(_ updatedReport: Accidents.AccidentReport) async throws {
-        
+        if let error = updateError {
+            throw error
+        }
+        self.updatedReport = updatedReport
+        // Optionally, you can update the fetchedReports array to simulate the update
+        if let index = fetchedReports.firstIndex(where: { $0.id == updatedReport.id }) {
+            fetchedReports[index] = updatedReport
+        }
     }
 }

@@ -111,4 +111,67 @@ final class AccidentsPresenterTests: XCTestCase {
         
         await fulfillment(of: [expectation], timeout: 1.0, enforceOrder: false)
     }
+    
+    @MainActor func test_goNext_whenInAccidentListState_thenTransitionsToStartStateAndLocationTab() {
+        // Given
+        sut.viewState = .accidentList
+        
+        // When
+        sut.goNext()
+        
+        // Then
+        XCTAssertEqual(sut.viewState, .start)
+        XCTAssertEqual(sut.selectedTab, .location)
+    }
+
+    @MainActor func test_goNext_whenInStartStateAndLastTab_thenTransitionsToAccidentListState() {
+        // Given
+        sut.viewState = .start
+        sut.selectedTab = .pointOfImpact2
+        
+        // When
+        sut.goNext()
+        
+        // Then
+        XCTAssertEqual(sut.viewState, .accidentList)
+    }
+    
+    func test_createReportAndSave_whenNewReport_thenSavesReport() async {
+        // Given
+        mockRepository.saveError = nil
+        let expectation = expectation(description: "New report should be saved")
+        
+        // When
+        await sut.createReportAndSave()
+        
+        // Then
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssertEqual(self.sut.accidentReports.count, 1)
+            expectation.fulfill()
+        }
+        
+        await fulfillment(of: [expectation], timeout: 1.0, enforceOrder: false)
+    }
+
+    @MainActor func test_createReportAndSave_whenExistingReport_thenUpdatesReport() async {
+        // Given
+        let existingReport = AccidentReport.sampleData
+        sut.saveReport(existingReport)
+        
+        sut.selectedAccident = existingReport
+        sut.accidentDriver1.name = "Updated Name"
+        mockRepository.updateError = nil
+        let expectation = expectation(description: "Existing report should be updated")
+        
+        // When
+        sut.createReportAndSave()
+        
+        // Then
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssertEqual(self.sut.accidentReports.first?.driver.name, "Updated Name")
+            expectation.fulfill()
+        }
+        
+        await fulfillment(of: [expectation], timeout: 1.0, enforceOrder: false)
+    }
 }

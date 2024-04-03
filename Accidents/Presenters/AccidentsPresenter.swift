@@ -12,7 +12,7 @@ class AccidentsPresenter: ObservableObject {
     private let repository: AccidentReportRepository
         
     @Published var accidentReports: [AccidentReport] = []
-    @Published var accidentLocation: AccidentLocation = AccidentLocation( // Empty accidentLocation
+    @Published var accidentLocation: AccidentLocation = AccidentLocation(
         date: Date(),
         city: "",
         street: "",
