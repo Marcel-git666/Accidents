@@ -11,7 +11,6 @@ import Foundation
 
 class MockAccidentReportRepository: AccidentReportRepository {
     
-    // Store mock data or behavior
     var savedReport: AccidentReport?
     var updatedReport: AccidentReport?
     var fetchedReports: [AccidentReport] = []
