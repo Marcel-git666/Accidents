@@ -95,11 +95,6 @@ struct Witness: Codable {
     static let sample = Witness(name: "Rabi Lowe", address: "Poland", phoneNumber: "456789456")
 }
 
-//enum DriverType {
-//  case driver1
-//  case driver2
-//}
-
 struct PointOfImpact: Codable {
     var crashPoint: CGPoint
     var arrowRotation: Double

@@ -174,6 +174,7 @@
 		1F68E4AC2BBC7A6000B24269 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				1FF2CD9C2BA35D5A001E1478 /* AccidentReports */,
 				1FF2CD9A2BA35CF3001E1478 /* PreloadData */,
 				1F68E4AB2BBC7A4A00B24269 /* Settings */,
 			);
@@ -250,7 +251,6 @@
 				1F703A732BAB39E7009CD10A /* Mocks */,
 				1FAEBB8D2B96159500659397 /* MainTabView.swift */,
 				1FC5C3652BB18A7D0032B50F /* UpperTabBarView.swift */,
-				1FF2CD9C2BA35D5A001E1478 /* AccidentReports */,
 			);
 			path = Views;
 			sourceTree = "<group>";

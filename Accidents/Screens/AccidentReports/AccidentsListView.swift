@@ -13,7 +13,7 @@ struct AccidentsListView: View {
     var body: some View {
         ZStack {
             List {
-                ForEach(presenter.accidentReports) { accident in
+                ForEach(presenter.accidentReports, id: \.id) { accident in
                     AccidentListItemView(accident: accident)
                         .swipeActions(allowsFullSwipe: false) {
                             Button(role: .destructive) {
