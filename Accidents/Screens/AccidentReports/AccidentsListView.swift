@@ -13,8 +13,9 @@ struct AccidentsListView: View {
     var body: some View {
         ZStack {
             List {
-                ForEach(presenter.accidentReports, id: \.id) { accident in
-                    AccidentListItemView(accident: accident)
+                ForEach(presenter.accidentReports) { accident in
+                    let accidentBinding = Binding(get: { accident }, set: { _ in })
+                    AccidentListItemView(report: accidentBinding)
                         .swipeActions(allowsFullSwipe: false) {
                             Button(role: .destructive) {
                                 presenter.removeReport(accident)

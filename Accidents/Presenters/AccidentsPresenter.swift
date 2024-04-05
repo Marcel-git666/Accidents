@@ -19,7 +19,7 @@ class AccidentsPresenter: ObservableObject {
         houseNumber: "",
         kilometerReading: "0.0",
         injuries: false,
-        witnesses: [Witness.sample],
+        witnesses: [],
         otherDamage: false,
         policeInvolved: false
     )
@@ -33,6 +33,7 @@ class AccidentsPresenter: ObservableObject {
     @Published var selectedTab: AccidentReportFillingState = .location
     @Published var pointOfImpact1: PointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 0, scale: 1)
     @Published var pointOfImpact2: PointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 0, scale: 1)
+    
     
     init(repository: AccidentReportRepository) {
         self.repository = repository
@@ -113,6 +114,8 @@ class AccidentsPresenter: ObservableObject {
         
         let report = AccidentReport(id: UUID(), accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription, pointOfImpact1: pointOfImpact1, pointOfImpact2: pointOfImpact2)
         saveReport(report)
+        viewState = .accidentList
+        
     }
     
     func saveReport(_ report: AccidentReport) {

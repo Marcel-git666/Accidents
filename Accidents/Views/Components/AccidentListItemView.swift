@@ -8,37 +8,37 @@
 import SwiftUI
 
 struct AccidentListItemView: View {
-    let accident: AccidentReport
+    @Binding var report: AccidentReport
     
     var formattedDate: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
-        return dateFormatter.string(from: accident.accidentLocation.date)
+        return dateFormatter.string(from: report.accidentLocation.date)
     }
     
     var formattedPlace: String {
-        return "\(accident.accidentLocation.city), \(accident.accidentLocation.street)"
+        return "\(report.accidentLocation.city), \(report.accidentLocation.street)"
     }
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(accident.driver.name)
+                Text(report.driver.name)
                     .font(.headline)
                 Text(formattedDate)
             }
             VStack(alignment: .leading) {
-                Text(accident.otherDriver?.name ?? "No driver")
+                Text(report.otherDriver?.name ?? "No driver")
                     .font(.headline)
                 Text(formattedPlace)
             }
         }
-        .foregroundColor(accident.accidentLocation.injuries ? .red : .primary)
+        .foregroundColor(report.accidentLocation.injuries ? .red : .primary)
     }
 }
 
 #Preview {
-    AccidentListItemView(accident: AccidentReport.sampleData)
+    AccidentListItemView(report: Binding<AccidentReport>(get: { AccidentReport.sampleData }, set: { _ in }))
         .padding()
 }

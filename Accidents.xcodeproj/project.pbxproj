@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F117AD32BC073080078E3BC /* WitnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F117AD22BC073080078E3BC /* WitnessView.swift */; };
 		1F1961F82BAD95F200AFDD32 /* ARErrorBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961F72BAD95F200AFDD32 /* ARErrorBlock.swift */; };
 		1F1961FA2BAE0A6A00AFDD32 /* TickBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961F92BAE0A6A00AFDD32 /* TickBox.swift */; };
 		1F1961FD2BAE0B3700AFDD32 /* iOSCheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961FC2BAE0B3700AFDD32 /* iOSCheckboxToggleStyle.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F117AD22BC073080078E3BC /* WitnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WitnessView.swift; sourceTree = "<group>"; };
 		1F1961F72BAD95F200AFDD32 /* ARErrorBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARErrorBlock.swift; sourceTree = "<group>"; };
 		1F1961F92BAE0A6A00AFDD32 /* TickBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickBox.swift; sourceTree = "<group>"; };
 		1F1961FC2BAE0B3700AFDD32 /* iOSCheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSCheckboxToggleStyle.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				1F5164C02BB2D97000FC4FB8 /* VehicleStatusView.swift */,
 				1FCB61BF2BB6211600E0B49A /* DraggableArrowView.swift */,
 				1F2A9C7A2BB6C8260039E269 /* AccidentGradient.swift */,
+				1F117AD22BC073080078E3BC /* WitnessView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				1F703A722BAB36AC009CD10A /* AccidentsListView.swift in Sources */,
 				1F5164BE2BB2BE2300FC4FB8 /* VisibleDamageView.swift in Sources */,
 				1F2A9C7D2BB6CD740039E269 /* AccidentReportNavigationState.swift in Sources */,
+				1F117AD32BC073080078E3BC /* WitnessView.swift in Sources */,
 				1F5164C12BB2D97000FC4FB8 /* VehicleStatusView.swift in Sources */,
 				1FBD04712BB3599400719A16 /* ACButton.swift in Sources */,
 				1F1B5C3E2BB4148D00681429 /* UpperTabBarButton.swift in Sources */,

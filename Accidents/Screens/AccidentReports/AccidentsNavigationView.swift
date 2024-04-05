@@ -19,7 +19,7 @@ struct AccidentsNavigationView: View {
                             .transition(.slide)
                 default:
                     AccidentsListView(presenter: presenter)
-                        .transition(.move(edge: .top))
+                        .transition(.slide)
                 }
             }
             Spacer()

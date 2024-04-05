@@ -42,7 +42,7 @@ struct AccidentReport: Identifiable, Hashable, Codable {
         let sampleAccidentReport = AccidentReport(
             id: UUID(),
             accidentLocation: AccidentLocation(
-                date: date, city: "Prague", street: "Wenceslas Square", houseNumber: "1a", kilometerReading: "0", injuries: false, otherDamage: false, policeInvolved: true
+                date: date, city: "Prague", street: "Wenceslas Square", houseNumber: "1a", kilometerReading: "0", injuries: false, witnesses: [Witness.sample], otherDamage: false, policeInvolved: true
             ), driver: Driver(
                 name: "John Doe", address: "123 Main Street", phoneNumber: "12313245646", driverLicenseNumber: "456456", vehicleRegistrationPlate: "5464645", insuranceCompany: "Kooperativa", insurancePolicyNumber: "aswerwedf"
             ), otherDriver: Driver(
@@ -64,7 +64,7 @@ struct AccidentLocation: Codable {
     var houseNumber: String
     var kilometerReading: String
     var injuries: Bool
-    var witnesses: [Witness]?
+    var witnesses: [Witness]
     var otherDamage: Bool
     var policeInvolved: Bool
 }
@@ -87,7 +87,7 @@ struct Driver: Codable {
     var isAtFault: Bool?
 }
 
-struct Witness: Codable {
+struct Witness: Codable, Hashable {
     var name: String
     var address: String
     var phoneNumber: String
