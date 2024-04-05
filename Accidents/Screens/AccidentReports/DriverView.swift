@@ -32,9 +32,14 @@ struct DriverView: View {
                 }
                 .padding()
                 Spacer()
-                SaveButton(label: "Save Driver \(presenter.selectedTab == .driver1 ? "A" : "B") Information", systemImage: "checkmark.circle", action: {
-                    presenter.goNext()
-                })
+                HStack {
+                    ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
+                        presenter.createReportAndSave()
+                    }
+                    ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
+                            presenter.goNext()
+                    }
+                }
                 .padding()
             }
         }

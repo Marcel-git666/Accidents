@@ -44,9 +44,14 @@ struct AccidentLocationView: View {
                         TickBox(text: "Other damage than vehicle A and B?", isSelected:  $presenter.accidentLocation.otherDamage)
                     }
                 }
-                    SaveButton(label: "Save Location", systemImage: "checkmark.circle") {
-                        presenter.goNext()
+                HStack {
+                    ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
+                        presenter.createReportAndSave()
                     }
+                    ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
+                            presenter.goNext()
+                    }
+                }
                     
                 }
                 .padding()

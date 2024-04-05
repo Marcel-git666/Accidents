@@ -31,7 +31,7 @@
 		1FAEBBC12B96197E00659397 /* AccidentReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBC02B96197E00659397 /* AccidentReport.swift */; };
 		1FAEBBC32B961EA700659397 /* AccidentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBC22B961EA700659397 /* AccidentLocationView.swift */; };
 		1FAEBBC82B964E4300659397 /* AccidentListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */; };
-		1FBD04712BB3599400719A16 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD04702BB3599400719A16 /* SaveButton.swift */; };
+		1FBD04712BB3599400719A16 /* ACButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD04702BB3599400719A16 /* ACButton.swift */; };
 		1FBDAF542BA71A1A00B494B2 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBDAF532BA71A1A00B494B2 /* CoreDataError.swift */; };
 		1FBE2FFA2B9720C600BF1980 /* AccidentReportFillingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */; };
 		1FBE2FFE2B97332B00BF1980 /* DriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2FFD2B97332A00BF1980 /* DriverView.swift */; };
@@ -86,7 +86,7 @@
 		1FAEBBC02B96197E00659397 /* AccidentReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReport.swift; sourceTree = "<group>"; };
 		1FAEBBC22B961EA700659397 /* AccidentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentLocationView.swift; sourceTree = "<group>"; };
 		1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentListItemView.swift; sourceTree = "<group>"; };
-		1FBD04702BB3599400719A16 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
+		1FBD04702BB3599400719A16 /* ACButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACButton.swift; sourceTree = "<group>"; };
 		1FBDAF532BA71A1A00B494B2 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
 		1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportFillingState.swift; sourceTree = "<group>"; };
 		1FBE2FFD2B97332A00BF1980 /* DriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverView.swift; sourceTree = "<group>"; };
@@ -276,7 +276,7 @@
 		1FC5C3642BB1837B0032B50F /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				1FBD04702BB3599400719A16 /* SaveButton.swift */,
+				1FBD04702BB3599400719A16 /* ACButton.swift */,
 				1F1B5C3D2BB4148D00681429 /* UpperTabBarButton.swift */,
 			);
 			path = Buttons;
@@ -466,7 +466,7 @@
 				1F5164BE2BB2BE2300FC4FB8 /* VisibleDamageView.swift in Sources */,
 				1F2A9C7D2BB6CD740039E269 /* AccidentReportNavigationState.swift in Sources */,
 				1F5164C12BB2D97000FC4FB8 /* VehicleStatusView.swift in Sources */,
-				1FBD04712BB3599400719A16 /* SaveButton.swift in Sources */,
+				1FBD04712BB3599400719A16 /* ACButton.swift in Sources */,
 				1F1B5C3E2BB4148D00681429 /* UpperTabBarButton.swift in Sources */,
 				1FC5C3682BB1BEAA0032B50F /* DescriptionView.swift in Sources */,
 				1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */,

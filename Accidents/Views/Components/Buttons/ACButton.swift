@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SaveButton: View {
+struct ACButton: View {
     let label: String
     let systemImage: String
     var action: () -> Void
@@ -25,6 +25,6 @@ struct SaveButton: View {
 }
 
 #Preview {
-    SaveButton(label: "Save Location", systemImage: "checkmark.circle") { }
+    ACButton(label: "Save Location", systemImage: "checkmark.circle") { }
         .padding()
 }

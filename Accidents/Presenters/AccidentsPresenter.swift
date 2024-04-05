@@ -85,7 +85,7 @@ class AccidentsPresenter: ObservableObject {
                 case .pointOfImpact1:
                     selectedTab = .pointOfImpact2
                 case .pointOfImpact2:
-                    viewState = .accidentList
+                    selectedTab = .location
                 }
             }
         }
@@ -107,6 +107,7 @@ class AccidentsPresenter: ObservableObject {
                 await updateReportAndSave(report: report)
             }
             self.selectedAccident = nil
+            viewState = .accidentList
             return
         }
         

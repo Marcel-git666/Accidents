@@ -49,8 +49,13 @@ struct DescriptionView: View {
             .scrollContentBackground(.hidden)
             .background(Color.background)
             Spacer()
-            SaveButton(label: "Save Description", systemImage: "checkmark.circle") {
-                presenter.goNext()
+            HStack {
+                ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
+                    presenter.createReportAndSave()
+                }
+                ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
+                        presenter.goNext()
+                }
             }
         }
         .padding()

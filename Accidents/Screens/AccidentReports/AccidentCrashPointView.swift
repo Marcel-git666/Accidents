@@ -114,13 +114,12 @@ struct AccidentCrashPointView: View {
                 }
             }
             HStack {
-                SaveButton(label: "Save picture", systemImage: "square.and.arrow.down") {
-                    if presenter.selectedTab == .pointOfImpact2 {
-                        presenter.createReportAndSave()
-                    }
-                    presenter.goNext()
+                ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
+                    presenter.createReportAndSave()
                 }
-                .padding()
+                ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
+                        presenter.goNext()
+                }
             }
         }
     }
