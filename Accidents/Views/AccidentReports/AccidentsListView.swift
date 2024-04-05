@@ -46,6 +46,6 @@ struct AccidentsListView: View {
 
 #Preview {
     NavigationView {
-        AccidentsListView(presenter: AccidentsPresenter(repository: MockDataRepository()))
+        AccidentsListView(presenter: MockPresenter(repository: MockDataRepository()))
     }
 }

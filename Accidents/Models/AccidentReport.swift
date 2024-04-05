@@ -14,16 +14,19 @@ struct AccidentReport: Identifiable, Hashable, Codable {
     var driver: Driver
     var otherDriver: Driver?
     var accidentDescription: AccidentDescription
-    var pointsOfImpact1: Data?
-    var pointsOfImpact2: Data?
+    var pointOfImpact1: PointOfImpact?
+    var pointOfImpact2: PointOfImpact?
     
-    init(id: UUID, accidentLocation: AccidentLocation, driver: Driver, otherDriver: Driver, accidentDescription: AccidentDescription) {
+    init(id: UUID, accidentLocation: AccidentLocation, driver: Driver, otherDriver: Driver?, accidentDescription: AccidentDescription, pointOfImpact1: PointOfImpact?, pointOfImpact2: PointOfImpact?) {
         self.id = id
         self.accidentLocation = accidentLocation
-        self.accidentDescription = accidentDescription
         self.driver = driver
         self.otherDriver = otherDriver
+        self.accidentDescription = accidentDescription
+        self.pointOfImpact1 = pointOfImpact1
+        self.pointOfImpact2 = pointOfImpact2
     }
+
     
     static func == (lhs: AccidentReport, rhs: AccidentReport) -> Bool {
         lhs.id == rhs.id
@@ -45,7 +48,9 @@ struct AccidentReport: Identifiable, Hashable, Codable {
             ), otherDriver: Driver(
                 name: "Maverick", address: "555 Main Street", phoneNumber: "999999999", driverLicenseNumber: "4wedf456", vehicleRegistrationPlate: "fw645", insuranceCompany: "Kooperativa", insurancePolicyNumber: "as44564556wedf"
             ),
-            accidentDescription: AccidentDescription(notes1: "", notes2: "", vehicleDamage1: Array(repeating: false, count: 17), vehicleDamage2: Array(repeating: false, count: 17))
+            accidentDescription: AccidentDescription(notes1: "", notes2: "", vehicleDamage1: Array(repeating: false, count: 17), vehicleDamage2: Array(repeating: false, count: 17)),
+            pointOfImpact1: nil,
+            pointOfImpact2: nil
         )
 
         return sampleAccidentReport
@@ -90,7 +95,13 @@ struct Witness: Codable {
     static let sample = Witness(name: "Rabi Lowe", address: "Poland", phoneNumber: "456789456")
 }
 
-enum DriverType {
-  case driver1
-  case driver2
+//enum DriverType {
+//  case driver1
+//  case driver2
+//}
+
+struct PointOfImpact: Codable {
+    var crashPoint: CGPoint
+    var arrowRotation: Double
+    var scale: CGFloat
 }

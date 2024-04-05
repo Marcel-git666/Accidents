@@ -13,7 +13,7 @@ struct AccidentListItemView: View {
     var formattedDate: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
+        dateFormatter.timeStyle = .none
         return dateFormatter.string(from: accident.accidentLocation.date)
     }
     
@@ -25,10 +25,12 @@ struct AccidentListItemView: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(accident.driver.name)
+                    .font(.headline)
                 Text(formattedDate)
             }
             VStack(alignment: .leading) {
                 Text(accident.otherDriver?.name ?? "No driver")
+                    .font(.headline)
                 Text(formattedPlace)
             }
         }

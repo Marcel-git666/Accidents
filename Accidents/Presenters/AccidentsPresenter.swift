@@ -31,8 +31,8 @@ class AccidentsPresenter: ObservableObject {
     @Published var selectedAccident: AccidentReport? = nil
     @Published var viewState: AccidentReportNavigationState = .accidentList
     @Published var selectedTab: AccidentReportFillingState = .location
-    @Published var pointOfImpactImage1: UIImage?
-    @Published var pointOfImpactImage2: UIImage?
+    @Published var pointOfImpact1: PointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 0, scale: 1)
+    @Published var pointOfImpact2: PointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 0, scale: 1)
     
     init(repository: AccidentReportRepository) {
         self.repository = repository
@@ -94,11 +94,12 @@ class AccidentsPresenter: ObservableObject {
     func createReportAndSave() {
         if let selectedAccident = selectedAccident {
             Task {
-                let report = AccidentReport(id: selectedAccident.id, accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription)
+                let report = AccidentReport(id: selectedAccident.id, accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription, pointOfImpact1: pointOfImpact1, pointOfImpact2: pointOfImpact2)
                 if let index = accidentReports.firstIndex(where: { $0.id == report.id }) {
                     // The index variable now holds the index of the report in the array
                     print("Index of report with ID \(report): \(index)")
                     self.accidentReports[index] = report
+                    print(accidentReports[index].driver.name)
                 } else {
                     // The report with the specified ID was not found in the array
                     print("Report with ID \(report) not found")
@@ -109,7 +110,7 @@ class AccidentsPresenter: ObservableObject {
             return
         }
         
-        let report = AccidentReport(id: UUID(), accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription)
+        let report = AccidentReport(id: UUID(), accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription, pointOfImpact1: pointOfImpact1, pointOfImpact2: pointOfImpact2)
         saveReport(report)
     }
     
@@ -149,6 +150,8 @@ class AccidentsPresenter: ObservableObject {
         accidentDriver1 = report.driver
         accidentDriver2 = report.otherDriver!
         accidentDescription = report.accidentDescription
+        pointOfImpact1 = report.pointOfImpact1 ?? PointOfImpact(crashPoint: CGPoint(x: 50, y: 100), arrowRotation: 0, scale: 1)
+        pointOfImpact2 = report.pointOfImpact2 ?? PointOfImpact(crashPoint: CGPoint(x: 50, y: 100), arrowRotation: 0, scale: 1)
         goNext()
     }
     

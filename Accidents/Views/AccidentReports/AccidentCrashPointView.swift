@@ -9,10 +9,8 @@ import SwiftUI
 
 struct AccidentCrashPointView: View {
     @ObservedObject var presenter: AccidentsPresenter
-    @State private var crashPoint: CGPoint = CGPoint(x: 200, y: 100)
-    @State private var arrowRotation: Double = 0.0
-    @State private var scale: CGFloat = 1.0
-    @State private var shareSheetShown = false
+    @Binding var pointOfImpact: PointOfImpact
+    
     @State private var vanPosition: CGPoint = CGPoint(x: 300, y: 220)
     @State private var carPosition: CGPoint = CGPoint(x: 180, y: 220)
     @State private var motorcyclePosition: CGPoint = CGPoint(x: 80, y: 220)
@@ -30,36 +28,33 @@ struct AccidentCrashPointView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 80, height: 200)
-                    //                        .position(x: geometry.size.width / 1.2, y: geometry.size.height / 2)
                         .position(vanPosition)
                     
                     Image("car")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 80, height: 140)
-                    //                        .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                         .position(carPosition)
                     Image("motorcycle")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 80, height: 120)
-                    //                        .position(x: geometry.size.width / 4.5, y: geometry.size.height / 2)
                         .position(motorcyclePosition)
                     
-                    DraggableArrowView(crashPoint: crashPoint, scale: scale, arrowRotation: arrowRotation)
-                        .rotationEffect(.degrees(arrowRotation), anchor: .bottom)
-                        .scaleEffect(scale)
-                        .position(crashPoint)
+                    DraggableArrowView(crashPoint: pointOfImpact.crashPoint, scale: pointOfImpact.scale, arrowRotation: pointOfImpact.arrowRotation)
+                        .rotationEffect(.degrees(pointOfImpact.arrowRotation), anchor: .bottom)
+                        .scaleEffect(pointOfImpact.scale)
+                        .position(pointOfImpact.crashPoint)
                         .gesture(
                             DragGesture()
                                 .onChanged { value in
-                                    crashPoint = value.location
+                                    pointOfImpact.crashPoint = value.location
                                 }
                         )
                         .gesture(MagnifyGesture()
                             .onChanged({ value in
                                 if value.magnification > 0.5 && value.magnification < 1.7 {
-                                    scale = value.magnification
+                                    pointOfImpact.scale = value.magnification
                                 }
                             })
                         )
@@ -67,14 +62,14 @@ struct AccidentCrashPointView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            arrowRotation -= 15
+                            pointOfImpact.arrowRotation -= 15
                         }) {
                             Image(systemName: "arrowtriangle.left.fill")
                                 .scaleEffect(x: 3, y: 3)
                         }
                         Spacer()
                         Button(action: {
-                            arrowRotation += 15
+                            pointOfImpact.arrowRotation += 15
                         }) {
                             Image(systemName: "arrowtriangle.right.fill")
                                 .scaleEffect(x: 3, y: 3)
@@ -82,8 +77,8 @@ struct AccidentCrashPointView: View {
                         Spacer()
                         
                         Button(action: {
-                            if scale < 1.7 {
-                                scale += 0.25
+                            if pointOfImpact.scale < 1.7 {
+                                pointOfImpact.scale += 0.25
                             }
                         }) {
                             Image(systemName: "arrowtriangle.up.fill")
@@ -92,8 +87,8 @@ struct AccidentCrashPointView: View {
                         }
                         Spacer()
                         Button(action: {                   
-                            if scale > 0.4 {
-                                scale -= 0.25
+                            if pointOfImpact.scale > 0.4 {
+                                pointOfImpact.scale -= 0.25
                             }
                         }) {
                             Image(systemName: "arrowtriangle.down.fill")
@@ -104,9 +99,9 @@ struct AccidentCrashPointView: View {
                         
                         Button(action: {
                             withAnimation(.easeInOut(duration: 0.3)) {
-                                crashPoint = CGPoint(x: 200, y: 100)
-                                arrowRotation = 0
-                                scale = 1.0
+                                pointOfImpact.crashPoint = CGPoint(x: 200, y: 100)
+                                pointOfImpact.arrowRotation = 0
+                                pointOfImpact.scale = 1.0
                             }
                         }) {
                             Image(systemName: "arrow.uturn.backward")
@@ -120,64 +115,26 @@ struct AccidentCrashPointView: View {
             }
             HStack {
                 SaveButton(label: "Save picture", systemImage: "square.and.arrow.down") {
-                    let renderer = ImageRenderer(content: contentToCapture)
-                    presenter.pointOfImpactImage1 = renderer.uiImage
-                    shareSheetShown = true
-                    //                     presenter.goNext()
+                    if presenter.selectedTab == .pointOfImpact2 {
+                        presenter.createReportAndSave()
+                    }
+                    presenter.goNext()
                 }
                 .padding()
-                .sheet(isPresented: $shareSheetShown) {
-                    if let image = presenter.pointOfImpactImage1 {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 350, height: 350)
-                    }
-                }
             }
         }
     }
     
-    private var contentToCapture: some View {
-        VStack {
-            Text("Indicate the point of collision for Vehicle \(presenter.selectedTab == .pointOfImpact1 ? "A" : "B").")
-                .font(.title)
-                .multilineTextAlignment(.center)
-                .padding()
-            Spacer()
-            GeometryReader { geometry in
-                ZStack {
-                    Image("van")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 80, height: 200)
-                        .position(vanPosition)
-                    
-                    Image("car")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 80, height: 140)
-                        .position(carPosition)
-                    Image("motorcycle")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 80, height: 120)
-                        .position(motorcyclePosition)
-                    
-                    DraggableArrowView(crashPoint: crashPoint, scale: scale, arrowRotation: arrowRotation)
-                        .rotationEffect(.degrees(arrowRotation), anchor: .bottom)
-                        .scaleEffect(scale)
-                        .position(crashPoint)
-                    
-                    
-                    
-                }
-            }
-        }
-        .frame(width: 500, height: 500)
-    }
 }
 
-#Preview {
-    AccidentCrashPointView(presenter: MockPresenter(repository: MockDataRepository()))
+
+
+struct AccidentCrashPointView_Previews: PreviewProvider {
+  static var previews: some View {
+    let pointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 45, scale: 0.9)
+    return AccidentCrashPointView(presenter: AccidentsPresenter(repository: MockDataRepository()), pointOfImpact: { () -> Binding<PointOfImpact> in
+      return Binding<PointOfImpact>(get: { pointOfImpact }, set: { newValue in
+      })
+    }())
+  }
 }

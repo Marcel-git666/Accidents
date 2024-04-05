@@ -35,11 +35,11 @@ struct UpperTabBarView: View {
                 AccidentLocationView(presenter: presenter)
                     .transition(.scale)
             case .driver1:
-                DriverView(presenter: presenter, driverType: .driver1)
+                DriverView(presenter: presenter, driver: $presenter.accidentDriver1)
                     .transition(.scale)
                 
             case .driver2:
-                DriverView(presenter: presenter, driverType: .driver2)
+                DriverView(presenter: presenter, driver: $presenter.accidentDriver2)
                     .transition(.scale)
                 
             case .description:
@@ -47,10 +47,10 @@ struct UpperTabBarView: View {
                     .transition(.scale)
                 
             case .pointOfImpact1:
-                AccidentCrashPointView(presenter: presenter)
+                AccidentCrashPointView(presenter: presenter, pointOfImpact: $presenter.pointOfImpact1)
                     .transition(.scale)
             case .pointOfImpact2:
-                AccidentCrashPointView(presenter: presenter)
+                AccidentCrashPointView(presenter: presenter, pointOfImpact: $presenter.pointOfImpact2)
                     .transition(.scale)
             }
         }

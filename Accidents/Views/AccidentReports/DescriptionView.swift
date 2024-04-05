@@ -41,7 +41,7 @@ struct DescriptionView: View {
                     .padding(.bottom)
             }
             ScrollView {
-                ForEach(0..<vehicleStatusDescription.count) { index in
+                ForEach(vehicleStatusDescription.indices, id: \.self) { index in
                     VehicleStatusView(vehicleStatusDescription: vehicleStatusDescription[index], isSelected1: $presenter.accidentDescription.vehicleDamage1[index], isSelected2: $presenter.accidentDescription.vehicleDamage2[index])
                 }
                 
@@ -50,7 +50,6 @@ struct DescriptionView: View {
             .background(Color.background)
             Spacer()
             SaveButton(label: "Save Description", systemImage: "checkmark.circle") {
-                presenter.createReportAndSave()
                 presenter.goNext()
             }
         }
