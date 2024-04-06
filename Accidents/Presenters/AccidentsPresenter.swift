@@ -23,8 +23,8 @@ class AccidentsPresenter: ObservableObject {
         otherDamage: false,
         policeInvolved: false
     )
-    @Published var accidentDriver1: Driver = Driver(name: "Johny", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: "")
-    @Published var accidentDriver2: Driver = Driver(name: "Cash", address: "", phoneNumber: "", driverLicenseNumber: "", vehicleRegistrationPlate: "", insuranceCompany: "", insurancePolicyNumber: "")
+    @Published var accidentDriver1: Driver = Driver.sample1
+    @Published var accidentDriver2: Driver = Driver.sample2
     
     @Published var accidentDescription: AccidentDescription = AccidentDescription(notes1: "notes 1", notes2: "notes 2", vehicleDamage1: Array(repeating: false, count: 17), vehicleDamage2: Array(repeating: false, count: 17))
     @Published var errorMessage: String? = nil
@@ -97,10 +97,7 @@ class AccidentsPresenter: ObservableObject {
             Task {
                 let report = AccidentReport(id: selectedAccident.id, accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription, pointOfImpact1: pointOfImpact1, pointOfImpact2: pointOfImpact2)
                 if let index = accidentReports.firstIndex(where: { $0.id == report.id }) {
-                    // The index variable now holds the index of the report in the array
-                    print("Index of report with ID \(report): \(index)")
                     self.accidentReports[index] = report
-                    print(accidentReports[index].driver.name)
                 } else {
                     // The report with the specified ID was not found in the array
                     print("Report with ID \(report) not found")

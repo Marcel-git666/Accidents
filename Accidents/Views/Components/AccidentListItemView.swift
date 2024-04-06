@@ -24,12 +24,12 @@ struct AccidentListItemView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(report.driver.name)
+                Text(report.driver.insuredName)
                     .font(.headline)
                 Text(formattedDate)
             }
             VStack(alignment: .leading) {
-                Text(report.otherDriver?.name ?? "No driver")
+                Text(report.otherDriver?.insuredName ?? "No driver")
                     .font(.headline)
                 Text(formattedPlace)
             }

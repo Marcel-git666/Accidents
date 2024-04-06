@@ -162,7 +162,7 @@ final class AccidentsPresenterTests: XCTestCase {
         sut.selectedAccident = existingReport
         
         // Update the existingReport directly
-        sut.accidentDriver1.name = "Updated Name"
+        sut.accidentDriver1.insuredName = "Updated Name"
         
         mockRepository.updateError = nil
         
@@ -174,7 +174,7 @@ final class AccidentsPresenterTests: XCTestCase {
         
         // Then
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            XCTAssertEqual(self.sut.accidentReports.first?.driver.name, "Updated Name")
+            XCTAssertEqual(self.sut.accidentReports.first?.driver.insuredName, "Updated Name")
             expectation.fulfill()
         }
         
