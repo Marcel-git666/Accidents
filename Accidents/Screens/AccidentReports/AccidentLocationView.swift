@@ -51,12 +51,12 @@ struct AccidentLocationView: View {
                     
                     HStack(alignment: .top) {
                         VStack {
-                            ForEach(presenter.accidentLocation.witnesses, id: \.self) { witness in
-                                WitnessView(witness: witnessBinding(for: witness))
+                            ForEach(presenter.accidentLocation.witnesses.indices, id: \.self) { index in
+                                WitnessView(witness: $presenter.accidentLocation.witnesses[index])
                                     .padding(.bottom)
                             }
                         }
-                        VStack {
+                        VStack(alignment: .leading) {
                             Button {
                                 presenter.accidentLocation.witnesses.append(Witness(name: "", address: "", phoneNumber: ""))
                             } label: {
@@ -84,16 +84,6 @@ struct AccidentLocationView: View {
             }
             .padding()
         }
-    }
-    
-    func witnessBinding(for witness: Witness) -> Binding<Witness> {
-        return Binding(get: { witness }, set: { newValue in
-            if let index = presenter.accidentLocation.witnesses.firstIndex(of: witness) {
-                presenter.accidentLocation.witnesses[index] = newValue
-            } else {
-                // Handle missing witness case (e.g., print error or ignore)
-            }
-        })
     }
 }
 

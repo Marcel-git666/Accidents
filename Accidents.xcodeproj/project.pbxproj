@@ -22,6 +22,7 @@
 		1F703A752BAB3A05009CD10A /* MockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A742BAB3A05009CD10A /* MockPresenter.swift */; };
 		1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A762BAB3A3E009CD10A /* MockDataRepository.swift */; };
 		1F791F592BB5FFFA003EB908 /* Accidents.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F791F572BB5FFF9003EB908 /* Accidents.xcdatamodeld */; };
+		1FA0D3862BC1357700A7972A /* WitnessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3852BC1357700A7972A /* WitnessManager.swift */; };
 		1FAEBB8C2B96159500659397 /* AccidentsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8B2B96159500659397 /* AccidentsApp.swift */; };
 		1FAEBB8E2B96159500659397 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8D2B96159500659397 /* MainTabView.swift */; };
 		1FAEBB902B96159700659397 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8F2B96159700659397 /* Assets.xcassets */; };
@@ -76,6 +77,7 @@
 		1F703A742BAB3A05009CD10A /* MockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPresenter.swift; sourceTree = "<group>"; };
 		1F703A762BAB3A3E009CD10A /* MockDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataRepository.swift; sourceTree = "<group>"; };
 		1F791F582BB5FFF9003EB908 /* Accidents.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Accidents.xcdatamodel; sourceTree = "<group>"; };
+		1FA0D3852BC1357700A7972A /* WitnessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WitnessManager.swift; sourceTree = "<group>"; };
 		1FAEBB882B96159500659397 /* Accidents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accidents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAEBB8B2B96159500659397 /* AccidentsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsApp.swift; sourceTree = "<group>"; };
 		1FAEBB8D2B96159500659397 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				1FD319C22BA4C79C00B9CEE6 /* CoreDataManager.swift */,
+				1FA0D3852BC1357700A7972A /* WitnessManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F1961FD2BAE0B3700AFDD32 /* iOSCheckboxToggleStyle.swift in Sources */,
+				1FA0D3862BC1357700A7972A /* WitnessManager.swift in Sources */,
 				1FAEBBBE2B96183600659397 /* PreloadDataView.swift in Sources */,
 				1F5164C42BB30B7300FC4FB8 /* TitledBorderTextField.swift in Sources */,
 				1FAEBBBC2B9617E500659397 /* SettingsView.swift in Sources */,

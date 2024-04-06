@@ -15,6 +15,7 @@ struct WitnessView: View {
             VStack {
                 HStack {
                     TextField("Name", text: $witness.name)
+                    
                     TextField("Phone Number", text: $witness.phoneNumber)
                         .keyboardType(.phonePad)
                 }
