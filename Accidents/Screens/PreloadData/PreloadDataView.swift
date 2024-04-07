@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct PreloadDataView: View {
-    @State private var witnesses: [Witness] = []
+    @StateObject private var vehicleManager = VehicleManager()
+    
     var body: some View {
         VStack {
             Text("You can prefill your data here....")
-            
+            MapView()
+                .environmentObject(vehicleManager)
         }
     }
 }

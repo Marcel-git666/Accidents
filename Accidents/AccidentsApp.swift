@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct AccidentsApp: App {
-
+    
     var body: some Scene {
         WindowGroup {
             MainTabView()

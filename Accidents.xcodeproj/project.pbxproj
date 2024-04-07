@@ -22,6 +22,14 @@
 		1F703A752BAB3A05009CD10A /* MockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A742BAB3A05009CD10A /* MockPresenter.swift */; };
 		1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A762BAB3A3E009CD10A /* MockDataRepository.swift */; };
 		1F791F592BB5FFFA003EB908 /* Accidents.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F791F572BB5FFF9003EB908 /* Accidents.xcdatamodeld */; };
+		1FA0D3942BC190F700A7972A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3932BC190F700A7972A /* MapView.swift */; };
+		1FA0D3962BC1A88200A7972A /* MapViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3952BC1A88200A7972A /* MapViewPresenter.swift */; };
+		1FA0D3982BC1E5C300A7972A /* RoadShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3972BC1E5C300A7972A /* RoadShape.swift */; };
+		1FA0D39A2BC2C85400A7972A /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3992BC2C85400A7972A /* DraggableView.swift */; };
+		1FA0D39C2BC2D10900A7972A /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D39B2BC2D10900A7972A /* Vehicle.swift */; };
+		1FA0D39F2BC2D1FB00A7972A /* VehicleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D39E2BC2D1FB00A7972A /* VehicleUseCase.swift */; };
+		1FA0D3A12BC2D22700A7972A /* VehicleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3A02BC2D22700A7972A /* VehicleManager.swift */; };
+		1FA0D3A32BC3066F00A7972A /* CrossroadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3A22BC3066F00A7972A /* CrossroadView.swift */; };
 		1FAEBB8C2B96159500659397 /* AccidentsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8B2B96159500659397 /* AccidentsApp.swift */; };
 		1FAEBB8E2B96159500659397 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8D2B96159500659397 /* MainTabView.swift */; };
 		1FAEBB902B96159700659397 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8F2B96159700659397 /* Assets.xcassets */; };
@@ -76,6 +84,14 @@
 		1F703A742BAB3A05009CD10A /* MockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPresenter.swift; sourceTree = "<group>"; };
 		1F703A762BAB3A3E009CD10A /* MockDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataRepository.swift; sourceTree = "<group>"; };
 		1F791F582BB5FFF9003EB908 /* Accidents.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Accidents.xcdatamodel; sourceTree = "<group>"; };
+		1FA0D3932BC190F700A7972A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		1FA0D3952BC1A88200A7972A /* MapViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewPresenter.swift; sourceTree = "<group>"; };
+		1FA0D3972BC1E5C300A7972A /* RoadShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadShape.swift; sourceTree = "<group>"; };
+		1FA0D3992BC2C85400A7972A /* DraggableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
+		1FA0D39B2BC2D10900A7972A /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		1FA0D39E2BC2D1FB00A7972A /* VehicleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleUseCase.swift; sourceTree = "<group>"; };
+		1FA0D3A02BC2D22700A7972A /* VehicleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleManager.swift; sourceTree = "<group>"; };
+		1FA0D3A22BC3066F00A7972A /* CrossroadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossroadView.swift; sourceTree = "<group>"; };
 		1FAEBB882B96159500659397 /* Accidents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accidents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAEBB8B2B96159500659397 /* AccidentsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsApp.swift; sourceTree = "<group>"; };
 		1FAEBB8D2B96159500659397 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -136,8 +152,11 @@
 				1F5164BD2BB2BE2300FC4FB8 /* VisibleDamageView.swift */,
 				1F5164C02BB2D97000FC4FB8 /* VehicleStatusView.swift */,
 				1FCB61BF2BB6211600E0B49A /* DraggableArrowView.swift */,
+				1FA0D3992BC2C85400A7972A /* DraggableView.swift */,
 				1F2A9C7A2BB6C8260039E269 /* AccidentGradient.swift */,
 				1F117AD22BC073080078E3BC /* WitnessView.swift */,
+				1FA0D3972BC1E5C300A7972A /* RoadShape.swift */,
+				1FA0D3A22BC3066F00A7972A /* CrossroadView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -193,6 +212,15 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		1FA0D39D2BC2D1D900A7972A /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				1FA0D39E2BC2D1FB00A7972A /* VehicleUseCase.swift */,
+				1FA0D3A02BC2D22700A7972A /* VehicleManager.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		1FAEBB7F2B96159500659397 = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				1FAEBB8B2B96159500659397 /* AccidentsApp.swift */,
+				1FA0D39D2BC2D1D900A7972A /* Domain */,
 				1FD319C12BA4C79100B9CEE6 /* Managers */,
 				1F791F572BB5FFF9003EB908 /* Accidents.xcdatamodeld */,
 				1FD610992BA48AAB008992B3 /* Repositories */,
@@ -264,6 +293,7 @@
 				1FAEBBC02B96197E00659397 /* AccidentReport.swift */,
 				1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */,
 				1F2A9C7C2BB6CD740039E269 /* AccidentReportNavigationState.swift */,
+				1FA0D39B2BC2D10900A7972A /* Vehicle.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				1FF2CD982BA35CBF001E1478 /* AccidentsPresenter.swift */,
+				1FA0D3952BC1A88200A7972A /* MapViewPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -336,6 +367,7 @@
 				1FC5C3672BB1BEAA0032B50F /* DescriptionView.swift */,
 				1FBE2FFD2B97332A00BF1980 /* DriverView.swift */,
 				1F1B5C3F2BB44ADE00681429 /* AccidentCrashPointView.swift */,
+				1FA0D3932BC190F700A7972A /* MapView.swift */,
 			);
 			path = AccidentReports;
 			sourceTree = "<group>";
@@ -446,15 +478,22 @@
 				1FAEBBBC2B9617E500659397 /* SettingsView.swift in Sources */,
 				1FAEBB8E2B96159500659397 /* MainTabView.swift in Sources */,
 				1F1961FA2BAE0A6A00AFDD32 /* TickBox.swift in Sources */,
+				1FA0D3962BC1A88200A7972A /* MapViewPresenter.swift in Sources */,
 				1FC5C3662BB18A7D0032B50F /* UpperTabBarView.swift in Sources */,
 				1FBE2FFE2B97332B00BF1980 /* DriverView.swift in Sources */,
 				1FBE2FFA2B9720C600BF1980 /* AccidentReportFillingState.swift in Sources */,
+				1FA0D39C2BC2D10900A7972A /* Vehicle.swift in Sources */,
 				1FAEBBC32B961EA700659397 /* AccidentLocationView.swift in Sources */,
 				1F791F592BB5FFFA003EB908 /* Accidents.xcdatamodeld in Sources */,
 				1FD319C02BA49EA000B9CEE6 /* Constants.swift in Sources */,
 				1FD319B72BA48B4F00B9CEE6 /* CoreDataRepository.swift in Sources */,
+				1FA0D3A12BC2D22700A7972A /* VehicleManager.swift in Sources */,
 				1FCB61C02BB6211600E0B49A /* DraggableArrowView.swift in Sources */,
 				1FAEBBC82B964E4300659397 /* AccidentListItemView.swift in Sources */,
+				1FA0D3A32BC3066F00A7972A /* CrossroadView.swift in Sources */,
+				1FA0D3982BC1E5C300A7972A /* RoadShape.swift in Sources */,
+				1FA0D3942BC190F700A7972A /* MapView.swift in Sources */,
+				1FA0D39A2BC2C85400A7972A /* DraggableView.swift in Sources */,
 				1FAEBB8C2B96159500659397 /* AccidentsApp.swift in Sources */,
 				1FF2CD992BA35CBF001E1478 /* AccidentsPresenter.swift in Sources */,
 				1FBDAF542BA71A1A00B494B2 /* CoreDataError.swift in Sources */,
@@ -473,6 +512,7 @@
 				1FBD04712BB3599400719A16 /* ACButton.swift in Sources */,
 				1F1B5C3E2BB4148D00681429 /* UpperTabBarButton.swift in Sources */,
 				1FC5C3682BB1BEAA0032B50F /* DescriptionView.swift in Sources */,
+				1FA0D39F2BC2D1FB00A7972A /* VehicleUseCase.swift in Sources */,
 				1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */,
 				1F1B5C402BB44ADE00681429 /* AccidentCrashPointView.swift in Sources */,
 				1FF1FB6D2BAF375C00E0CA88 /* EmptyListView.swift in Sources */,
@@ -629,6 +669,7 @@
 				DEVELOPMENT_TEAM = P3K32DW2KW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to let you draw a plan of an accident.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -659,6 +700,7 @@
 				DEVELOPMENT_TEAM = P3K32DW2KW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to let you draw a plan of an accident.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
