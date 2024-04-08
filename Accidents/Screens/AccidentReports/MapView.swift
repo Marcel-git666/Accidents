@@ -23,7 +23,7 @@ struct MapView: View {
                     NormalRoad()
                         .stroke(Color.pink, style: StrokeStyle(lineWidth: 8))
                 case .roundabout:
-                    NormalRoad()
+                    Roundabout()
                         .stroke(Color.pink, style: StrokeStyle(lineWidth: 8))
                 }
             }
@@ -40,6 +40,11 @@ struct MapView: View {
                         roadShapeSelector = .normalRoad
                     } label: {
                         Text("Normal road")
+                    }
+                    Button {
+                        roadShapeSelector = .roundabout
+                    } label: {
+                        Text("Roundabout")
                     }
                     Button {
                         vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: "car") // Add car at origin (adjust location)

@@ -23,7 +23,6 @@
 		1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A762BAB3A3E009CD10A /* MockDataRepository.swift */; };
 		1F791F592BB5FFFA003EB908 /* Accidents.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F791F572BB5FFF9003EB908 /* Accidents.xcdatamodeld */; };
 		1FA0D3942BC190F700A7972A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3932BC190F700A7972A /* MapView.swift */; };
-		1FA0D3962BC1A88200A7972A /* MapViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3952BC1A88200A7972A /* MapViewPresenter.swift */; };
 		1FA0D3982BC1E5C300A7972A /* RoadShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3972BC1E5C300A7972A /* RoadShape.swift */; };
 		1FA0D39A2BC2C85400A7972A /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3992BC2C85400A7972A /* DraggableView.swift */; };
 		1FA0D39C2BC2D10900A7972A /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D39B2BC2D10900A7972A /* Vehicle.swift */; };
@@ -85,7 +84,6 @@
 		1F703A762BAB3A3E009CD10A /* MockDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataRepository.swift; sourceTree = "<group>"; };
 		1F791F582BB5FFF9003EB908 /* Accidents.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Accidents.xcdatamodel; sourceTree = "<group>"; };
 		1FA0D3932BC190F700A7972A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		1FA0D3952BC1A88200A7972A /* MapViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewPresenter.swift; sourceTree = "<group>"; };
 		1FA0D3972BC1E5C300A7972A /* RoadShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadShape.swift; sourceTree = "<group>"; };
 		1FA0D3992BC2C85400A7972A /* DraggableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
 		1FA0D39B2BC2D10900A7972A /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
@@ -302,7 +300,6 @@
 			isa = PBXGroup;
 			children = (
 				1FF2CD982BA35CBF001E1478 /* AccidentsPresenter.swift */,
-				1FA0D3952BC1A88200A7972A /* MapViewPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -478,7 +475,6 @@
 				1FAEBBBC2B9617E500659397 /* SettingsView.swift in Sources */,
 				1FAEBB8E2B96159500659397 /* MainTabView.swift in Sources */,
 				1F1961FA2BAE0A6A00AFDD32 /* TickBox.swift in Sources */,
-				1FA0D3962BC1A88200A7972A /* MapViewPresenter.swift in Sources */,
 				1FC5C3662BB18A7D0032B50F /* UpperTabBarView.swift in Sources */,
 				1FBE2FFE2B97332B00BF1980 /* DriverView.swift in Sources */,
 				1FBE2FFA2B9720C600BF1980 /* AccidentReportFillingState.swift in Sources */,
@@ -669,7 +665,6 @@
 				DEVELOPMENT_TEAM = P3K32DW2KW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to let you draw a plan of an accident.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -700,7 +695,6 @@
 				DEVELOPMENT_TEAM = P3K32DW2KW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to let you draw a plan of an accident.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
