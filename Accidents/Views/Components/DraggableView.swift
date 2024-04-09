@@ -23,9 +23,6 @@ struct DraggableView: View {
             }
             .onEnded { value in
                 self.isDragging = false
-                
-                // Update location in both the view and model
-                
             }
     }
     
@@ -57,7 +54,7 @@ struct DraggableView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             DraggableView(
-                vehicle: Vehicle(location: CGPoint(x: 100, y: 100), imageName: "car")
+                vehicle: Vehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.motorcycle)
             )
             .previewLayout(.sizeThatFits) // Ensure preview fits content
         }

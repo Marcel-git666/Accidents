@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "motorcycle.svg",
+      "filename" : "blue_motorcycle.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,7 +12,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "white_motorcycle.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },

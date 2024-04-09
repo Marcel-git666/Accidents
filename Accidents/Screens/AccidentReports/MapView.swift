@@ -46,15 +46,47 @@ struct MapView: View {
                     } label: {
                         Text("Roundabout")
                     }
+                }
+                HStack {
                     Button {
-                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: "car") // Add car at origin (adjust location)
+                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.car) // Add car at origin (adjust location)
                     } label: {
                         Text("Car")
                     }
                     Button {
-                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: "van")
+                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.van)
                     } label: {
                         Text("Van")
+                    }
+                    Button {
+                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.yellowMotorcycle)
+                    } label: {
+                        Text("Y-M")
+                    }
+                    Button {
+                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.blueMotorcycle)
+                    } label: {
+                        Text("B-M")
+                    }
+                    Button {
+                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.yellowCar)
+                    } label: {
+                        Text("Y-C")
+                    }
+                    Button {
+                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.blueCar)
+                    } label: {
+                        Text("B-C")
+                    }
+                    Button {
+                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.yellowVan)
+                    } label: {
+                        Text("Y-V")
+                    }
+                    Button {
+                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.blueVan)
+                    } label: {
+                        Text("B-M")
                     }
                 }
                 Spacer()
