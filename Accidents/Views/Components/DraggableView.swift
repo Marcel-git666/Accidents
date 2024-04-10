@@ -9,11 +9,7 @@ import SwiftUI
 
 struct DraggableView: View {
     @State private var isDragging: Bool = false
-    @State private var vehicle: Vehicle 
-
-        init(vehicle: Vehicle) {
-            self.vehicle = vehicle // Create a copy
-        }
+    @Binding var vehicle: Vehicle
     
     var dragGesture: some Gesture {
         DragGesture()
@@ -32,7 +28,8 @@ struct DraggableView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(height: 100)
-                .foregroundColor(isDragging ? .blue : .black)
+                .rotationEffect(vehicle.rotationAngle)
+                .scaleEffect(vehicle.scale)
                 .position(vehicle.location)
             
             if isDragging {
@@ -43,20 +40,23 @@ struct DraggableView: View {
                     .animation(.easeInOut(duration: 0.5), value: isDragging)
                     .frame(width: 70, height: 70)
                     .position(vehicle.location)
+                    .contentShape(Rectangle())
             }
+            
         }
         .gesture(dragGesture)
     }
+    
 }
 
 
 struct DraggableView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
-            DraggableView(
-                vehicle: Vehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.motorcycle)
-            )
-            .previewLayout(.sizeThatFits) // Ensure preview fits content
+        let sampleVehicle = Vehicle(location: CGPoint(x: 100, y: 100), imageName: "motorcycle", rotationAngle: .degrees(15), scale: 0.8)
+        
+        return VStack {
+            DraggableView(vehicle: .constant(sampleVehicle))
+                .previewLayout(.sizeThatFits) // Ensure preview fits content
         }
     }
 }

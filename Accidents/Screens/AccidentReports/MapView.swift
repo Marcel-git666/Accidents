@@ -1,16 +1,12 @@
-//
-//  MapView.swift
-//  Accidents
-//
-//  Created by Marcel Mravec on 06.04.2024.
-//
-
 import SwiftUI
 import MapKit
 
 struct MapView: View {
     @EnvironmentObject var vehicleManager: VehicleManager
     @State private var roadShapeSelector: RoadShapeSelector = .normalRoad
+    @State private var selectedVehicle: Vehicle? = nil
+    @State private var rotationAngle: Angle = .degrees(0)
+    @State private var scaleValue: CGFloat = 1.0
     
     var body: some View {
         ZStack {
@@ -90,29 +86,93 @@ struct MapView: View {
                     }
                 }
                 Spacer()
-                ForEach(vehicleManager.vehicles) { vehicle in
-                    // Customize the view for each vehicle as needed
-                    HStack {
-                        DraggableView(vehicle: vehicle)
-                            
-                        
-                    }
+                
+                // Vehicles
+                ForEach($vehicleManager.vehicles) { $vehicle in
+                    DraggableView(vehicle: $vehicle)
+                        .onTapGesture {
+                            selectedVehicle = vehicle
+                        }
                 }
                 
                 HStack {
                     Button("Clear All") {
                         vehicleManager.vehicles.removeAll()
                     }
-                    Button("Remove Last") {
-                        if !vehicleManager.vehicles.isEmpty {
-                            vehicleManager.vehicles.removeLast()
+                    Button("Remove Selected") {
+                        if let selectedVehicle = selectedVehicle {
+                            vehicleManager.removeVehicle(withId: selectedVehicle.id)
+                            self.selectedVehicle = nil
                         }
                     }
                 }
             }
+            VStack {
+                Button(action: {
+                    if let selectedVehicle = selectedVehicle {
+                        rotateClockwise(vehicle: selectedVehicle)
+                    }
+                }) {
+                    Image(systemName: "arrow.clockwise")
+                        .padding()
+                }
+                .disabled(selectedVehicle == nil)
+                
+                Button(action: {
+                    if let selectedVehicle = selectedVehicle {
+                        rotateAntiClockwise(vehicle: selectedVehicle)
+                    }
+                }) {
+                    Image(systemName: "arrow.counterclockwise")
+                        .padding()
+                }
+                .disabled(selectedVehicle == nil)
+            }
+            .position(x: UIScreen.main.bounds.maxX - 50, y: UIScreen.main.bounds.midY - 50)
+            VStack {
+                Button(action: {
+                    if let selectedVehicle = selectedVehicle {
+                        scaleUp(vehicle: selectedVehicle)
+                    }
+                }) {
+                    Image(systemName: "plus")
+                        .padding()
+                }
+                .disabled(selectedVehicle == nil)
+                
+                Button(action: {
+                    if let selectedVehicle = selectedVehicle {
+                        scaleDown(vehicle: selectedVehicle)
+                    }
+                }) {
+                    Image(systemName: "minus")
+                        .padding()
+                }
+                .disabled(selectedVehicle == nil)
+            }
+            .position(x: 50, y: UIScreen.main.bounds.midY - 50)
         }
     }
     
+    func rotateClockwise(vehicle: Vehicle) {
+        guard let index = vehicleManager.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
+        vehicleManager.vehicles[index].rotationAngle += Angle.degrees(15)
+    }
+    
+    func rotateAntiClockwise(vehicle: Vehicle) {
+        guard let index = vehicleManager.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
+        vehicleManager.vehicles[index].rotationAngle -= Angle.degrees(15)
+    }
+    
+    func scaleUp(vehicle: Vehicle) {
+        guard let index = vehicleManager.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
+        vehicleManager.vehicles[index].scale *= 1.1
+    }
+    
+    func scaleDown(vehicle: Vehicle) {
+        guard let index = vehicleManager.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
+        vehicleManager.vehicles[index].scale *= 0.9
+    }
 }
 
 struct MapView_Previews: PreviewProvider {
