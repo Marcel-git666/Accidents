@@ -10,7 +10,7 @@ import SwiftUI
 @MainActor
 class AccidentsPresenter: ObservableObject {
     private let repository: AccidentReportRepository
-        
+    
     @Published var accidentReports: [AccidentReport] = []
     @Published var accidentLocation: AccidentLocation = AccidentLocation(
         date: Date(),
@@ -33,7 +33,7 @@ class AccidentsPresenter: ObservableObject {
     @Published var selectedTab: AccidentReportFillingState = .location
     @Published var pointOfImpact1: PointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 0, scale: 1)
     @Published var pointOfImpact2: PointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 0, scale: 1)
-    
+    @Published var accidentSituation: AccidentSituation = AccidentSituation(roadShape: .crossroad)
     
     init(repository: AccidentReportRepository) {
         self.repository = repository
@@ -48,16 +48,16 @@ class AccidentsPresenter: ObservableObject {
     
     func fetchAccidents() async {
         
-            do {
-                let fetchedReports = try await repository.fetchAll()
-                DispatchQueue.main.async {
-                    self.accidentReports = fetchedReports
-                }
-            } catch let error as CoreDataError {
-                errorMessage = error.rawValue
-            } catch {
-                errorMessage = error.localizedDescription
+        do {
+            let fetchedReports = try await repository.fetchAll()
+            DispatchQueue.main.async {
+                self.accidentReports = fetchedReports
             }
+        } catch let error as CoreDataError {
+            errorMessage = error.rawValue
+        } catch {
+            errorMessage = error.localizedDescription
+        }
         
     }
     
@@ -86,7 +86,36 @@ class AccidentsPresenter: ObservableObject {
                 case .pointOfImpact1:
                     selectedTab = .pointOfImpact2
                 case .pointOfImpact2:
+                    selectedTab = .mapView
+                case .mapView:
                     selectedTab = .location
+                }
+            }
+        }
+    }
+    
+    func goBack() {
+        withAnimation {
+            switch viewState {
+            case .accidentList:
+                selectedTab = .location
+                viewState = .start
+            case .start:
+                switch selectedTab {
+                case .location:
+                    selectedTab = .mapView
+                case .driver1:
+                    selectedTab = .location
+                case .driver2:
+                    selectedTab = .driver1
+                case .description:
+                    selectedTab = .driver2
+                case .pointOfImpact1:
+                    selectedTab = .description
+                case .pointOfImpact2:
+                    selectedTab = .pointOfImpact1
+                case .mapView:
+                    selectedTab = .pointOfImpact2
                 }
             }
         }
@@ -95,7 +124,7 @@ class AccidentsPresenter: ObservableObject {
     func createReportAndSave() {
         if let selectedAccident = selectedAccident {
             Task {
-                let report = AccidentReport(id: selectedAccident.id, accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription, pointOfImpact1: pointOfImpact1, pointOfImpact2: pointOfImpact2)
+                let report = AccidentReport(id: selectedAccident.id, accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription, pointOfImpact1: pointOfImpact1, pointOfImpact2: pointOfImpact2, accidentSituation: accidentSituation)
                 if let index = accidentReports.firstIndex(where: { $0.id == report.id }) {
                     self.accidentReports[index] = report
                 } else {
@@ -109,7 +138,7 @@ class AccidentsPresenter: ObservableObject {
             return
         }
         
-        let report = AccidentReport(id: UUID(), accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription, pointOfImpact1: pointOfImpact1, pointOfImpact2: pointOfImpact2)
+        let report = AccidentReport(id: UUID(), accidentLocation: accidentLocation, driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription, pointOfImpact1: pointOfImpact1, pointOfImpact2: pointOfImpact2, accidentSituation: accidentSituation)
         saveReport(report)
         viewState = .accidentList
         
@@ -153,6 +182,7 @@ class AccidentsPresenter: ObservableObject {
         accidentDescription = report.accidentDescription
         pointOfImpact1 = report.pointOfImpact1 ?? PointOfImpact(crashPoint: CGPoint(x: 50, y: 100), arrowRotation: 0, scale: 1)
         pointOfImpact2 = report.pointOfImpact2 ?? PointOfImpact(crashPoint: CGPoint(x: 50, y: 100), arrowRotation: 0, scale: 1)
+        accidentSituation = report.accidentSituation ?? AccidentSituation(roadShape: .crossroad)
         goNext()
     }
     

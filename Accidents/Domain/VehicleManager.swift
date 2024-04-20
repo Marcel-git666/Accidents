@@ -11,7 +11,7 @@ class VehicleManager: ObservableObject, VehicleUseCase {
   @Published var vehicles: [Vehicle] = []
 
   func addVehicle(location: CGPoint, imageName: String) {
-      vehicles.append(Vehicle(location: location, imageName: imageName))
+      vehicles.append(Vehicle(id: UUID().uuidString, location: location, imageName: imageName, rotationAngle: .zero, scale: 1.0))
   }
 
   func removeVehicle(withId id: String) {

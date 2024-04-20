@@ -14,19 +14,22 @@ enum AccidentReportFillingState: String, Identifiable {
     case description = "Description"
     case pointOfImpact1 = "Crash Point A"
     case pointOfImpact2 = "Crash Point B"
+    case mapView
     
-    static let allCases: [AccidentReportFillingState] = [.location, .driver1, .driver2, .description, .pointOfImpact1, .pointOfImpact2]
+    static let allCases: [AccidentReportFillingState] = [.location, .driver1, .driver2, .description, .pointOfImpact1, .pointOfImpact2, .mapView]
     var id: String { rawValue }
     var systemImageName: String {
         switch self {
         case .location:
-          return "map"
+          return "mappin"
         case .driver1, .driver2:
           return "person.fill"
         case .description:
           return "pencil.and.ruler.fill"
         case .pointOfImpact1, .pointOfImpact2:
           return "car.top.radiowaves.rear.left.fill"
+        case .mapView:
+            return "map"
         }
       }
 }

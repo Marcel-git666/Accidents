@@ -60,13 +60,13 @@ struct AccidentLocationView: View {
                             Button {
                                 presenter.accidentLocation.witnesses.append(Witness(name: "", address: "", phoneNumber: ""))
                             } label: {
-                                Label("Add Witness", systemImage: "plus.circle")
+                                Label("Add", systemImage: "plus.circle")
                             }
                             .disabled(presenter.accidentLocation.witnesses.count >= 3)
                             Button {
                                 presenter.accidentLocation.witnesses.removeLast()
                             } label: {
-                                Label("Remove Witness", systemImage: "minus.circle")
+                                Label("Remove", systemImage: "minus.circle")
                             }
                             .disabled(presenter.accidentLocation.witnesses.isEmpty)
                         }

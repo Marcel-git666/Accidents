@@ -1,7 +1,7 @@
 import SwiftUI
 import MapKit
 
-struct MapView: View {
+struct AccidentSituationView: View {
     @EnvironmentObject var vehicleManager: VehicleManager
     @State private var roadShapeSelector: RoadShapeSelector = .normalRoad
     @State private var selectedVehicle: Vehicle? = nil
@@ -180,7 +180,7 @@ struct MapView_Previews: PreviewProvider {
         let manager = VehicleManager() // Create a VehicleManager instance
         
         // Wrap MapView with environmentObject
-        MapView()
+        AccidentSituationView()
             .environmentObject(manager)
             .previewLayout(.sizeThatFits) // Ensure preview fits content
     }

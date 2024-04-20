@@ -11,10 +11,6 @@ protocol RoadShape: Shape {
     func path(in rect: CGRect) -> Path
 }
 
-enum RoadShapeSelector: Int {
-    case crossroad, normalRoad, roundabout
-}
-
 struct Crossroad: RoadShape {
     
     func path(in rect: CGRect) -> Path {

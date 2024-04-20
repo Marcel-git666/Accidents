@@ -39,15 +39,26 @@ class CoreDataRepository: AccidentReportRepository {
     }
     
     func fetchAll() async throws -> [AccidentReport] {
-        let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: K.reportEntity)
-        
-        do {
-            let fetchedReports = try context.fetch(fetchRequest)
-            let reports = fetchedReports.compactMap { convertFromCoreData(fetchedReportData: $0) }
-            return reports
-        } catch {
-            throw CoreDataError.coreDataFetchError
+      let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: K.reportEntity)
+
+      do {
+        let fetchedReports = try context.fetch(fetchRequest)
+        let reports = try fetchedReports.compactMap { try convertFromCoreData(fetchedReportData: $0) }
+        return reports
+      } catch {
+        if let coreDataError = error as? CoreDataError {
+          switch coreDataError {
+          case .decodingError:
+            print("Error decoding accident reports:", coreDataError.localizedDescription)
+            throw coreDataError
+          default:
+            throw coreDataError
+          }
+        } else {
+          // Handle other errors
         }
+      }
+        return []
     }
     
     func removeReport(_ report: AccidentReport) async throws {
@@ -92,7 +103,7 @@ class CoreDataRepository: AccidentReportRepository {
         }
     }
     
-    private func convertFromCoreData(fetchedReportData: AccidentReportData) -> AccidentReport? {
+    private func convertFromCoreData(fetchedReportData: AccidentReportData) throws -> AccidentReport? {
         guard let reportData = fetchedReportData.reportData else {
             print("Error: reportData is nil")
             return nil
@@ -103,7 +114,7 @@ class CoreDataRepository: AccidentReportRepository {
             return report
         } catch {
             print("Error decoding accident report data:", error)
-            return nil
+            throw CoreDataError.decodingError
         }
     }
 }

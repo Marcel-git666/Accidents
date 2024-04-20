@@ -39,8 +39,11 @@ struct AccidentsListView: View {
             }) {
                 Label("New Accident", systemImage: "plus")
             }
-        )
+            )
             EmptyListView().opacity(presenter.accidentReports.isEmpty ? 1 : 0)
+//            if let errorMessage = presenter.errorMessage {
+//                ARErrorBlock(errorMessage: errorMessage)
+//            }
         }
     }
 }

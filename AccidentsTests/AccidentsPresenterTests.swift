@@ -130,7 +130,7 @@ final class AccidentsPresenterTests: XCTestCase {
         sut.selectedTab = .pointOfImpact2
         
         // When
-        sut.goNext()
+        sut.createReportAndSave()
         
         // Then
         XCTAssertEqual(sut.viewState, .accidentList)

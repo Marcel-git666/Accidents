@@ -9,7 +9,10 @@ import SwiftUI
 
 struct UpperTabBarView: View {
     @ObservedObject var presenter: AccidentsPresenter
+    @StateObject private var vehicleManager = VehicleManager()
     
+    let swipeAnimation: Animation = .easeOut(duration: 0.3)
+    let tapAnimation: Animation = .easeInOut(duration: 0.2)
     var body: some View {
         VStack {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -20,10 +23,12 @@ struct UpperTabBarView: View {
                                           text: tab.rawValue,
                                           isActive: presenter.selectedTab == tab)
                         .onTapGesture {
-                            presenter.handleSelectedTab(tab)
+                            withAnimation(tapAnimation) {
+                                presenter.handleSelectedTab(tab)
+                            }
+                            
                         }
                     }
-                    
                 }
             }
             .padding(.horizontal)
@@ -52,8 +57,21 @@ struct UpperTabBarView: View {
             case .pointOfImpact2:
                 AccidentCrashPointView(presenter: presenter, pointOfImpact: $presenter.pointOfImpact2)
                     .transition(.scale)
+            case .mapView:
+                AccidentSituationView()
+                    .environmentObject(vehicleManager)
             }
         }
+        .gesture(DragGesture(minimumDistance: 10) // Adjust as needed
+            .onEnded { value in
+                let translation = value.translation.width
+                if translation > 0 { // Swipe right
+                    presenter.goNext()
+                } else if translation < 0 { // Swipe left
+                    presenter.goBack()
+                }
+            })
+        
     }
 }
 

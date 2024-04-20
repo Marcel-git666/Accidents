@@ -16,8 +16,9 @@ struct AccidentReport: Identifiable, Hashable, Codable {
     var accidentDescription: AccidentDescription
     var pointOfImpact1: PointOfImpact?
     var pointOfImpact2: PointOfImpact?
+    var accidentSituation: AccidentSituation?
     
-    init(id: UUID, accidentLocation: AccidentLocation, driver: Driver, otherDriver: Driver?, accidentDescription: AccidentDescription, pointOfImpact1: PointOfImpact?, pointOfImpact2: PointOfImpact?) {
+    init(id: UUID, accidentLocation: AccidentLocation, driver: Driver, otherDriver: Driver?, accidentDescription: AccidentDescription, pointOfImpact1: PointOfImpact?, pointOfImpact2: PointOfImpact?, accidentSituation: AccidentSituation?) {
         self.id = id
         self.accidentLocation = accidentLocation
         self.driver = driver
@@ -25,6 +26,7 @@ struct AccidentReport: Identifiable, Hashable, Codable {
         self.accidentDescription = accidentDescription
         self.pointOfImpact1 = pointOfImpact1
         self.pointOfImpact2 = pointOfImpact2
+        self.accidentSituation = accidentSituation
     }
 
     
@@ -47,7 +49,8 @@ struct AccidentReport: Identifiable, Hashable, Codable {
             otherDriver: Driver.sample2,
             accidentDescription: AccidentDescription(notes1: "", notes2: "", vehicleDamage1: Array(repeating: false, count: 17), vehicleDamage2: Array(repeating: false, count: 17)),
             pointOfImpact1: nil,
-            pointOfImpact2: nil
+            pointOfImpact2: nil,
+            accidentSituation: AccidentSituation(roadShape: .crossroad)
         )
 
         return sampleAccidentReport
@@ -112,4 +115,11 @@ struct PointOfImpact: Codable {
     var crashPoint: CGPoint
     var arrowRotation: Double
     var scale: CGFloat
+}
+
+struct AccidentSituation: Codable {
+    var roadShape: RoadShapeSelector
+    var blueVehicle: Vehicle?
+    var yellowVehicle: Vehicle?
+    var otherVehicles: [Vehicle] = []
 }
