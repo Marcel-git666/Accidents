@@ -1,17 +1,27 @@
+//
+//  AccidentSituationView.swift
+//  Accidents
+//
+//  Created by Marcel Mravec on 27.03.2024.
+//
+
+
 import SwiftUI
-import MapKit
 
 struct AccidentSituationView: View {
+    @ObservedObject var presenter: AccidentsPresenter
     @EnvironmentObject var vehicleManager: VehicleManager
-    @State private var roadShapeSelector: RoadShapeSelector = .normalRoad
     @State private var selectedVehicle: Vehicle? = nil
     @State private var rotationAngle: Angle = .degrees(0)
     @State private var scaleValue: CGFloat = 1.0
     
     var body: some View {
         ZStack {
+            Color.gray
+                .opacity(0.4)
+                .ignoresSafeArea()
             VStack {
-                switch roadShapeSelector {
+                switch presenter.accidentSituation.roadShape {
                 case .crossroad:
                     Crossroad()
                         .stroke(Color.pink, style: StrokeStyle(lineWidth: 8))
@@ -26,63 +36,99 @@ struct AccidentSituationView: View {
             .padding(.vertical, 50)
             
             VStack {
-                HStack {
+                HStack(alignment: .top) {
+                    VStack(spacing: 20) {
+                        Button {
+                            presenter.accidentSituation.roadShape = .crossroad
+                        } label: {
+                            Image(systemName: "cross")
+                                .foregroundColor(.black)
+                        }
+                        Button {
+                            presenter.accidentSituation.roadShape = .normalRoad
+                        } label: {
+                            Image(systemName: "car.rear.road.lane")
+                                .foregroundColor(.black)
+                        }
+                        Button {
+                            presenter.accidentSituation.roadShape = .roundabout
+                        } label: {
+                            Image(systemName: "circle.circle")
+                                .foregroundColor(.black)
+                        }
+                        HStack {
+                            Button {
+                                vehicleManager.vehicles.removeAll()
+                            } label: {
+                                Image(systemName: "clear")
+                                    .foregroundColor(.black)
+                            }
+                            Button {
+                                if let selectedVehicle = selectedVehicle {
+                                    vehicleManager.removeVehicle(withId: selectedVehicle.id)
+                                    self.selectedVehicle = nil
+                                }
+                            } label: {
+                                Image(systemName: "selection.pin.in.out")
+                                    .foregroundColor(.black)
+                            }
+                        }
+                    }
+                    
                     Button {
-                        roadShapeSelector = .crossroad
+                        vehicleManager.addOtherVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.motorcycle)
                     } label: {
-                        Text("Crossroad")
+                        Image(systemName: "bicycle")
+                            .foregroundColor(.black)
                     }
                     Button {
-                        roadShapeSelector = .normalRoad
+                        vehicleManager.addOtherVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.car)
+                        presenter.accidentSituation.otherVehicles.append(vehicleManager.vehicles.last!)
                     } label: {
-                        Text("Normal road")
+                        Image(systemName: "car")
+                            .foregroundColor(.black)
                     }
                     Button {
-                        roadShapeSelector = .roundabout
+                        vehicleManager.addOtherVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.van)
                     } label: {
-                        Text("Roundabout")
-                    }
-                }
-                HStack {
-                    Button {
-                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.car) // Add car at origin (adjust location)
-                    } label: {
-                        Text("Car")
+                        Image(systemName: "truck.box")
+                            .foregroundColor(.black)
                     }
                     Button {
-                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.van)
+                        vehicleManager.addYellowVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.yellowMotorcycle)
                     } label: {
-                        Text("Van")
+                        Image(systemName: "bicycle")
+                            .foregroundColor(.yellow)
                     }
                     Button {
-                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.yellowMotorcycle)
+                        vehicleManager.addBlueVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.blueMotorcycle)
                     } label: {
-                        Text("Y-M")
+                        Image(systemName: "bicycle")
+                            .foregroundColor(.blue)
                     }
                     Button {
-                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.blueMotorcycle)
+                        vehicleManager.addYellowVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.yellowCar)
                     } label: {
-                        Text("B-M")
+                        Image(systemName: "car")
+                            .foregroundColor(.yellow)
                     }
                     Button {
-                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.yellowCar)
+                        vehicleManager.addBlueVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.blueCar)
                     } label: {
-                        Text("Y-C")
+                        Image(systemName: "car")
+                            .foregroundColor(.blue)
                     }
                     Button {
-                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.blueCar)
+                        vehicleManager.addYellowVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.yellowVan)
                     } label: {
-                        Text("B-C")
+                        Image(systemName: "truck.box")
+                            .foregroundColor(.yellow)
                     }
                     Button {
-                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.yellowVan)
+                        vehicleManager.addBlueVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.blueVan)
                     } label: {
-                        Text("Y-V")
-                    }
-                    Button {
-                        vehicleManager.addVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.blueVan)
-                    } label: {
-                        Text("B-M")
+                        Image(systemName: "truck.box")
+                            .foregroundColor(.blue)
                     }
                 }
                 Spacer()
@@ -95,18 +141,8 @@ struct AccidentSituationView: View {
                         }
                 }
                 
-                HStack {
-                    Button("Clear All") {
-                        vehicleManager.vehicles.removeAll()
-                    }
-                    Button("Remove Selected") {
-                        if let selectedVehicle = selectedVehicle {
-                            vehicleManager.removeVehicle(withId: selectedVehicle.id)
-                            self.selectedVehicle = nil
-                        }
-                    }
-                }
             }
+            .padding(.top)
             VStack {
                 Button(action: {
                     if let selectedVehicle = selectedVehicle {
@@ -180,7 +216,7 @@ struct MapView_Previews: PreviewProvider {
         let manager = VehicleManager() // Create a VehicleManager instance
         
         // Wrap MapView with environmentObject
-        AccidentSituationView()
+        AccidentSituationView(presenter: AccidentsPresenter(repository: MockDataRepository()))
             .environmentObject(manager)
             .previewLayout(.sizeThatFits) // Ensure preview fits content
     }

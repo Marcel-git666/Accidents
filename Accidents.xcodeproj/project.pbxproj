@@ -27,7 +27,6 @@
 		1FA0D3982BC1E5C300A7972A /* RoadShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3972BC1E5C300A7972A /* RoadShape.swift */; };
 		1FA0D39A2BC2C85400A7972A /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3992BC2C85400A7972A /* DraggableView.swift */; };
 		1FA0D39C2BC2D10900A7972A /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D39B2BC2D10900A7972A /* Vehicle.swift */; };
-		1FA0D39F2BC2D1FB00A7972A /* VehicleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D39E2BC2D1FB00A7972A /* VehicleUseCase.swift */; };
 		1FA0D3A12BC2D22700A7972A /* VehicleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3A02BC2D22700A7972A /* VehicleManager.swift */; };
 		1FA0D3A32BC3066F00A7972A /* CrossroadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3A22BC3066F00A7972A /* CrossroadView.swift */; };
 		1FAEBB8C2B96159500659397 /* AccidentsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8B2B96159500659397 /* AccidentsApp.swift */; };
@@ -89,7 +88,6 @@
 		1FA0D3972BC1E5C300A7972A /* RoadShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadShape.swift; sourceTree = "<group>"; };
 		1FA0D3992BC2C85400A7972A /* DraggableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
 		1FA0D39B2BC2D10900A7972A /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
-		1FA0D39E2BC2D1FB00A7972A /* VehicleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleUseCase.swift; sourceTree = "<group>"; };
 		1FA0D3A02BC2D22700A7972A /* VehicleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleManager.swift; sourceTree = "<group>"; };
 		1FA0D3A22BC3066F00A7972A /* CrossroadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossroadView.swift; sourceTree = "<group>"; };
 		1FAEBB882B96159500659397 /* Accidents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accidents.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,7 +213,6 @@
 		1FA0D39D2BC2D1D900A7972A /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				1FA0D39E2BC2D1FB00A7972A /* VehicleUseCase.swift */,
 				1FA0D3A02BC2D22700A7972A /* VehicleManager.swift */,
 			);
 			path = Domain;
@@ -511,7 +508,6 @@
 				1FBD04712BB3599400719A16 /* ACButton.swift in Sources */,
 				1F1B5C3E2BB4148D00681429 /* UpperTabBarButton.swift in Sources */,
 				1FC5C3682BB1BEAA0032B50F /* DescriptionView.swift in Sources */,
-				1FA0D39F2BC2D1FB00A7972A /* VehicleUseCase.swift in Sources */,
 				1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */,
 				1F1B5C402BB44ADE00681429 /* AccidentCrashPointView.swift in Sources */,
 				1F7060092BCD6D7900777317 /* RoadShapeSelector.swift in Sources */,

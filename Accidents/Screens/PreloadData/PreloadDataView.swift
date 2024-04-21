@@ -13,8 +13,7 @@ struct PreloadDataView: View {
     var body: some View {
         VStack {
             Text("You can prefill your data here....")
-            AccidentSituationView()
-                .environmentObject(vehicleManager)
+            
         }
     }
 }

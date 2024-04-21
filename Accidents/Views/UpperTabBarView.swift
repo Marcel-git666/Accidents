@@ -58,7 +58,7 @@ struct UpperTabBarView: View {
                 AccidentCrashPointView(presenter: presenter, pointOfImpact: $presenter.pointOfImpact2)
                     .transition(.scale)
             case .mapView:
-                AccidentSituationView()
+                AccidentSituationView(presenter: presenter)
                     .environmentObject(vehicleManager)
             }
         }
