@@ -187,9 +187,24 @@ struct AccidentSituationView: View {
                 .disabled(selectedVehicle == nil)
             }
             .position(x: 50, y: UIScreen.main.bounds.midY - 50)
+            VStack {
+                Spacer()
+                HStack {
+                    ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
+                        saveVehiclesToAccidentSituation()
+                        presenter.createReportAndSave()
+                    }
+                    ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
+                        presenter.goNext()
+                    }
+                }
+            }
+        }
+        .onAppear {
+            loadVehiclesToAccidentSituation()
         }
     }
-    
+        
     func rotateClockwise(vehicle: Vehicle) {
         guard let index = vehicleManager.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
         vehicleManager.vehicles[index].rotationAngle += Angle.degrees(15)
@@ -208,6 +223,37 @@ struct AccidentSituationView: View {
     func scaleDown(vehicle: Vehicle) {
         guard let index = vehicleManager.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
         vehicleManager.vehicles[index].scale *= 0.9
+    }
+    
+    func saveVehiclesToAccidentSituation() {
+        let blueVehicle = vehicleManager.vehicles.first(where: { $0.imageName.contains("blue") })
+        let yellowVehicle = vehicleManager.vehicles.first(where: { $0.imageName.contains("yellow") })
+        let otherVehicles = vehicleManager.vehicles.filter { !$0.imageName.contains("blue") && !$0.imageName.contains("yellow") }
+        
+        // Update AccidentSituation
+        presenter.accidentSituation.blueVehicle = blueVehicle
+        presenter.accidentSituation.yellowVehicle = yellowVehicle
+        presenter.accidentSituation.otherVehicles = otherVehicles
+    }
+    
+    func loadVehiclesToAccidentSituation() {
+        // Clear existing vehicles
+        vehicleManager.vehicles.removeAll()
+        
+        // Load other vehicles from presenter.accidentSituation
+        presenter.accidentSituation.otherVehicles.forEach { vehicle in
+            vehicleManager.addOtherVehicle(location: vehicle.location, imageName: vehicle.imageName)
+        }
+        
+        // Load blue vehicle, if available
+        if let blueVehicle = presenter.accidentSituation.blueVehicle {
+            vehicleManager.addBlueVehicle(location: blueVehicle.location, imageName: blueVehicle.imageName)
+        }
+        
+        // Load yellow vehicle, if available
+        if let yellowVehicle = presenter.accidentSituation.yellowVehicle {
+            vehicleManager.addYellowVehicle(location: yellowVehicle.location, imageName: yellowVehicle.imageName)
+        }
     }
 }
 
