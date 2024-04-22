@@ -144,6 +144,14 @@ class AccidentsPresenter: ObservableObject {
         
     }
     
+    func saveVehiclesToAccidentSituation(blueVehicle: Vehicle?, yellowVehicle: Vehicle?, otherVehicles: [Vehicle]) {
+        
+        // Update AccidentSituation
+        accidentSituation.blueVehicle = blueVehicle
+        accidentSituation.yellowVehicle = yellowVehicle
+        accidentSituation.otherVehicles = otherVehicles
+    }
+    
     func saveReport(_ report: AccidentReport) {
         Task {
             

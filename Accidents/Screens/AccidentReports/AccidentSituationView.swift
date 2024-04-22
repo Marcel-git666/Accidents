@@ -20,117 +20,16 @@ struct AccidentSituationView: View {
             Color.gray
                 .opacity(0.4)
                 .ignoresSafeArea()
-            VStack {
-                switch presenter.accidentSituation.roadShape {
-                case .crossroad:
-                    Crossroad()
-                        .stroke(Color.pink, style: StrokeStyle(lineWidth: 8))
-                case .normalRoad:
-                    NormalRoad()
-                        .stroke(Color.pink, style: StrokeStyle(lineWidth: 8))
-                case .roundabout:
-                    Roundabout()
-                        .stroke(Color.pink, style: StrokeStyle(lineWidth: 8))
-                }
-            }
-            .padding(.vertical, 50)
+            RoadShapeView(roadShape: presenter.accidentSituation.roadShape)
+                .padding(.vertical, 50)
             
             VStack {
-                HStack(alignment: .top) {
-                    VStack(spacing: 20) {
-                        Button {
-                            presenter.accidentSituation.roadShape = .crossroad
-                        } label: {
-                            Image(systemName: "cross")
-                                .foregroundColor(.black)
-                        }
-                        Button {
-                            presenter.accidentSituation.roadShape = .normalRoad
-                        } label: {
-                            Image(systemName: "car.rear.road.lane")
-                                .foregroundColor(.black)
-                        }
-                        Button {
-                            presenter.accidentSituation.roadShape = .roundabout
-                        } label: {
-                            Image(systemName: "circle.circle")
-                                .foregroundColor(.black)
-                        }
-                        HStack {
-                            Button {
-                                vehicleManager.vehicles.removeAll()
-                            } label: {
-                                Image(systemName: "clear")
-                                    .foregroundColor(.black)
-                            }
-                            Button {
-                                if let selectedVehicle = selectedVehicle {
-                                    vehicleManager.removeVehicle(withId: selectedVehicle.id)
-                                    self.selectedVehicle = nil
-                                }
-                            } label: {
-                                Image(systemName: "selection.pin.in.out")
-                                    .foregroundColor(.black)
-                            }
-                        }
-                    }
-                    
-                    Button {
-                        vehicleManager.addOtherVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.motorcycle)
-                    } label: {
-                        Image(systemName: "bicycle")
-                            .foregroundColor(.black)
-                    }
-                    Button {
-                        vehicleManager.addOtherVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.car)
-                        presenter.accidentSituation.otherVehicles.append(vehicleManager.vehicles.last!)
-                    } label: {
-                        Image(systemName: "car")
-                            .foregroundColor(.black)
-                    }
-                    Button {
-                        vehicleManager.addOtherVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.van)
-                    } label: {
-                        Image(systemName: "truck.box")
-                            .foregroundColor(.black)
-                    }
-                    Button {
-                        vehicleManager.addYellowVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.yellowMotorcycle)
-                    } label: {
-                        Image(systemName: "bicycle")
-                            .foregroundColor(.yellow)
-                    }
-                    Button {
-                        vehicleManager.addBlueVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.blueMotorcycle)
-                    } label: {
-                        Image(systemName: "bicycle")
-                            .foregroundColor(.blue)
-                    }
-                    Button {
-                        vehicleManager.addYellowVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.yellowCar)
-                    } label: {
-                        Image(systemName: "car")
-                            .foregroundColor(.yellow)
-                    }
-                    Button {
-                        vehicleManager.addBlueVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.blueCar)
-                    } label: {
-                        Image(systemName: "car")
-                            .foregroundColor(.blue)
-                    }
-                    Button {
-                        vehicleManager.addYellowVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.yellowVan)
-                    } label: {
-                        Image(systemName: "truck.box")
-                            .foregroundColor(.yellow)
-                    }
-                    Button {
-                        vehicleManager.addBlueVehicle(location: CGPoint(x: 100, y: 100), imageName: K.Images.blueVan)
-                    } label: {
-                        Image(systemName: "truck.box")
-                            .foregroundColor(.blue)
-                    }
+                VehicleButtonView(presenter: presenter, vehicleManager: vehicleManager)
+                HStack {
+                    ControlButtonView(roadShape: $presenter.accidentSituation.roadShape, vehicleManager: vehicleManager, selectedVehicle: $selectedVehicle)
+                    Spacer()
                 }
+                
                 Spacer()
                 
                 // Vehicles
@@ -143,97 +42,14 @@ struct AccidentSituationView: View {
                 
             }
             .padding(.top)
-            VStack {
-                Button(action: {
-                    if let selectedVehicle = selectedVehicle {
-                        rotateClockwise(vehicle: selectedVehicle)
-                    }
-                }) {
-                    Image(systemName: "arrow.clockwise")
-                        .padding()
-                }
-                .disabled(selectedVehicle == nil)
-                
-                Button(action: {
-                    if let selectedVehicle = selectedVehicle {
-                        rotateAntiClockwise(vehicle: selectedVehicle)
-                    }
-                }) {
-                    Image(systemName: "arrow.counterclockwise")
-                        .padding()
-                }
-                .disabled(selectedVehicle == nil)
-            }
-            .position(x: UIScreen.main.bounds.maxX - 50, y: UIScreen.main.bounds.midY - 50)
-            VStack {
-                Button(action: {
-                    if let selectedVehicle = selectedVehicle {
-                        scaleUp(vehicle: selectedVehicle)
-                    }
-                }) {
-                    Image(systemName: "plus")
-                        .padding()
-                }
-                .disabled(selectedVehicle == nil)
-                
-                Button(action: {
-                    if let selectedVehicle = selectedVehicle {
-                        scaleDown(vehicle: selectedVehicle)
-                    }
-                }) {
-                    Image(systemName: "minus")
-                        .padding()
-                }
-                .disabled(selectedVehicle == nil)
-            }
-            .position(x: 50, y: UIScreen.main.bounds.midY - 50)
-            VStack {
-                Spacer()
-                HStack {
-                    ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
-                        saveVehiclesToAccidentSituation()
-                        presenter.createReportAndSave()
-                    }
-                    ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
-                        presenter.goNext()
-                    }
-                }
-            }
+            RotationButtoView(vehicleManager: vehicleManager, selectedVehicle: $selectedVehicle)
+            ScaleButtonView(vehicleManager: vehicleManager, selectedVehicle: $selectedVehicle)
+            ActionButtonView(presenter: presenter, vehicleManager: vehicleManager)
         }
         .onAppear {
             loadVehiclesToAccidentSituation()
+            print(presenter.accidentSituation)
         }
-    }
-        
-    func rotateClockwise(vehicle: Vehicle) {
-        guard let index = vehicleManager.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
-        vehicleManager.vehicles[index].rotationAngle += Angle.degrees(15)
-    }
-    
-    func rotateAntiClockwise(vehicle: Vehicle) {
-        guard let index = vehicleManager.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
-        vehicleManager.vehicles[index].rotationAngle -= Angle.degrees(15)
-    }
-    
-    func scaleUp(vehicle: Vehicle) {
-        guard let index = vehicleManager.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
-        vehicleManager.vehicles[index].scale *= 1.1
-    }
-    
-    func scaleDown(vehicle: Vehicle) {
-        guard let index = vehicleManager.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
-        vehicleManager.vehicles[index].scale *= 0.9
-    }
-    
-    func saveVehiclesToAccidentSituation() {
-        let blueVehicle = vehicleManager.vehicles.first(where: { $0.imageName.contains("blue") })
-        let yellowVehicle = vehicleManager.vehicles.first(where: { $0.imageName.contains("yellow") })
-        let otherVehicles = vehicleManager.vehicles.filter { !$0.imageName.contains("blue") && !$0.imageName.contains("yellow") }
-        
-        // Update AccidentSituation
-        presenter.accidentSituation.blueVehicle = blueVehicle
-        presenter.accidentSituation.yellowVehicle = yellowVehicle
-        presenter.accidentSituation.otherVehicles = otherVehicles
     }
     
     func loadVehiclesToAccidentSituation() {
@@ -242,28 +58,42 @@ struct AccidentSituationView: View {
         
         // Load other vehicles from presenter.accidentSituation
         presenter.accidentSituation.otherVehicles.forEach { vehicle in
-            vehicleManager.addOtherVehicle(location: vehicle.location, imageName: vehicle.imageName)
+            vehicleManager.addOtherVehicle(location: vehicle.location, imageName: vehicle.imageName, rotationAngle: rotationAngle, scale: scaleValue)
         }
         
         // Load blue vehicle, if available
         if let blueVehicle = presenter.accidentSituation.blueVehicle {
-            vehicleManager.addBlueVehicle(location: blueVehicle.location, imageName: blueVehicle.imageName)
+            vehicleManager.addBlueVehicle(location: blueVehicle.location, imageName: blueVehicle.imageName, rotationAngle: rotationAngle, scale: scaleValue)
         }
         
         // Load yellow vehicle, if available
         if let yellowVehicle = presenter.accidentSituation.yellowVehicle {
-            vehicleManager.addYellowVehicle(location: yellowVehicle.location, imageName: yellowVehicle.imageName)
+            vehicleManager.addYellowVehicle(location: yellowVehicle.location, imageName: yellowVehicle.imageName, rotationAngle: rotationAngle, scale: scaleValue)
         }
     }
 }
 
-struct MapView_Previews: PreviewProvider {
+
+struct AccidentSituationView_Previews: PreviewProvider {
     static var previews: some View {
-        let manager = VehicleManager() // Create a VehicleManager instance
-        
-        // Wrap MapView with environmentObject
-        AccidentSituationView(presenter: AccidentsPresenter(repository: MockDataRepository()))
-            .environmentObject(manager)
-            .previewLayout(.sizeThatFits) // Ensure preview fits content
+        let manager = VehicleManager()
+        VStack {
+            HStack(spacing: 20) {
+                Spacer()
+                UpperTabBarButton(color: .accent, systemImage: "book", text: "something", isActive: true)
+                Spacer()
+            }
+            .background(Color.gray.opacity(0.4))
+            .padding()
+            
+            TabView {
+                AccidentSituationView(presenter: AccidentsPresenter(repository: MockDataRepository()))
+                    .environmentObject(manager)
+                    .tabItem {
+                        Label("Road Shape", systemImage: "cross")
+                    }
+                
+            }
+        }
     }
 }
