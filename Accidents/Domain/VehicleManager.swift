@@ -11,21 +11,13 @@ class VehicleManager: ObservableObject {
     @Published var vehicles: [Vehicle] = []
     
     func addBlueVehicle(location: CGPoint, imageName: String, rotationAngle: Angle, scale: Double) {
-        if let existingBlueVehicleIndex = vehicles.firstIndex(where: { $0.imageName.contains("blue") }) {
-            // If a blue vehicle already exists, update its location
-            vehicles[existingBlueVehicleIndex].location = location
-        } else {
-            // Add a new blue vehicle
+        if !vehicles.contains(where: { $0.imageName.contains("blue") }) {
             addVehicle(location: location, imageName: imageName, rotationAngle: rotationAngle, scale: scale)
         }
     }
     
     func addYellowVehicle(location: CGPoint, imageName: String, rotationAngle: Angle, scale: Double) {
-        if let existingYellowVehicleIndex = vehicles.firstIndex(where: { $0.imageName.contains("yellow") }) {
-            // If a yellow vehicle already exists, update its location
-            vehicles[existingYellowVehicleIndex].location = location
-        } else {
-            // Add a new yellow vehicle
+        if !vehicles.contains(where: { $0.imageName.contains("yellow") }) {
             addVehicle(location: location, imageName: imageName, rotationAngle: rotationAngle, scale: scale)
         }
     }
