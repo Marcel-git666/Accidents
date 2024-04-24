@@ -8,12 +8,25 @@
 import SwiftUI
 
 struct PreloadDataView: View {
-    @StateObject private var vehicleManager = VehicleManager()
     
     var body: some View {
-        VStack {
+        ZStack {
             Text("You can prefill your data here....")
-            
+            ZStack {
+                Image("yellow_car")
+                    .renderingMode(.template)
+                    .foregroundColor(.purple)
+                    .position(CGPoint(x: 200, y: 200))
+                    .rotationEffect(Angle(degrees: 195), anchor: .center)
+                    .scaleEffect(0.2)
+                    
+                Image("test")
+                    .renderingMode(.template)
+                    .foregroundColor(.red)
+                    .position(CGPoint(x: 200, y: 200))
+                    .rotationEffect(Angle(degrees: -45), anchor: .center)
+                    .scaleEffect(0.2)
+            }
         }
     }
 }

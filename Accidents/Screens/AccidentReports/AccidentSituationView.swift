@@ -31,17 +31,16 @@ struct AccidentSituationView: View {
                 }
                 
                 Spacer()
-                
-                // Vehicles
-                ForEach($vehicleManager.vehicles) { $vehicle in
-                    DraggableView(vehicle: $vehicle)
-                        .onTapGesture {
-                            selectedVehicle = vehicle
-                        }
-                }
-                
             }
             .padding(.top)
+            // Vehicles
+            ForEach($vehicleManager.vehicles) { $vehicle in
+                DraggableView(vehicle: $vehicle)
+                    .onTapGesture {
+                        selectedVehicle = vehicle
+                    }
+            }
+            
             RotationButtoView(vehicleManager: vehicleManager, selectedVehicle: $selectedVehicle)
             ScaleButtonView(vehicleManager: vehicleManager, selectedVehicle: $selectedVehicle)
             ActionButtonView(presenter: presenter, vehicleManager: vehicleManager)
