@@ -10,7 +10,7 @@ import Foundation
 @testable import Accidents
 
 class MockAccidentReportRepository: AccidentReportRepository {
-    
+
     var savedReport: AccidentReport?
     var updatedReport: AccidentReport?
     var fetchedReports: [AccidentReport] = []
@@ -19,30 +19,28 @@ class MockAccidentReportRepository: AccidentReportRepository {
     var saveError: Error?
     var removeError: Error?
     var updateError: Error?
-    
+
     func saveReport(_ report: AccidentReport) async throws {
         if let error = saveError {
             throw error
         }
         savedReport = report
-        
     }
-    
+
     func fetchAll() async throws -> [AccidentReport] {
         if let error = fetchError {
             throw error
         }
         return fetchedReports
-        
     }
-    
+
     func removeReport(_ report: AccidentReport) async throws {
         if let error = removeError {
             throw error
         }
         removedReport = report
     }
-    
+
     func updateReport(_ updatedReport: Accidents.AccidentReport) async throws {
         if let error = updateError {
             throw error

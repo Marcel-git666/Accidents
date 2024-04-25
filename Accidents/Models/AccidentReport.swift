@@ -17,19 +17,7 @@ struct AccidentReport: Identifiable, Hashable, Codable {
     var pointOfImpact1: PointOfImpact?
     var pointOfImpact2: PointOfImpact?
     var accidentSituation: AccidentSituation?
-    
-    init(id: UUID, accidentLocation: AccidentLocation, driver: Driver, otherDriver: Driver?, accidentDescription: AccidentDescription, pointOfImpact1: PointOfImpact?, pointOfImpact2: PointOfImpact?, accidentSituation: AccidentSituation?) {
-        self.id = id
-        self.accidentLocation = accidentLocation
-        self.driver = driver
-        self.otherDriver = otherDriver
-        self.accidentDescription = accidentDescription
-        self.pointOfImpact1 = pointOfImpact1
-        self.pointOfImpact2 = pointOfImpact2
-        self.accidentSituation = accidentSituation
-    }
-
-    
+        
     static func == (lhs: AccidentReport, rhs: AccidentReport) -> Bool {
         lhs.id == rhs.id
     }
@@ -44,10 +32,12 @@ struct AccidentReport: Identifiable, Hashable, Codable {
         let sampleAccidentReport = AccidentReport(
             id: UUID(),
             accidentLocation: AccidentLocation(
-                date: date, city: "Prague", street: "Wenceslas Square", houseNumber: "1a", kilometerReading: "0", injuries: false, witnesses: [Witness.sample], otherDamage: false, policeInvolved: true
+                date: date, city: "Prague", street: "Wenceslas Square", houseNumber: "1a", kilometerReading: "0", injuries: false, 
+                witnesses: [Witness.sample], otherDamage: false, policeInvolved: true
             ), driver: Driver.sample1,
             otherDriver: Driver.sample2,
-            accidentDescription: AccidentDescription(notes1: "", notes2: "", vehicleDamage1: Array(repeating: false, count: 17), vehicleDamage2: Array(repeating: false, count: 17)),
+            accidentDescription: AccidentDescription(notes1: "", notes2: "", vehicleDamage1: Array(repeating: false, count: 17), 
+                                                     vehicleDamage2: Array(repeating: false, count: 17)),
             pointOfImpact1: nil,
             pointOfImpact2: nil,
             accidentSituation: AccidentSituation(roadShape: .crossroad)
@@ -99,8 +89,21 @@ struct Driver: Codable {
     var categoryOfLicense: String
     var licenseIssuedBy: String
     
-    static let sample1 = Driver(insuredName: "CEZ a.s.", insuredAddress: "Somehwhere in bushes", insuredPhone: "12345644", insuredPayerOfVAT: true, vehicleManufacturerAndType: "Mercedes Benz ML", vehicleYearOfManufacture: "2010", vehicleStateRegistrationPlate: "JUDO1", insurer: "Kooperativa a.s.", insurerBranchAddress: "somewhere in Prague", insuranceNumber: "12311122AA", greenCardNumber: "1232155", borderInsuranceValidUntil: Date.now, comprehensiveInsurance: true, comprehensiveInsuranceCompany: "Allianz Pojistovna a.s.", surnameOfDriver: "Z depa", firstNameOfDriver: "Pepa", addressOfDriver: "Krnov", phoneNumberOfDriver: "1231223", driverLicenseNumber: "unknown", categoryOfLicense: "AM2", licenseIssuedBy: "Magistrat mesta Olomouce")
-    static let sample2 = Driver(insuredName: "CEZ a.s.", insuredAddress: "Somehwhere in bushes", insuredPhone: "12345644", insuredPayerOfVAT: true, vehicleManufacturerAndType: "Wartburg", vehicleYearOfManufacture: "1988", vehicleStateRegistrationPlate: "POPELNICE", insurer: "Kooperativa a.s.", insurerBranchAddress: "somewhere in Prague", insuranceNumber: "12311122AA", greenCardNumber: "1232155", borderInsuranceValidUntil: Date.now, comprehensiveInsurance: true, comprehensiveInsuranceCompany: "Allianz Pojistovna a.s.", surnameOfDriver: "Z Ase", firstNameOfDriver: "Franta", addressOfDriver: "As", phoneNumberOfDriver: "1231223", driverLicenseNumber: "unknown", categoryOfLicense: "AM2", licenseIssuedBy: "Magistrat mesta Karlovy Vary")
+    static let sample1 = Driver(insuredName: "CEZ a.s.", insuredAddress: "Somehwhere in bushes", insuredPhone: "12345644", 
+                                insuredPayerOfVAT: true, vehicleManufacturerAndType: "Mercedes Benz ML", vehicleYearOfManufacture: "2010",
+                                vehicleStateRegistrationPlate: "JUDO1", insurer: "Kooperativa a.s.", insurerBranchAddress: "somewhere in Prague",
+                                insuranceNumber: "12311122AA", greenCardNumber: "1232155", borderInsuranceValidUntil: Date.now,
+                                comprehensiveInsurance: true, comprehensiveInsuranceCompany: "Allianz Pojistovna a.s.",
+                                surnameOfDriver: "Z depa", firstNameOfDriver: "Pepa", addressOfDriver: "Krnov", phoneNumberOfDriver: "1231223",
+                                driverLicenseNumber: "unknown", categoryOfLicense: "AM2", licenseIssuedBy: "Magistrat mesta Olomouce")
+    static let sample2 = Driver(insuredName: "CEZ a.s.", insuredAddress: "Somehwhere in bushes", insuredPhone: "12345644", 
+                                insuredPayerOfVAT: true, vehicleManufacturerAndType: "Wartburg", vehicleYearOfManufacture: "1988",
+                                vehicleStateRegistrationPlate: "POPELNICE", insurer: "Kooperativa a.s.", insurerBranchAddress: "somewhere in Prague", 
+                                insuranceNumber: "12311122AA", greenCardNumber: "1232155", borderInsuranceValidUntil: Date.now,
+                                comprehensiveInsurance: true, comprehensiveInsuranceCompany: "Allianz Pojistovna a.s.", 
+                                surnameOfDriver: "Z Ase", firstNameOfDriver: "Franta", addressOfDriver: "As",
+                                phoneNumberOfDriver: "1231223", driverLicenseNumber: "unknown", categoryOfLicense: "AM2",
+                                licenseIssuedBy: "Magistrat mesta Karlovy Vary")
 }
 
 struct Witness: Codable, Hashable {

@@ -47,7 +47,3 @@ struct RoadShapeView_Previews: PreviewProvider {
         }
     }
 }
-
-
-
-

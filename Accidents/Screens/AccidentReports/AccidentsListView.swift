@@ -33,13 +33,11 @@ struct AccidentsListView: View {
             .refreshable {
                 await presenter.fetchAccidents()
             }
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                presenter.goNext()
-            }) {
-                Label("New Accident", systemImage: "plus")
-            }
-            )
+            .navigationBarItems(trailing: Button(action: {
+              presenter.goNext()
+            }, label: {
+              Label("New Accident", systemImage: "plus")
+            }))
             EmptyListView().opacity(presenter.accidentReports.isEmpty ? 1 : 0)
 //            if let errorMessage = presenter.errorMessage {
 //                ARErrorBlock(errorMessage: errorMessage)

@@ -29,10 +29,7 @@ struct ActionButtonView: View {
         }
         .padding()
     }
-    
-    
 }
-
 
 #Preview {
     ActionButtonView(presenter: MockPresenter(repository: MockDataRepository()), vehicleManager: VehicleManager())

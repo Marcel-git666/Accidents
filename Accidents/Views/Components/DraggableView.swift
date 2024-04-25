@@ -17,7 +17,7 @@ struct DraggableView: View {
                 vehicle.location = value.location
                 self.isDragging = true
             }
-            .onEnded { value in
+            .onEnded { _ in
                 self.isDragging = false
             }
     }
@@ -49,10 +49,12 @@ struct DraggableView: View {
     
 }
 
-
 struct DraggableView_Previews: PreviewProvider {
     static var previews: some View {
-        let sampleVehicle = Vehicle(id: UUID().uuidString, location: CGPoint(x: 100, y: 100), imageName: "motorcycle", rotationAngle: .degrees(-15), scale: 0.8)
+        let sampleVehicle = Vehicle(
+            id: UUID().uuidString,
+            location: CGPoint(x: 100, y: 100), imageName: "motorcycle",
+            rotationAngle: .degrees(-15), scale: 0.8)
         
         return VStack {
             DraggableView(vehicle: .constant(sampleVehicle))
@@ -60,4 +62,3 @@ struct DraggableView_Previews: PreviewProvider {
         }
     }
 }
-

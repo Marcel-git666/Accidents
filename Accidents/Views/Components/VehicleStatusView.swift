@@ -26,14 +26,15 @@ struct VehicleStatusView: View {
     }
 }
 
-
 struct MockVehicleStatusView: View {
     @State private var isSelected1 = false
     @State private var isSelected2 = true
 
     var body: some View {
         VehicleStatusView(vehicleStatusDescription: "was parking", isSelected1: $isSelected1, isSelected2: $isSelected2)
-        VehicleStatusView(vehicleStatusDescription: "Rear-ended while driving in the same direction and lane", isSelected1: $isSelected1, isSelected2: $isSelected2)
+        VehicleStatusView(
+            vehicleStatusDescription: "Rear-ended while driving in the same direction and lane",
+            isSelected1: $isSelected1, isSelected2: $isSelected2)
     }
 }
 

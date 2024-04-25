@@ -36,7 +36,6 @@ struct TitledBorderTextField: View {
 struct MockTitledBorderTextField: View {
     @State private var text = ""
     
-    
     var body: some View {
         TitledBorderTextField(title: "Vehicle A", text: $text, placeholder: "Add some damage", titleColor: .accentColor)
     }

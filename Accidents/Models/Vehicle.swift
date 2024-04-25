@@ -52,7 +52,6 @@ struct Vehicle: Codable, Identifiable {
     }
 }
 
-
 struct RotatableObject: Codable {
     var degrees: Double
 }

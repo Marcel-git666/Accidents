@@ -31,7 +31,6 @@ struct PreloadDataView: View {
     }
 }
 
-
 #Preview {
     PreloadDataView()
 }

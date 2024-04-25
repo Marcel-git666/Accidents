@@ -31,7 +31,7 @@ struct WitnessView: View {
 #Preview {
     WitnessView(witness: Binding<Witness>(
         get: { Witness.sample },
-        set: { newValue in
+        set: { _ in
         }
     ))
     .padding()

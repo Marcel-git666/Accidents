@@ -27,7 +27,6 @@ struct DraggableArrowView: View {
     }
 }
 
-
 #Preview {
     DraggableArrowView(crashPoint: CGPoint(x: 200, y: 200), scale: 1, arrowRotation: 45)
 }

@@ -15,7 +15,11 @@ class CoreDataRepository: AccidentReportRepository {
     }
     
     func createAccidentReportData(from report: AccidentReport) -> AccidentReportData {
-        let newReportData = NSEntityDescription.insertNewObject(forEntityName: K.reportEntity, into: context) as! AccidentReportData
+        guard let reportEntity = NSEntityDescription.entity(forEntityName: Constants.reportEntity, in: context) else {
+            fatalError("Failed to find entity description for AccidentReportData")
+        }
+        
+        let newReportData = AccidentReportData(entity: reportEntity, insertInto: context)
         
         do {
             let reportData = try JSONEncoder().encode(report)
@@ -39,7 +43,7 @@ class CoreDataRepository: AccidentReportRepository {
     }
     
     func fetchAll() async throws -> [AccidentReport] {
-      let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: K.reportEntity)
+      let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: Constants.reportEntity)
 
       do {
         let fetchedReports = try context.fetch(fetchRequest)
@@ -62,7 +66,7 @@ class CoreDataRepository: AccidentReportRepository {
     }
     
     func removeReport(_ report: AccidentReport) async throws {
-        let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: K.reportEntity)
+        let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: Constants.reportEntity)
         
         // Add a predicate to filter based on report properties 
         fetchRequest.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(AccidentReportData.idReport), report.id])
@@ -81,7 +85,7 @@ class CoreDataRepository: AccidentReportRepository {
     }
     
     func updateReport(_ updatedReport: AccidentReport) async throws {
-        let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: K.reportEntity)
+        let fetchRequest: NSFetchRequest<AccidentReportData> = NSFetchRequest(entityName: Constants.reportEntity)
         fetchRequest.predicate = NSPredicate(format: "%K == %@", argumentArray: [#keyPath(AccidentReportData.idReport), updatedReport.id])
         
         do {

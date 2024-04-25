@@ -5,15 +5,12 @@
 //  Created by Marcel Mravec on 27.03.2024.
 //
 
-
 import SwiftUI
 
 struct AccidentSituationView: View {
     @ObservedObject var presenter: AccidentsPresenter
     @EnvironmentObject var vehicleManager: VehicleManager
-    @State private var selectedVehicle: Vehicle? = nil
-//    @State private var rotationAngle: Angle = .degrees(0)
-//    @State private var scaleValue: CGFloat = 1.0
+    @State private var selectedVehicle: Vehicle?
     
     var body: some View {
         ZStack {
@@ -26,7 +23,10 @@ struct AccidentSituationView: View {
             VStack {
                 VehicleButtonView(presenter: presenter, vehicleManager: vehicleManager)
                 HStack {
-                    ControlButtonView(roadShape: $presenter.accidentSituation.roadShape, vehicleManager: vehicleManager, selectedVehicle: $selectedVehicle)
+                    ControlButtonView(
+                        roadShape: $presenter.accidentSituation.roadShape,
+                        vehicleManager: vehicleManager,
+                        selectedVehicle: $selectedVehicle)
                     Spacer()
                 }
                 
@@ -56,21 +56,29 @@ struct AccidentSituationView: View {
         
         // Load other vehicles from presenter.accidentSituation
         presenter.accidentSituation.otherVehicles.forEach { vehicle in
-            vehicleManager.addOtherVehicle(location: vehicle.location, imageName: vehicle.imageName, rotationAngle: vehicle.rotationAngle, scale: vehicle.scale)
+            vehicleManager.addOtherVehicle(
+                location: vehicle.location, imageName: vehicle.imageName,
+                rotationAngle: vehicle.rotationAngle, scale: vehicle.scale)
         }
         
         // Load blue vehicle, if available
         if let blueVehicle = presenter.accidentSituation.blueVehicle {
-            vehicleManager.addBlueVehicle(location: blueVehicle.location, imageName: blueVehicle.imageName, rotationAngle: blueVehicle.rotationAngle, scale: blueVehicle.scale)
+            vehicleManager.addBlueVehicle(
+                location: blueVehicle.location, imageName: blueVehicle.imageName,
+                rotationAngle: blueVehicle.rotationAngle,
+                scale: blueVehicle.scale)
         }
         
         // Load yellow vehicle, if available
         if let yellowVehicle = presenter.accidentSituation.yellowVehicle {
-            vehicleManager.addYellowVehicle(location: yellowVehicle.location, imageName: yellowVehicle.imageName, rotationAngle: yellowVehicle.rotationAngle, scale: yellowVehicle.scale)
+            vehicleManager.addYellowVehicle(
+                location: yellowVehicle.location,
+                imageName: yellowVehicle.imageName,
+                rotationAngle: yellowVehicle.rotationAngle,
+                scale: yellowVehicle.scale)
         }
     }
 }
-
 
 struct AccidentSituationView_Previews: PreviewProvider {
     static var previews: some View {

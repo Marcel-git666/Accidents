@@ -63,38 +63,38 @@ struct AccidentCrashPointView: View {
                         Spacer()
                         Button(action: {
                             pointOfImpact.arrowRotation -= 15
-                        }) {
+                        }, label: {
                             Image(systemName: "arrowtriangle.left.fill")
                                 .scaleEffect(x: 3, y: 3)
-                        }
+                        })
                         Spacer()
                         Button(action: {
                             pointOfImpact.arrowRotation += 15
-                        }) {
+                        }, label: {
                             Image(systemName: "arrowtriangle.right.fill")
                                 .scaleEffect(x: 3, y: 3)
-                        }
+                        })
                         Spacer()
                         
                         Button(action: {
                             if pointOfImpact.scale < 1.7 {
                                 pointOfImpact.scale += 0.25
                             }
-                        }) {
+                        }, label: {
                             Image(systemName: "arrowtriangle.up.fill")
                                 .foregroundColor(.accentColor)
                                 .scaleEffect(CGSize(width: 3, height: 3))
-                        }
+                        })
                         Spacer()
                         Button(action: {                   
                             if pointOfImpact.scale > 0.4 {
                                 pointOfImpact.scale -= 0.25
                             }
-                        }) {
+                        }, label: {
                             Image(systemName: "arrowtriangle.down.fill")
                                 .foregroundColor(.accentColor)
                                 .scaleEffect(CGSize(width: 3, height: 3))
-                        }
+                        })
                         Spacer()
                         
                         Button(action: {
@@ -103,11 +103,11 @@ struct AccidentCrashPointView: View {
                                 pointOfImpact.arrowRotation = 0
                                 pointOfImpact.scale = 1.0
                             }
-                        }) {
+                        }, label: {
                             Image(systemName: "arrow.uturn.backward")
                                 .foregroundColor(.accentColor)
                                 .scaleEffect(CGSize(width: 3, height: 3))
-                        }
+                        })
                         Spacer()
                     }
                     .position(x: geometry.size.width / 2, y: geometry.size.height - 50)
@@ -126,13 +126,11 @@ struct AccidentCrashPointView: View {
     
 }
 
-
-
 struct AccidentCrashPointView_Previews: PreviewProvider {
   static var previews: some View {
     let pointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 45, scale: 0.9)
     return AccidentCrashPointView(presenter: AccidentsPresenter(repository: MockDataRepository()), pointOfImpact: { () -> Binding<PointOfImpact> in
-      return Binding<PointOfImpact>(get: { pointOfImpact }, set: { newValue in
+      return Binding<PointOfImpact>(get: { pointOfImpact }, set: { _ in
       })
     }())
   }

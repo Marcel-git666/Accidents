@@ -17,20 +17,20 @@ struct ScaleButtonView: View {
                 if let selectedVehicle = selectedVehicle {
                     scaleUp(vehicle: selectedVehicle)
                 }
-            }) {
+            }, label: {
                 Image(systemName: "plus")
                     .padding()
-            }
+            })
             .disabled(selectedVehicle == nil)
             
             Button(action: {
                 if let selectedVehicle = selectedVehicle {
                     scaleDown(vehicle: selectedVehicle)
                 }
-            }) {
+            }, label: {
                 Image(systemName: "minus")
                     .padding()
-            }
+            })
             .disabled(selectedVehicle == nil)
         }
         .position(x: 50, y: UIScreen.main.bounds.midY - 120)
@@ -47,10 +47,11 @@ struct ScaleButtonView: View {
     }
 }
 
-struct ScaleButtonView_previews: PreviewProvider {
+struct ScaleButtonView_Previews: PreviewProvider {
     static var previews: some View {
         let vehicleManager = VehicleManager()
-        let selectedVehicle = Binding<Vehicle?>(get: { return Vehicle(id: "1", location: .zero, imageName: "car", rotationAngle: .zero, scale: 1.0) }, set: { _ in })
+        let selectedVehicle = Binding<Vehicle?>(get: { return 
+            Vehicle(id: "1", location: .zero, imageName: "car", rotationAngle: .zero, scale: 1.0) }, set: { _ in })
         
         return ScaleButtonView(vehicleManager: vehicleManager, selectedVehicle: selectedVehicle)
     }

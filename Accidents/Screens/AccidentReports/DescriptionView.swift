@@ -42,7 +42,9 @@ struct DescriptionView: View {
             }
             ScrollView {
                 ForEach(vehicleStatusDescription.indices, id: \.self) { index in
-                    VehicleStatusView(vehicleStatusDescription: vehicleStatusDescription[index], isSelected1: $presenter.accidentDescription.vehicleDamage1[index], isSelected2: $presenter.accidentDescription.vehicleDamage2[index])
+                    VehicleStatusView(vehicleStatusDescription: vehicleStatusDescription[index], 
+                                      isSelected1: $presenter.accidentDescription.vehicleDamage1[index],
+                                      isSelected2: $presenter.accidentDescription.vehicleDamage2[index])
                 }
                 
             }
@@ -66,4 +68,3 @@ struct DescriptionView: View {
 #Preview {
     DescriptionView(presenter: MockPresenter(repository: MockDataRepository()))
 }
-

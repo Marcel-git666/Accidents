@@ -15,11 +15,10 @@ struct TickBox: View {
         Toggle(isOn: $isSelected) {
             Text(text)
         }
-        .toggleStyle(iOSCheckboxToggleStyle())
+        .toggleStyle(IOSCheckboxToggleStyle())
         
     }
 }
-
 
 #Preview {
     Group {

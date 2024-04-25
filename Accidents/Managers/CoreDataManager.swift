@@ -14,8 +14,8 @@ class CoreDataManager {
   private let persistentContainer: NSPersistentContainer
 
   init() {
-    persistentContainer = NSPersistentContainer(name: K.containerName)
-    persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
+    persistentContainer = NSPersistentContainer(name: Constants.containerName)
+    persistentContainer.loadPersistentStores(completionHandler: { (_, error) in
       if let error = error as NSError? {
         // Handle loading errors
         fatalError("Unresolved error \(error), \(error.userInfo)")

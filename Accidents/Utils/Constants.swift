@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum K {
+enum Constants {
     static let containerName = "Accidents"
     static let reportEntity = "AccidentReportData"
     static let locationEntity = "AccidentLocationData"
