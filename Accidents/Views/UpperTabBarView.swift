@@ -66,9 +66,9 @@ struct UpperTabBarView: View {
             .onEnded { value in
                 let translation = value.translation.width
                 if translation > 0 { // Swipe right
-                    presenter.goNext()
-                } else if translation < 0 { // Swipe left
                     presenter.goBack()
+                } else if translation < 0 { // Swipe left
+                    presenter.goNext()
                 }
             })
         
