@@ -37,6 +37,7 @@ class AccidentsPresenter: ObservableObject {
     @Published var pointOfImpact1: PointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 0, scale: 1)
     @Published var pointOfImpact2: PointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 0, scale: 1)
     @Published var accidentSituation: AccidentSituation = AccidentSituation(roadShape: .crossroad)
+    @Published var transitionEffect: AnyTransition = .scale
     
     init(repository: AccidentReportRepository) {
         self.repository = repository
