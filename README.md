@@ -14,4 +14,5 @@ This project facilitates the completion of the European accident report form usi
 
 [European accident report form](https://github.com/Marcel-git666/Accidents/blob/master/Accidents/Assets.xcassets/form.imageset/form.pdf)
 ## Video Demo
-[![Watch the video](https://drive.google.com/file/d/162Ap0XEShYjh8GJCAWfgykJ_9_jC2KZX/view?usp=share_link)]
+https://github.com/Marcel-git666/Accidents/assets/93435045/41460875-2465-435b-b77d-ac5032e046e9
+
