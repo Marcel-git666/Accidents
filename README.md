@@ -9,8 +9,9 @@ This project facilitates the completion of the European accident report form usi
 
 ## Screenshots
 ![Screenshot1](https://github.com/Marcel-git666/Accidents/blob/master/Accidents/Assets.xcassets/ss0.imageset/ss0.png?raw=true)
-![Screenshot2](Accidents/Accidents
-/Assets.xcassets/ss2.png)
+![Screenshot2](https://github.com/Marcel-git666/Accidents/blob/master/Accidents/Assets.xcassets/ss0.imageset/ss0.png?raw=true)
 
+[European accident report form](https://github.com/Marcel-git666/Accidents/blob/master/Accidents/Assets.xcassets/form.imageset
+/form.pdf)
 ## Video Demo
 [![Watch the video](path/to/thumbnail.png)](path/to/demo_video.mp4)
