@@ -8,8 +8,7 @@ This project facilitates the completion of the European accident report form usi
 - Persistent data storage with CoreData
 
 ## Screenshots
-![Screenshot1](Accidents/Accidents
-/Assets.xcassets/ss1.png)
+![Screenshot1](https://github.com/Marcel-git666/Accidents/blob/master/Accidents/Assets.xcassets/ss0.imageset/ss0.png?raw=true)
 ![Screenshot2](Accidents/Accidents
 /Assets.xcassets/ss2.png)
 
