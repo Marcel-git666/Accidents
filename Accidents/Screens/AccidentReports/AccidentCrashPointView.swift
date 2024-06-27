@@ -112,6 +112,7 @@ struct AccidentCrashPointView: View {
                     }
                     .position(x: geometry.size.width / 2, y: geometry.size.height - 50)
                 }
+                .contentShape(Rectangle())
             }
             HStack {
                 ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
