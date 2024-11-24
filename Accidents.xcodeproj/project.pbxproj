@@ -6,11 +6,6 @@
 	objectVersion = 70;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		1FCDA7D52BA87C1700D98A73 /* AccidentsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDA7D42BA87C1700D98A73 /* AccidentsPresenterTests.swift */; };
-		1FCDA7D82BA87D0100D98A73 /* MockAccidentReportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDA7D72BA87D0100D98A73 /* MockAccidentReportRepository.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		1FAEBB992B96159700659397 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -25,12 +20,11 @@
 		1F3FD9C32BA9B15000F0F07F /* Accidents.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Accidents.xctestplan; path = AccidentsTests/Accidents.xctestplan; sourceTree = "<group>"; };
 		1FAEBB882B96159500659397 /* Accidents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accidents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAEBB982B96159700659397 /* AccidentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccidentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FCDA7D42BA87C1700D98A73 /* AccidentsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsPresenterTests.swift; sourceTree = "<group>"; };
-		1FCDA7D72BA87D0100D98A73 /* MockAccidentReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccidentReportRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1FEB49D62CF31F94003E35F8 /* Accidents */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Accidents; sourceTree = "<group>"; };
+		1FEB4A112CF37309003E35F8 /* AccidentsTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AccidentsTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +50,7 @@
 			children = (
 				1F3FD9C32BA9B15000F0F07F /* Accidents.xctestplan */,
 				1FEB49D62CF31F94003E35F8 /* Accidents */,
-				1FAEBB9B2B96159700659397 /* AccidentsTests */,
+				1FEB4A112CF37309003E35F8 /* AccidentsTests */,
 				1FAEBB892B96159500659397 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,23 +62,6 @@
 				1FAEBB982B96159700659397 /* AccidentsTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		1FAEBB9B2B96159700659397 /* AccidentsTests */ = {
-			isa = PBXGroup;
-			children = (
-				1FCDA7D62BA87CE900D98A73 /* Mocks */,
-				1FCDA7D42BA87C1700D98A73 /* AccidentsPresenterTests.swift */,
-			);
-			path = AccidentsTests;
-			sourceTree = "<group>";
-		};
-		1FCDA7D62BA87CE900D98A73 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				1FCDA7D72BA87D0100D98A73 /* MockAccidentReportRepository.swift */,
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +100,9 @@
 			);
 			dependencies = (
 				1FAEBB9A2B96159700659397 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				1FEB4A112CF37309003E35F8 /* AccidentsTests */,
 			);
 			name = AccidentsTests;
 			productName = AccidentsTests;
@@ -218,8 +198,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FCDA7D82BA87D0100D98A73 /* MockAccidentReportRepository.swift in Sources */,
-				1FCDA7D52BA87C1700D98A73 /* AccidentsPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
