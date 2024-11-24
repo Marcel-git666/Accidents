@@ -3,64 +3,8 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
-
-/* Begin PBXBuildFile section */
-		1F117AD32BC073080078E3BC /* WitnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F117AD22BC073080078E3BC /* WitnessView.swift */; };
-		1F1961F82BAD95F200AFDD32 /* ARErrorBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961F72BAD95F200AFDD32 /* ARErrorBlock.swift */; };
-		1F1961FA2BAE0A6A00AFDD32 /* TickBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961F92BAE0A6A00AFDD32 /* TickBox.swift */; };
-		1F1961FD2BAE0B3700AFDD32 /* IOSCheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1961FC2BAE0B3700AFDD32 /* IOSCheckboxToggleStyle.swift */; };
-		1F1B5C3E2BB4148D00681429 /* UpperTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B5C3D2BB4148D00681429 /* UpperTabBarButton.swift */; };
-		1F1B5C402BB44ADE00681429 /* AccidentCrashPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B5C3F2BB44ADE00681429 /* AccidentCrashPointView.swift */; };
-		1F2A9C7B2BB6C8260039E269 /* AccidentGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A9C7A2BB6C8260039E269 /* AccidentGradient.swift */; };
-		1F2A9C7D2BB6CD740039E269 /* AccidentReportNavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A9C7C2BB6CD740039E269 /* AccidentReportNavigationState.swift */; };
-		1F4DDC9B2BE1611C002A826F /* AnyTransitions+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DDC9A2BE1611C002A826F /* AnyTransitions+Ext.swift */; };
-		1F5164BE2BB2BE2300FC4FB8 /* VisibleDamageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5164BD2BB2BE2300FC4FB8 /* VisibleDamageView.swift */; };
-		1F5164C12BB2D97000FC4FB8 /* VehicleStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5164C02BB2D97000FC4FB8 /* VehicleStatusView.swift */; };
-		1F5164C42BB30B7300FC4FB8 /* TitledBorderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5164C32BB30B7300FC4FB8 /* TitledBorderTextField.swift */; };
-		1F703A722BAB36AC009CD10A /* AccidentsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A712BAB36AC009CD10A /* AccidentsListView.swift */; };
-		1F703A752BAB3A05009CD10A /* MockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A742BAB3A05009CD10A /* MockPresenter.swift */; };
-		1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703A762BAB3A3E009CD10A /* MockDataRepository.swift */; };
-		1F7060092BCD6D7900777317 /* RoadShapeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7060082BCD6D7900777317 /* RoadShapeSelector.swift */; };
-		1F791F592BB5FFFA003EB908 /* Accidents.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F791F572BB5FFF9003EB908 /* Accidents.xcdatamodeld */; };
-		1FA0D3942BC190F700A7972A /* AccidentSituationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3932BC190F700A7972A /* AccidentSituationView.swift */; };
-		1FA0D3982BC1E5C300A7972A /* RoadShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3972BC1E5C300A7972A /* RoadShape.swift */; };
-		1FA0D39A2BC2C85400A7972A /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3992BC2C85400A7972A /* DraggableView.swift */; };
-		1FA0D39C2BC2D10900A7972A /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D39B2BC2D10900A7972A /* Vehicle.swift */; };
-		1FA0D3A12BC2D22700A7972A /* VehicleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0D3A02BC2D22700A7972A /* VehicleManager.swift */; };
-		1FAEBB8C2B96159500659397 /* AccidentsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8B2B96159500659397 /* AccidentsApp.swift */; };
-		1FAEBB8E2B96159500659397 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8D2B96159500659397 /* MainTabView.swift */; };
-		1FAEBB902B96159700659397 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FAEBB8F2B96159700659397 /* Assets.xcassets */; };
-		1FAEBB932B96159700659397 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FAEBB922B96159700659397 /* Preview Assets.xcassets */; };
-		1FAEBBB82B9616C500659397 /* AccidentsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBB72B9616C500659397 /* AccidentsNavigationView.swift */; };
-		1FAEBBBC2B9617E500659397 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBBB2B9617E500659397 /* SettingsView.swift */; };
-		1FAEBBBE2B96183600659397 /* PreloadDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBBD2B96183600659397 /* PreloadDataView.swift */; };
-		1FAEBBC12B96197E00659397 /* AccidentReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBC02B96197E00659397 /* AccidentReport.swift */; };
-		1FAEBBC32B961EA700659397 /* AccidentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBC22B961EA700659397 /* AccidentLocationView.swift */; };
-		1FAEBBC82B964E4300659397 /* AccidentListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */; };
-		1FBD04712BB3599400719A16 /* ACButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD04702BB3599400719A16 /* ACButton.swift */; };
-		1FBDAF542BA71A1A00B494B2 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBDAF532BA71A1A00B494B2 /* CoreDataError.swift */; };
-		1FBE2FFA2B9720C600BF1980 /* AccidentReportFillingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */; };
-		1FBE2FFE2B97332B00BF1980 /* DriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2FFD2B97332A00BF1980 /* DriverView.swift */; };
-		1FC5C3662BB18A7D0032B50F /* UpperTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5C3652BB18A7D0032B50F /* UpperTabBarView.swift */; };
-		1FC5C3682BB1BEAA0032B50F /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5C3672BB1BEAA0032B50F /* DescriptionView.swift */; };
-		1FCB61C02BB6211600E0B49A /* DraggableArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCB61BF2BB6211600E0B49A /* DraggableArrowView.swift */; };
-		1FCDA7D52BA87C1700D98A73 /* AccidentsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDA7D42BA87C1700D98A73 /* AccidentsPresenterTests.swift */; };
-		1FCDA7D82BA87D0100D98A73 /* MockAccidentReportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDA7D72BA87D0100D98A73 /* MockAccidentReportRepository.swift */; };
-		1FD319B72BA48B4F00B9CEE6 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD319B62BA48B4F00B9CEE6 /* CoreDataRepository.swift */; };
-		1FD319C02BA49EA000B9CEE6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD319BF2BA49EA000B9CEE6 /* Constants.swift */; };
-		1FD319C32BA4C79C00B9CEE6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD319C22BA4C79C00B9CEE6 /* CoreDataManager.swift */; };
-		1FD6109B2BA48AC4008992B3 /* AccidentReportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD6109A2BA48AC4008992B3 /* AccidentReportRepository.swift */; };
-		1FEE2D792BD6917100975CB6 /* RoadShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE2D782BD6917100975CB6 /* RoadShapeView.swift */; };
-		1FEE2D7B2BD6968C00975CB6 /* ControlButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE2D7A2BD6968C00975CB6 /* ControlButtonView.swift */; };
-		1FEE2D7D2BD698C900975CB6 /* VehicleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE2D7C2BD698C900975CB6 /* VehicleButtonView.swift */; };
-		1FEE2D7F2BD69CA100975CB6 /* RotationButtoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE2D7E2BD69CA100975CB6 /* RotationButtoView.swift */; };
-		1FEE2D812BD6A2B000975CB6 /* ScaleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE2D802BD6A2B000975CB6 /* ScaleButtonView.swift */; };
-		1FEE2D832BD6A39200975CB6 /* ActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE2D822BD6A39200975CB6 /* ActionButtonView.swift */; };
-		1FF1FB6D2BAF375C00E0CA88 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF1FB6C2BAF375C00E0CA88 /* EmptyListView.swift */; };
-		1FF2CD992BA35CBF001E1478 /* AccidentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF2CD982BA35CBF001E1478 /* AccidentsPresenter.swift */; };
-/* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		1FAEBB992B96159700659397 /* PBXContainerItemProxy */ = {
@@ -73,63 +17,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F117AD22BC073080078E3BC /* WitnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WitnessView.swift; sourceTree = "<group>"; };
-		1F1961F72BAD95F200AFDD32 /* ARErrorBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARErrorBlock.swift; sourceTree = "<group>"; };
-		1F1961F92BAE0A6A00AFDD32 /* TickBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickBox.swift; sourceTree = "<group>"; };
-		1F1961FC2BAE0B3700AFDD32 /* IOSCheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSCheckboxToggleStyle.swift; sourceTree = "<group>"; };
-		1F1B5C3D2BB4148D00681429 /* UpperTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperTabBarButton.swift; sourceTree = "<group>"; };
-		1F1B5C3F2BB44ADE00681429 /* AccidentCrashPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentCrashPointView.swift; sourceTree = "<group>"; };
-		1F2A9C7A2BB6C8260039E269 /* AccidentGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentGradient.swift; sourceTree = "<group>"; };
-		1F2A9C7C2BB6CD740039E269 /* AccidentReportNavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportNavigationState.swift; sourceTree = "<group>"; };
-		1F3FD9C32BA9B15000F0F07F /* Accidents.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Accidents.xctestplan; path = AccidentsTests/Accidents.xctestplan; sourceTree = "<group>"; };
-		1F4DDC9A2BE1611C002A826F /* AnyTransitions+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransitions+Ext.swift"; sourceTree = "<group>"; };
-		1F5164BD2BB2BE2300FC4FB8 /* VisibleDamageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleDamageView.swift; sourceTree = "<group>"; };
-		1F5164C02BB2D97000FC4FB8 /* VehicleStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStatusView.swift; sourceTree = "<group>"; };
-		1F5164C32BB30B7300FC4FB8 /* TitledBorderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledBorderTextField.swift; sourceTree = "<group>"; };
-		1F703A712BAB36AC009CD10A /* AccidentsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsListView.swift; sourceTree = "<group>"; };
-		1F703A742BAB3A05009CD10A /* MockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPresenter.swift; sourceTree = "<group>"; };
-		1F703A762BAB3A3E009CD10A /* MockDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataRepository.swift; sourceTree = "<group>"; };
-		1F7060082BCD6D7900777317 /* RoadShapeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadShapeSelector.swift; sourceTree = "<group>"; };
-		1F791F582BB5FFF9003EB908 /* Accidents.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Accidents.xcdatamodel; sourceTree = "<group>"; };
-		1FA0D3932BC190F700A7972A /* AccidentSituationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentSituationView.swift; sourceTree = "<group>"; };
-		1FA0D3972BC1E5C300A7972A /* RoadShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadShape.swift; sourceTree = "<group>"; };
-		1FA0D3992BC2C85400A7972A /* DraggableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
-		1FA0D39B2BC2D10900A7972A /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
-		1FA0D3A02BC2D22700A7972A /* VehicleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleManager.swift; sourceTree = "<group>"; };
 		1FAEBB882B96159500659397 /* Accidents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accidents.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FAEBB8B2B96159500659397 /* AccidentsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsApp.swift; sourceTree = "<group>"; };
-		1FAEBB8D2B96159500659397 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		1FAEBB8F2B96159700659397 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1FAEBB922B96159700659397 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1FAEBB982B96159700659397 /* AccidentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccidentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FAEBBB72B9616C500659397 /* AccidentsNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsNavigationView.swift; sourceTree = "<group>"; };
-		1FAEBBBB2B9617E500659397 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		1FAEBBBD2B96183600659397 /* PreloadDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadDataView.swift; sourceTree = "<group>"; };
-		1FAEBBC02B96197E00659397 /* AccidentReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReport.swift; sourceTree = "<group>"; };
-		1FAEBBC22B961EA700659397 /* AccidentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentLocationView.swift; sourceTree = "<group>"; };
-		1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentListItemView.swift; sourceTree = "<group>"; };
-		1FBD04702BB3599400719A16 /* ACButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACButton.swift; sourceTree = "<group>"; };
-		1FBDAF532BA71A1A00B494B2 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
-		1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportFillingState.swift; sourceTree = "<group>"; };
-		1FBE2FFD2B97332A00BF1980 /* DriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverView.swift; sourceTree = "<group>"; };
-		1FC5C3652BB18A7D0032B50F /* UpperTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperTabBarView.swift; sourceTree = "<group>"; };
-		1FC5C3672BB1BEAA0032B50F /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
-		1FCB61BF2BB6211600E0B49A /* DraggableArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableArrowView.swift; sourceTree = "<group>"; };
-		1FCDA7D42BA87C1700D98A73 /* AccidentsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsPresenterTests.swift; sourceTree = "<group>"; };
-		1FCDA7D72BA87D0100D98A73 /* MockAccidentReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccidentReportRepository.swift; sourceTree = "<group>"; };
-		1FD319B62BA48B4F00B9CEE6 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
-		1FD319BF2BA49EA000B9CEE6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		1FD319C22BA4C79C00B9CEE6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		1FD6109A2BA48AC4008992B3 /* AccidentReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportRepository.swift; sourceTree = "<group>"; };
-		1FEE2D782BD6917100975CB6 /* RoadShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadShapeView.swift; sourceTree = "<group>"; };
-		1FEE2D7A2BD6968C00975CB6 /* ControlButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButtonView.swift; sourceTree = "<group>"; };
-		1FEE2D7C2BD698C900975CB6 /* VehicleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleButtonView.swift; sourceTree = "<group>"; };
-		1FEE2D7E2BD69CA100975CB6 /* RotationButtoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationButtoView.swift; sourceTree = "<group>"; };
-		1FEE2D802BD6A2B000975CB6 /* ScaleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleButtonView.swift; sourceTree = "<group>"; };
-		1FEE2D822BD6A39200975CB6 /* ActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonView.swift; sourceTree = "<group>"; };
-		1FF1FB6C2BAF375C00E0CA88 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
-		1FF2CD982BA35CBF001E1478 /* AccidentsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		1FEB49482CF0D73E003E35F8 /* Accidents */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Accidents; sourceTree = "<group>"; };
+		1FEB49822CF0D78B003E35F8 /* AccidentsTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AccidentsTests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1FAEBB852B96159500659397 /* Frameworks */ = {
@@ -149,107 +44,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F1961F52BAD95CE00AFDD32 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				1F4DDC992BE16100002A826F /* Transitions */,
-				1F5164C22BB30B5700FC4FB8 /* TextFields */,
-				1FC5C3642BB1837B0032B50F /* Buttons */,
-				1F1961FB2BAE0B2100AFDD32 /* Styles */,
-				1F1961F62BAD95D600AFDD32 /* ErrorBlock */,
-				1F1961F92BAE0A6A00AFDD32 /* TickBox.swift */,
-				1FAEBBC72B964E4300659397 /* AccidentListItemView.swift */,
-				1FF1FB6C2BAF375C00E0CA88 /* EmptyListView.swift */,
-				1F5164BD2BB2BE2300FC4FB8 /* VisibleDamageView.swift */,
-				1F5164C02BB2D97000FC4FB8 /* VehicleStatusView.swift */,
-				1FCB61BF2BB6211600E0B49A /* DraggableArrowView.swift */,
-				1FA0D3992BC2C85400A7972A /* DraggableView.swift */,
-				1F2A9C7A2BB6C8260039E269 /* AccidentGradient.swift */,
-				1F117AD22BC073080078E3BC /* WitnessView.swift */,
-				1FA0D3972BC1E5C300A7972A /* RoadShape.swift */,
-				1FEE2D782BD6917100975CB6 /* RoadShapeView.swift */,
-				1FEE2D7A2BD6968C00975CB6 /* ControlButtonView.swift */,
-				1FEE2D7C2BD698C900975CB6 /* VehicleButtonView.swift */,
-				1FEE2D7E2BD69CA100975CB6 /* RotationButtoView.swift */,
-				1FEE2D802BD6A2B000975CB6 /* ScaleButtonView.swift */,
-				1FEE2D822BD6A39200975CB6 /* ActionButtonView.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		1F1961F62BAD95D600AFDD32 /* ErrorBlock */ = {
-			isa = PBXGroup;
-			children = (
-				1F1961F72BAD95F200AFDD32 /* ARErrorBlock.swift */,
-			);
-			path = ErrorBlock;
-			sourceTree = "<group>";
-		};
-		1F1961FB2BAE0B2100AFDD32 /* Styles */ = {
-			isa = PBXGroup;
-			children = (
-				1F1961FC2BAE0B3700AFDD32 /* IOSCheckboxToggleStyle.swift */,
-			);
-			path = Styles;
-			sourceTree = "<group>";
-		};
-		1F4DDC992BE16100002A826F /* Transitions */ = {
-			isa = PBXGroup;
-			children = (
-				1F4DDC9A2BE1611C002A826F /* AnyTransitions+Ext.swift */,
-			);
-			path = Transitions;
-			sourceTree = "<group>";
-		};
-		1F5164C22BB30B5700FC4FB8 /* TextFields */ = {
-			isa = PBXGroup;
-			children = (
-				1F5164C32BB30B7300FC4FB8 /* TitledBorderTextField.swift */,
-			);
-			path = TextFields;
-			sourceTree = "<group>";
-		};
-		1F68E4AB2BBC7A4A00B24269 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				1FAEBBBB2B9617E500659397 /* SettingsView.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		1F68E4AC2BBC7A6000B24269 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				1FF2CD9C2BA35D5A001E1478 /* AccidentReports */,
-				1FF2CD9A2BA35CF3001E1478 /* PreloadData */,
-				1F68E4AB2BBC7A4A00B24269 /* Settings */,
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		1F703A732BAB39E7009CD10A /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				1F703A742BAB3A05009CD10A /* MockPresenter.swift */,
-				1F703A762BAB3A3E009CD10A /* MockDataRepository.swift */,
-			);
-			path = Mocks;
-			sourceTree = "<group>";
-		};
-		1FA0D39D2BC2D1D900A7972A /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				1FA0D3A02BC2D22700A7972A /* VehicleManager.swift */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
 		1FAEBB7F2B96159500659397 = {
 			isa = PBXGroup;
 			children = (
-				1F3FD9C32BA9B15000F0F07F /* Accidents.xctestplan */,
-				1FAEBB8A2B96159500659397 /* Accidents */,
-				1FAEBB9B2B96159700659397 /* AccidentsTests */,
+				1FEB49482CF0D73E003E35F8 /* Accidents */,
+				1FEB49822CF0D78B003E35F8 /* AccidentsTests */,
 				1FAEBB892B96159500659397 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -261,138 +60,6 @@
 				1FAEBB982B96159700659397 /* AccidentsTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		1FAEBB8A2B96159500659397 /* Accidents */ = {
-			isa = PBXGroup;
-			children = (
-				1FAEBB8B2B96159500659397 /* AccidentsApp.swift */,
-				1FA0D39D2BC2D1D900A7972A /* Domain */,
-				1FD319C12BA4C79100B9CEE6 /* Managers */,
-				1F791F572BB5FFF9003EB908 /* Accidents.xcdatamodeld */,
-				1FD610992BA48AAB008992B3 /* Repositories */,
-				1FAEBBC42B9624CC00659397 /* Presenters */,
-				1FAEBBBF2B96196700659397 /* Models */,
-				1FD319BE2BA49E8D00B9CEE6 /* Utils */,
-				1F68E4AC2BBC7A6000B24269 /* Screens */,
-				1FAEBBB92B96171D00659397 /* Views */,
-				1FAEBB8F2B96159700659397 /* Assets.xcassets */,
-				1FAEBB912B96159700659397 /* Preview Content */,
-			);
-			path = Accidents;
-			sourceTree = "<group>";
-		};
-		1FAEBB912B96159700659397 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				1FAEBB922B96159700659397 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		1FAEBB9B2B96159700659397 /* AccidentsTests */ = {
-			isa = PBXGroup;
-			children = (
-				1FCDA7D62BA87CE900D98A73 /* Mocks */,
-				1FCDA7D42BA87C1700D98A73 /* AccidentsPresenterTests.swift */,
-			);
-			path = AccidentsTests;
-			sourceTree = "<group>";
-		};
-		1FAEBBB92B96171D00659397 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				1F1961F52BAD95CE00AFDD32 /* Components */,
-				1F703A732BAB39E7009CD10A /* Mocks */,
-				1FAEBB8D2B96159500659397 /* MainTabView.swift */,
-				1FC5C3652BB18A7D0032B50F /* UpperTabBarView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		1FAEBBBF2B96196700659397 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				1FAEBBC02B96197E00659397 /* AccidentReport.swift */,
-				1FBE2FF92B9720C500BF1980 /* AccidentReportFillingState.swift */,
-				1F2A9C7C2BB6CD740039E269 /* AccidentReportNavigationState.swift */,
-				1FA0D39B2BC2D10900A7972A /* Vehicle.swift */,
-				1F7060082BCD6D7900777317 /* RoadShapeSelector.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		1FAEBBC42B9624CC00659397 /* Presenters */ = {
-			isa = PBXGroup;
-			children = (
-				1FF2CD982BA35CBF001E1478 /* AccidentsPresenter.swift */,
-			);
-			path = Presenters;
-			sourceTree = "<group>";
-		};
-		1FC5C3642BB1837B0032B50F /* Buttons */ = {
-			isa = PBXGroup;
-			children = (
-				1FBD04702BB3599400719A16 /* ACButton.swift */,
-				1F1B5C3D2BB4148D00681429 /* UpperTabBarButton.swift */,
-			);
-			path = Buttons;
-			sourceTree = "<group>";
-		};
-		1FCDA7D62BA87CE900D98A73 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				1FCDA7D72BA87D0100D98A73 /* MockAccidentReportRepository.swift */,
-			);
-			path = Mocks;
-			sourceTree = "<group>";
-		};
-		1FD319BE2BA49E8D00B9CEE6 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				1FD319BF2BA49EA000B9CEE6 /* Constants.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		1FD319C12BA4C79100B9CEE6 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				1FD319C22BA4C79C00B9CEE6 /* CoreDataManager.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		1FD610992BA48AAB008992B3 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				1FD6109A2BA48AC4008992B3 /* AccidentReportRepository.swift */,
-				1FD319B62BA48B4F00B9CEE6 /* CoreDataRepository.swift */,
-				1FBDAF532BA71A1A00B494B2 /* CoreDataError.swift */,
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
-		1FF2CD9A2BA35CF3001E1478 /* PreloadData */ = {
-			isa = PBXGroup;
-			children = (
-				1FAEBBBD2B96183600659397 /* PreloadDataView.swift */,
-			);
-			path = PreloadData;
-			sourceTree = "<group>";
-		};
-		1FF2CD9C2BA35D5A001E1478 /* AccidentReports */ = {
-			isa = PBXGroup;
-			children = (
-				1FAEBBB72B9616C500659397 /* AccidentsNavigationView.swift */,
-				1F703A712BAB36AC009CD10A /* AccidentsListView.swift */,
-				1FAEBBC22B961EA700659397 /* AccidentLocationView.swift */,
-				1FC5C3672BB1BEAA0032B50F /* DescriptionView.swift */,
-				1FBE2FFD2B97332A00BF1980 /* DriverView.swift */,
-				1F1B5C3F2BB44ADE00681429 /* AccidentCrashPointView.swift */,
-				1FA0D3932BC190F700A7972A /* AccidentSituationView.swift */,
-			);
-			path = AccidentReports;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,6 +78,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				1FEB49482CF0D73E003E35F8 /* Accidents */,
+			);
 			name = Accidents;
 			productName = Accidents;
 			productReference = 1FAEBB882B96159500659397 /* Accidents.app */;
@@ -428,6 +98,9 @@
 			);
 			dependencies = (
 				1FAEBB9A2B96159700659397 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				1FEB49822CF0D78B003E35F8 /* AccidentsTests */,
 			);
 			name = AccidentsTests;
 			productName = AccidentsTests;
@@ -477,8 +150,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FAEBB932B96159700659397 /* Preview Assets.xcassets in Resources */,
-				1FAEBB902B96159700659397 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,55 +189,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F1961FD2BAE0B3700AFDD32 /* IOSCheckboxToggleStyle.swift in Sources */,
-				1FAEBBBE2B96183600659397 /* PreloadDataView.swift in Sources */,
-				1F5164C42BB30B7300FC4FB8 /* TitledBorderTextField.swift in Sources */,
-				1FAEBBBC2B9617E500659397 /* SettingsView.swift in Sources */,
-				1FAEBB8E2B96159500659397 /* MainTabView.swift in Sources */,
-				1F1961FA2BAE0A6A00AFDD32 /* TickBox.swift in Sources */,
-				1FEE2D832BD6A39200975CB6 /* ActionButtonView.swift in Sources */,
-				1F4DDC9B2BE1611C002A826F /* AnyTransitions+Ext.swift in Sources */,
-				1FC5C3662BB18A7D0032B50F /* UpperTabBarView.swift in Sources */,
-				1FBE2FFE2B97332B00BF1980 /* DriverView.swift in Sources */,
-				1FBE2FFA2B9720C600BF1980 /* AccidentReportFillingState.swift in Sources */,
-				1FA0D39C2BC2D10900A7972A /* Vehicle.swift in Sources */,
-				1FAEBBC32B961EA700659397 /* AccidentLocationView.swift in Sources */,
-				1FEE2D7F2BD69CA100975CB6 /* RotationButtoView.swift in Sources */,
-				1FEE2D792BD6917100975CB6 /* RoadShapeView.swift in Sources */,
-				1F791F592BB5FFFA003EB908 /* Accidents.xcdatamodeld in Sources */,
-				1FD319C02BA49EA000B9CEE6 /* Constants.swift in Sources */,
-				1FD319B72BA48B4F00B9CEE6 /* CoreDataRepository.swift in Sources */,
-				1FA0D3A12BC2D22700A7972A /* VehicleManager.swift in Sources */,
-				1FCB61C02BB6211600E0B49A /* DraggableArrowView.swift in Sources */,
-				1FAEBBC82B964E4300659397 /* AccidentListItemView.swift in Sources */,
-				1FA0D3982BC1E5C300A7972A /* RoadShape.swift in Sources */,
-				1FA0D3942BC190F700A7972A /* AccidentSituationView.swift in Sources */,
-				1FA0D39A2BC2C85400A7972A /* DraggableView.swift in Sources */,
-				1FAEBB8C2B96159500659397 /* AccidentsApp.swift in Sources */,
-				1FF2CD992BA35CBF001E1478 /* AccidentsPresenter.swift in Sources */,
-				1FEE2D7D2BD698C900975CB6 /* VehicleButtonView.swift in Sources */,
-				1FBDAF542BA71A1A00B494B2 /* CoreDataError.swift in Sources */,
-				1FAEBBB82B9616C500659397 /* AccidentsNavigationView.swift in Sources */,
-				1FAEBBC12B96197E00659397 /* AccidentReport.swift in Sources */,
-				1FEE2D7B2BD6968C00975CB6 /* ControlButtonView.swift in Sources */,
-				1F703A752BAB3A05009CD10A /* MockPresenter.swift in Sources */,
-				1FD319C32BA4C79C00B9CEE6 /* CoreDataManager.swift in Sources */,
-				1FD6109B2BA48AC4008992B3 /* AccidentReportRepository.swift in Sources */,
-				1F2A9C7B2BB6C8260039E269 /* AccidentGradient.swift in Sources */,
-				1F1961F82BAD95F200AFDD32 /* ARErrorBlock.swift in Sources */,
-				1F703A722BAB36AC009CD10A /* AccidentsListView.swift in Sources */,
-				1F5164BE2BB2BE2300FC4FB8 /* VisibleDamageView.swift in Sources */,
-				1F2A9C7D2BB6CD740039E269 /* AccidentReportNavigationState.swift in Sources */,
-				1F117AD32BC073080078E3BC /* WitnessView.swift in Sources */,
-				1F5164C12BB2D97000FC4FB8 /* VehicleStatusView.swift in Sources */,
-				1FBD04712BB3599400719A16 /* ACButton.swift in Sources */,
-				1F1B5C3E2BB4148D00681429 /* UpperTabBarButton.swift in Sources */,
-				1FC5C3682BB1BEAA0032B50F /* DescriptionView.swift in Sources */,
-				1F703A772BAB3A3E009CD10A /* MockDataRepository.swift in Sources */,
-				1F1B5C402BB44ADE00681429 /* AccidentCrashPointView.swift in Sources */,
-				1F7060092BCD6D7900777317 /* RoadShapeSelector.swift in Sources */,
-				1FF1FB6D2BAF375C00E0CA88 /* EmptyListView.swift in Sources */,
-				1FEE2D812BD6A2B000975CB6 /* ScaleButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,8 +196,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FCDA7D82BA87D0100D98A73 /* MockAccidentReportRepository.swift in Sources */,
-				1FCDA7D52BA87C1700D98A73 /* AccidentsPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,7 +394,6 @@
 		1FAEBBB02B96159700659397 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -794,7 +413,6 @@
 		1FAEBBB12B96159700659397 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -842,20 +460,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		1F791F572BB5FFF9003EB908 /* Accidents.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				1F791F582BB5FFF9003EB908 /* Accidents.xcdatamodel */,
-			);
-			currentVersion = 1F791F582BB5FFF9003EB908 /* Accidents.xcdatamodel */;
-			name = Accidents.xcdatamodeld;
-			path = "/Users/marcel/Library/Mobile Documents/com~apple~CloudDocs/Programming/Accidents/Accidents/Accidents.xcdatamodeld";
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 1FAEBB802B96159500659397 /* Project object */;
 }

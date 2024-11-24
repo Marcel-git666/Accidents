@@ -217,4 +217,35 @@ class AccidentsPresenter: ObservableObject {
             }
         }
     }
+    
+    func generatePDF(for report: AccidentReport) {
+        guard let templateURL = Bundle.main.url(forResource: "Euroformular-zaznamu-o-dopravni-nehode", withExtension: "pdf") else {
+            print("Template PDF not found")
+            return
+        }
+
+        let pdfGenerator = PDFGenerator()
+        let pdfURL = pdfGenerator.generatePDF(for: report, templateURL: templateURL)
+
+        if let pdfURL = pdfURL, FileManager.default.fileExists(atPath: pdfURL.path) {
+            sharePDF(at: pdfURL)
+        } else {
+            print("PDF generation failed or file does not exist")
+        }
+
+    }
+
+    func sharePDF(at url: URL) {
+        guard FileManager.default.fileExists(atPath: url.path) else {
+            print("File not found at URL: \(url)")
+            return
+        }
+
+        let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+
+        if let rootViewController = UIApplication.shared.windows.first?.rootViewController {
+            rootViewController.present(activityViewController, animated: true, completion: nil)
+        }
+    }
+
 }
