@@ -26,10 +26,10 @@ class AccidentsPresenter: ObservableObject {
     @Published var accidentDriver1: Driver = Driver.sample1
     @Published var accidentDriver2: Driver = Driver.sample2
     
-    @Published var accidentDescription: AccidentDescription = 
-        AccidentDescription(notes1: "notes 1", notes2: "notes 2", 
-                            vehicleDamage1: Array(repeating: false, count: 17),
-                            vehicleDamage2: Array(repeating: false, count: 17))
+    @Published var accidentDescription: AccidentDescription =
+    AccidentDescription(notes1: "notes 1", notes2: "notes 2",
+                        vehicleDamage1: Array(repeating: false, count: 17),
+                        vehicleDamage2: Array(repeating: false, count: 17))
     @Published var errorMessage: String?
     @Published var selectedAccident: AccidentReport?
     @Published var viewState: AccidentReportNavigationState = .accidentList
@@ -128,7 +128,7 @@ class AccidentsPresenter: ObservableObject {
     func createReportAndSave() {
         if let selectedAccident = selectedAccident {
             Task {
-                let report = AccidentReport(id: selectedAccident.id, accidentLocation: accidentLocation, 
+                let report = AccidentReport(id: selectedAccident.id, accidentLocation: accidentLocation,
                                             driver: accidentDriver1, otherDriver: accidentDriver2, accidentDescription: accidentDescription,
                                             pointOfImpact1: pointOfImpact1, pointOfImpact2: pointOfImpact2, accidentSituation: accidentSituation)
                 if let index = accidentReports.firstIndex(where: { $0.id == report.id }) {
@@ -144,7 +144,7 @@ class AccidentsPresenter: ObservableObject {
             return
         }
         
-        let report = AccidentReport(id: UUID(), accidentLocation: accidentLocation, 
+        let report = AccidentReport(id: UUID(), accidentLocation: accidentLocation,
                                     driver: accidentDriver1, otherDriver: accidentDriver2,
                                     accidentDescription: accidentDescription, pointOfImpact1: pointOfImpact1,
                                     pointOfImpact2: pointOfImpact2, accidentSituation: accidentSituation)
@@ -215,6 +215,35 @@ class AccidentsPresenter: ObservableObject {
             } else {
                 errorMessage = error.localizedDescription
             }
+        }
+    }
+    
+    func generatePDF(for report: AccidentReport) -> URL? {
+        guard let templateImageName = getTemplateImageName() else {
+            print("Template image not found.")
+            return nil
+        }
+        
+        return PDFManager.shared.renderPDF(with: report, templateImageName: templateImageName)
+    }
+    
+    func exportPDF(for report: AccidentReport) {
+        guard let pdfURL = generatePDF(for: report) else {
+            print("Failed to generate PDF.")
+            return
+        }
+        
+        PDFManager.shared.sharePDF(pdfURL)
+    }
+    
+    private func getTemplateImageName() -> String? {
+        // Ensure the image is available in the bundle
+        let imageName = "form" // Change this if your PNG file has a different name
+        if UIImage(named: imageName) != nil {
+            return imageName
+        } else {
+            print("Template image '\(imageName)' not found in the bundle.")
+            return nil
         }
     }
 }
