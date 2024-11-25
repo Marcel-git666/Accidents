@@ -15,27 +15,36 @@ struct ReportPreviewView: View {
     let templateImageName: String // Name of the background image in the bundle
     
     var body: some View {
-//        ScrollView([.horizontal, .vertical]) {
-            ZStack {
-                // Background Image
-                Image(templateImageName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 595.2, height: 841.8) // A4 dimensions in points
-                
-                // Overlay Text
-                Text("\(report.accidentLocation.city), \(report.accidentLocation.street)")
-                    .font(.system(size: 10)) // Small font for precise positioning
-                    .position(x: 200, y: 100) // Set to precise A4 coordinates
-                
-                // Example Additional Content
-                Text("Driver A: \(report.driver.insuredName)")
+        ZStack {
+            // Background Image
+            Image(templateImageName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 595.2, height: 841.8) // A4 dimensions in points
+            
+            // Overlay Text
+            Text("\(report.accidentLocation.city), \(report.accidentLocation.street) \(report.accidentLocation.houseNumber)")
+                .font(.system(size: 12)) // Small font for precise positioning
+                .position(x: 245, y: 113) // Set to precise A4 coordinates
+            if report.accidentLocation.injuries {
+                Text("x")
                     .font(.system(size: 12))
-                    .position(x: 250, y: 150)
+                    .position(x: 504, y: 108)
+            } else {
+                Text("x")
+                    .font(.system(size: 12))
+                    .position(x: 456, y: 108)
             }
-            .frame(width: 595.2, height: 841.8)
+            // Example Additional Content
+            Text("\(report.driver.insuredName)")
+                .font(.system(size: 10))
+                .position(x: 66, y: 210)
+            Text("\(report.otherDriver?.insuredName ?? "Unknown")")
+                .font(.system(size: 10))
+                .position(x: 402, y: 210)
         }
-//    }
+        .frame(width: 595.2, height: 841.8)
+    }
 }
 
 
@@ -50,7 +59,7 @@ struct ReportPreviewView_Previews: PreviewProvider {
                 street: "Jirikovskeho",
                 houseNumber: "123",
                 kilometerReading: "50",
-                injuries: false,
+                injuries: true,
                 witnesses: [],
                 otherDamage: false,
                 policeInvolved: false
@@ -67,7 +76,8 @@ struct ReportPreviewView_Previews: PreviewProvider {
             pointOfImpact2: nil,
             accidentSituation: AccidentSituation(roadShape: .crossroad)
         )
-        
-        ReportPreviewView(report: mockReport, templateImageName: "form")
+        ScrollView([.horizontal, .vertical]) {
+            ReportPreviewView(report: mockReport, templateImageName: "form")
+        }
     }
 }
