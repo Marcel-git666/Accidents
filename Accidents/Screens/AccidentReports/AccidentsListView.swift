@@ -25,9 +25,9 @@ struct AccidentsListView: View {
                     Spacer()
                     
                     NavigationLink(
-                        destination: ReportPreviewView(
+                        destination: ReportPreviewWrapper(
                             report: accident,
-                            templateImageName: "form" // The name of the PNG file in your bundle
+                            templateImageName: "form"
                         )
                     ) {
                         Image(systemName: "doc.text.magnifyingglass")

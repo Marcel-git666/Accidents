@@ -8,44 +8,36 @@
 import SwiftUI
 
 
+import SwiftUI
+
 struct ReportPreviewView: View {
     let report: AccidentReport
     let templateImageName: String // Name of the background image in the bundle
     
     var body: some View {
-        ScrollView([.horizontal, .vertical]) {
+//        ScrollView([.horizontal, .vertical]) {
             ZStack {
-                // PNG Template Background
+                // Background Image
                 Image(templateImageName)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 595.2, height: 841.8) // A4 dimensions in points
                 
-                // Overlay with Report Data
-                VStack(alignment: .leading, spacing: 16) {
-                    Text("Accident Report")
-                        .font(.title)
-                        .bold()
-                    
-                    Text("Location: \(report.accidentLocation.city), \(report.accidentLocation.street)")
-                        .font(.body)
-                    
-                    Text("Driver A: \(report.driver.insuredName)")
-                        .font(.body)
-                    
-                    if let otherDriver = report.otherDriver {
-                        Text("Driver B: \(otherDriver.insuredName)")
-                            .font(.body)
-                    }
-                    
-                    Spacer()
-                }
-                .padding()
+                // Overlay Text
+                Text("\(report.accidentLocation.city), \(report.accidentLocation.street)")
+                    .font(.system(size: 10)) // Small font for precise positioning
+                    .position(x: 200, y: 100) // Set to precise A4 coordinates
+                
+                // Example Additional Content
+                Text("Driver A: \(report.driver.insuredName)")
+                    .font(.system(size: 12))
+                    .position(x: 250, y: 150)
             }
             .frame(width: 595.2, height: 841.8)
-        } // Ensure the entire view conforms to A4
-    }
+        }
+//    }
 }
+
 
 struct ReportPreviewView_Previews: PreviewProvider {
     static var previews: some View {

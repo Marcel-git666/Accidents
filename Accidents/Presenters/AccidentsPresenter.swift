@@ -219,12 +219,10 @@ class AccidentsPresenter: ObservableObject {
     }
     
     func generatePDF(for report: AccidentReport) -> URL? {
-        guard let templateImageName = getTemplateImageName() else {
-            print("Template image not found.")
-            return nil
-        }
-        
-        return PDFManager.shared.renderPDF(with: report, templateImageName: templateImageName)
+        PDFManager.shared.renderPDF(
+            with: report,
+            templateImageName: "form"
+        )
     }
     
     func exportPDF(for report: AccidentReport) {
