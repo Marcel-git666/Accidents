@@ -38,6 +38,7 @@ class AccidentsPresenter: ObservableObject {
     @Published var pointOfImpact2: PointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 0, scale: 1)
     @Published var accidentSituation: AccidentSituation = AccidentSituation(roadShape: .crossroad)
     @Published var transitionEffect: AnyTransition = .scale
+    @Published var reportToPreview: AccidentReport?
     
     init(repository: AccidentReportRepository) {
         self.repository = repository
@@ -244,4 +245,13 @@ class AccidentsPresenter: ObservableObject {
             return nil
         }
     }
+    
+    func showReportPreview(for report: AccidentReport) {
+        self.reportToPreview = report
+    }
+    
+    func closeReportPreview() {
+        self.reportToPreview = nil
+    }
+    
 }

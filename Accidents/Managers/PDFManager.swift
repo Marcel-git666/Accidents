@@ -17,7 +17,7 @@ class PDFManager {
     private init() {}
 
     @MainActor func renderPDF(with report: AccidentReport, templateImageName: String) -> URL? {
-        let renderer = ImageRenderer(content: ReportPreviewView(report: report, templateImageName: templateImageName))
+        let renderer = ImageRenderer(content: ReportPreviewView(presenter: ReportPreviewPresenter(report: report), templateImageName: templateImageName))
 
         let outputURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             .appendingPathComponent("AccidentReport-\(report.id).pdf")
