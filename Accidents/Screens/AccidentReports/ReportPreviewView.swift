@@ -18,76 +18,72 @@ struct ReportPreviewView: View {
             Image(templateImageName)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 595.2, height: 841.8) // A4 dimensions
+                .frame(width: 595.2, height: 841.8)
             
-            // Overlay Text and Components
             Group {
-                // Location details
-                Text("\(presenter.report.accidentLocation.city), \(presenter.report.accidentLocation.street) \(presenter.report.accidentLocation.houseNumber)")
-                    .font(.system(size: 12))
+                LocationDetailsView(
+                    city: presenter.report.accidentLocation.city,
+                    street: presenter.report.accidentLocation.street,
+                    houseNumber: presenter.report.accidentLocation.houseNumber
+                )
+                
+                DateTimeView(
+                    date: presenter.formattedDate,
+                    time: presenter.formattedTime
+                )
+                WitnessesView(witnesses: presenter.witnesses)
+                CheckboxesView(
+                    isInjuriesChecked: presenter.isInjuriesChecked,
+                    isPoliceInvolved: presenter.isPoliceInvolved,
+                    isOtherDamage: presenter.isOtherDamage,
+                    isDriverInsuredVAT: presenter.driverInsuredVAT
+                )
+                Text("\(presenter.driverInsuredName)")
+                    .font(.system(size: 10))
                     .frame(width: 200, height: 20, alignment: .leading)
                     .multilineTextAlignment(.leading)
                     .truncationMode(.tail)
-                    .position(x: 285, y: 113)
-                
-                // Date and Time
-                Text(presenter.formattedDate)
+                    .position(x: 150, y: 210)
+                Text("\(presenter.driverInsuredAddress)")
                     .font(.system(size: 10))
-                    .position(x: 80, y: 113)
-                Text(presenter.formattedTime)
+                    .frame(width: 200, height: 20, alignment: .leading)
+                    .multilineTextAlignment(.leading)
+                    .truncationMode(.tail)
+                    .position(x: 150, y: 230)
+                Text("\(presenter.driverInsuredPhone)")
                     .font(.system(size: 10))
-                    .position(x: 155, y: 113)
-                Text("\(presenter.witnesses.first ?? "no witnesses")")
-                        .font(.system(size: 10))
-                        .frame(width: 200, height: 12, alignment: .leading)
-                        .multilineTextAlignment(.leading)
-                        .truncationMode(.tail)
-                        .position(x: 285, y: 140)
-                // Second witness (if available)
-                    if presenter.witnesses.count > 1 {
-                        Text(presenter.witnesses[1])
-                            .font(.system(size: 10))
-                            .frame(width: 200, height: 12, alignment: .leading)
-                            .multilineTextAlignment(.leading)
-                            .truncationMode(.tail)
-                            .position(x: 285, y: 150)
-                    }
-                    
-                    // Ellipsis for additional witnesses
-                    if presenter.witnesses.count > 2 {
-                        Text("...")
-                            .font(.system(size: 10))
-                            .frame(width: 200, height: 8, alignment: .leading)
-                            .multilineTextAlignment(.leading)
-                            .position(x: 285, y: 155)
-                    }
-                // Injuries Checkbox
-                if presenter.isInjuriesChecked {
-                    Text("x").font(.system(size: 12)).position(x: 504, y: 108)
-                } else {
-                    Text("x").font(.system(size: 12)).position(x: 456, y: 108)
-                }
-                if presenter.isPoliceInvolved {
-                    Text("x").font(.system(size: 12)).position(x: 504, y: 141)
-                } else {
-                    Text("x").font(.system(size: 12)).position(x: 456, y: 141)
-                }
-                if presenter.isOtherDamage {
-                    Text("x").font(.system(size: 12)).position(x: 146, y: 146)
-                } else {
-                    Text("x").font(.system(size: 12)).position(x: 99, y: 146)
-                }
+                    .frame(width: 200, height: 20, alignment: .leading)
+                    .multilineTextAlignment(.leading)
+                    .truncationMode(.tail)
+                    .position(x: 225, y: 248)
+                Text("\(presenter.driverCarType)")
+                    .font(.system(size: 10))
+                    .frame(width: 200, height: 20, alignment: .leading)
+                    .multilineTextAlignment(.leading)
+                    .truncationMode(.tail)
+                    .position(x: 205, y: 295)
+                Text("\(presenter.driverCarYear)")
+                    .font(.system(size: 10))
+                    .frame(width: 200, height: 20, alignment: .leading)
+                    .multilineTextAlignment(.leading)
+                    .truncationMode(.tail)
+                    .position(x: 205, y: 310)
+                Text("\(presenter.driverCarPlateNumber)")
+                    .font(.system(size: 10))
+                    .frame(width: 200, height: 20, alignment: .leading)
+                    .multilineTextAlignment(.leading)
+                    .truncationMode(.tail)
+                    .position(x: 235, y: 329)
+                // Arrow for point of impact
+                DraggableArrowView(
+                    crashPoint: presenter.arrowPosition,
+                    scale: presenter.arrowScale,
+                    arrowRotation: presenter.arrowRotation
+                )
+                .rotationEffect(.degrees(presenter.arrowRotation), anchor: .bottom)
+                .scaleEffect(presenter.arrowScale)
+                .position(presenter.arrowPosition)
             }
-            
-            // Arrow for point of impact
-            DraggableArrowView(
-                crashPoint: presenter.arrowPosition,
-                scale: presenter.arrowScale,
-                arrowRotation: presenter.arrowRotation
-            )
-            .rotationEffect(.degrees(presenter.arrowRotation), anchor: .bottom)
-            .scaleEffect(presenter.arrowScale)
-            .position(presenter.arrowPosition)
         }
         .frame(width: 595.2, height: 841.8)
     }
@@ -117,7 +113,7 @@ struct ReportPreviewView_Previews: PreviewProvider {
                 vehicleDamage1: Array(repeating: true, count: 17),
                 vehicleDamage2: Array(repeating: true, count: 17)
             ),
-            pointOfImpact1: nil,
+            pointOfImpact1: PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 45, scale: 0.8),
             pointOfImpact2: nil,
             accidentSituation: AccidentSituation(roadShape: .crossroad)
         )

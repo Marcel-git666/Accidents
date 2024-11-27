@@ -20,7 +20,14 @@ class ReportPreviewPresenter: ObservableObject {
     @Published var isPoliceInvolved: Bool
     @Published var isOtherDamage: Bool
     @Published var witnesses: [String] = []
-    
+    @Published var driverInsuredName: String
+    @Published var driverInsuredAddress: String
+    @Published var driverInsuredPhone: String
+    @Published var driverInsuredVAT: Bool
+    @Published var driverCarType: String
+    @Published var driverCarYear: String
+    @Published var driverCarPlateNumber: String
+    @Published var driverInsurer: String
     init(report: AccidentReport) {
         self.report = report
         
@@ -39,19 +46,29 @@ class ReportPreviewPresenter: ObservableObject {
         self.witnesses = report.accidentLocation.witnesses.map {
             "\($0.name), \($0.address), \($0.phoneNumber)"
         }
+        // Driver
+        self.driverInsuredName = report.driver.insuredName
+        self.driverInsuredAddress = report.driver.insuredAddress
+        self.driverInsuredPhone = report.driver.insuredPhone
+        self.driverInsuredVAT = report.driver.insuredPayerOfVAT
+        self.driverCarType = report.driver.vehicleManufacturerAndType
+        self.driverCarYear = report.driver.vehicleYearOfManufacture
+        self.driverCarPlateNumber = report.driver.vehicleStateRegistrationPlate
+        self.driverInsurer = report.driver.insurer
+        
         // Initialize arrow settings (default values or from the report if available)
-        self.arrowPosition = report.pointOfImpact1?.crashPoint ?? CGPoint(x: 200, y: 300)
+        self.arrowPosition = report.pointOfImpact1?.crashPoint ?? CGPoint(x: 0, y: 0)
         self.arrowRotation = report.pointOfImpact1?.arrowRotation ?? 0
         self.arrowScale = report.pointOfImpact1?.scale ?? 0
+        if self.arrowScale != 0 {
+            updateArrow(x: -200, y: 460)
+        }
+        
     }
-    
-    func toggleInjuriesCheckbox() {
-        isInjuriesChecked.toggle()
-    }
-    
-    func updateArrow(position: CGPoint, rotation: Double, scale: CGFloat) {
-        arrowPosition = position
-        arrowRotation = rotation
-        arrowScale = scale
+        
+    func updateArrow(x: Double, y: Double) {
+        arrowPosition.x += x
+        arrowPosition.y += y
+        arrowScale *= 0.2
     }
 }

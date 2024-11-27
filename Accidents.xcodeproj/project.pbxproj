@@ -17,7 +17,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F3FD9C32BA9B15000F0F07F /* Accidents.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Accidents.xctestplan; path = AccidentsTests/Accidents.xctestplan; sourceTree = "<group>"; };
 		1FAEBB882B96159500659397 /* Accidents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accidents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAEBB982B96159700659397 /* AccidentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccidentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -48,7 +47,6 @@
 		1FAEBB7F2B96159500659397 = {
 			isa = PBXGroup;
 			children = (
-				1F3FD9C32BA9B15000F0F07F /* Accidents.xctestplan */,
 				1FEB49D62CF31F94003E35F8 /* Accidents */,
 				1FEB4A112CF37309003E35F8 /* AccidentsTests */,
 				1FAEBB892B96159500659397 /* Products */,
