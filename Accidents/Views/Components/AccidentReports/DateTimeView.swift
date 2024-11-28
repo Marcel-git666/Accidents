@@ -12,13 +12,15 @@ struct DateTimeView: View {
     let time: String
 
     var body: some View {
-        VStack {
+        
             Text(date)
                 .font(.system(size: 10))
+                .frame(width: 60, height: 20, alignment: .leading)
                 .position(x: 80, y: 113)
             Text(time)
                 .font(.system(size: 10))
-                .position(x: 155, y: 113)
-        }
+                .frame(width: 60, height: 20, alignment: .leading)
+                .position(x: 170, y: 113)
+        
     }
 }

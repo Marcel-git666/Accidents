@@ -20,14 +20,9 @@ class ReportPreviewPresenter: ObservableObject {
     @Published var isPoliceInvolved: Bool
     @Published var isOtherDamage: Bool
     @Published var witnesses: [String] = []
-    @Published var driverInsuredName: String
-    @Published var driverInsuredAddress: String
-    @Published var driverInsuredPhone: String
-    @Published var driverInsuredVAT: Bool
-    @Published var driverCarType: String
-    @Published var driverCarYear: String
-    @Published var driverCarPlateNumber: String
-    @Published var driverInsurer: String
+    @Published var driverDetails: DriverDetails
+    var dateString: String
+    
     init(report: AccidentReport) {
         self.report = report
         
@@ -47,14 +42,10 @@ class ReportPreviewPresenter: ObservableObject {
             "\($0.name), \($0.address), \($0.phoneNumber)"
         }
         // Driver
-        self.driverInsuredName = report.driver.insuredName
-        self.driverInsuredAddress = report.driver.insuredAddress
-        self.driverInsuredPhone = report.driver.insuredPhone
-        self.driverInsuredVAT = report.driver.insuredPayerOfVAT
-        self.driverCarType = report.driver.vehicleManufacturerAndType
-        self.driverCarYear = report.driver.vehicleYearOfManufacture
-        self.driverCarPlateNumber = report.driver.vehicleStateRegistrationPlate
-        self.driverInsurer = report.driver.insurer
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateString = dateFormatter.string(from: report.driver.borderInsuranceValidUntil)
+        self.driverDetails = DriverDetails(insuredName: report.driver.insuredName, insuredAddress: report.driver.insuredAddress, insuredPhone: report.driver.insuredPhone, insuredVat: report.driver.insuredPayerOfVAT, carType: report.driver.vehicleManufacturerAndType, carYear: report.driver.vehicleYearOfManufacture, plateNumber: report.driver.vehicleStateRegistrationPlate, insurer: report.driver.insurer, insurerBranchAddress: report.driver.insurerBranchAddress, insuranceNumber: report.driver.insuranceNumber, greenCardNumber: report.driver.greenCardNumber, borderInsuranceValidUntil: dateString, comprehensiveInsurance: report.driver.comprehensiveInsurance, comprehensiveInsuranceCompany: report.driver.comprehensiveInsuranceCompany, surnameOfDriver: report.driver.surnameOfDriver, firstNameOfDriver: report.driver.firstNameOfDriver, addressOfDriver: report.driver.addressOfDriver, phoneNumberOfDriver: report.driver.phoneNumberOfDriver, driverLicenseNumber: report.driver.driverLicenseNumber, categoryOfLicense: report.driver.categoryOfLicense, licenseIssuedBy: report.driver.licenseIssuedBy)
+        
         
         // Initialize arrow settings (default values or from the report if available)
         self.arrowPosition = report.pointOfImpact1?.crashPoint ?? CGPoint(x: 0, y: 0)
@@ -71,4 +62,28 @@ class ReportPreviewPresenter: ObservableObject {
         arrowPosition.y += y
         arrowScale *= 0.2
     }
+}
+
+struct DriverDetails {
+    var insuredName: String
+    var insuredAddress: String
+    var insuredPhone: String
+    var insuredVat: Bool
+    var carType: String
+    var carYear: String
+    var plateNumber: String
+    var insurer: String
+    var insurerBranchAddress: String
+    var insuranceNumber: String
+    var greenCardNumber: String
+    var borderInsuranceValidUntil: String
+    var comprehensiveInsurance: Bool
+    var comprehensiveInsuranceCompany: String
+    var surnameOfDriver: String
+    var firstNameOfDriver: String
+    var addressOfDriver: String
+    var phoneNumberOfDriver: String
+    var driverLicenseNumber: String
+    var categoryOfLicense: String
+    var licenseIssuedBy: String
 }

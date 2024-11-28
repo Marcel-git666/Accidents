@@ -10,7 +10,7 @@ import SwiftUI
 @MainActor
 class AccidentsPresenter: ObservableObject {
     private let repository: AccidentReportRepository
-    
+    let vehicleManager: VehicleManager
     @Published var accidentReports: [AccidentReport] = []
     @Published var accidentLocation: AccidentLocation = AccidentLocation(
         date: Date(),
@@ -40,8 +40,9 @@ class AccidentsPresenter: ObservableObject {
     @Published var transitionEffect: AnyTransition = .scale
     @Published var reportToPreview: AccidentReport?
     
-    init(repository: AccidentReportRepository) {
+    init(repository: AccidentReportRepository, vehicleManager: VehicleManager = VehicleManager()) {
         self.repository = repository
+        self.vehicleManager = vehicleManager
         setUp()
     }
     
@@ -254,4 +255,7 @@ class AccidentsPresenter: ObservableObject {
         self.reportToPreview = nil
     }
     
+    func syncVehiclesWithManager() {
+        vehicleManager.loadVehicles(from: accidentSituation)
+    }
 }

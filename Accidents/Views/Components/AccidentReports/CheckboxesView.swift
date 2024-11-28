@@ -12,6 +12,7 @@ struct CheckboxesView: View {
     let isPoliceInvolved: Bool
     let isOtherDamage: Bool
     let isDriverInsuredVAT: Bool
+    let hasComprehensiveInsurance: Bool
 
     var body: some View {
         Group {
@@ -27,6 +28,9 @@ struct CheckboxesView: View {
             Text("x")
                 .font(.system(size: 12))
                 .position(x: isDriverInsuredVAT ? 204 : 158, y: 272)
+            Text("x")
+                .font(.system(size: 12))
+                .position(x: hasComprehensiveInsurance ? 204 : 158, y: 452)
         }
     }
 }

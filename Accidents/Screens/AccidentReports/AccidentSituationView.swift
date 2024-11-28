@@ -10,6 +10,7 @@ import SwiftUI
 struct AccidentSituationView: View {
     @ObservedObject var presenter: AccidentsPresenter
     @EnvironmentObject var vehicleManager: VehicleManager
+    @Binding var accidentSituation: AccidentSituation
     @State private var selectedVehicle: Vehicle?
     
     var body: some View {
@@ -17,14 +18,14 @@ struct AccidentSituationView: View {
             Color.gray
                 .opacity(0.4)
                 .ignoresSafeArea()
-            RoadShapeView(roadShape: presenter.accidentSituation.roadShape)
+            RoadShapeView(roadShape: accidentSituation.roadShape)
                 .padding(.vertical, 50)
             
             VStack {
                 VehicleButtonView(presenter: presenter, vehicleManager: vehicleManager)
                 HStack {
                     ControlButtonView(
-                        roadShape: $presenter.accidentSituation.roadShape,
+                        roadShape: $accidentSituation.roadShape,
                         vehicleManager: vehicleManager,
                         selectedVehicle: $selectedVehicle)
                     Spacer()
@@ -46,44 +47,27 @@ struct AccidentSituationView: View {
             ActionButtonView(presenter: presenter, vehicleManager: vehicleManager)
         }
         .onAppear {
-            loadVehiclesToAccidentSituation()
-        }
-    }
-    
-    func loadVehiclesToAccidentSituation() {
-        // Clear existing vehicles
-        vehicleManager.vehicles.removeAll()
-        
-        // Load other vehicles from presenter.accidentSituation
-        presenter.accidentSituation.otherVehicles.forEach { vehicle in
-            vehicleManager.addOtherVehicle(
-                location: vehicle.location, imageName: vehicle.imageName,
-                rotationAngle: vehicle.rotationAngle, scale: vehicle.scale)
-        }
-        
-        // Load blue vehicle, if available
-        if let blueVehicle = presenter.accidentSituation.blueVehicle {
-            vehicleManager.addBlueVehicle(
-                location: blueVehicle.location, imageName: blueVehicle.imageName,
-                rotationAngle: blueVehicle.rotationAngle,
-                scale: blueVehicle.scale)
-        }
-        
-        // Load yellow vehicle, if available
-        if let yellowVehicle = presenter.accidentSituation.yellowVehicle {
-            vehicleManager.addYellowVehicle(
-                location: yellowVehicle.location,
-                imageName: yellowVehicle.imageName,
-                rotationAngle: yellowVehicle.rotationAngle,
-                scale: yellowVehicle.scale)
+            presenter.syncVehiclesWithManager()
         }
     }
 }
 
 struct AccidentSituationView_Previews: PreviewProvider {
     static var previews: some View {
+        // Mock data for preview
         let manager = VehicleManager()
-        VStack {
+        let mockAccidentSituation = AccidentSituation(
+            roadShape: .crossroad,
+            blueVehicle: Vehicle(id: UUID().uuidString, location: CGPoint(x: 100, y: 100), imageName: "blueCar", rotationAngle: Angle(degrees: 30), scale: 1),
+            yellowVehicle: Vehicle(id: UUID().uuidString, location: CGPoint(x: 200, y: 200), imageName: "yellowCar", rotationAngle: Angle(degrees: -45), scale: 1),
+            otherVehicles: [
+                Vehicle(id: UUID().uuidString, location: CGPoint(x: 150, y: 150), imageName: "bike", rotationAngle: Angle(degrees: 90), scale: 1)
+            ]
+        )
+        
+        @State var accidentSituation = mockAccidentSituation
+        
+        return VStack {
             HStack(spacing: 20) {
                 Spacer()
                 UpperTabBarButton(color: .accent, systemImage: "book", text: "something", isActive: true)
@@ -93,13 +77,16 @@ struct AccidentSituationView_Previews: PreviewProvider {
             .padding()
             
             TabView {
-                AccidentSituationView(presenter: AccidentsPresenter(repository: MockDataRepository()))
-                    .environmentObject(manager)
-                    .tabItem {
-                        Label("Road Shape", systemImage: "cross")
-                    }
-                
+                AccidentSituationView(
+                    presenter: AccidentsPresenter(repository: MockDataRepository()),
+                    accidentSituation: $accidentSituation
+                )
+                .environmentObject(manager)
+                .tabItem {
+                    Label("Road Shape", systemImage: "cross")
+                }
             }
         }
     }
 }
+
