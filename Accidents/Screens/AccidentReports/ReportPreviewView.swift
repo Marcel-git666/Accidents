@@ -36,7 +36,9 @@ struct ReportPreviewView: View {
                 isPoliceInvolved: presenter.isPoliceInvolved,
                 isOtherDamage: presenter.isOtherDamage,
                 isDriverInsuredVAT: presenter.driverDetails.insuredVat,
-                hasComprehensiveInsurance: presenter.driverDetails.comprehensiveInsurance
+                hasComprehensiveInsurance: presenter.driverDetails.comprehensiveInsurance,
+                vehicle1Damage: presenter.vehicleDamage1,
+                vehicle2Damage: presenter.vehicleDamage2
             )
             Text("\(presenter.driverDetails.insuredName)")
                 .font(.system(size: 10))

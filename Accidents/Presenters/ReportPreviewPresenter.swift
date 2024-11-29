@@ -21,6 +21,8 @@ class ReportPreviewPresenter: ObservableObject {
     @Published var isOtherDamage: Bool
     @Published var witnesses: [String] = []
     @Published var driverDetails: DriverDetails
+    @Published var vehicleDamage1: [Bool]
+    @Published var vehicleDamage2: [Bool]
     var dateString: String
     
     init(report: AccidentReport) {
@@ -37,7 +39,8 @@ class ReportPreviewPresenter: ObservableObject {
         self.isInjuriesChecked = report.accidentLocation.injuries
         self.isPoliceInvolved = report.accidentLocation.policeInvolved
         self.isOtherDamage = report.accidentLocation.otherDamage
-        
+        self.vehicleDamage1 = report.accidentDescription.vehicleDamage1
+        self.vehicleDamage2 = report.accidentDescription.vehicleDamage2
         self.witnesses = report.accidentLocation.witnesses.map {
             "\($0.name), \($0.address), \($0.phoneNumber)"
         }
@@ -86,4 +89,5 @@ struct DriverDetails {
     var driverLicenseNumber: String
     var categoryOfLicense: String
     var licenseIssuedBy: String
+    
 }
