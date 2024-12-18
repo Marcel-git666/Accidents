@@ -1,0 +1,33 @@
+name: iOS Unit Tests
+
+on:
+  push:
+    branches: 
+      - main # Spustí se při push na větev main
+  pull_request:
+    branches:
+      - main # Spustí se při pull requestu na větev main
+  schedule:
+    - cron: '0 3 * * *' # Spustí se každý den ve 3:00 UTC
+
+jobs:
+  test:
+    runs-on: macos-latest
+
+    steps:
+      # 1. Načtení kódu
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Nastavení Xcode
+      - name: Set up Xcode
+        run: xcodebuild -version
+
+      # 3. Build a spouštění testů
+      - name: Build and Run Tests
+        run: |
+          xcodebuild \
+            -workspace "Accidents.xcworkspace" \ # Pokud máš projekt bez workspace, použij -project
+            -scheme "Accidents" \ # Nahraď názvem schématu aplikace
+            -destination "platform=iOS Simulator,name=iPhone 14,OS=latest" \ # Simulátor pro testy
+            clean test
