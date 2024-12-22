@@ -21,12 +21,13 @@ jobs:
       uses: actions/checkout@v4
 
     # Install any dependencies
-    - name: Install Dependencies
-      run: swift package resolve
+#    - name: Install Dependencies
+#      run: swift package resolve
 
     # Run tests on iPhone 14 Simulator with iOS 16.0
     - name: Run Tests on iPhone 14 Simulator (iOS 16.0)
       run: |
         xcodebuild test \
           -scheme 'Accidents' \
+          -testPlan 'Accidents' \
           -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0'
