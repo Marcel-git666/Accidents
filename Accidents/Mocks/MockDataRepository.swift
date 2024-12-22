@@ -15,7 +15,7 @@ struct MockDataRepository: AccidentReportRepository {
     var reports: [AccidentReport] = []
     
     func removeReport(_ report: AccidentReport) throws {
-        // test
+        print("Report has been removed")
     }
     
   func fetchAll() throws -> [AccidentReport] {
