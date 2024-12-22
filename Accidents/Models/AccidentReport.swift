@@ -89,14 +89,14 @@ struct Driver: Codable {
     var categoryOfLicense: String
     var licenseIssuedBy: String
     
-    static let sample1 = Driver(insuredName: "CEZ a.s.", insuredAddress: "Somehwhere in bushes", insuredPhone: "12345644", 
+    static let sample1 = Driver(insuredName: "Česká podnikatelská pojišťovna a.s.", insuredAddress: "Brno, Pekařská 58, 60200", insuredPhone: "12345644", 
                                 insuredPayerOfVAT: true, vehicleManufacturerAndType: "Mercedes Benz ML", vehicleYearOfManufacture: "2010",
                                 vehicleStateRegistrationPlate: "JUDO1", insurer: "Kooperativa a.s.", insurerBranchAddress: "somewhere in Prague",
                                 insuranceNumber: "12311122AA", greenCardNumber: "1232155", borderInsuranceValidUntil: Date.now,
                                 comprehensiveInsurance: true, comprehensiveInsuranceCompany: "Allianz Pojistovna a.s.",
                                 surnameOfDriver: "Z depa", firstNameOfDriver: "Pepa", addressOfDriver: "Krnov", phoneNumberOfDriver: "1231223",
                                 driverLicenseNumber: "unknown", categoryOfLicense: "AM2", licenseIssuedBy: "Magistrat mesta Olomouce")
-    static let sample2 = Driver(insuredName: "CEZ a.s.", insuredAddress: "Somehwhere in bushes", insuredPhone: "12345644", 
+    static let sample2 = Driver(insuredName: "Kooperativa a.s.", insuredAddress: "Praha, Kolbenova 9", insuredPhone: "123456449",
                                 insuredPayerOfVAT: true, vehicleManufacturerAndType: "Wartburg", vehicleYearOfManufacture: "1988",
                                 vehicleStateRegistrationPlate: "POPELNICE", insurer: "Kooperativa a.s.", insurerBranchAddress: "somewhere in Prague", 
                                 insuranceNumber: "12311122AA", greenCardNumber: "1232155", borderInsuranceValidUntil: Date.now,

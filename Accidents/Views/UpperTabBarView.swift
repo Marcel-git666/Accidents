@@ -9,7 +9,6 @@ import SwiftUI
 
 struct UpperTabBarView: View {
     @ObservedObject var presenter: AccidentsPresenter
-    @StateObject private var vehicleManager = VehicleManager()
     
     let swipeAnimation: Animation = .easeOut(duration: 0.3)
     let tapAnimation: Animation = .easeInOut(duration: 0.2)
@@ -59,8 +58,8 @@ struct UpperTabBarView: View {
                 AccidentCrashPointView(presenter: presenter, pointOfImpact: $presenter.pointOfImpact2)
                     .transition(presenter.transitionEffect)
             case .mapView:
-                AccidentSituationView(presenter: presenter)
-                    .environmentObject(vehicleManager)
+                AccidentSituationView(presenter: presenter, accidentSituation: $presenter.accidentSituation)
+                    .environmentObject(presenter.vehicleManager)
                     .transition(presenter.transitionEffect)
             }
         }

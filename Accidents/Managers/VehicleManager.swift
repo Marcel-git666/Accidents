@@ -35,4 +35,39 @@ class VehicleManager: ObservableObject {
             vehicle.id == id
         }
     }
+    
+    func loadVehicles(from accidentSituation: AccidentSituation) {
+        // Clear existing vehicles
+        vehicles.removeAll()
+        
+        // Load blue vehicle, if available
+        if let blueVehicle = accidentSituation.blueVehicle {
+            addBlueVehicle(
+                location: blueVehicle.location,
+                imageName: blueVehicle.imageName,
+                rotationAngle: blueVehicle.rotationAngle,
+                scale: blueVehicle.scale
+            )
+        }
+        
+        // Load yellow vehicle, if available
+        if let yellowVehicle = accidentSituation.yellowVehicle {
+            addYellowVehicle(
+                location: yellowVehicle.location,
+                imageName: yellowVehicle.imageName,
+                rotationAngle: yellowVehicle.rotationAngle,
+                scale: yellowVehicle.scale
+            )
+        }
+        
+        // Load other vehicles
+        for vehicle in accidentSituation.otherVehicles {
+            addOtherVehicle(
+                location: vehicle.location,
+                imageName: vehicle.imageName,
+                rotationAngle: vehicle.rotationAngle,
+                scale: vehicle.scale
+            )
+        }
+    }
 }
