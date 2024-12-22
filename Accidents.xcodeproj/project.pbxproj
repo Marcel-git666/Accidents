@@ -3,8 +3,76 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
+
+/* Begin PBXBuildFile section */
+		1F564B3A2D1829E7009504A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F564AF72D1829E7009504A0 /* Preview Assets.xcassets */; };
+		1F564B3B2D1829E7009504A0 /* Euroformular-zaznamu-o-dopravni-nehode.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1F564B0D2D1829E7009504A0 /* Euroformular-zaznamu-o-dopravni-nehode.pdf */; };
+		1F564B3C2D1829E7009504A0 /* form.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F564B0E2D1829E7009504A0 /* form.png */; };
+		1F564B3D2D1829E7009504A0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1F564B342D1829E7009504A0 /* .swiftlint.yml */; };
+		1F564B3E2D1829E7009504A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F564B372D1829E7009504A0 /* Assets.xcassets */; };
+		1F564B3F2D1829E7009504A0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AE72D1829E7009504A0 /* CoreDataManager.swift */; };
+		1F564B402D1829E7009504A0 /* PDFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AE82D1829E7009504A0 /* PDFManager.swift */; };
+		1F564B412D1829E7009504A0 /* VehicleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AE92D1829E7009504A0 /* VehicleManager.swift */; };
+		1F564B422D1829E7009504A0 /* MockDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AEB2D1829E7009504A0 /* MockDataRepository.swift */; };
+		1F564B432D1829E7009504A0 /* MockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AEC2D1829E7009504A0 /* MockPresenter.swift */; };
+		1F564B442D1829E7009504A0 /* AccidentReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AEE2D1829E7009504A0 /* AccidentReport.swift */; };
+		1F564B452D1829E7009504A0 /* AccidentReportFillingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AEF2D1829E7009504A0 /* AccidentReportFillingState.swift */; };
+		1F564B462D1829E7009504A0 /* AccidentReportNavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AF02D1829E7009504A0 /* AccidentReportNavigationState.swift */; };
+		1F564B472D1829E7009504A0 /* RoadShapeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AF12D1829E7009504A0 /* RoadShapeSelector.swift */; };
+		1F564B482D1829E7009504A0 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AF22D1829E7009504A0 /* Vehicle.swift */; };
+		1F564B492D1829E7009504A0 /* AccidentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AF42D1829E7009504A0 /* AccidentsPresenter.swift */; };
+		1F564B4A2D1829E7009504A0 /* ReportPreviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AF52D1829E7009504A0 /* ReportPreviewPresenter.swift */; };
+		1F564B4B2D1829E7009504A0 /* AccidentReportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AF92D1829E7009504A0 /* AccidentReportRepository.swift */; };
+		1F564B4C2D1829E7009504A0 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AFA2D1829E7009504A0 /* CoreDataError.swift */; };
+		1F564B4D2D1829E7009504A0 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AFB2D1829E7009504A0 /* CoreDataRepository.swift */; };
+		1F564B4E2D1829E7009504A0 /* AccidentCrashPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AFD2D1829E7009504A0 /* AccidentCrashPointView.swift */; };
+		1F564B4F2D1829E7009504A0 /* AccidentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AFE2D1829E7009504A0 /* AccidentLocationView.swift */; };
+		1F564B502D1829E7009504A0 /* AccidentSituationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564AFF2D1829E7009504A0 /* AccidentSituationView.swift */; };
+		1F564B512D1829E7009504A0 /* AccidentsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B002D1829E7009504A0 /* AccidentsListView.swift */; };
+		1F564B522D1829E7009504A0 /* AccidentsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B012D1829E7009504A0 /* AccidentsNavigationView.swift */; };
+		1F564B532D1829E7009504A0 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B022D1829E7009504A0 /* DescriptionView.swift */; };
+		1F564B542D1829E7009504A0 /* DriverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B032D1829E7009504A0 /* DriverView.swift */; };
+		1F564B552D1829E7009504A0 /* ReportPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B042D1829E7009504A0 /* ReportPreviewView.swift */; };
+		1F564B562D1829E7009504A0 /* ReportPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B052D1829E7009504A0 /* ReportPreviewWrapper.swift */; };
+		1F564B572D1829E7009504A0 /* PreloadDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B072D1829E7009504A0 /* PreloadDataView.swift */; };
+		1F564B582D1829E7009504A0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B092D1829E7009504A0 /* SettingsView.swift */; };
+		1F564B592D1829E7009504A0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B0C2D1829E7009504A0 /* Constants.swift */; };
+		1F564B5A2D1829E7009504A0 /* DateTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B102D1829E7009504A0 /* DateTimeView.swift */; };
+		1F564B5B2D1829E7009504A0 /* CheckboxesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B112D1829E7009504A0 /* CheckboxesView.swift */; };
+		1F564B5C2D1829E7009504A0 /* LocationDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B122D1829E7009504A0 /* LocationDetailsView.swift */; };
+		1F564B5D2D1829E7009504A0 /* WitnessesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B132D1829E7009504A0 /* WitnessesView.swift */; };
+		1F564B5E2D1829E7009504A0 /* ACButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B152D1829E7009504A0 /* ACButton.swift */; };
+		1F564B5F2D1829E7009504A0 /* UpperTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B162D1829E7009504A0 /* UpperTabBarButton.swift */; };
+		1F564B602D1829E7009504A0 /* ARErrorBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B182D1829E7009504A0 /* ARErrorBlock.swift */; };
+		1F564B612D1829E7009504A0 /* IOSCheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B1A2D1829E7009504A0 /* IOSCheckboxToggleStyle.swift */; };
+		1F564B622D1829E7009504A0 /* TitledBorderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B1C2D1829E7009504A0 /* TitledBorderTextField.swift */; };
+		1F564B632D1829E7009504A0 /* AnyTransitions+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B1E2D1829E7009504A0 /* AnyTransitions+Ext.swift */; };
+		1F564B642D1829E7009504A0 /* AccidentGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B202D1829E7009504A0 /* AccidentGradient.swift */; };
+		1F564B652D1829E7009504A0 /* AccidentListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B212D1829E7009504A0 /* AccidentListItemView.swift */; };
+		1F564B662D1829E7009504A0 /* ActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B222D1829E7009504A0 /* ActionButtonView.swift */; };
+		1F564B672D1829E7009504A0 /* ControlButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B232D1829E7009504A0 /* ControlButtonView.swift */; };
+		1F564B682D1829E7009504A0 /* DraggableArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B242D1829E7009504A0 /* DraggableArrowView.swift */; };
+		1F564B692D1829E7009504A0 /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B252D1829E7009504A0 /* DraggableView.swift */; };
+		1F564B6A2D1829E7009504A0 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B262D1829E7009504A0 /* EmptyListView.swift */; };
+		1F564B6B2D1829E7009504A0 /* RoadShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B272D1829E7009504A0 /* RoadShape.swift */; };
+		1F564B6C2D1829E7009504A0 /* RoadShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B282D1829E7009504A0 /* RoadShapeView.swift */; };
+		1F564B6D2D1829E7009504A0 /* RotationButtoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B292D1829E7009504A0 /* RotationButtoView.swift */; };
+		1F564B6E2D1829E7009504A0 /* ScaleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B2A2D1829E7009504A0 /* ScaleButtonView.swift */; };
+		1F564B6F2D1829E7009504A0 /* TickBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B2B2D1829E7009504A0 /* TickBox.swift */; };
+		1F564B702D1829E7009504A0 /* VehicleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B2C2D1829E7009504A0 /* VehicleButtonView.swift */; };
+		1F564B712D1829E7009504A0 /* VehicleStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B2D2D1829E7009504A0 /* VehicleStatusView.swift */; };
+		1F564B722D1829E7009504A0 /* VisibleDamageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B2E2D1829E7009504A0 /* VisibleDamageView.swift */; };
+		1F564B732D1829E7009504A0 /* WitnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B2F2D1829E7009504A0 /* WitnessView.swift */; };
+		1F564B742D1829E7009504A0 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B312D1829E7009504A0 /* MainTabView.swift */; };
+		1F564B752D1829E7009504A0 /* UpperTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B322D1829E7009504A0 /* UpperTabBarView.swift */; };
+		1F564B762D1829E7009504A0 /* Accidents.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B352D1829E7009504A0 /* Accidents.xcdatamodeld */; };
+		1F564B772D1829E7009504A0 /* AccidentsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B362D1829E7009504A0 /* AccidentsApp.swift */; };
+		1F564B7D2D1829EC009504A0 /* MockAccidentReportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B782D1829EC009504A0 /* MockAccidentReportRepository.swift */; };
+		1F564B7E2D1829EC009504A0 /* AccidentsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B7B2D1829EC009504A0 /* AccidentsPresenterTests.swift */; };
+		1F564B7F2D1829EC009504A0 /* Accidents.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 1F564B7A2D1829EC009504A0 /* Accidents.xctestplan */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		1FAEBB992B96159700659397 /* PBXContainerItemProxy */ = {
@@ -17,14 +85,74 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F564AE72D1829E7009504A0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		1F564AE82D1829E7009504A0 /* PDFManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFManager.swift; sourceTree = "<group>"; };
+		1F564AE92D1829E7009504A0 /* VehicleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleManager.swift; sourceTree = "<group>"; };
+		1F564AEB2D1829E7009504A0 /* MockDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataRepository.swift; sourceTree = "<group>"; };
+		1F564AEC2D1829E7009504A0 /* MockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPresenter.swift; sourceTree = "<group>"; };
+		1F564AEE2D1829E7009504A0 /* AccidentReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReport.swift; sourceTree = "<group>"; };
+		1F564AEF2D1829E7009504A0 /* AccidentReportFillingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportFillingState.swift; sourceTree = "<group>"; };
+		1F564AF02D1829E7009504A0 /* AccidentReportNavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportNavigationState.swift; sourceTree = "<group>"; };
+		1F564AF12D1829E7009504A0 /* RoadShapeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadShapeSelector.swift; sourceTree = "<group>"; };
+		1F564AF22D1829E7009504A0 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		1F564AF42D1829E7009504A0 /* AccidentsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsPresenter.swift; sourceTree = "<group>"; };
+		1F564AF52D1829E7009504A0 /* ReportPreviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPreviewPresenter.swift; sourceTree = "<group>"; };
+		1F564AF72D1829E7009504A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1F564AF92D1829E7009504A0 /* AccidentReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentReportRepository.swift; sourceTree = "<group>"; };
+		1F564AFA2D1829E7009504A0 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
+		1F564AFB2D1829E7009504A0 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		1F564AFD2D1829E7009504A0 /* AccidentCrashPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentCrashPointView.swift; sourceTree = "<group>"; };
+		1F564AFE2D1829E7009504A0 /* AccidentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentLocationView.swift; sourceTree = "<group>"; };
+		1F564AFF2D1829E7009504A0 /* AccidentSituationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentSituationView.swift; sourceTree = "<group>"; };
+		1F564B002D1829E7009504A0 /* AccidentsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsListView.swift; sourceTree = "<group>"; };
+		1F564B012D1829E7009504A0 /* AccidentsNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsNavigationView.swift; sourceTree = "<group>"; };
+		1F564B022D1829E7009504A0 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		1F564B032D1829E7009504A0 /* DriverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverView.swift; sourceTree = "<group>"; };
+		1F564B042D1829E7009504A0 /* ReportPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPreviewView.swift; sourceTree = "<group>"; };
+		1F564B052D1829E7009504A0 /* ReportPreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPreviewWrapper.swift; sourceTree = "<group>"; };
+		1F564B072D1829E7009504A0 /* PreloadDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadDataView.swift; sourceTree = "<group>"; };
+		1F564B092D1829E7009504A0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1F564B0C2D1829E7009504A0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1F564B0D2D1829E7009504A0 /* Euroformular-zaznamu-o-dopravni-nehode.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Euroformular-zaznamu-o-dopravni-nehode.pdf"; sourceTree = "<group>"; };
+		1F564B0E2D1829E7009504A0 /* form.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = form.png; sourceTree = "<group>"; };
+		1F564B102D1829E7009504A0 /* DateTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeView.swift; sourceTree = "<group>"; };
+		1F564B112D1829E7009504A0 /* CheckboxesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxesView.swift; sourceTree = "<group>"; };
+		1F564B122D1829E7009504A0 /* LocationDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsView.swift; sourceTree = "<group>"; };
+		1F564B132D1829E7009504A0 /* WitnessesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WitnessesView.swift; sourceTree = "<group>"; };
+		1F564B152D1829E7009504A0 /* ACButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACButton.swift; sourceTree = "<group>"; };
+		1F564B162D1829E7009504A0 /* UpperTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperTabBarButton.swift; sourceTree = "<group>"; };
+		1F564B182D1829E7009504A0 /* ARErrorBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARErrorBlock.swift; sourceTree = "<group>"; };
+		1F564B1A2D1829E7009504A0 /* IOSCheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSCheckboxToggleStyle.swift; sourceTree = "<group>"; };
+		1F564B1C2D1829E7009504A0 /* TitledBorderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledBorderTextField.swift; sourceTree = "<group>"; };
+		1F564B1E2D1829E7009504A0 /* AnyTransitions+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransitions+Ext.swift"; sourceTree = "<group>"; };
+		1F564B202D1829E7009504A0 /* AccidentGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentGradient.swift; sourceTree = "<group>"; };
+		1F564B212D1829E7009504A0 /* AccidentListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentListItemView.swift; sourceTree = "<group>"; };
+		1F564B222D1829E7009504A0 /* ActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonView.swift; sourceTree = "<group>"; };
+		1F564B232D1829E7009504A0 /* ControlButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButtonView.swift; sourceTree = "<group>"; };
+		1F564B242D1829E7009504A0 /* DraggableArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableArrowView.swift; sourceTree = "<group>"; };
+		1F564B252D1829E7009504A0 /* DraggableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
+		1F564B262D1829E7009504A0 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		1F564B272D1829E7009504A0 /* RoadShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadShape.swift; sourceTree = "<group>"; };
+		1F564B282D1829E7009504A0 /* RoadShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadShapeView.swift; sourceTree = "<group>"; };
+		1F564B292D1829E7009504A0 /* RotationButtoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationButtoView.swift; sourceTree = "<group>"; };
+		1F564B2A2D1829E7009504A0 /* ScaleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleButtonView.swift; sourceTree = "<group>"; };
+		1F564B2B2D1829E7009504A0 /* TickBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickBox.swift; sourceTree = "<group>"; };
+		1F564B2C2D1829E7009504A0 /* VehicleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleButtonView.swift; sourceTree = "<group>"; };
+		1F564B2D2D1829E7009504A0 /* VehicleStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStatusView.swift; sourceTree = "<group>"; };
+		1F564B2E2D1829E7009504A0 /* VisibleDamageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleDamageView.swift; sourceTree = "<group>"; };
+		1F564B2F2D1829E7009504A0 /* WitnessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WitnessView.swift; sourceTree = "<group>"; };
+		1F564B312D1829E7009504A0 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		1F564B322D1829E7009504A0 /* UpperTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperTabBarView.swift; sourceTree = "<group>"; };
+		1F564B342D1829E7009504A0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		1F564B362D1829E7009504A0 /* AccidentsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsApp.swift; sourceTree = "<group>"; };
+		1F564B372D1829E7009504A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1F564B392D1829E7009504A0 /* Accidents.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Accidents.xcdatamodel; sourceTree = "<group>"; };
+		1F564B782D1829EC009504A0 /* MockAccidentReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccidentReportRepository.swift; sourceTree = "<group>"; };
+		1F564B7A2D1829EC009504A0 /* Accidents.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Accidents.xctestplan; sourceTree = "<group>"; };
+		1F564B7B2D1829EC009504A0 /* AccidentsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsPresenterTests.swift; sourceTree = "<group>"; };
 		1FAEBB882B96159500659397 /* Accidents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accidents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAEBB982B96159700659397 /* AccidentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccidentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		1FEB49D62CF31F94003E35F8 /* Accidents */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Accidents; sourceTree = "<group>"; };
-		1FEB4A112CF37309003E35F8 /* AccidentsTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AccidentsTests; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1FAEBB852B96159500659397 /* Frameworks */ = {
@@ -44,11 +172,250 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F564AEA2D1829E7009504A0 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				1F564AE72D1829E7009504A0 /* CoreDataManager.swift */,
+				1F564AE82D1829E7009504A0 /* PDFManager.swift */,
+				1F564AE92D1829E7009504A0 /* VehicleManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		1F564AED2D1829E7009504A0 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				1F564AEB2D1829E7009504A0 /* MockDataRepository.swift */,
+				1F564AEC2D1829E7009504A0 /* MockPresenter.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		1F564AF32D1829E7009504A0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1F564AEE2D1829E7009504A0 /* AccidentReport.swift */,
+				1F564AEF2D1829E7009504A0 /* AccidentReportFillingState.swift */,
+				1F564AF02D1829E7009504A0 /* AccidentReportNavigationState.swift */,
+				1F564AF12D1829E7009504A0 /* RoadShapeSelector.swift */,
+				1F564AF22D1829E7009504A0 /* Vehicle.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1F564AF62D1829E7009504A0 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				1F564AF42D1829E7009504A0 /* AccidentsPresenter.swift */,
+				1F564AF52D1829E7009504A0 /* ReportPreviewPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		1F564AF82D1829E7009504A0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1F564AF72D1829E7009504A0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1F564AFC2D1829E7009504A0 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				1F564AF92D1829E7009504A0 /* AccidentReportRepository.swift */,
+				1F564AFA2D1829E7009504A0 /* CoreDataError.swift */,
+				1F564AFB2D1829E7009504A0 /* CoreDataRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		1F564B062D1829E7009504A0 /* AccidentReports */ = {
+			isa = PBXGroup;
+			children = (
+				1F564AFD2D1829E7009504A0 /* AccidentCrashPointView.swift */,
+				1F564AFE2D1829E7009504A0 /* AccidentLocationView.swift */,
+				1F564AFF2D1829E7009504A0 /* AccidentSituationView.swift */,
+				1F564B002D1829E7009504A0 /* AccidentsListView.swift */,
+				1F564B012D1829E7009504A0 /* AccidentsNavigationView.swift */,
+				1F564B022D1829E7009504A0 /* DescriptionView.swift */,
+				1F564B032D1829E7009504A0 /* DriverView.swift */,
+				1F564B042D1829E7009504A0 /* ReportPreviewView.swift */,
+				1F564B052D1829E7009504A0 /* ReportPreviewWrapper.swift */,
+			);
+			path = AccidentReports;
+			sourceTree = "<group>";
+		};
+		1F564B082D1829E7009504A0 /* PreloadData */ = {
+			isa = PBXGroup;
+			children = (
+				1F564B072D1829E7009504A0 /* PreloadDataView.swift */,
+			);
+			path = PreloadData;
+			sourceTree = "<group>";
+		};
+		1F564B0A2D1829E7009504A0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1F564B092D1829E7009504A0 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		1F564B0B2D1829E7009504A0 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				1F564B062D1829E7009504A0 /* AccidentReports */,
+				1F564B082D1829E7009504A0 /* PreloadData */,
+				1F564B0A2D1829E7009504A0 /* Settings */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		1F564B0F2D1829E7009504A0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1F564B0C2D1829E7009504A0 /* Constants.swift */,
+				1F564B0D2D1829E7009504A0 /* Euroformular-zaznamu-o-dopravni-nehode.pdf */,
+				1F564B0E2D1829E7009504A0 /* form.png */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		1F564B142D1829E7009504A0 /* AccidentReports */ = {
+			isa = PBXGroup;
+			children = (
+				1F564B102D1829E7009504A0 /* DateTimeView.swift */,
+				1F564B112D1829E7009504A0 /* CheckboxesView.swift */,
+				1F564B122D1829E7009504A0 /* LocationDetailsView.swift */,
+				1F564B132D1829E7009504A0 /* WitnessesView.swift */,
+			);
+			path = AccidentReports;
+			sourceTree = "<group>";
+		};
+		1F564B172D1829E7009504A0 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				1F564B152D1829E7009504A0 /* ACButton.swift */,
+				1F564B162D1829E7009504A0 /* UpperTabBarButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		1F564B192D1829E7009504A0 /* ErrorBlock */ = {
+			isa = PBXGroup;
+			children = (
+				1F564B182D1829E7009504A0 /* ARErrorBlock.swift */,
+			);
+			path = ErrorBlock;
+			sourceTree = "<group>";
+		};
+		1F564B1B2D1829E7009504A0 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				1F564B1A2D1829E7009504A0 /* IOSCheckboxToggleStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		1F564B1D2D1829E7009504A0 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				1F564B1C2D1829E7009504A0 /* TitledBorderTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		1F564B1F2D1829E7009504A0 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				1F564B1E2D1829E7009504A0 /* AnyTransitions+Ext.swift */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
+		1F564B302D1829E7009504A0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1F564B142D1829E7009504A0 /* AccidentReports */,
+				1F564B172D1829E7009504A0 /* Buttons */,
+				1F564B192D1829E7009504A0 /* ErrorBlock */,
+				1F564B1B2D1829E7009504A0 /* Styles */,
+				1F564B1D2D1829E7009504A0 /* TextFields */,
+				1F564B1F2D1829E7009504A0 /* Transitions */,
+				1F564B202D1829E7009504A0 /* AccidentGradient.swift */,
+				1F564B212D1829E7009504A0 /* AccidentListItemView.swift */,
+				1F564B222D1829E7009504A0 /* ActionButtonView.swift */,
+				1F564B232D1829E7009504A0 /* ControlButtonView.swift */,
+				1F564B242D1829E7009504A0 /* DraggableArrowView.swift */,
+				1F564B252D1829E7009504A0 /* DraggableView.swift */,
+				1F564B262D1829E7009504A0 /* EmptyListView.swift */,
+				1F564B272D1829E7009504A0 /* RoadShape.swift */,
+				1F564B282D1829E7009504A0 /* RoadShapeView.swift */,
+				1F564B292D1829E7009504A0 /* RotationButtoView.swift */,
+				1F564B2A2D1829E7009504A0 /* ScaleButtonView.swift */,
+				1F564B2B2D1829E7009504A0 /* TickBox.swift */,
+				1F564B2C2D1829E7009504A0 /* VehicleButtonView.swift */,
+				1F564B2D2D1829E7009504A0 /* VehicleStatusView.swift */,
+				1F564B2E2D1829E7009504A0 /* VisibleDamageView.swift */,
+				1F564B2F2D1829E7009504A0 /* WitnessView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1F564B332D1829E7009504A0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1F564B302D1829E7009504A0 /* Components */,
+				1F564B312D1829E7009504A0 /* MainTabView.swift */,
+				1F564B322D1829E7009504A0 /* UpperTabBarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1F564B382D1829E7009504A0 /* Accidents */ = {
+			isa = PBXGroup;
+			children = (
+				1F564AEA2D1829E7009504A0 /* Managers */,
+				1F564AED2D1829E7009504A0 /* Mocks */,
+				1F564AF32D1829E7009504A0 /* Models */,
+				1F564AF62D1829E7009504A0 /* Presenters */,
+				1F564AF82D1829E7009504A0 /* Preview Content */,
+				1F564AFC2D1829E7009504A0 /* Repositories */,
+				1F564B0B2D1829E7009504A0 /* Screens */,
+				1F564B0F2D1829E7009504A0 /* Utils */,
+				1F564B332D1829E7009504A0 /* Views */,
+				1F564B342D1829E7009504A0 /* .swiftlint.yml */,
+				1F564B352D1829E7009504A0 /* Accidents.xcdatamodeld */,
+				1F564B362D1829E7009504A0 /* AccidentsApp.swift */,
+				1F564B372D1829E7009504A0 /* Assets.xcassets */,
+			);
+			path = Accidents;
+			sourceTree = "<group>";
+		};
+		1F564B792D1829EC009504A0 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				1F564B782D1829EC009504A0 /* MockAccidentReportRepository.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		1F564B7C2D1829EC009504A0 /* AccidentsTests */ = {
+			isa = PBXGroup;
+			children = (
+				1F564B792D1829EC009504A0 /* Mocks */,
+				1F564B7A2D1829EC009504A0 /* Accidents.xctestplan */,
+				1F564B7B2D1829EC009504A0 /* AccidentsPresenterTests.swift */,
+			);
+			path = AccidentsTests;
+			sourceTree = "<group>";
+		};
 		1FAEBB7F2B96159500659397 = {
 			isa = PBXGroup;
 			children = (
-				1FEB49D62CF31F94003E35F8 /* Accidents */,
-				1FEB4A112CF37309003E35F8 /* AccidentsTests */,
+				1F564B382D1829E7009504A0 /* Accidents */,
+				1F564B7C2D1829EC009504A0 /* AccidentsTests */,
 				1FAEBB892B96159500659397 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,9 +445,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				1FEB49D62CF31F94003E35F8 /* Accidents */,
-			);
 			name = Accidents;
 			productName = Accidents;
 			productReference = 1FAEBB882B96159500659397 /* Accidents.app */;
@@ -98,9 +462,6 @@
 			);
 			dependencies = (
 				1FAEBB9A2B96159700659397 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				1FEB4A112CF37309003E35F8 /* AccidentsTests */,
 			);
 			name = AccidentsTests;
 			productName = AccidentsTests;
@@ -150,6 +511,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F564B3A2D1829E7009504A0 /* Preview Assets.xcassets in Resources */,
+				1F564B3B2D1829E7009504A0 /* Euroformular-zaznamu-o-dopravni-nehode.pdf in Resources */,
+				1F564B3C2D1829E7009504A0 /* form.png in Resources */,
+				1F564B3D2D1829E7009504A0 /* .swiftlint.yml in Resources */,
+				1F564B3E2D1829E7009504A0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +523,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F564B7F2D1829EC009504A0 /* Accidents.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +556,63 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F564B3F2D1829E7009504A0 /* CoreDataManager.swift in Sources */,
+				1F564B402D1829E7009504A0 /* PDFManager.swift in Sources */,
+				1F564B412D1829E7009504A0 /* VehicleManager.swift in Sources */,
+				1F564B422D1829E7009504A0 /* MockDataRepository.swift in Sources */,
+				1F564B432D1829E7009504A0 /* MockPresenter.swift in Sources */,
+				1F564B442D1829E7009504A0 /* AccidentReport.swift in Sources */,
+				1F564B452D1829E7009504A0 /* AccidentReportFillingState.swift in Sources */,
+				1F564B462D1829E7009504A0 /* AccidentReportNavigationState.swift in Sources */,
+				1F564B472D1829E7009504A0 /* RoadShapeSelector.swift in Sources */,
+				1F564B482D1829E7009504A0 /* Vehicle.swift in Sources */,
+				1F564B492D1829E7009504A0 /* AccidentsPresenter.swift in Sources */,
+				1F564B4A2D1829E7009504A0 /* ReportPreviewPresenter.swift in Sources */,
+				1F564B4B2D1829E7009504A0 /* AccidentReportRepository.swift in Sources */,
+				1F564B4C2D1829E7009504A0 /* CoreDataError.swift in Sources */,
+				1F564B4D2D1829E7009504A0 /* CoreDataRepository.swift in Sources */,
+				1F564B4E2D1829E7009504A0 /* AccidentCrashPointView.swift in Sources */,
+				1F564B4F2D1829E7009504A0 /* AccidentLocationView.swift in Sources */,
+				1F564B502D1829E7009504A0 /* AccidentSituationView.swift in Sources */,
+				1F564B512D1829E7009504A0 /* AccidentsListView.swift in Sources */,
+				1F564B522D1829E7009504A0 /* AccidentsNavigationView.swift in Sources */,
+				1F564B532D1829E7009504A0 /* DescriptionView.swift in Sources */,
+				1F564B542D1829E7009504A0 /* DriverView.swift in Sources */,
+				1F564B552D1829E7009504A0 /* ReportPreviewView.swift in Sources */,
+				1F564B562D1829E7009504A0 /* ReportPreviewWrapper.swift in Sources */,
+				1F564B572D1829E7009504A0 /* PreloadDataView.swift in Sources */,
+				1F564B582D1829E7009504A0 /* SettingsView.swift in Sources */,
+				1F564B592D1829E7009504A0 /* Constants.swift in Sources */,
+				1F564B5A2D1829E7009504A0 /* DateTimeView.swift in Sources */,
+				1F564B5B2D1829E7009504A0 /* CheckboxesView.swift in Sources */,
+				1F564B5C2D1829E7009504A0 /* LocationDetailsView.swift in Sources */,
+				1F564B5D2D1829E7009504A0 /* WitnessesView.swift in Sources */,
+				1F564B5E2D1829E7009504A0 /* ACButton.swift in Sources */,
+				1F564B5F2D1829E7009504A0 /* UpperTabBarButton.swift in Sources */,
+				1F564B602D1829E7009504A0 /* ARErrorBlock.swift in Sources */,
+				1F564B612D1829E7009504A0 /* IOSCheckboxToggleStyle.swift in Sources */,
+				1F564B622D1829E7009504A0 /* TitledBorderTextField.swift in Sources */,
+				1F564B632D1829E7009504A0 /* AnyTransitions+Ext.swift in Sources */,
+				1F564B642D1829E7009504A0 /* AccidentGradient.swift in Sources */,
+				1F564B652D1829E7009504A0 /* AccidentListItemView.swift in Sources */,
+				1F564B662D1829E7009504A0 /* ActionButtonView.swift in Sources */,
+				1F564B672D1829E7009504A0 /* ControlButtonView.swift in Sources */,
+				1F564B682D1829E7009504A0 /* DraggableArrowView.swift in Sources */,
+				1F564B692D1829E7009504A0 /* DraggableView.swift in Sources */,
+				1F564B6A2D1829E7009504A0 /* EmptyListView.swift in Sources */,
+				1F564B6B2D1829E7009504A0 /* RoadShape.swift in Sources */,
+				1F564B6C2D1829E7009504A0 /* RoadShapeView.swift in Sources */,
+				1F564B6D2D1829E7009504A0 /* RotationButtoView.swift in Sources */,
+				1F564B6E2D1829E7009504A0 /* ScaleButtonView.swift in Sources */,
+				1F564B6F2D1829E7009504A0 /* TickBox.swift in Sources */,
+				1F564B702D1829E7009504A0 /* VehicleButtonView.swift in Sources */,
+				1F564B712D1829E7009504A0 /* VehicleStatusView.swift in Sources */,
+				1F564B722D1829E7009504A0 /* VisibleDamageView.swift in Sources */,
+				1F564B732D1829E7009504A0 /* WitnessView.swift in Sources */,
+				1F564B742D1829E7009504A0 /* MainTabView.swift in Sources */,
+				1F564B752D1829E7009504A0 /* UpperTabBarView.swift in Sources */,
+				1F564B762D1829E7009504A0 /* Accidents.xcdatamodeld in Sources */,
+				1F564B772D1829E7009504A0 /* AccidentsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +620,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F564B7D2D1829EC009504A0 /* MockAccidentReportRepository.swift in Sources */,
+				1F564B7E2D1829EC009504A0 /* AccidentsPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +886,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1F564B352D1829E7009504A0 /* Accidents.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1F564B392D1829E7009504A0 /* Accidents.xcdatamodel */,
+			);
+			currentVersion = 1F564B392D1829E7009504A0 /* Accidents.xcdatamodel */;
+			path = Accidents.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1FAEBB802B96159500659397 /* Project object */;
 }

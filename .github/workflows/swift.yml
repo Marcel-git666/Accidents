@@ -25,9 +25,9 @@ jobs:
 #      run: swift package resolve
 
     # Run tests on iPhone 14 Simulator with iOS 16.0
-    - name: Run Tests on iPhone 14 Simulator (iOS 16.0)
+    - name: Run Tests on iPhone 16 Simulator (iOS 17.0)
       run: |
         xcodebuild test \
           -scheme 'Accidents' \
           -testPlan 'Accidents' \
-          -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0'
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=17.0'
