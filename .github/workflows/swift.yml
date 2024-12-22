@@ -28,5 +28,5 @@ jobs:
     - name: Run Tests on iPhone 14 Simulator (iOS 16.0)
       run: |
         xcodebuild test \
-          -scheme 'Requestify' \
+          -scheme 'Accidents' \
           -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0'

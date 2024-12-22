@@ -59,12 +59,13 @@ class ReportPreviewPresenter: ObservableObject {
         }
         
     }
-        
+    // swiftlint:disable identifier_name
     func updateArrow(x: Double, y: Double) {
         arrowPosition.x += x
         arrowPosition.y += y
         arrowScale *= 0.2
     }
+    // swiftlint:enable identifier_name
 }
 
 struct DriverDetails {
