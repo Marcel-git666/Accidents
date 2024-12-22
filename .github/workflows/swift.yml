@@ -31,4 +31,3 @@ jobs:
           -scheme 'Accidents' \
           -testPlan 'Accidents' \
           -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.1'
-          -allowProvisioningUpdates
