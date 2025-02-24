@@ -50,6 +50,16 @@ struct AccidentsListView: View {
                     }
                 }
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.listBackground)
+            .refreshable {
+                await presenter.fetchAccidents()
+            }
+            .navigationBarItems(trailing: Button(action: {
+                presenter.goNext()
+            }, label: {
+                Label("New Accident", systemImage: "plus")
+            }))
             if let reportToPreview = presenter.reportToPreview {
                 ReportPreviewWrapper(
                     report: reportToPreview,
