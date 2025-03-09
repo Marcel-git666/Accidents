@@ -15,7 +15,7 @@ struct AccidentsNavigationView: View {
             VStack {
                 switch presenter.viewState {
                 case .start:
-                        UpperTabBarView(presenter: presenter)
+                        PageStyleTabView(presenter: presenter)
                         .transition(.scale(0.5))
                 default:
                     AccidentsListView(presenter: presenter)

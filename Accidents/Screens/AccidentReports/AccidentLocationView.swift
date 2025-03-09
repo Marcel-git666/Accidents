@@ -83,16 +83,16 @@ struct AccidentLocationView: View {
                         }
                     }
                 }
-                HStack {
-                    ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
-                        presenter.transitionEffect = .scale
-                        presenter.createReportAndSave()
-                    }
-                    ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
-                        presenter.transitionEffect = .scale
-                        presenter.goNext()
-                    }
-                }
+//                HStack {
+//                    ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
+//                        presenter.transitionEffect = .scale
+//                        presenter.createReportAndSave()
+//                    }
+//                    ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
+//                        presenter.transitionEffect = .scale
+//                        presenter.goNext()
+//                    }
+//                }
                 
             }
             .padding()

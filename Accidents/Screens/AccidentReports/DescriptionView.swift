@@ -50,15 +50,15 @@ struct DescriptionView: View {
             }
             .scrollContentBackground(.hidden)
             .background(Color.background)
-            Spacer()
-            HStack {
-                ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
-                    presenter.createReportAndSave()
-                }
-                ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
-                        presenter.goNext()
-                }
-            }
+//            Spacer()
+//            HStack {
+//                ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
+//                    presenter.createReportAndSave()
+//                }
+//                ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
+//                        presenter.goNext()
+//                }
+//            }
         }
         .padding()
         .background(Color.background)

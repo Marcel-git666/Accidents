@@ -114,14 +114,14 @@ struct AccidentCrashPointView: View {
                 }
                 .contentShape(Rectangle())
             }
-            HStack {
-                ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
-                    presenter.createReportAndSave()
-                }
-                ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
-                        presenter.goNext()
-                }
-            }
+//            HStack {
+//                ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
+//                    presenter.createReportAndSave()
+//                }
+//                ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
+//                        presenter.goNext()
+//                }
+//            }
         }
     }
     

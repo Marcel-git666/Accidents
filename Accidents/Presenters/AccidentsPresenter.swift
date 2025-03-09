@@ -126,7 +126,27 @@ class AccidentsPresenter: ObservableObject {
             }
         }
     }
-    
+
+    func saveCurrentState() {
+        // Save current state without exiting
+        let blueVehicle = vehicleManager.vehicles.first(where: { $0.imageName.contains("blue") })
+        let yellowVehicle = vehicleManager.vehicles.first(where: { $0.imageName.contains("yellow") })
+        let otherVehicles = vehicleManager.vehicles.filter {
+            !$0.imageName.contains("blue") && !$0.imageName.contains("yellow")
+        }
+
+        saveVehiclesToAccidentSituation(
+            blueVehicle: blueVehicle,
+            yellowVehicle: yellowVehicle,
+            otherVehicles: otherVehicles
+        )
+    }
+
+    func exitAndSaveReport() {
+        saveCurrentState()
+        createReportAndSave() // This already sets viewState to .accidentList
+    }
+
     func createReportAndSave() {
         if let selectedAccident = selectedAccident {
             Task {
@@ -249,6 +269,8 @@ class AccidentsPresenter: ObservableObject {
     
     func showReportPreview(for report: AccidentReport) {
         self.reportToPreview = report
+        print("Showing preview for report: \(report.accidentLocation.city)")
+        print("Driver name: \(report.driver.surnameOfDriver)")
     }
     
     func closeReportPreview() {

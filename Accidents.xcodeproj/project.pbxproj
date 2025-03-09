@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F106AC02D7D9D5700F55B20 /* PageStyleTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F106ABF2D7D9D5700F55B20 /* PageStyleTabView.swift */; };
 		1F564B3A2D1829E7009504A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F564AF72D1829E7009504A0 /* Preview Assets.xcassets */; };
 		1F564B3B2D1829E7009504A0 /* Euroformular-zaznamu-o-dopravni-nehode.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1F564B0D2D1829E7009504A0 /* Euroformular-zaznamu-o-dopravni-nehode.pdf */; };
 		1F564B3C2D1829E7009504A0 /* form.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F564B0E2D1829E7009504A0 /* form.png */; };
@@ -85,6 +86,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F106ABF2D7D9D5700F55B20 /* PageStyleTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageStyleTabView.swift; sourceTree = "<group>"; };
 		1F564AE72D1829E7009504A0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1F564AE82D1829E7009504A0 /* PDFManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFManager.swift; sourceTree = "<group>"; };
 		1F564AE92D1829E7009504A0 /* VehicleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleManager.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				1F564B302D1829E7009504A0 /* Components */,
 				1F564B312D1829E7009504A0 /* MainTabView.swift */,
 				1F564B322D1829E7009504A0 /* UpperTabBarView.swift */,
+				1F106ABF2D7D9D5700F55B20 /* PageStyleTabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				1F564B612D1829E7009504A0 /* IOSCheckboxToggleStyle.swift in Sources */,
 				1F564B622D1829E7009504A0 /* TitledBorderTextField.swift in Sources */,
 				1F564B632D1829E7009504A0 /* AnyTransitions+Ext.swift in Sources */,
+				1F106AC02D7D9D5700F55B20 /* PageStyleTabView.swift in Sources */,
 				1F564B642D1829E7009504A0 /* AccidentGradient.swift in Sources */,
 				1F564B652D1829E7009504A0 /* AccidentListItemView.swift in Sources */,
 				1F564B662D1829E7009504A0 /* ActionButtonView.swift in Sources */,

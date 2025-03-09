@@ -49,7 +49,6 @@ class ReportPreviewPresenter: ObservableObject {
         dateString = dateFormatter.string(from: report.driver.borderInsuranceValidUntil)
         self.driverDetails = DriverDetails(insuredName: report.driver.insuredName, insuredAddress: report.driver.insuredAddress, insuredPhone: report.driver.insuredPhone, insuredVat: report.driver.insuredPayerOfVAT, carType: report.driver.vehicleManufacturerAndType, carYear: report.driver.vehicleYearOfManufacture, plateNumber: report.driver.vehicleStateRegistrationPlate, insurer: report.driver.insurer, insurerBranchAddress: report.driver.insurerBranchAddress, insuranceNumber: report.driver.insuranceNumber, greenCardNumber: report.driver.greenCardNumber, borderInsuranceValidUntil: dateString, comprehensiveInsurance: report.driver.comprehensiveInsurance, comprehensiveInsuranceCompany: report.driver.comprehensiveInsuranceCompany, surnameOfDriver: report.driver.surnameOfDriver, firstNameOfDriver: report.driver.firstNameOfDriver, addressOfDriver: report.driver.addressOfDriver, phoneNumberOfDriver: report.driver.phoneNumberOfDriver, driverLicenseNumber: report.driver.driverLicenseNumber, categoryOfLicense: report.driver.categoryOfLicense, licenseIssuedBy: report.driver.licenseIssuedBy)
         
-        
         // Initialize arrow settings (default values or from the report if available)
         self.arrowPosition = report.pointOfImpact1?.crashPoint ?? CGPoint(x: 0, y: 0)
         self.arrowRotation = report.pointOfImpact1?.arrowRotation ?? 0

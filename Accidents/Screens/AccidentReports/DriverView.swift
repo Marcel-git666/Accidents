@@ -95,16 +95,16 @@ struct DriverView: View {
                         placeholder: "Issued by", titleColor: .accentColor)
                 }
                 .padding()
-                Spacer()
-                HStack {
-                    ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
-                        presenter.createReportAndSave()
-                    }
-                    ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
-                            presenter.goNext()
-                    }
-                }
-                .padding()
+//                Spacer()
+//                HStack {
+//                    ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
+//                        presenter.createReportAndSave()
+//                    }
+//                    ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
+//                            presenter.goNext()
+//                    }
+//                }
+//                .padding()
             }
         }
     }

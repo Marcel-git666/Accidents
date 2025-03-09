@@ -44,7 +44,7 @@ struct AccidentSituationView: View {
             
             RotationButtoView(vehicleManager: vehicleManager, selectedVehicle: $selectedVehicle)
             ScaleButtonView(vehicleManager: vehicleManager, selectedVehicle: $selectedVehicle)
-            ActionButtonView(presenter: presenter, vehicleManager: vehicleManager)
+//            ActionButtonView(presenter: presenter, vehicleManager: vehicleManager)
         }
         .onAppear {
             presenter.syncVehiclesWithManager()

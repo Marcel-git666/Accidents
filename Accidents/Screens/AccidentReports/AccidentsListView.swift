@@ -65,7 +65,8 @@ struct AccidentsListView: View {
                     report: reportToPreview,
                     templateImageName: "form"
                 )
-                .transition(.move(edge: .bottom)) // Optional animation
+                .transition(.opacity)
+                .zIndex(100)
                 .onTapGesture {
                     // Close the preview on tap (or add a close button inside the preview)
                     presenter.closeReportPreview()

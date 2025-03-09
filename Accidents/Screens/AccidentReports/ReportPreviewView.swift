@@ -159,6 +159,7 @@ struct ReportPreviewView: View {
             .position(presenter.arrowPosition)
             
         }
+        .environment(\.colorScheme, .light)
         .frame(width: 595.2, height: 841.8)
     }
 }
