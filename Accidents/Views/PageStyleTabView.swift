@@ -10,7 +10,7 @@ import SwiftUI
 struct PageStyleTabView: View {
     @ObservedObject var presenter: AccidentsPresenter
     @State private var selectedTabIndex = 0
-
+    
     private var tabStates: [AccidentReportFillingState] {
         return AccidentReportFillingState.allCases
     }
@@ -37,7 +37,7 @@ struct PageStyleTabView: View {
         .onChange(of: selectedTabIndex) { oldValue, newValue in
             // Save current state whenever the tab changes
             presenter.saveCurrentState()
-
+            
             switch newValue {
             case 0: presenter.selectedTab = .location
             case 1: presenter.selectedTab = .driver1
@@ -48,6 +48,27 @@ struct PageStyleTabView: View {
             case 6: presenter.selectedTab = .mapView
             default: break
             }
+        }
+        .safeAreaInset(edge: .top) {
+            // Top title bar showing current page
+            HStack {
+                Text(tabStates[selectedTabIndex].rawValue)
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                
+                Spacer()
+                
+                // Optional: Progress indicator
+                Text("\(selectedTabIndex + 1)/\(tabStates.count)")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+            .padding()
+            .background(
+                Rectangle()
+                    .fill(Color(UIColor.systemBackground))
+                    .shadow(radius: 2)
+            )
         }
         .safeAreaInset(edge: .bottom) {
             ACButton(label: "Exit", systemImage: "arrow.left.circle") {
