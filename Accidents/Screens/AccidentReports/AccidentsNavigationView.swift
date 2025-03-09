@@ -16,7 +16,7 @@ struct AccidentsNavigationView: View {
                 switch presenter.viewState {
                 case .start:
                         UpperTabBarView(presenter: presenter)
-                            .transition(.slide)
+                        .transition(.scale(0.5))
                 default:
                     AccidentsListView(presenter: presenter)
                         .transition(.slide)
