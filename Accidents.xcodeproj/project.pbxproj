@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -40,10 +40,6 @@
 		1F564B572D1829E7009504A0 /* PreloadDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B072D1829E7009504A0 /* PreloadDataView.swift */; };
 		1F564B582D1829E7009504A0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B092D1829E7009504A0 /* SettingsView.swift */; };
 		1F564B592D1829E7009504A0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B0C2D1829E7009504A0 /* Constants.swift */; };
-		1F564B5A2D1829E7009504A0 /* DateTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B102D1829E7009504A0 /* DateTimeView.swift */; };
-		1F564B5B2D1829E7009504A0 /* CheckboxesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B112D1829E7009504A0 /* CheckboxesView.swift */; };
-		1F564B5C2D1829E7009504A0 /* LocationDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B122D1829E7009504A0 /* LocationDetailsView.swift */; };
-		1F564B5D2D1829E7009504A0 /* WitnessesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B132D1829E7009504A0 /* WitnessesView.swift */; };
 		1F564B5E2D1829E7009504A0 /* ACButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B152D1829E7009504A0 /* ACButton.swift */; };
 		1F564B5F2D1829E7009504A0 /* UpperTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B162D1829E7009504A0 /* UpperTabBarButton.swift */; };
 		1F564B602D1829E7009504A0 /* ARErrorBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B182D1829E7009504A0 /* ARErrorBlock.swift */; };
@@ -117,10 +113,6 @@
 		1F564B0C2D1829E7009504A0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1F564B0D2D1829E7009504A0 /* Euroformular-zaznamu-o-dopravni-nehode.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Euroformular-zaznamu-o-dopravni-nehode.pdf"; sourceTree = "<group>"; };
 		1F564B0E2D1829E7009504A0 /* form.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = form.png; sourceTree = "<group>"; };
-		1F564B102D1829E7009504A0 /* DateTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeView.swift; sourceTree = "<group>"; };
-		1F564B112D1829E7009504A0 /* CheckboxesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxesView.swift; sourceTree = "<group>"; };
-		1F564B122D1829E7009504A0 /* LocationDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsView.swift; sourceTree = "<group>"; };
-		1F564B132D1829E7009504A0 /* WitnessesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WitnessesView.swift; sourceTree = "<group>"; };
 		1F564B152D1829E7009504A0 /* ACButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACButton.swift; sourceTree = "<group>"; };
 		1F564B162D1829E7009504A0 /* UpperTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperTabBarButton.swift; sourceTree = "<group>"; };
 		1F564B182D1829E7009504A0 /* ARErrorBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARErrorBlock.swift; sourceTree = "<group>"; };
@@ -155,6 +147,10 @@
 		1FAEBB882B96159500659397 /* Accidents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accidents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAEBB982B96159700659397 /* AccidentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccidentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		1F1DC1CD2D7F217C00A9AFB0 /* PDFPreview */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = PDFPreview; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1FAEBB852B96159500659397 /* Frameworks */ = {
@@ -284,17 +280,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		1F564B142D1829E7009504A0 /* AccidentReports */ = {
-			isa = PBXGroup;
-			children = (
-				1F564B102D1829E7009504A0 /* DateTimeView.swift */,
-				1F564B112D1829E7009504A0 /* CheckboxesView.swift */,
-				1F564B122D1829E7009504A0 /* LocationDetailsView.swift */,
-				1F564B132D1829E7009504A0 /* WitnessesView.swift */,
-			);
-			path = AccidentReports;
-			sourceTree = "<group>";
-		};
 		1F564B172D1829E7009504A0 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,7 +324,6 @@
 		1F564B302D1829E7009504A0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				1F564B142D1829E7009504A0 /* AccidentReports */,
 				1F564B172D1829E7009504A0 /* Buttons */,
 				1F564B192D1829E7009504A0 /* ErrorBlock */,
 				1F564B1B2D1829E7009504A0 /* Styles */,
@@ -368,6 +352,7 @@
 		1F564B332D1829E7009504A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1F1DC1CD2D7F217C00A9AFB0 /* PDFPreview */,
 				1F564B302D1829E7009504A0 /* Components */,
 				1F564B312D1829E7009504A0 /* MainTabView.swift */,
 				1F564B322D1829E7009504A0 /* UpperTabBarView.swift */,
@@ -447,6 +432,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1F1DC1CD2D7F217C00A9AFB0 /* PDFPreview */,
 			);
 			name = Accidents;
 			productName = Accidents;
@@ -586,10 +574,6 @@
 				1F564B572D1829E7009504A0 /* PreloadDataView.swift in Sources */,
 				1F564B582D1829E7009504A0 /* SettingsView.swift in Sources */,
 				1F564B592D1829E7009504A0 /* Constants.swift in Sources */,
-				1F564B5A2D1829E7009504A0 /* DateTimeView.swift in Sources */,
-				1F564B5B2D1829E7009504A0 /* CheckboxesView.swift in Sources */,
-				1F564B5C2D1829E7009504A0 /* LocationDetailsView.swift in Sources */,
-				1F564B5D2D1829E7009504A0 /* WitnessesView.swift in Sources */,
 				1F564B5E2D1829E7009504A0 /* ACButton.swift in Sources */,
 				1F564B5F2D1829E7009504A0 /* UpperTabBarButton.swift in Sources */,
 				1F564B602D1829E7009504A0 /* ARErrorBlock.swift in Sources */,

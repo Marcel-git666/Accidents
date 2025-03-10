@@ -16,71 +16,65 @@ struct ReportPreviewWrapper: View {
     @State private var lastOffset: CGSize = .zero
     @GestureState private var magnificationState: CGFloat = 1.0
     @GestureState private var dragState: CGSize = .zero
-    
+
     var body: some View {
         ZStack {
-            Color.black.opacity(0.7)
+            Color.black
                 .ignoresSafeArea()
                 .onTapGesture {
                     // Allow tapping outside to dismiss
                 }
-            ScrollView([.horizontal, .vertical]) {
+            ScrollView([.horizontal, .vertical], showsIndicators: false) {
                 ReportPreviewView(presenter: ReportPreviewPresenter(report: report), templateImageName: templateImageName)
-                    .frame(width: 595.2, height: 841.8) // Match A4 dimensions
-                    .background(Color.white) // Ensure a clear background
+                    .frame(width: 595.2 * scale, height: 841.8 * scale) // Scale dimensions
+                    .background(Color.white)
                     .cornerRadius(8)
                     .shadow(radius: 10)
                     .padding(20)
-                    .scaleEffect(scale)
                     .offset(x: offset.width + dragState.width, y: offset.height + dragState.height)
-                // Combine gestures for zoom and pan
+                // Use a gesture group to manage both pan and zoom
                     .gesture(
-                        DragGesture()
-                            .updating($dragState) { value, state, _ in
-                                // Only allow dragging when zoomed in
-                                if scale > 1.0 {
+                        SimultaneousGesture(
+                            // Pan gesture
+                            DragGesture()
+                                .updating($dragState) { value, state, _ in
                                     state = value.translation
                                 }
-                            }
-                            .onEnded { value in
-                                // Only update offset when zoomed in
-                                if scale > 1.0 {
+                                .onEnded { value in
                                     offset = CGSize(
                                         width: offset.width + value.translation.width,
                                         height: offset.height + value.translation.height
                                     )
-                                    lastOffset = offset
+                                },
+                            // Zoom gesture
+                            MagnificationGesture()
+                                .updating($magnificationState) { currentState, gestureState, _ in
+                                    gestureState = currentState
                                 }
-                            }
-                    )
-                    .gesture(
-                        MagnificationGesture()
-                            .updating($magnificationState) { currentState, gestureState, _ in
-                                gestureState = currentState
-                            }
-                            .onChanged { value in
-                                let delta = value / lastScale
-                                lastScale = value
-                                
-                                // Limit zoom range between 0.5x and 4x
-                                let newScale = scale * delta
-                                scale = min(max(newScale, 0.5), 4.0)
-                            }
-                            .onEnded { _ in
-                                lastScale = 1.0
-                            }
+                                .onChanged { value in
+                                    let delta = value / lastScale
+                                    lastScale = value
+
+                                    // Limit zoom range
+                                    let newScale = scale * delta
+                                    scale = min(max(newScale, 0.5), 4.0)
+                                }
+                                .onEnded { _ in
+                                    lastScale = 1.0
+                                }
+                        )
                     )
             }
-            .gesture(
-                // Double tap to reset zoom and position
-                TapGesture(count: 2)
-                    .onEnded {
-                        withAnimation {
-                            scale = 1.0
-                            offset = .zero
-                        }
-                    }
-            )
+            // Double tap to reset
+            .contentShape(Rectangle())
+            .onTapGesture(count: 2) {
+                withAnimation {
+                    scale = 1.0
+                    offset = .zero
+                }
+            }
+
+            // Control buttons
             VStack {
                 Spacer()
                 HStack {
@@ -96,24 +90,25 @@ struct ReportPreviewWrapper: View {
                             .background(Color.black.opacity(0.6))
                             .clipShape(Circle())
                     }
-                    
+
                     Spacer()
-                    
+
                     Button(action: {
                         withAnimation {
                             scale = 1.0 // Reset to original size
+                            offset = .zero // Reset position
                         }
                     }) {
-                        Image(systemName: "1.magnifyingglass")
+                        Image(systemName: "arrow.counterclockwise")
                             .font(.title)
                             .foregroundColor(.white)
                             .padding(8)
                             .background(Color.black.opacity(0.6))
                             .clipShape(Circle())
                     }
-                    
+
                     Spacer()
-                    
+
                     Button(action: {
                         withAnimation {
                             scale = min(scale + 0.25, 4.0)

@@ -8,9 +8,6 @@
 import SwiftUI
 import PDFKit
 
-import SwiftUI
-import PDFKit
-
 class PDFManager {
     static let shared = PDFManager()
     

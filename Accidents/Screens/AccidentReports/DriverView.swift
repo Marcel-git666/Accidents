@@ -83,6 +83,9 @@ struct DriverView: View {
                         title: "First name", text: $driver.firstNameOfDriver, 
                         placeholder: "Name", titleColor: .accentColor)
                     TitledBorderTextField(
+                        title: "Address", text: $driver.addressOfDriver,
+                        placeholder: "Město, Ulice", titleColor: .accentColor)
+                    TitledBorderTextField(
                         title: "Driver's License Number",
                         text: $driver.driverLicenseNumber,
                         placeholder: "Driver's license number",
