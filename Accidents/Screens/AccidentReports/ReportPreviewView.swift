@@ -52,15 +52,19 @@ struct ReportPreviewView: View {
                 formattedInsuranceDate: presenter.formattedInsuranceDate2,
                 isDriverA: false
             )
-            // Arrow for point of impact
-            //            DraggableArrowView(
-            //                crashPoint: presenter.arrowPosition,
-            //                scale: presenter.arrowScale,
-//                arrowRotation: presenter.arrowRotation
-//            )
-//            .rotationEffect(.degrees(presenter.arrowRotation), anchor: .bottom)
-//            .scaleEffect(presenter.arrowScale)
-//            .position(presenter.arrowPosition)
+            // Arrows for point of impact — Vehicle A and B
+            if let impact = presenter.pointOfImpact1 {
+                DraggableArrowView()
+                    .rotationEffect(.degrees(impact.arrowRotation), anchor: .bottom)
+                    .scaleEffect(impact.scale)
+                    .position(impact.crashPoint)
+            }
+            if let impact = presenter.pointOfImpact2 {
+                DraggableArrowView()
+                    .rotationEffect(.degrees(impact.arrowRotation), anchor: .bottom)
+                    .scaleEffect(impact.scale)
+                    .position(impact.crashPoint)
+            }
             
         }
         .environment(\.colorScheme, .light)

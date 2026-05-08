@@ -41,7 +41,7 @@ struct AccidentCrashPointView: View {
                         .frame(width: 80, height: 120)
                         .position(motorcyclePosition)
                     
-                    DraggableArrowView(crashPoint: pointOfImpact.crashPoint, scale: pointOfImpact.scale, arrowRotation: pointOfImpact.arrowRotation)
+                    DraggableArrowView()
                         .rotationEffect(.degrees(pointOfImpact.arrowRotation), anchor: .bottom)
                         .scaleEffect(pointOfImpact.scale)
                         .position(pointOfImpact.crashPoint)

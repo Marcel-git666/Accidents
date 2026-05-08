@@ -216,7 +216,7 @@ class AccidentsPresenter: ObservableObject {
         selectedAccident = report
         accidentLocation = report.accidentLocation
         accidentDriver1 = report.driver
-        accidentDriver2 = report.otherDriver!
+        accidentDriver2 = report.otherDriver ?? Driver.sample2
         accidentDescription = report.accidentDescription
         pointOfImpact1 = report.pointOfImpact1 ?? PointOfImpact(crashPoint: CGPoint(x: 50, y: 100), arrowRotation: 0, scale: 1)
         pointOfImpact2 = report.pointOfImpact2 ?? PointOfImpact(crashPoint: CGPoint(x: 50, y: 100), arrowRotation: 0, scale: 1)
