@@ -7,7 +7,7 @@
 
 import CoreData
 
-class CoreDataManager {
+final class CoreDataManager: @unchecked Sendable {
 
   static let shared = CoreDataManager() // Singleton instance
 
@@ -23,7 +23,7 @@ class CoreDataManager {
     })
   }
 
-  func viewContext() -> NSManagedObjectContext {
+  @MainActor func viewContext() -> NSManagedObjectContext {
     return persistentContainer.viewContext
   }
 }

@@ -7,6 +7,7 @@
 
 import CoreData
 
+@MainActor
 class CoreDataRepository: AccidentReportRepository {
     private let context: NSManagedObjectContext
     

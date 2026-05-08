@@ -8,7 +8,7 @@
 import SwiftUI
 import PDFKit
 
-class PDFManager {
+final class PDFManager: @unchecked Sendable {
     static let shared = PDFManager()
     
     private init() {}
@@ -34,24 +34,23 @@ class PDFManager {
         return outputURL
     }
     
-    func sharePDF(_ url: URL) {
-        DispatchQueue.main.async {
-            let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-            
-            // Get the key window's root view controller
-            if let rootVC = UIApplication.shared.windows.first?.rootViewController {
-                // For iPad: Set the popover presentation controller properties
-                if let popover = activityVC.popoverPresentationController {
-                    // Anchor to the center of the screen
-                    popover.sourceView = rootVC.view
-                    popover.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2,
-                                                y: UIScreen.main.bounds.height / 2,
-                                                width: 0, height: 0)
-                    popover.permittedArrowDirections = [] // No arrow
-                }
-                
-                rootVC.present(activityVC, animated: true)
-            }
+    @MainActor func sharePDF(_ url: URL) {
+        let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+
+        guard let windowScene = UIApplication.shared.connectedScenes
+            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+              let rootVC = windowScene.keyWindow?.rootViewController else { return }
+
+        if let popover = activityVC.popoverPresentationController {
+            popover.sourceView = rootVC.view
+            popover.sourceRect = CGRect(
+                x: rootVC.view.bounds.midX,
+                y: rootVC.view.bounds.midY,
+                width: 0, height: 0
+            )
+            popover.permittedArrowDirections = []
         }
+
+        rootVC.present(activityVC, animated: true)
     }
 }

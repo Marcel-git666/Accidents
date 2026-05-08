@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 class VehicleManager: ObservableObject {
     @Published var vehicles: [Vehicle] = []
     

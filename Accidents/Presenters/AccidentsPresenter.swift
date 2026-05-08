@@ -40,9 +40,9 @@ class AccidentsPresenter: ObservableObject {
     @Published var transitionEffect: AnyTransition = .scale
     @Published var reportToPreview: AccidentReport?
     
-    init(repository: AccidentReportRepository, vehicleManager: VehicleManager = VehicleManager()) {
+    init(repository: AccidentReportRepository, vehicleManager: VehicleManager? = nil) {
         self.repository = repository
-        self.vehicleManager = vehicleManager
+        self.vehicleManager = vehicleManager ?? VehicleManager()
         setUp()
     }
     
@@ -56,9 +56,7 @@ class AccidentsPresenter: ObservableObject {
         
         do {
             let fetchedReports = try await repository.fetchAll()
-            DispatchQueue.main.async {
-                self.accidentReports = fetchedReports
-            }
+            accidentReports = fetchedReports
         } catch let error as CoreDataError {
             errorMessage = error.rawValue
         } catch {

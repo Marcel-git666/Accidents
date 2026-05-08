@@ -5,6 +5,7 @@
 //  Created by Marcel Mravec on 15.03.2024.
 //
 
+@MainActor
 protocol AccidentReportRepository {
     func saveReport(_ report: AccidentReport) async throws
     func fetchAll() async throws -> [AccidentReport]

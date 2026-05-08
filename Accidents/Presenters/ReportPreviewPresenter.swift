@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 class ReportPreviewPresenter: ObservableObject {
     let report: AccidentReport
     
