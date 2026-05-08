@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PageStyleTabView: View {
-    @ObservedObject var presenter: AccidentsPresenter
+    @Bindable var presenter: AccidentsPresenter
     @State private var selectedTabIndex = 0
     
     private var tabStates: [AccidentReportFillingState] {
@@ -30,7 +30,7 @@ struct PageStyleTabView: View {
             AccidentCrashPointView(presenter: presenter, pointOfImpact: $presenter.pointOfImpact2)
                 .tag(5)
             AccidentSituationView(presenter: presenter, accidentSituation: $presenter.accidentSituation)
-                .environmentObject(presenter.vehicleManager)
+                .environment(presenter.vehicleManager)
                 .tag(6)
         }
         .tabViewStyle(.page(indexDisplayMode: .always))

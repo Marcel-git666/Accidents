@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReportPreviewView: View {
-    @ObservedObject var presenter: ReportPreviewPresenter
+    let presenter: ReportPreviewPresenter
     let templateImageName: String
     
     var body: some View {

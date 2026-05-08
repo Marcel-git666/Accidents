@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccidentCrashPointView: View {
-    @ObservedObject var presenter: AccidentsPresenter
+    let presenter: AccidentsPresenter
     @Binding var pointOfImpact: PointOfImpact
     
     @State private var vanPosition: CGPoint = CGPoint(x: 300, y: 220)

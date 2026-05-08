@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DescriptionView: View {
-    @ObservedObject var presenter: AccidentsPresenter
+    @Bindable var presenter: AccidentsPresenter
     
     let vehicleStatusDescription = [
         "Parked",

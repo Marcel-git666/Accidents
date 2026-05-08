@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccidentLocationView: View {
-    @ObservedObject var presenter: AccidentsPresenter
+    @Bindable var presenter: AccidentsPresenter
     
     var body: some View {
         ZStack {

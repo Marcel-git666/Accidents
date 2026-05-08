@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct AccidentSituationView: View {
-    @ObservedObject var presenter: AccidentsPresenter
-    @EnvironmentObject var vehicleManager: VehicleManager
+    let presenter: AccidentsPresenter
+    @Environment(VehicleManager.self) var vehicleManager
     @Binding var accidentSituation: AccidentSituation
     @State private var selectedVehicle: Vehicle?
-    
+
     var body: some View {
+        @Bindable var vehicleManager = vehicleManager
         ZStack {
             Color.gray
                 .opacity(0.4)
                 .ignoresSafeArea()
             RoadShapeView(roadShape: accidentSituation.roadShape)
                 .padding(.vertical, 50)
-            
+
             VStack {
                 VehicleButtonView(presenter: presenter, vehicleManager: vehicleManager)
                 HStack {
@@ -30,7 +31,7 @@ struct AccidentSituationView: View {
                         selectedVehicle: $selectedVehicle)
                     Spacer()
                 }
-                
+
                 Spacer()
             }
             .padding(.top)
@@ -81,7 +82,7 @@ struct AccidentSituationView_Previews: PreviewProvider {
                     presenter: AccidentsPresenter(repository: MockDataRepository()),
                     accidentSituation: $accidentSituation
                 )
-                .environmentObject(manager)
+                .environment(manager)
                 .tabItem {
                     Label("Road Shape", systemImage: "cross")
                 }

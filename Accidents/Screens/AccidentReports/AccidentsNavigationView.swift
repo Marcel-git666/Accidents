@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccidentsNavigationView: View {
-    @ObservedObject var presenter: AccidentsPresenter
+    let presenter: AccidentsPresenter
     
     var body: some View {
         NavigationStack {

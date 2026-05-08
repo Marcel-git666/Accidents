@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccidentsListView: View {
-    @ObservedObject var presenter: AccidentsPresenter
+    let presenter: AccidentsPresenter
     @State private var selectedReport: AccidentReport?
     
     var body: some View {

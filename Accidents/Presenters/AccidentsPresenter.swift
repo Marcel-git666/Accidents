@@ -8,11 +8,12 @@
 import SwiftUI
 
 @MainActor
-class AccidentsPresenter: ObservableObject {
+@Observable
+class AccidentsPresenter {
     private let repository: AccidentReportRepository
     let vehicleManager: VehicleManager
-    @Published var accidentReports: [AccidentReport] = []
-    @Published var accidentLocation: AccidentLocation = AccidentLocation(
+    var accidentReports: [AccidentReport] = []
+    var accidentLocation: AccidentLocation = AccidentLocation(
         date: Date(),
         city: "",
         street: "",
@@ -23,22 +24,21 @@ class AccidentsPresenter: ObservableObject {
         otherDamage: false,
         policeInvolved: false
     )
-    @Published var accidentDriver1: Driver = Driver.sample1
-    @Published var accidentDriver2: Driver = Driver.sample2
-    
-    @Published var accidentDescription: AccidentDescription =
-    AccidentDescription(notes1: "notes 1", notes2: "notes 2",
-                        vehicleDamage1: Array(repeating: false, count: 17),
-                        vehicleDamage2: Array(repeating: false, count: 17))
-    @Published var errorMessage: String?
-    @Published var selectedAccident: AccidentReport?
-    @Published var viewState: AccidentReportNavigationState = .accidentList
-    @Published var selectedTab: AccidentReportFillingState = .location
-    @Published var pointOfImpact1: PointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 0, scale: 1)
-    @Published var pointOfImpact2: PointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 0, scale: 1)
-    @Published var accidentSituation: AccidentSituation = AccidentSituation(roadShape: .crossroad)
-    @Published var transitionEffect: AnyTransition = .scale
-    @Published var reportToPreview: AccidentReport?
+    var accidentDriver1: Driver = Driver.sample1
+    var accidentDriver2: Driver = Driver.sample2
+    var accidentDescription: AccidentDescription =
+        AccidentDescription(notes1: "notes 1", notes2: "notes 2",
+                            vehicleDamage1: Array(repeating: false, count: 17),
+                            vehicleDamage2: Array(repeating: false, count: 17))
+    var errorMessage: String?
+    var selectedAccident: AccidentReport?
+    var viewState: AccidentReportNavigationState = .accidentList
+    var selectedTab: AccidentReportFillingState = .location
+    var pointOfImpact1: PointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 0, scale: 1)
+    var pointOfImpact2: PointOfImpact = PointOfImpact(crashPoint: CGPoint(x: 200, y: 100), arrowRotation: 0, scale: 1)
+    var accidentSituation: AccidentSituation = AccidentSituation(roadShape: .crossroad)
+    @ObservationIgnored var transitionEffect: AnyTransition = .scale
+    var reportToPreview: AccidentReport?
     
     init(repository: AccidentReportRepository, vehicleManager: VehicleManager? = nil) {
         self.repository = repository

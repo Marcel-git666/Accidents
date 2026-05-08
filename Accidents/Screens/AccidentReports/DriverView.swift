@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DriverView: View {
-    @ObservedObject var presenter: AccidentsPresenter
+    let presenter: AccidentsPresenter
     @Binding var driver: Driver
     
     var body: some View {

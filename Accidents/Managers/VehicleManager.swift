@@ -8,8 +8,9 @@
 import SwiftUI
 
 @MainActor
-class VehicleManager: ObservableObject {
-    @Published var vehicles: [Vehicle] = []
+@Observable
+class VehicleManager {
+    var vehicles: [Vehicle] = []
     
     func addBlueVehicle(location: CGPoint, imageName: String, rotationAngle: Angle, scale: Double) {
         if !vehicles.contains(where: { $0.imageName.contains("blue") }) {

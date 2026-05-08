@@ -8,22 +8,23 @@
 import SwiftUI
 
 @MainActor
-class ReportPreviewPresenter: ObservableObject {
+@Observable
+class ReportPreviewPresenter {
     let report: AccidentReport
-    
+
     // Processed data for the view
-    @Published var formattedDate: String
-    @Published var formattedTime: String
-    @Published var isInjuriesChecked: Bool
-    @Published var isPoliceInvolved: Bool
-    @Published var isOtherDamage: Bool
-    @Published var witnesses: [String] = []
-    @Published var vehicleDamage1: [Bool]
-    @Published var vehicleDamage2: [Bool]
-    @Published var driver1: Driver
-    @Published var driver2: Driver
-    @Published var pointOfImpact1: PointOfImpact?
-    @Published var pointOfImpact2: PointOfImpact?
+    var formattedDate: String
+    var formattedTime: String
+    var isInjuriesChecked: Bool
+    var isPoliceInvolved: Bool
+    var isOtherDamage: Bool
+    var witnesses: [String] = []
+    var vehicleDamage1: [Bool]
+    var vehicleDamage2: [Bool]
+    var driver1: Driver
+    var driver2: Driver
+    var pointOfImpact1: PointOfImpact?
+    var pointOfImpact2: PointOfImpact?
 
     var formattedInsuranceDate1: String {
         formatDate(driver1.borderInsuranceValidUntil)

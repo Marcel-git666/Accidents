@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @StateObject private var presenter = AccidentsPresenter(
+    @State private var presenter = AccidentsPresenter(
         repository: CoreDataRepository())
     var body: some View {
         TabView {
