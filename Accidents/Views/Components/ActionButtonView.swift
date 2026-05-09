@@ -16,10 +16,6 @@ struct ActionButtonView: View {
             Spacer()
             HStack {
                 ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
-                    let blueVehicle = vehicleManager.vehicles.first(where: { $0.imageName.contains("blue") })
-                    let yellowVehicle = vehicleManager.vehicles.first(where: { $0.imageName.contains("yellow") })
-                    let otherVehicles = vehicleManager.vehicles.filter { !$0.imageName.contains("blue") && !$0.imageName.contains("yellow") }
-                    presenter.saveVehiclesToAccidentSituation(blueVehicle: blueVehicle, yellowVehicle: yellowVehicle, otherVehicles: otherVehicles)
                     presenter.createReportAndSave()
                 }
                 ACButton(label: "Save & Go next", systemImage: "goforward.plus") {

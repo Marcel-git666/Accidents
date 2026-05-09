@@ -27,7 +27,6 @@ struct VehicleButtonView: View {
                     location: CGPoint(x: 100, y: 100),
                     imageName: Constants.Images.car, rotationAngle: .zero,
                     scale: 1.0)
-                presenter.accidentSituation.otherVehicles.append(vehicleManager.vehicles.last!)
             } label: {
                 Image(systemName: "car")
                     .foregroundColor(.black)

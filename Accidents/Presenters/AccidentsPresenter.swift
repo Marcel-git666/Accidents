@@ -77,6 +77,7 @@ class AccidentsPresenter {
             case .accidentList:
                 selectedTab = .location
                 viewState = .start
+                vehicleManager.vehicles = []
             case .start:
                 switch selectedTab {
                 case .location:
@@ -125,27 +126,12 @@ class AccidentsPresenter {
         }
     }
 
-    func saveCurrentState() {
-        // Save current state without exiting
-        let blueVehicle = vehicleManager.vehicles.first(where: { $0.imageName.contains("blue") })
-        let yellowVehicle = vehicleManager.vehicles.first(where: { $0.imageName.contains("yellow") })
-        let otherVehicles = vehicleManager.vehicles.filter {
-            !$0.imageName.contains("blue") && !$0.imageName.contains("yellow")
-        }
-
-        saveVehiclesToAccidentSituation(
-            blueVehicle: blueVehicle,
-            yellowVehicle: yellowVehicle,
-            otherVehicles: otherVehicles
-        )
-    }
-
     func exitAndSaveReport() {
-        saveCurrentState()
-        createReportAndSave() // This already sets viewState to .accidentList
+        createReportAndSave()
     }
 
     func createReportAndSave() {
+        accidentSituation.vehicles = vehicleManager.vehicles
         if let selectedAccident = selectedAccident {
             Task {
                 let report = AccidentReport(id: selectedAccident.id, accidentLocation: accidentLocation,
@@ -154,7 +140,6 @@ class AccidentsPresenter {
                 if let index = accidentReports.firstIndex(where: { $0.id == report.id }) {
                     self.accidentReports[index] = report
                 } else {
-                    // The report with the specified ID was not found in the array
                     print("Report with ID \(report) not found")
                 }
                 await updateReportAndSave(report: report)
@@ -163,22 +148,13 @@ class AccidentsPresenter {
             viewState = .accidentList
             return
         }
-        
+
         let report = AccidentReport(id: UUID(), accidentLocation: accidentLocation,
                                     driver: accidentDriver1, otherDriver: accidentDriver2,
                                     accidentDescription: accidentDescription, pointOfImpact1: pointOfImpact1,
                                     pointOfImpact2: pointOfImpact2, accidentSituation: accidentSituation)
         saveReport(report)
         viewState = .accidentList
-        
-    }
-    
-    func saveVehiclesToAccidentSituation(blueVehicle: Vehicle?, yellowVehicle: Vehicle?, otherVehicles: [Vehicle]) {
-        
-        // Update AccidentSituation
-        accidentSituation.blueVehicle = blueVehicle
-        accidentSituation.yellowVehicle = yellowVehicle
-        accidentSituation.otherVehicles = otherVehicles
     }
     
     func saveReport(_ report: AccidentReport) {
@@ -219,6 +195,7 @@ class AccidentsPresenter {
         pointOfImpact1 = report.pointOfImpact1 ?? PointOfImpact(crashPoint: CGPoint(x: 50, y: 100), arrowRotation: 0, scale: 1)
         pointOfImpact2 = report.pointOfImpact2 ?? PointOfImpact(crashPoint: CGPoint(x: 50, y: 100), arrowRotation: 0, scale: 1)
         accidentSituation = report.accidentSituation ?? AccidentSituation(roadShape: .crossroad)
+        vehicleManager.vehicles = accidentSituation.vehicles
         goNext()
     }
     
@@ -275,7 +252,4 @@ class AccidentsPresenter {
         self.reportToPreview = nil
     }
     
-    func syncVehiclesWithManager() {
-        vehicleManager.loadVehicles(from: accidentSituation)
-    }
 }

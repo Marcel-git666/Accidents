@@ -34,10 +34,7 @@ struct PageStyleTabView: View {
                 .tag(6)
         }
         .tabViewStyle(.page(indexDisplayMode: .always))
-        .onChange(of: selectedTabIndex) { oldValue, newValue in
-            // Save current state whenever the tab changes
-            presenter.saveCurrentState()
-            
+        .onChange(of: selectedTabIndex) { _, newValue in
             switch newValue {
             case 0: presenter.selectedTab = .location
             case 1: presenter.selectedTab = .driver1

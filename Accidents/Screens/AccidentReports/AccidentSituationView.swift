@@ -47,9 +47,6 @@ struct AccidentSituationView: View {
             ScaleButtonView(vehicleManager: vehicleManager, selectedVehicle: $selectedVehicle)
 //            ActionButtonView(presenter: presenter, vehicleManager: vehicleManager)
         }
-        .onAppear {
-            presenter.syncVehiclesWithManager()
-        }
     }
 }
 
@@ -59,9 +56,9 @@ struct AccidentSituationView_Previews: PreviewProvider {
         let manager = VehicleManager()
         let mockAccidentSituation = AccidentSituation(
             roadShape: .crossroad,
-            blueVehicle: Vehicle(id: UUID().uuidString, location: CGPoint(x: 100, y: 100), imageName: "blueCar", rotationAngle: Angle(degrees: 30), scale: 1),
-            yellowVehicle: Vehicle(id: UUID().uuidString, location: CGPoint(x: 200, y: 200), imageName: "yellowCar", rotationAngle: Angle(degrees: -45), scale: 1),
-            otherVehicles: [
+            vehicles: [
+                Vehicle(id: UUID().uuidString, location: CGPoint(x: 100, y: 100), imageName: "blueCar", rotationAngle: Angle(degrees: 30), scale: 1),
+                Vehicle(id: UUID().uuidString, location: CGPoint(x: 200, y: 200), imageName: "yellowCar", rotationAngle: Angle(degrees: -45), scale: 1),
                 Vehicle(id: UUID().uuidString, location: CGPoint(x: 150, y: 150), imageName: "bike", rotationAngle: Angle(degrees: 90), scale: 1)
             ]
         )
