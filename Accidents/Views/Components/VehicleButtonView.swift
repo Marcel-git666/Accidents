@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct VehicleButtonView: View {
-    let presenter: AccidentsPresenter
-    let vehicleManager: VehicleManager
-    
+    let model: SituationFormModel
+
     var body: some View {
         HStack(alignment: .top) {
             Button {
-                vehicleManager.addOtherVehicle(
+                model.addOtherVehicle(
                     location: CGPoint(x: 100, y: 100),
                     imageName: Constants.Images.motorcycle,
                     rotationAngle: .zero, scale: 0.8)
@@ -23,7 +22,7 @@ struct VehicleButtonView: View {
                     .foregroundColor(.black)
             }
             Button {
-                vehicleManager.addOtherVehicle(
+                model.addOtherVehicle(
                     location: CGPoint(x: 100, y: 100),
                     imageName: Constants.Images.car, rotationAngle: .zero,
                     scale: 1.0)
@@ -32,7 +31,7 @@ struct VehicleButtonView: View {
                     .foregroundColor(.black)
             }
             Button {
-                vehicleManager.addOtherVehicle(
+                model.addOtherVehicle(
                     location: CGPoint(x: 100, y: 100),
                     imageName: Constants.Images.van, rotationAngle: .zero,
                     scale: 1.0)
@@ -41,7 +40,7 @@ struct VehicleButtonView: View {
                     .foregroundColor(.black)
             }
             Button {
-                vehicleManager.addYellowVehicle(
+                model.addYellowVehicle(
                     location: CGPoint(x: 100, y: 100),
                     imageName: Constants.Images.yellowMotorcycle,
                     rotationAngle: .zero, scale: 0.8)
@@ -50,7 +49,7 @@ struct VehicleButtonView: View {
                     .foregroundColor(.yellow)
             }
             Button {
-                vehicleManager.addBlueVehicle(
+                model.addBlueVehicle(
                     location: CGPoint(x: 100, y: 100),
                     imageName: Constants.Images.blueMotorcycle,
                     rotationAngle: .zero, scale: 0.8)
@@ -59,7 +58,7 @@ struct VehicleButtonView: View {
                     .foregroundColor(.blue)
             }
             Button {
-                vehicleManager.addYellowVehicle(
+                model.addYellowVehicle(
                     location: CGPoint(x: 100, y: 100),
                     imageName: Constants.Images.yellowCar,
                     rotationAngle: .zero, scale: 1)
@@ -68,7 +67,7 @@ struct VehicleButtonView: View {
                     .foregroundColor(.yellow)
             }
             Button {
-                vehicleManager.addBlueVehicle(
+                model.addBlueVehicle(
                     location: CGPoint(x: 100, y: 100),
                     imageName: Constants.Images.blueCar,
                     rotationAngle: .zero, scale: 1)
@@ -77,7 +76,7 @@ struct VehicleButtonView: View {
                     .foregroundColor(.blue)
             }
             Button {
-                vehicleManager.addYellowVehicle(
+                model.addYellowVehicle(
                     location: CGPoint(x: 100, y: 100),
                     imageName: Constants.Images.yellowVan,
                     rotationAngle: .zero, scale: 1)
@@ -86,7 +85,7 @@ struct VehicleButtonView: View {
                     .foregroundColor(.yellow)
             }
             Button {
-                vehicleManager.addBlueVehicle(
+                model.addBlueVehicle(
                     location: CGPoint(x: 100, y: 100),
                     imageName: Constants.Images.blueVan,
                     rotationAngle: .zero, scale: 1)
@@ -99,5 +98,5 @@ struct VehicleButtonView: View {
 }
 
 #Preview {
-    VehicleButtonView(presenter: MockPresenter(repository: MockDataRepository()), vehicleManager: VehicleManager())
+    VehicleButtonView(model: SituationFormModel())
 }

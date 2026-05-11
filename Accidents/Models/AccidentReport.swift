@@ -121,6 +121,30 @@ struct PointOfImpact: Codable {
     var scale: CGFloat
 }
 
+extension AccidentLocation {
+    static let defaultValue = AccidentLocation(
+        date: Date(), city: "", street: "", houseNumber: "",
+        kilometerReading: "0.0", injuries: false, witnesses: [],
+        otherDamage: false, policeInvolved: false
+    )
+}
+
+extension AccidentDescription {
+    static let defaultValue = AccidentDescription(
+        notes1: "", notes2: "",
+        vehicleDamage1: Array(repeating: false, count: 17),
+        vehicleDamage2: Array(repeating: false, count: 17)
+    )
+}
+
+extension PointOfImpact {
+    static let defaultValue = PointOfImpact(
+        crashPoint: CGPoint(x: 200, y: 100),
+        arrowRotation: 0,
+        scale: 1
+    )
+}
+
 struct AccidentSituation: Codable {
     var roadShape: RoadShapeSelector
     var vehicles: [Vehicle]

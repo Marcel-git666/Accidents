@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ScaleButtonView: View {
-    let vehicleManager: VehicleManager
+    let model: SituationFormModel
     @Binding var selectedVehicle: Vehicle?
-    
+
     var body: some View {
         VStack {
             Button(action: {
@@ -22,7 +22,7 @@ struct ScaleButtonView: View {
                     .padding()
             })
             .disabled(selectedVehicle == nil)
-            
+
             Button(action: {
                 if let selectedVehicle = selectedVehicle {
                     scaleDown(vehicle: selectedVehicle)
@@ -35,24 +35,18 @@ struct ScaleButtonView: View {
         }
         .position(x: 50, y: UIScreen.main.bounds.midY - 120)
     }
-    
+
     func scaleUp(vehicle: Vehicle) {
-        guard let index = vehicleManager.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
-        vehicleManager.vehicles[index].scale *= 1.1
+        guard let index = model.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
+        model.vehicles[index].scale *= 1.1
     }
-    
+
     func scaleDown(vehicle: Vehicle) {
-        guard let index = vehicleManager.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
-        vehicleManager.vehicles[index].scale *= 0.9
+        guard let index = model.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
+        model.vehicles[index].scale *= 0.9
     }
 }
 
-struct ScaleButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-        let vehicleManager = VehicleManager()
-        let selectedVehicle = Binding<Vehicle?>(get: { return 
-            Vehicle(id: "1", location: .zero, imageName: "car", rotationAngle: .zero, scale: 1.0) }, set: { _ in })
-        
-        return ScaleButtonView(vehicleManager: vehicleManager, selectedVehicle: selectedVehicle)
-    }
+#Preview {
+    ScaleButtonView(model: SituationFormModel(), selectedVehicle: .constant(nil))
 }

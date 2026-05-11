@@ -7,31 +7,32 @@
 
 import SwiftUI
 
-struct AccidentsNavigationView: View {
-    let presenter: AccidentsPresenter
-    
+struct AccidentsNavigationView<C: AccidentsCoordinating>: View {
+    let coordinator: C
+
     var body: some View {
         NavigationStack {
             VStack {
-                switch presenter.viewState {
+                switch coordinator.viewState {
                 case .start:
-                        PageStyleTabView(presenter: presenter)
+                    PageStyleTabView(coordinator: coordinator)
                         .transition(.scale(0.5))
                 default:
-                    AccidentsListView(presenter: presenter)
+                    AccidentsListView(coordinator: coordinator)
                         .transition(.slide)
                 }
             }
             Spacer()
             VStack {
-                if let errorMessage = presenter.errorMessage { ARErrorBlock(errorMessage: errorMessage)
+                if let errorMessage = coordinator.errorMessage {
+                    ARErrorBlock(errorMessage: errorMessage)
                 }
             }
-            .navigationTitle(presenter.viewState != .start ? "Reports" : "")
+            .navigationTitle(coordinator.viewState != .start ? "Reports" : "")
         }
     }
 }
 
 #Preview {
-    AccidentsNavigationView(presenter: MockPresenter(repository: MockDataRepository()))
+    AccidentsNavigationView(coordinator: MockCoordinator())
 }

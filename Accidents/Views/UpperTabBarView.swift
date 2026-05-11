@@ -7,77 +7,63 @@
 
 import SwiftUI
 
-struct UpperTabBarView: View {
-    @Bindable var presenter: AccidentsPresenter
-    
+struct UpperTabBarView<C: AccidentsCoordinating>: View {
+    @Bindable var coordinator: C
+
     let swipeAnimation: Animation = .easeOut(duration: 0.3)
     let tapAnimation: Animation = .easeInOut(duration: 0.2)
+
     var body: some View {
         VStack {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
                     ForEach(AccidentReportFillingState.allCases) { tab in
-                        UpperTabBarButton(color: presenter.selectedTab == tab ? Color.accentColor : Color.secondary,
-                                          systemImage: tab.systemImageName,
-                                          text: tab.rawValue,
-                                          isActive: presenter.selectedTab == tab)
+                        UpperTabBarButton(
+                            color: coordinator.selectedTab == tab ? Color.accentColor : Color.secondary,
+                            systemImage: tab.systemImageName,
+                            text: tab.rawValue,
+                            isActive: coordinator.selectedTab == tab)
                         .onTapGesture {
                             withAnimation(tapAnimation) {
-                                presenter.transitionEffect = .scale
-                                presenter.handleSelectedTab(tab)
+                                coordinator.handleSelectedTab(tab)
                             }
-                            
                         }
                     }
                 }
             }
             .padding(.horizontal)
-            
+
             Spacer()
-            
-            switch presenter.selectedTab {
+
+            switch coordinator.selectedTab {
             case .location:
-                AccidentLocationView(presenter: presenter)
-                    .transition(presenter.transitionEffect)
+                AccidentLocationView(model: coordinator.locationForm)
             case .driver1:
-                DriverView(presenter: presenter, driver: $presenter.accidentDriver1)
-                    .transition(presenter.transitionEffect)
-                
+                DriverView(model: coordinator.driverAForm)
             case .driver2:
-                DriverView(presenter: presenter, driver: $presenter.accidentDriver2)
-                    .transition(presenter.transitionEffect)
-                
+                DriverView(model: coordinator.driverBForm)
             case .description:
-                DescriptionView(presenter: presenter)
-                    .transition(presenter.transitionEffect)
-                
+                DescriptionView(model: coordinator.descriptionForm)
             case .pointOfImpact1:
-                AccidentCrashPointView(presenter: presenter, pointOfImpact: $presenter.pointOfImpact1)
-                    .transition(presenter.transitionEffect)
+                AccidentCrashPointView(model: coordinator.impactAForm, isVehicleA: true)
             case .pointOfImpact2:
-                AccidentCrashPointView(presenter: presenter, pointOfImpact: $presenter.pointOfImpact2)
-                    .transition(presenter.transitionEffect)
+                AccidentCrashPointView(model: coordinator.impactBForm, isVehicleA: false)
             case .mapView:
-                AccidentSituationView(presenter: presenter, accidentSituation: $presenter.accidentSituation)
-                    .environment(presenter.vehicleManager)
-                    .transition(presenter.transitionEffect)
+                AccidentSituationView(model: coordinator.situationForm)
             }
         }
-        .gesture(DragGesture(minimumDistance: 10) // Adjust as needed
+        .gesture(DragGesture(minimumDistance: 10)
             .onEnded { value in
                 let translation = value.translation.width
-                if translation > 0 { // Swipe right
-                    presenter.transitionEffect = .slideFromLeft
-                    presenter.goBack()
-                } else if translation < 0 { // Swipe left
-                    presenter.transitionEffect = .slideFromRight
-                    presenter.goNext()
+                if translation > 0 {
+                    coordinator.goBack()
+                } else if translation < 0 {
+                    coordinator.goNext()
                 }
             })
-        
     }
 }
 
 #Preview {
-    UpperTabBarView(presenter: MockPresenter(repository: MockDataRepository()))
+    UpperTabBarView(coordinator: MockCoordinator())
 }

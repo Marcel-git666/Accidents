@@ -11,12 +11,12 @@ import XCTest
 final class AccidentsPresenterTests: XCTestCase {
 
     private var mockRepository: MockAccidentReportRepository!
-    private var sut: AccidentsPresenter!
+    private var sut: AccidentsCoordinator!
 
     @MainActor override func setUpWithError() throws {
         try super.setUpWithError()
         mockRepository = MockAccidentReportRepository()
-        sut = AccidentsPresenter(repository: mockRepository)
+        sut = AccidentsCoordinator(repository: mockRepository)
     }
 
     func test_givenFetchError_whenFetchAccidents_thenHandlesError() async {
@@ -63,7 +63,7 @@ final class AccidentsPresenterTests: XCTestCase {
         let expectation = expectation(description: "AccidentReport should be saved")
 
         // When
-        await sut.saveReport(reportToSave)
+        sut.saveReport(reportToSave)
 
         // Then
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -82,7 +82,7 @@ final class AccidentsPresenterTests: XCTestCase {
         let expectation = expectation(description: "Save error should be handled")
 
         // When
-        await sut.saveReport(reportToSave)
+        sut.saveReport(reportToSave)
 
         // Then
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -96,11 +96,11 @@ final class AccidentsPresenterTests: XCTestCase {
     func test_givenExistingReport_whenRemoveReport_thenRemovesAndUpdates() async {
         // Given
         let existingReport = AccidentReport.sampleData
-        await sut.saveReport(existingReport)
+        sut.saveReport(existingReport)
         mockRepository.removeError = nil
         let expectation = expectation(description: "Report should be removed")
         // When
-        await sut.removeReport(existingReport)
+        sut.removeReport(existingReport)
 
         // Then
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -130,7 +130,7 @@ final class AccidentsPresenterTests: XCTestCase {
         sut.selectedTab = .pointOfImpact2
 
         // When
-        sut.createReportAndSave()
+        sut.exitAndSaveReport()
 
         // Then
         XCTAssertEqual(sut.viewState, .accidentList)
@@ -142,7 +142,7 @@ final class AccidentsPresenterTests: XCTestCase {
         let expectation = expectation(description: "New report should be saved")
 
         // When
-        await sut.createReportAndSave()
+        sut.exitAndSaveReport()
 
         // Then
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -160,16 +160,14 @@ final class AccidentsPresenterTests: XCTestCase {
         mockRepository.fetchedReports.append(existingReport)
 
         sut.selectedAccident = existingReport
-
-        // Update the existingReport directly
-        sut.accidentDriver1.insuredName = "Updated Name"
+        sut.driverAForm.driver.insuredName = "Updated Name"
 
         mockRepository.updateError = nil
 
         let expectation = expectation(description: "Updated report should have the correct driver name")
 
         // When
-        sut.createReportAndSave()
+        sut.exitAndSaveReport()
         await sut.fetchAccidents()
 
         // Then

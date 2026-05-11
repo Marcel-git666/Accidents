@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ControlButtonView: View {
     @Binding var roadShape: RoadShapeSelector
-    let vehicleManager: VehicleManager
+    let model: SituationFormModel
     @Binding var selectedVehicle: Vehicle?
-    
+
     var body: some View {
         VStack(spacing: 20) {
             Button {
@@ -34,14 +34,14 @@ struct ControlButtonView: View {
             }
             HStack {
                 Button {
-                    vehicleManager.vehicles.removeAll()
+                    model.vehicles.removeAll()
                 } label: {
                     Image(systemName: "clear")
                         .foregroundColor(.black)
                 }
                 Button {
                     if let selectedVehicle = selectedVehicle {
-                        vehicleManager.removeVehicle(withId: selectedVehicle.id)
+                        model.removeVehicle(withId: selectedVehicle.id)
                         self.selectedVehicle = nil
                     }
                 } label: {
@@ -53,13 +53,9 @@ struct ControlButtonView: View {
     }
 }
 
-struct ControlButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-        let vehicleManager = VehicleManager()
-        let roadShape = Binding.constant(RoadShapeSelector.crossroad)
-        let selectedVehicle = Binding<Vehicle?>(get: { return 
-            Vehicle(id: "1", location: .zero, imageName: "car", rotationAngle: .zero, scale: 1.0) }, set: { _ in })
-        
-        return ControlButtonView(roadShape: roadShape, vehicleManager: vehicleManager, selectedVehicle: selectedVehicle)
-    }
+#Preview {
+    ControlButtonView(
+        roadShape: .constant(.crossroad),
+        model: SituationFormModel(),
+        selectedVehicle: .constant(nil))
 }

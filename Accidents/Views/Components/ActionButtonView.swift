@@ -7,19 +7,18 @@
 
 import SwiftUI
 
-struct ActionButtonView: View {
-    let presenter: AccidentsPresenter
-    let vehicleManager: VehicleManager
-    
+struct ActionButtonView<C: AccidentsCoordinating>: View {
+    let coordinator: C
+
     var body: some View {
         VStack {
             Spacer()
             HStack {
                 ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
-                    presenter.createReportAndSave()
+                    coordinator.exitAndSaveReport()
                 }
                 ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
-                    presenter.goNext()
+                    coordinator.goNext()
                 }
             }
         }
@@ -28,5 +27,5 @@ struct ActionButtonView: View {
 }
 
 #Preview {
-    ActionButtonView(presenter: MockPresenter(repository: MockDataRepository()), vehicleManager: VehicleManager())
+    ActionButtonView(coordinator: MockCoordinator())
 }

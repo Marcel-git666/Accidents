@@ -2,89 +2,56 @@
 //  AccidentSituationView.swift
 //  Accidents
 //
-//  Created by Marcel Mravec on 27.03.2024.
-//
 
 import SwiftUI
 
 struct AccidentSituationView: View {
-    let presenter: AccidentsPresenter
-    @Environment(VehicleManager.self) var vehicleManager
-    @Binding var accidentSituation: AccidentSituation
+    @Bindable var model: SituationFormModel
     @State private var selectedVehicle: Vehicle?
 
     var body: some View {
-        @Bindable var vehicleManager = vehicleManager
         ZStack {
             Color.gray
                 .opacity(0.4)
                 .ignoresSafeArea()
-            RoadShapeView(roadShape: accidentSituation.roadShape)
+            RoadShapeView(roadShape: model.roadShape)
                 .padding(.vertical, 50)
 
             VStack {
-                VehicleButtonView(presenter: presenter, vehicleManager: vehicleManager)
+                VehicleButtonView(model: model)
                 HStack {
                     ControlButtonView(
-                        roadShape: $accidentSituation.roadShape,
-                        vehicleManager: vehicleManager,
+                        roadShape: $model.roadShape,
+                        model: model,
                         selectedVehicle: $selectedVehicle)
                     Spacer()
                 }
-
                 Spacer()
             }
             .padding(.top)
-            // Vehicles
-            ForEach($vehicleManager.vehicles) { $vehicle in
+
+            ForEach($model.vehicles) { $vehicle in
                 DraggableView(vehicle: $vehicle)
                     .onTapGesture {
                         selectedVehicle = vehicle
                     }
             }
-            
-            RotationButtoView(vehicleManager: vehicleManager, selectedVehicle: $selectedVehicle)
-            ScaleButtonView(vehicleManager: vehicleManager, selectedVehicle: $selectedVehicle)
-//            ActionButtonView(presenter: presenter, vehicleManager: vehicleManager)
+
+            RotationButtoView(model: model, selectedVehicle: $selectedVehicle)
+            ScaleButtonView(model: model, selectedVehicle: $selectedVehicle)
         }
     }
 }
 
-struct AccidentSituationView_Previews: PreviewProvider {
-    static var previews: some View {
-        // Mock data for preview
-        let manager = VehicleManager()
-        let mockAccidentSituation = AccidentSituation(
-            roadShape: .crossroad,
-            vehicles: [
-                Vehicle(id: UUID().uuidString, location: CGPoint(x: 100, y: 100), imageName: "blueCar", rotationAngle: Angle(degrees: 30), scale: 1),
-                Vehicle(id: UUID().uuidString, location: CGPoint(x: 200, y: 200), imageName: "yellowCar", rotationAngle: Angle(degrees: -45), scale: 1),
-                Vehicle(id: UUID().uuidString, location: CGPoint(x: 150, y: 150), imageName: "bike", rotationAngle: Angle(degrees: 90), scale: 1)
-            ]
-        )
-        
-        @State var accidentSituation = mockAccidentSituation
-        
-        return VStack {
-            HStack(spacing: 20) {
-                Spacer()
-                UpperTabBarButton(color: .accent, systemImage: "book", text: "something", isActive: true)
-                Spacer()
-            }
-            .background(Color.gray.opacity(0.4))
-            .padding()
-            
-            TabView {
-                AccidentSituationView(
-                    presenter: AccidentsPresenter(repository: MockDataRepository()),
-                    accidentSituation: $accidentSituation
-                )
-                .environment(manager)
-                .tabItem {
-                    Label("Road Shape", systemImage: "cross")
-                }
-            }
-        }
-    }
+#Preview {
+    let model = SituationFormModel()
+    model.load(from: AccidentSituation(
+        roadShape: .crossroad,
+        vehicles: [
+            Vehicle(id: UUID().uuidString, location: CGPoint(x: 100, y: 100), imageName: "blueCar", rotationAngle: Angle(degrees: 30), scale: 1),
+            Vehicle(id: UUID().uuidString, location: CGPoint(x: 200, y: 200), imageName: "yellowCar", rotationAngle: Angle(degrees: -45), scale: 1),
+            Vehicle(id: UUID().uuidString, location: CGPoint(x: 150, y: 150), imageName: "bike", rotationAngle: Angle(degrees: 90), scale: 1)
+        ]
+    ))
+    return AccidentSituationView(model: model)
 }
-

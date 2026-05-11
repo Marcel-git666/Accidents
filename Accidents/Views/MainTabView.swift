@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @State private var presenter = AccidentsPresenter(
-        repository: CoreDataRepository())
+    @State private var coordinator = AccidentsCoordinator(repository: CoreDataRepository())
+
     var body: some View {
         TabView {
-            AccidentsNavigationView(presenter: presenter)
+            AccidentsNavigationView(coordinator: coordinator)
                 .tabItem {
                     Label("Accidents", systemImage: "car.2.fill")
                 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RotationButtoView: View {
-    let vehicleManager: VehicleManager
+    let model: SituationFormModel
     @Binding var selectedVehicle: Vehicle?
     
     var body: some View {
@@ -37,23 +37,17 @@ struct RotationButtoView: View {
     }
     
     func rotateClockwise(vehicle: Vehicle) {
-        guard let index = vehicleManager.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
-        vehicleManager.vehicles[index].rotationAngle += Angle.degrees(15)
+        guard let index = model.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
+        model.vehicles[index].rotationAngle += Angle.degrees(15)
     }
     
     func rotateAntiClockwise(vehicle: Vehicle) {
-        guard let index = vehicleManager.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
-        vehicleManager.vehicles[index].rotationAngle -= Angle.degrees(15)
+        guard let index = model.vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
+        model.vehicles[index].rotationAngle -= Angle.degrees(15)
     }
     
 }
 
-struct RotationButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-        let vehicleManager = VehicleManager()
-        let selectedVehicle = Binding<Vehicle?>(get: { return 
-            Vehicle(id: "1", location: .zero, imageName: "car", rotationAngle: .zero, scale: 1.0) }, set: { _ in })
-        
-        return RotationButtoView( vehicleManager: vehicleManager, selectedVehicle: selectedVehicle)
-    }
+#Preview {
+    RotationButtoView(model: SituationFormModel(), selectedVehicle: .constant(nil))
 }

@@ -2,127 +2,107 @@
 //  DriverView.swift
 //  Accidents
 //
-//  Created by Marcel Mravec on 05.03.2024.
-//
 
 import SwiftUI
 
 struct DriverView: View {
-    let presenter: AccidentsPresenter
-    @Binding var driver: Driver
-    
+    @Bindable var model: DriverFormModel
+
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
                 ScrollView {
                     Text("Insurer")
-                    TitledBorderTextField(title: "Insurer name", text: $driver.insuredName, placeholder: "Full name", titleColor: .accentColor)
+                    TitledBorderTextField(title: "Insurer name", text: $model.driver.insuredName, placeholder: "Full name", titleColor: .accentColor)
                         .padding(.top)
-                    TitledBorderTextField(title: "Insurer Address", text: $driver.insuredAddress, placeholder: "Address", titleColor: .accentColor)
+                    TitledBorderTextField(title: "Insurer Address", text: $model.driver.insuredAddress, placeholder: "Address", titleColor: .accentColor)
                     TitledBorderTextField(
-                        title: "Phone from 9 to 16", text: $driver.insuredPhone,
+                        title: "Phone from 9 to 16", text: $model.driver.insuredPhone,
                         placeholder: "Phone from 9 to 16",
                         titleColor: .accentColor)
                     HStack(alignment: .center) {
-                        TickBox(text: "Payer of VAT?", isSelected: $driver.insuredPayerOfVAT)
+                        TickBox(text: "Payer of VAT?", isSelected: $model.driver.insuredPayerOfVAT)
                     }
                     Text("Vehicle")
                     TitledBorderTextField(
-                        title: "Manufacturer, type", text: $driver.vehicleManufacturerAndType,
+                        title: "Manufacturer, type", text: $model.driver.vehicleManufacturerAndType,
                         placeholder: "Manufacturer, type",
                         titleColor: .accentColor)
                     TitledBorderTextField(
-                        title: "Year of manufacture", text: $driver.vehicleYearOfManufacture,
+                        title: "Year of manufacture", text: $model.driver.vehicleYearOfManufacture,
                         placeholder: "Year of manufacture",
                         titleColor: .accentColor)
                     TitledBorderTextField(
-                        title: "Vehicle Registration Plate", 
-                        text: $driver.vehicleStateRegistrationPlate,
+                        title: "Vehicle Registration Plate",
+                        text: $model.driver.vehicleStateRegistrationPlate,
                         placeholder: "Vehicle Registration Plate",
                         titleColor: .accentColor)
                     Text("Insurer")
                     TitledBorderTextField(
                         title: "Insurance Company Name",
-                        text: $driver.insurer,
-                        placeholder: "Insurance Company Name", 
+                        text: $model.driver.insurer,
+                        placeholder: "Insurance Company Name",
                         titleColor: .accentColor)
                     TitledBorderTextField(
-                        title: "Insurer Address", 
-                        text: $driver.insurerBranchAddress,
+                        title: "Insurer Address",
+                        text: $model.driver.insurerBranchAddress,
                         placeholder: "Insurer Address", titleColor: .accentColor)
                     TitledBorderTextField(
                         title: "Insurance Policy Number",
-                        text: $driver.insuranceNumber,
-                        placeholder: "Insurance Policy Number", 
+                        text: $model.driver.insuranceNumber,
+                        placeholder: "Insurance Policy Number",
                         titleColor: .accentColor)
                     TitledBorderTextField(
                         title: "Green Card Number",
-                        text: $driver.greenCardNumber,
+                        text: $model.driver.greenCardNumber,
                         placeholder: "Green Card Number",
                         titleColor: .accentColor)
-                    DatePicker("Border insurance valid until", 
-                               selection: $driver.borderInsuranceValidUntil, 
+                    DatePicker("Border insurance valid until",
+                               selection: $model.driver.borderInsuranceValidUntil,
                                displayedComponents: [.date])
                         .datePickerStyle(.compact)
                         .foregroundColor(.accentColor)
                         .padding(.horizontal)
                         .padding(.bottom, 6)
                     HStack(alignment: .center) {
-                        TickBox(text: "Has vehicle comprehensive insurance?", isSelected: $driver.comprehensiveInsurance)
+                        TickBox(text: "Has vehicle comprehensive insurance?", isSelected: $model.driver.comprehensiveInsurance)
                     }
                     TitledBorderTextField(
                         title: "Comprehensive Insurance Company",
-                        text: $driver.comprehensiveInsuranceCompany,
+                        text: $model.driver.comprehensiveInsuranceCompany,
                         placeholder: "Insurance Company",
                         titleColor: .accentColor)
                     Text("Driver")
                     TitledBorderTextField(
-                        title: "Surname", text: $driver.surnameOfDriver,
+                        title: "Surname", text: $model.driver.surnameOfDriver,
                         placeholder: "Surname", titleColor: .accentColor)
                     TitledBorderTextField(
-                        title: "First name", text: $driver.firstNameOfDriver, 
+                        title: "First name", text: $model.driver.firstNameOfDriver,
                         placeholder: "Name", titleColor: .accentColor)
                     TitledBorderTextField(
-                        title: "Address", text: $driver.addressOfDriver,
+                        title: "Address", text: $model.driver.addressOfDriver,
                         placeholder: "Město, Ulice", titleColor: .accentColor)
                     TitledBorderTextField(
                         title: "Driver's License Number",
-                        text: $driver.driverLicenseNumber,
+                        text: $model.driver.driverLicenseNumber,
                         placeholder: "Driver's license number",
                         titleColor: .accentColor)
                     TitledBorderTextField(
-                        title: "Category", text: $driver.categoryOfLicense,
+                        title: "Category", text: $model.driver.categoryOfLicense,
                         placeholder: "Category", titleColor: .accentColor)
                     TitledBorderTextField(
-                        title: "Issued by", text: $driver.licenseIssuedBy,
+                        title: "Issued by", text: $model.driver.licenseIssuedBy,
                         placeholder: "Issued by", titleColor: .accentColor)
                 }
                 .padding()
-//                Spacer()
-//                HStack {
-//                    ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
-//                        presenter.createReportAndSave()
-//                    }
-//                    ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
-//                            presenter.goNext()
-//                    }
-//                }
-//                .padding()
             }
         }
     }
 }
 
-struct DriverView_Previews: PreviewProvider {
-  static var previews: some View {
-    let driver = AccidentReport.sampleData.driver
-    return NavigationStack {
-      DriverView(presenter: MockPresenter(repository: MockDataRepository()), driver: { () -> Binding<Driver> in
-        return Binding<Driver>(get: { driver }, set: { _ in
-          // Optional: Update your mock data or handle changes here if needed
-        })
-      }())
-        .navigationTitle("Driver A")
+#Preview {
+    NavigationStack {
+        DriverView(model: DriverFormModel())
+            .navigationTitle("Driver A")
     }
-  }
 }

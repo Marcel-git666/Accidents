@@ -2,14 +2,12 @@
 //  DescriptionView.swift
 //  Accidents
 //
-//  Created by Marcel Mravec on 25.03.2024.
-//
 
 import SwiftUI
 
 struct DescriptionView: View {
-    @Bindable var presenter: AccidentsPresenter
-    
+    @Bindable var model: DescriptionFormModel
+
     let vehicleStatusDescription = [
         "Parked",
         "Starting to move",
@@ -29,36 +27,29 @@ struct DescriptionView: View {
         "Approaching from the right",
         "Failed to yield right of way"
     ]
-    
+
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                
-                VisibleDamageView(notes1: $presenter.accidentDescription.notes1, notes2: $presenter.accidentDescription.notes2, color: .background)
-                Text("Vehicle (Check all that apply)") // Centered title
+                VisibleDamageView(
+                    notes1: $model.accidentDescription.notes1,
+                    notes2: $model.accidentDescription.notes2,
+                    color: .background)
+                Text("Vehicle (Check all that apply)")
                     .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .center) // Center alignment
+                    .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.bottom)
             }
             ScrollView {
                 ForEach(vehicleStatusDescription.indices, id: \.self) { index in
-                    VehicleStatusView(vehicleStatusDescription: vehicleStatusDescription[index], 
-                                      isSelected1: $presenter.accidentDescription.vehicleDamage1[index],
-                                      isSelected2: $presenter.accidentDescription.vehicleDamage2[index])
+                    VehicleStatusView(
+                        vehicleStatusDescription: vehicleStatusDescription[index],
+                        isSelected1: $model.accidentDescription.vehicleDamage1[index],
+                        isSelected2: $model.accidentDescription.vehicleDamage2[index])
                 }
-                
             }
             .scrollContentBackground(.hidden)
             .background(Color.background)
-//            Spacer()
-//            HStack {
-//                ACButton(label: "Exit and save", systemImage: "checkmark.circle") {
-//                    presenter.createReportAndSave()
-//                }
-//                ACButton(label: "Save & Go next", systemImage: "goforward.plus") {
-//                        presenter.goNext()
-//                }
-//            }
         }
         .padding()
         .background(Color.background)
@@ -66,5 +57,5 @@ struct DescriptionView: View {
 }
 
 #Preview {
-    DescriptionView(presenter: MockPresenter(repository: MockDataRepository()))
+    DescriptionView(model: DescriptionFormModel())
 }

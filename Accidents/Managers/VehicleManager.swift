@@ -1,44 +1,57 @@
 //
-//  DefaultVehicleUseCase.swift
+//  SituationFormModel.swift
 //  Accidents
-//
-//  Created by Marcel Mravec on 07.04.2024.
 //
 
 import SwiftUI
 
 @MainActor
 @Observable
-class VehicleManager {
+class SituationFormModel {
+    var roadShape: RoadShapeSelector = .crossroad
     var vehicles: [Vehicle] = []
-    
+
+    func load(from situation: AccidentSituation) {
+        roadShape = situation.roadShape
+        vehicles = situation.vehicles
+    }
+
+    func reset() {
+        roadShape = .crossroad
+        vehicles = []
+    }
+
+    var accidentSituation: AccidentSituation {
+        AccidentSituation(roadShape: roadShape, vehicles: vehicles)
+    }
+
     func addBlueVehicle(location: CGPoint, imageName: String, rotationAngle: Angle, scale: Double) {
         if !vehicles.contains(where: { $0.imageName.contains("blue") }) {
-            addVehicle(location: location, imageName: imageName, rotationAngle: rotationAngle, scale: scale)
+            add(location: location, imageName: imageName, rotationAngle: rotationAngle, scale: scale)
         }
     }
-    
+
     func addYellowVehicle(location: CGPoint, imageName: String, rotationAngle: Angle, scale: Double) {
         if !vehicles.contains(where: { $0.imageName.contains("yellow") }) {
-            addVehicle(location: location, imageName: imageName, rotationAngle: rotationAngle, scale: scale)
+            add(location: location, imageName: imageName, rotationAngle: rotationAngle, scale: scale)
         }
     }
-    
+
     func addOtherVehicle(location: CGPoint, imageName: String, rotationAngle: Angle, scale: Double) {
-        addVehicle(location: location, imageName: imageName, rotationAngle: rotationAngle, scale: scale)
+        add(location: location, imageName: imageName, rotationAngle: rotationAngle, scale: scale)
     }
-    
-    private func addVehicle(location: CGPoint, imageName: String, rotationAngle: Angle, scale: Double) {
-        vehicles.append(Vehicle(id: UUID().uuidString, location: location, imageName: imageName, rotationAngle: rotationAngle, scale: scale))
+
+    private func add(location: CGPoint, imageName: String, rotationAngle: Angle, scale: Double) {
+        vehicles.append(Vehicle(
+            id: UUID().uuidString,
+            location: location,
+            imageName: imageName,
+            rotationAngle: rotationAngle,
+            scale: scale
+        ))
     }
-    
+
     func removeVehicle(withId id: String) {
-        vehicles.removeAll { vehicle in
-            vehicle.id == id
-        }
-    }
-    
-    func loadVehicles(from situation: AccidentSituation) {
-        vehicles = situation.vehicles
+        vehicles.removeAll { $0.id == id }
     }
 }

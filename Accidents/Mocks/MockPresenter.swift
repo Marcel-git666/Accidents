@@ -1,16 +1,35 @@
 //
-//  MockPresenter.swift
+//  MockCoordinator.swift
 //  Accidents
 //
-//  Created by Marcel Mravec on 20.03.2024.
-//
 
-import Foundation
+import SwiftUI
 
-class MockPresenter: AccidentsPresenter {
-    init(repository: MockDataRepository) {
-        super.init(repository: repository)
-        self.errorMessage = "Optional error message"
-        self.accidentReports = [AccidentReport.sampleData]
-    }
+@MainActor
+@Observable
+class MockCoordinator: AccidentsCoordinating {
+    var viewState: AccidentReportNavigationState = .accidentList
+    var selectedTab: AccidentReportFillingState = .location
+    var accidentReports: [AccidentReport] = [.sampleData]
+    var errorMessage: String? = "Optional error message"
+    var reportToPreview: AccidentReport?
+
+    let locationForm = LocationFormModel()
+    let driverAForm = DriverFormModel()
+    let driverBForm = DriverFormModel(.sample2)
+    let descriptionForm = DescriptionFormModel()
+    let impactAForm = ImpactFormModel()
+    let impactBForm = ImpactFormModel()
+    let situationForm = SituationFormModel()
+
+    func goNext() {}
+    func goBack() {}
+    func handleSelectedTab(_ tab: AccidentReportFillingState) {}
+    func editReport(_ report: AccidentReport) {}
+    func exitAndSaveReport() {}
+    func removeReport(_ report: AccidentReport) {}
+    func fetchAccidents() async {}
+    func exportPDF(for report: AccidentReport) {}
+    func showReportPreview(for report: AccidentReport) {}
+    func closeReportPreview() {}
 }

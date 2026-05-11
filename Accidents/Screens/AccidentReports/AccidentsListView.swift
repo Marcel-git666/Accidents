@@ -7,34 +7,31 @@
 
 import SwiftUI
 
-struct AccidentsListView: View {
-    let presenter: AccidentsPresenter
-    @State private var selectedReport: AccidentReport?
-    
+struct AccidentsListView<C: AccidentsCoordinating>: View {
+    let coordinator: C
+
     var body: some View {
         ZStack {
             List {
-                ForEach(presenter.accidentReports) { accident in
+                ForEach(coordinator.accidentReports) { accident in
                     HStack {
-                        // Accident information
                         Text("Accident in \(accident.accidentLocation.city)")
                             .font(.headline)
                             .onTapGesture {
-                                presenter.editReport(accident)
+                                coordinator.editReport(accident)
                             }
-                        
+
                         Spacer()
-                        
+
                         Button(action: {
-                            presenter.showReportPreview(for: accident)
+                            coordinator.showReportPreview(for: accident)
                         }) {
                             Image(systemName: "doc.text.magnifyingglass")
                                 .foregroundColor(.blue)
                         }
-                        
-                        // Export Button
+
                         Button(action: {
-                            presenter.exportPDF(for: accident)
+                            coordinator.exportPDF(for: accident)
                         }) {
                             Image(systemName: "square.and.arrow.up")
                                 .foregroundColor(.green)
@@ -43,7 +40,7 @@ struct AccidentsListView: View {
                     }
                     .swipeActions {
                         Button(role: .destructive) {
-                            presenter.removeReport(accident)
+                            coordinator.removeReport(accident)
                         } label: {
                             Label("Delete", systemImage: "trash.fill")
                         }
@@ -53,14 +50,15 @@ struct AccidentsListView: View {
             .scrollContentBackground(.hidden)
             .background(Color.listBackground)
             .refreshable {
-                await presenter.fetchAccidents()
+                await coordinator.fetchAccidents()
             }
             .navigationBarItems(trailing: Button(action: {
-                presenter.goNext()
+                coordinator.goNext()
             }, label: {
                 Label("New Accident", systemImage: "plus")
             }))
-            if let reportToPreview = presenter.reportToPreview {
+
+            if let reportToPreview = coordinator.reportToPreview {
                 ReportPreviewWrapper(
                     report: reportToPreview,
                     templateImageName: "form"
@@ -68,17 +66,15 @@ struct AccidentsListView: View {
                 .transition(.opacity)
                 .zIndex(100)
                 .onTapGesture {
-                    // Close the preview on tap (or add a close button inside the preview)
-                    presenter.closeReportPreview()
+                    coordinator.closeReportPreview()
                 }
             }
         }
     }
-    
 }
 
 #Preview {
     NavigationView {
-        AccidentsListView(presenter: MockPresenter(repository: MockDataRepository()))
+        AccidentsListView(coordinator: MockCoordinator())
     }
 }
