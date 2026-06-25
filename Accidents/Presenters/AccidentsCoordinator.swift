@@ -56,7 +56,7 @@ class AccidentsCoordinator: AccidentsCoordinating {
     // Form models
     let locationForm = LocationFormModel()
     let driverAForm = DriverFormModel()
-    let driverBForm = DriverFormModel(.sample2)
+    let driverBForm = DriverFormModel()
     let descriptionForm = DescriptionFormModel()
     let impactAForm = ImpactFormModel()
     let impactBForm = ImpactFormModel()
@@ -188,8 +188,8 @@ class AccidentsCoordinator: AccidentsCoordinating {
     func editReport(_ report: AccidentReport) {
         selectedAccident = report
         locationForm.location = report.accidentLocation
-        driverAForm.driver = report.driver
-        driverBForm.driver = report.otherDriver ?? .sample2
+        driverAForm.driver = report.driver ?? PreviewData.driverA
+        driverBForm.driver = report.otherDriver ?? PreviewData.driverB
         descriptionForm.accidentDescription = report.accidentDescription
         impactAForm.load(report.pointOfImpact1 ?? .defaultValue)
         impactBForm.load(report.pointOfImpact2 ?? .defaultValue)
@@ -221,8 +221,8 @@ class AccidentsCoordinator: AccidentsCoordinating {
 
     private func resetForm() {
         locationForm.location = .defaultValue
-        driverAForm.driver = .sample1
-        driverBForm.driver = .sample2
+        driverAForm.driver = PreviewData.driverA
+        driverBForm.driver = PreviewData.driverA
         descriptionForm.accidentDescription = .defaultValue
         impactAForm.reset()
         impactBForm.reset()

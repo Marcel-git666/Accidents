@@ -10,7 +10,7 @@ import SwiftUI
 class DriverFormModel {
     var driver: Driver
 
-    init(_ driver: Driver = .sample1) {
+    init(_ driver: Driver = Driver()) {
         self.driver = driver
     }
 }

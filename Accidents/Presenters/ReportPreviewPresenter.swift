@@ -36,8 +36,8 @@ class ReportPreviewPresenter {
 
     init(report: AccidentReport) {
         self.report = report
-        self.driver1 = report.driver
-        self.driver2 = report.otherDriver ?? Driver.sample2
+        self.driver1 = report.driver ?? PreviewData.driverA
+        self.driver2 = report.otherDriver ?? PreviewData.driverB
         // Process the accident date into separate strings
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"

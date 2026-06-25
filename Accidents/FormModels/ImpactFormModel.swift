@@ -25,6 +25,11 @@ class ImpactFormModel {
     }
 
     var pointOfImpact: PointOfImpact {
-        PointOfImpact(crashPoint: crashPoint, arrowRotation: arrowRotation, scale: scale)
+        PointOfImpact(
+            x: Double(crashPoint.x),
+            y: Double(crashPoint.y),
+            arrowRotation: arrowRotation,
+            scale: scale
+        )
     }
 }

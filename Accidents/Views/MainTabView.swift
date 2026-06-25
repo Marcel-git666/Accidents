@@ -8,24 +8,36 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @State private var coordinator = AccidentsCoordinator(repository: CoreDataRepository())
-
+    @Environment(\.modelContext) private var modelContext
+    @State private var coordinator: AccidentsCoordinator?
+    
     var body: some View {
-        TabView {
-            AccidentsNavigationView(coordinator: coordinator)
-                .tabItem {
-                    Label("Accidents", systemImage: "car.2.fill")
+            Group {
+                if let coordinator {
+                    TabView {
+                        AccidentsNavigationView(coordinator: coordinator)
+                            .tabItem {
+                                Label("Accidents", systemImage: "car.2.fill")
+                            }
+                        PreloadDataView()
+                            .tabItem {
+                                Label("Data", systemImage: "filemenu.and.cursorarrow")
+                            }
+                        SettingsView()
+                            .tabItem {
+                                Label("Settings", systemImage: "gear")
+                            }
+                    }
+                } else {
+                    ProgressView()
                 }
-            PreloadDataView()
-                .tabItem {
-                    Label("Data", systemImage: "filemenu.and.cursorarrow")
+            }
+            .onAppear {
+                if coordinator == nil {
+                    coordinator = AccidentsCoordinator(repository: SwiftDataRepository(context: modelContext))
                 }
-            SettingsView()
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
-                }
+            }
         }
-    }
 }
 
 #Preview {

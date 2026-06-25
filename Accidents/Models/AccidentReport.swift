@@ -6,177 +6,40 @@
 //
 
 import SwiftUI
+import SwiftData
 
-struct AccidentReport: Identifiable, Hashable, Codable {
-        
-    let id: UUID
+@Model
+class AccidentReport {
+    
+    @Attribute(.unique) var id: UUID
     var accidentLocation: AccidentLocation
-    var driver: Driver
-    var otherDriver: Driver?
     var accidentDescription: AccidentDescription
     var pointOfImpact1: PointOfImpact?
     var pointOfImpact2: PointOfImpact?
     var accidentSituation: AccidentSituation?
-        
-    static func == (lhs: AccidentReport, rhs: AccidentReport) -> Bool {
-        lhs.id == rhs.id
+    
+    @Relationship(deleteRule: .cascade) var driver: Driver?
+    @Relationship(deleteRule: .cascade) var otherDriver: Driver?
+    
+    init(
+        id: UUID = UUID(),
+        accidentLocation: AccidentLocation,
+        driver: Driver? = nil,
+        otherDriver: Driver? = nil,
+        accidentDescription: AccidentDescription,
+        pointOfImpact1: PointOfImpact? = nil,
+        pointOfImpact2: PointOfImpact? = nil,
+        accidentSituation: AccidentSituation? = nil
+    ) {
+        self.id = id
+        self.accidentLocation = accidentLocation
+        self.driver = driver
+        self.otherDriver = otherDriver
+        self.accidentDescription = accidentDescription
+        self.pointOfImpact1 = pointOfImpact1
+        self.pointOfImpact2 = pointOfImpact2
+        self.accidentSituation = accidentSituation
     }
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
     
-    static var sampleData: AccidentReport {
-        let date = Date()
-
-        let sampleAccidentReport = AccidentReport(
-            id: UUID(),
-            accidentLocation: AccidentLocation(
-                date: date, city: "Prague", street: "Wenceslas Square", houseNumber: "1a", kilometerReading: "0", injuries: false, 
-                witnesses: [Witness.sample], otherDamage: false, policeInvolved: true
-            ), driver: Driver.sample1,
-            otherDriver: Driver.sample2,
-            accidentDescription: AccidentDescription(notes1: "", notes2: "", vehicleDamage1: Array(repeating: false, count: 17), 
-                                                     vehicleDamage2: Array(repeating: false, count: 17)),
-            pointOfImpact1: nil,
-            pointOfImpact2: nil,
-            accidentSituation: AccidentSituation(roadShape: .crossroad)
-        )
-
-        return sampleAccidentReport
-    }
-}
-
-struct AccidentLocation: Codable {
-    var date: Date
-    var city: String
-    var street: String
-    var houseNumber: String
-    var kilometerReading: String
-    var injuries: Bool
-    var witnesses: [Witness]
-    var otherDamage: Bool
-    var policeInvolved: Bool
-}
-
-struct AccidentDescription: Codable {
-    var notes1: String
-    var notes2: String
-    var vehicleDamage1: [Bool]
-    var vehicleDamage2: [Bool]
-}
-
-struct Driver: Codable {
-    var insuredName: String
-    var insuredAddress: String
-    var insuredPhone: String
-    var insuredPayerOfVAT: Bool
-    var vehicleManufacturerAndType: String
-    var vehicleYearOfManufacture: String
-    var vehicleStateRegistrationPlate: String
-    var insurer: String
-    var insurerBranchAddress: String
-    var insuranceNumber: String
-    var greenCardNumber: String
-    var borderInsuranceValidUntil: Date
-    var comprehensiveInsurance: Bool
-    var comprehensiveInsuranceCompany: String
-    var surnameOfDriver: String
-    var firstNameOfDriver: String
-    var addressOfDriver: String
-    var phoneNumberOfDriver: String
-    var driverLicenseNumber: String
-    var categoryOfLicense: String
-    var licenseIssuedBy: String
-    
-    static let sample1 = Driver(insuredName: "Česká podnikatelská pojišťovna a.s.", insuredAddress: "Brno, Pekařská 58, 60200",
-                                insuredPhone: "12345644", insuredPayerOfVAT: true, vehicleManufacturerAndType: "Mercedes Benz ML",
-                                vehicleYearOfManufacture: "2010", vehicleStateRegistrationPlate: "JUDO1", insurer: "Kooperativa a.s.",
-                                insurerBranchAddress: "somewhere in Prague", insuranceNumber: "12311122AA", greenCardNumber: "1232155",
-                                borderInsuranceValidUntil: Date.now, comprehensiveInsurance: true, comprehensiveInsuranceCompany:
-                                    "Allianz Pojistovna a.s.", surnameOfDriver: "Z depa", firstNameOfDriver: "Pepa", addressOfDriver: "Krnov",
-                                phoneNumberOfDriver: "1231223", driverLicenseNumber: "unknown", categoryOfLicense: "AM2", licenseIssuedBy:
-                                    "Magistrat mesta Olomouce")
-    static let sample2 = Driver(insuredName: "Kooperativa a.s.", insuredAddress: "Praha, Kolbenova 9", insuredPhone: "123456449",
-                                insuredPayerOfVAT: true, vehicleManufacturerAndType: "Wartburg", vehicleYearOfManufacture: "1988",
-                                vehicleStateRegistrationPlate: "POPELNICE", insurer: "Kooperativa a.s.", insurerBranchAddress: "somewhere in Prague", 
-                                insuranceNumber: "12311122AA", greenCardNumber: "1232155", borderInsuranceValidUntil: Date.now,
-                                comprehensiveInsurance: true, comprehensiveInsuranceCompany: "Allianz Pojistovna a.s.", 
-                                surnameOfDriver: "Z Ase", firstNameOfDriver: "Franta", addressOfDriver: "As",
-                                phoneNumberOfDriver: "1231223", driverLicenseNumber: "unknown", categoryOfLicense: "AM2",
-                                licenseIssuedBy: "Magistrat mesta Karlovy Vary")
-}
-
-struct Witness: Codable, Hashable {
-    var name: String
-    var address: String
-    var phoneNumber: String
-    
-    static let sample = Witness(name: "Rabi Lowe", address: "Poland", phoneNumber: "456789456")
-}
-
-struct PointOfImpact: Codable {
-    var crashPoint: CGPoint
-    var arrowRotation: Double
-    var scale: CGFloat
-}
-
-extension AccidentLocation {
-    static let defaultValue = AccidentLocation(
-        date: Date(), city: "", street: "", houseNumber: "",
-        kilometerReading: "0.0", injuries: false, witnesses: [],
-        otherDamage: false, policeInvolved: false
-    )
-}
-
-extension AccidentDescription {
-    static let defaultValue = AccidentDescription(
-        notes1: "", notes2: "",
-        vehicleDamage1: Array(repeating: false, count: 17),
-        vehicleDamage2: Array(repeating: false, count: 17)
-    )
-}
-
-extension PointOfImpact {
-    static let defaultValue = PointOfImpact(
-        crashPoint: CGPoint(x: 200, y: 100),
-        arrowRotation: 0,
-        scale: 1
-    )
-}
-
-struct AccidentSituation: Codable {
-    var roadShape: RoadShapeSelector
-    var vehicles: [Vehicle]
-
-    init(roadShape: RoadShapeSelector, vehicles: [Vehicle] = []) {
-        self.roadShape = roadShape
-        self.vehicles = vehicles
-    }
-
-    // Migrate data saved in the old three-field format
-    private enum CodingKeys: String, CodingKey {
-        case roadShape, vehicles
-        case blueVehicle, yellowVehicle, otherVehicles
-    }
-
-    init(from decoder: Decoder) throws {
-        let c = try decoder.container(keyedBy: CodingKeys.self)
-        roadShape = try c.decode(RoadShapeSelector.self, forKey: .roadShape)
-        if let v = try? c.decode([Vehicle].self, forKey: .vehicles) {
-            vehicles = v
-        } else {
-            var migrated: [Vehicle] = []
-            if let blue = try? c.decodeIfPresent(Vehicle.self, forKey: .blueVehicle) { migrated += [blue].compactMap { $0 } }
-            if let yellow = try? c.decodeIfPresent(Vehicle.self, forKey: .yellowVehicle) { migrated += [yellow].compactMap { $0 } }
-            migrated += (try? c.decode([Vehicle].self, forKey: .otherVehicles)) ?? []
-            vehicles = migrated
-        }
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var c = encoder.container(keyedBy: CodingKeys.self)
-        try c.encode(roadShape, forKey: .roadShape)
-        try c.encode(vehicles, forKey: .vehicles)
-    }
 }
