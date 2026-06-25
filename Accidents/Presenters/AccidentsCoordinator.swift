@@ -23,6 +23,7 @@ protocol AccidentsCoordinating: AnyObject, Observable {
     func handleSelectedTab(_ tab: AccidentReportFillingState)
     func editReport(_ report: AccidentReport)
     func exitAndSaveReport()
+    func exitWithoutSaving()
     func removeReport(_ report: AccidentReport)
     func fetchAccidents() async
     func exportPDF(for report: AccidentReport)
@@ -113,6 +114,12 @@ class AccidentsCoordinator: AccidentsCoordinating {
     
     func exitAndSaveReport() {
         createReportAndSave()
+    }
+    
+    func exitWithoutSaving() {
+        withAnimation {
+            viewState = .accidentList
+        }
     }
     
     func createReportAndSave() {

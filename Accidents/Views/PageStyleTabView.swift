@@ -65,8 +65,14 @@ struct PageStyleTabView<C: AccidentsCoordinating>: View {
             )
         }
         .safeAreaInset(edge: .bottom) {
-            ACButton(label: "Exit", systemImage: "arrow.left.circle") {
-                coordinator.exitAndSaveReport()
+            HStack(spacing: 16) {
+                ACButton(label: "Cancel", systemImage: "xmark.circle") {
+                    coordinator.exitWithoutSaving()
+                }
+                
+                ACButton(label: "Save", systemImage: "checkmark.circle") {
+                    coordinator.exitAndSaveReport()
+                }
             }
             .padding(.horizontal, 10)
             .padding(.bottom, 8)

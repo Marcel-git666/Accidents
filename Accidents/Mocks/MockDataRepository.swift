@@ -8,21 +8,10 @@
 import Foundation
 
 struct MockDataRepository: AccidentReportRepository {
-    func updateReport(_ updatedReport: AccidentReport) async throws {
-        
-    }
-    
     var reports: [AccidentReport] = []
     
-    func removeReport(_ report: AccidentReport) throws {
-        print("Report has been removed")
-    }
-    
-  func fetchAll() throws -> [AccidentReport] {
-       reports
-  }
-   
-  func saveReport(_ report: AccidentReport) throws {
-    // No-op for preview context
-  }
+    func saveReport(_ report: AccidentReport) async throws { }
+    func fetchAll() async throws -> [AccidentReport] { return reports }
+    func removeReport(_ report: AccidentReport) async throws { }
+    func updateReport(_ updatedReport: AccidentReport) async throws { }
 }

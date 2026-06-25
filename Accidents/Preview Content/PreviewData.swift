@@ -58,7 +58,7 @@ enum PreviewData {
     )
     
     
-    @MainActor static let sampleAccidentReport = AccidentReport(
+    @MainActor static let accidentReport = AccidentReport(
         id: UUID(),
         accidentLocation: AccidentLocation(
             date: Date(), city: "Prague", street: "Wenceslas Square", houseNumber: "1a", kilometerReading: "0", injuries: false,

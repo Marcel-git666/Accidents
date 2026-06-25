@@ -8,13 +8,6 @@
 import Foundation
 
 enum Constants {
-    static let containerName = "Accidents"
-    static let reportEntity = "AccidentReportData"
-    static let locationEntity = "AccidentLocationData"
-    static let driverEntity = "DriverData"
-    static let descriptionEntity = "AccidentDescriptionData"
-    static let witnessEntity = "WitnessData"
-    
     enum Images {
         static let car = "car"
         static let motorcycle = "motorcycle"

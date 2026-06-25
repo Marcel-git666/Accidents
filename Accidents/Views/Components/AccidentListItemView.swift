@@ -39,6 +39,6 @@ struct AccidentListItemView: View {
 }
 
 #Preview {
-    AccidentListItemView(report: Binding<AccidentReport>(get: { PreviewData.sampleAccidentReport }, set: { _ in }))
+    AccidentListItemView(report: Binding<AccidentReport>(get: { PreviewData.accidentReport }, set: { _ in }))
         .padding()
 }

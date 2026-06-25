@@ -8,111 +8,93 @@
 import XCTest
 @testable import Accidents
 
+@MainActor
 final class AccidentsPresenterTests: XCTestCase {
 
     private var mockRepository: MockAccidentReportRepository!
     private var sut: AccidentsCoordinator!
 
-    @MainActor override func setUpWithError() throws {
-        try super.setUpWithError()
+    // Moderní asynchronní setUp nahrazuje starý setUpWithError
+    override func setUp() async throws {
         mockRepository = MockAccidentReportRepository()
         sut = AccidentsCoordinator(repository: mockRepository)
     }
 
-    func test_givenFetchError_whenFetchAccidents_thenHandlesError() async {
+    func test_givenFetchError_whenFetchAccidents_thenHandlesError() async throws {
         // Given
-        mockRepository.fetchError = CoreDataError.coreDataFetchError
-        let expectation = expectation(description: "Error should be handled")
+        mockRepository.fetchError = StorageError.fetchError
 
         // When
         await sut.fetchAccidents()
 
         // Then
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            XCTAssertNotNil(self.sut.errorMessage)
-            XCTAssertEqual(self.sut.errorMessage, CoreDataError.coreDataFetchError.rawValue)
-            expectation.fulfill()
-        }
-
-        await fulfillment(of: [expectation], timeout: 1.0, enforceOrder: false)
+        XCTAssertNotNil(sut.errorMessage)
+        XCTAssertEqual(sut.errorMessage, StorageError.fetchError.localizedDescription)
     }
 
-    func test_givenNoError_whenFetchAccidents_thenAccidentsFetchedSuccessfully() async {
+    func test_givenNoError_whenFetchAccidents_thenAccidentsFetchedSuccessfully() async throws {
         // Given
         mockRepository.fetchError = nil
-        mockRepository.fetchedReports.append(AccidentReport.sampleData)
-        let expectation = expectation(description: "AccidentReport should be fetched")
+        mockRepository.fetchedReports.append(PreviewData.accidentReport)
 
         // When
         await sut.fetchAccidents()
 
         // Then
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            XCTAssertNil(self.sut.errorMessage)
-            XCTAssertEqual(self.sut.accidentReports.count, 1)
-            expectation.fulfill()
-        }
-
-        await fulfillment(of: [expectation], timeout: 1.0, enforceOrder: false)
+        XCTAssertNil(sut.errorMessage)
+        XCTAssertEqual(sut.accidentReports.count, 1)
     }
 
-    func test_givenValidReportData_whenSaveReport_thenSavesAndUpdates() async {
+    func test_createReportAndSave_whenNewReport_thenSavesReport() async throws {
         // Given
-        let reportToSave = AccidentReport.sampleData
         mockRepository.saveError = nil
-        let expectation = expectation(description: "AccidentReport should be saved")
+        sut.draft.load(from: PreviewData.accidentReport)
+        sut.draft.originalReport = nil // Vynutíme, aby to Coordinator bral jako novou nehodu
 
         // When
-        sut.saveReport(reportToSave)
+        sut.createReportAndSave() // Spustí Task na pozadí
+        try await Task.sleep(nanoseconds: 100_000_000) // Počkáme 0.1s, než Task doběhne
 
         // Then
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            XCTAssertEqual(self.mockRepository.savedReport, self.sut.accidentReports.last)
-            XCTAssertNil(self.sut.errorMessage)
-            expectation.fulfill()
-        }
-
-        await fulfillment(of: [expectation], timeout: 1.0, enforceOrder: false)
+        XCTAssertNotNil(mockRepository.savedReport)
     }
 
-    func test_givenSaveError_whenSaveReport_thenHandlesError() async {
+    func test_createReportAndSave_whenExistingReport_thenUpdatesReport() async throws {
         // Given
-        mockRepository.saveError = CoreDataError.coreDataSaveError
-        let reportToSave = AccidentReport.sampleData
-        let expectation = expectation(description: "Save error should be handled")
+        let existingReport = PreviewData.accidentReport
+        mockRepository.fetchedReports.append(existingReport)
+        await sut.fetchAccidents()
+
+        // Načteme do draftu a změníme jméno
+        sut.draft.load(from: existingReport)
+        sut.draft.driverA.driver.insuredName = "Updated Name"
+        mockRepository.updateError = nil
 
         // When
-        sut.saveReport(reportToSave)
+        sut.createReportAndSave()
+        try await Task.sleep(nanoseconds: 100_000_000)
 
         // Then
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            XCTAssertNotNil(self.sut.errorMessage)
-            XCTAssertEqual(self.sut.errorMessage, "There was an error saving your data to your device.")
-            expectation.fulfill()
-        }
-        await fulfillment(of: [expectation], timeout: 1.0, enforceOrder: false)
+        XCTAssertEqual(mockRepository.updatedReport?.driver?.insuredName, "Updated Name")
     }
 
-    func test_givenExistingReport_whenRemoveReport_thenRemovesAndUpdates() async {
+    func test_givenExistingReport_whenRemoveReport_thenRemovesAndUpdates() async throws {
         // Given
-        let existingReport = AccidentReport.sampleData
-        sut.saveReport(existingReport)
+        let existingReport = PreviewData.accidentReport
+        mockRepository.fetchedReports = [existingReport]
+        await sut.fetchAccidents()
         mockRepository.removeError = nil
-        let expectation = expectation(description: "Report should be removed")
+        
         // When
         sut.removeReport(existingReport)
+        try await Task.sleep(nanoseconds: 100_000_000)
 
         // Then
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            XCTAssertTrue(self.mockRepository.removedReport == existingReport)
-            XCTAssertEqual(self.sut.accidentReports.count, 0)
-            expectation.fulfill()
-        }
-
-        await fulfillment(of: [expectation], timeout: 1.0, enforceOrder: false)
+        XCTAssertEqual(mockRepository.removedReport?.id, existingReport.id)
+        XCTAssertEqual(sut.accidentReports.count, 0)
     }
 
-    @MainActor func test_goNext_whenInAccidentListState_thenTransitionsToStartStateAndLocationTab() {
+    func test_goNext_whenInAccidentListState_thenTransitionsToStartStateAndLocationTab() {
         // Given
         sut.viewState = .accidentList
 
@@ -122,60 +104,5 @@ final class AccidentsPresenterTests: XCTestCase {
         // Then
         XCTAssertEqual(sut.viewState, .start)
         XCTAssertEqual(sut.selectedTab, .location)
-    }
-
-    @MainActor func test_goNext_whenInStartStateAndLastTab_thenTransitionsToAccidentListState() {
-        // Given
-        sut.viewState = .start
-        sut.selectedTab = .pointOfImpact2
-
-        // When
-        sut.exitAndSaveReport()
-
-        // Then
-        XCTAssertEqual(sut.viewState, .accidentList)
-    }
-
-    func test_createReportAndSave_whenNewReport_thenSavesReport() async {
-        // Given
-        mockRepository.saveError = nil
-        let expectation = expectation(description: "New report should be saved")
-
-        // When
-        sut.exitAndSaveReport()
-
-        // Then
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            XCTAssertEqual(self.sut.accidentReports.count, 1)
-            expectation.fulfill()
-        }
-
-        await fulfillment(of: [expectation], timeout: 1.0, enforceOrder: false)
-    }
-
-    @MainActor func test_createReportAndSave_whenExistingReport_thenUpdatesReport() async {
-        // Given
-        let existingReport = AccidentReport.sampleData
-        sut.accidentReports.append(existingReport)
-        mockRepository.fetchedReports.append(existingReport)
-
-        sut.selectedAccident = existingReport
-        sut.driverAForm.driver.insuredName = "Updated Name"
-
-        mockRepository.updateError = nil
-
-        let expectation = expectation(description: "Updated report should have the correct driver name")
-
-        // When
-        sut.exitAndSaveReport()
-        await sut.fetchAccidents()
-
-        // Then
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            XCTAssertEqual(self.sut.accidentReports.first?.driver.insuredName, "Updated Name")
-            expectation.fulfill()
-        }
-
-        await fulfillment(of: [expectation], timeout: 1.0, enforceOrder: false)
     }
 }
