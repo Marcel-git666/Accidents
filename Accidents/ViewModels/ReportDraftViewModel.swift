@@ -11,7 +11,6 @@ import SwiftUI
 @MainActor
 @Observable
 class ReportDraftViewModel {
-    
     var location = LocationViewModel()
     var driverA = DriverViewModel()
     var driverB = DriverViewModel()
@@ -20,12 +19,11 @@ class ReportDraftViewModel {
     var impactB = ImpactViewModel()
     var situation = SituationViewModel()
     
-    
-    var editingReportId: UUID?
+    var originalReport: AccidentReport?
 
-    
     func load(from report: AccidentReport) {
-        editingReportId = report.id
+        originalReport = report
+        
         location.location = report.accidentLocation
         driverA.driver = report.driver ?? Driver()
         driverB.driver = report.otherDriver ?? Driver()
@@ -36,7 +34,8 @@ class ReportDraftViewModel {
     }
 
     func reset() {
-        editingReportId = nil
+        originalReport = nil
+        
         location.location = .defaultValue
         driverA.driver = Driver()
         driverB.driver = Driver()
@@ -46,16 +45,28 @@ class ReportDraftViewModel {
         situation.reset()
     }
 
-    func createFinalReport() -> AccidentReport {
-        return AccidentReport(
-            id: editingReportId ?? UUID(),
-            accidentLocation: location.location,
-            driver: driverA.driver,
-            otherDriver: driverB.driver,
-            accidentDescription: description.accidentDescription,
-            pointOfImpact1: impactA.pointOfImpact,
-            pointOfImpact2: impactB.pointOfImpact,
-            accidentSituation: situation.accidentSituation
-        )
+
+    func createOrUpdateReport() -> AccidentReport {
+        if let report = originalReport {
+            report.accidentLocation = location.location
+            report.driver = driverA.driver
+            report.otherDriver = driverB.driver
+            report.accidentDescription = description.accidentDescription
+            report.pointOfImpact1 = impactA.pointOfImpact
+            report.pointOfImpact2 = impactB.pointOfImpact
+            report.accidentSituation = situation.accidentSituation
+            return report
+        } else {
+            return AccidentReport(
+                id: UUID(),
+                accidentLocation: location.location,
+                driver: driverA.driver,
+                otherDriver: driverB.driver,
+                accidentDescription: description.accidentDescription,
+                pointOfImpact1: impactA.pointOfImpact,
+                pointOfImpact2: impactB.pointOfImpact,
+                accidentSituation: situation.accidentSituation
+            )
+        }
     }
 }

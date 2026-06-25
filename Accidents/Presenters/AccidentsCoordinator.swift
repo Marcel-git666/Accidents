@@ -17,7 +17,7 @@ protocol AccidentsCoordinating: AnyObject, Observable {
     var errorMessage: String? { get }
     var reportToPreview: AccidentReport? { get set }
     var draft: ReportDraftViewModel { get }
-
+    
     func goNext()
     func goBack()
     func handleSelectedTab(_ tab: AccidentReportFillingState)
@@ -36,28 +36,28 @@ protocol AccidentsCoordinating: AnyObject, Observable {
 @Observable
 class AccidentsCoordinator: AccidentsCoordinating {
     private let repository: AccidentReportRepository
-
+    
     // Navigation
     var viewState: AccidentReportNavigationState = .accidentList
     var selectedTab: AccidentReportFillingState = .location
     @ObservationIgnored var transitionEffect: AnyTransition = .scale
-
+    
     // Report list & State
     var accidentReports: [AccidentReport] = []
     var errorMessage: String?
     var reportToPreview: AccidentReport?
-
+    
     let draft = ReportDraftViewModel()
-
+    
     init(repository: AccidentReportRepository) {
         self.repository = repository
         setUp()
     }
-
+    
     private func setUp() {
         Task { await fetchAccidents() }
     }
-
+    
     func fetchAccidents() async {
         do {
             accidentReports = try await repository.fetchAll()
@@ -65,11 +65,11 @@ class AccidentsCoordinator: AccidentsCoordinating {
             errorMessage = error.localizedDescription
         }
     }
-
+    
     func handleSelectedTab(_ tab: AccidentReportFillingState) {
         withAnimation { selectedTab = tab }
     }
-
+    
     func goNext() {
         withAnimation {
             switch viewState {
@@ -90,7 +90,7 @@ class AccidentsCoordinator: AccidentsCoordinating {
             }
         }
     }
-
+    
     func goBack() {
         withAnimation {
             switch viewState {
@@ -110,19 +110,21 @@ class AccidentsCoordinator: AccidentsCoordinating {
             }
         }
     }
-
+    
     func exitAndSaveReport() {
         createReportAndSave()
     }
-
+    
     func createReportAndSave() {
-        let report = draft.createFinalReport()
-
+        let report = draft.createOrUpdateReport()
+        
         Task {
             do {
-                if draft.editingReportId != nil {
+                if draft.originalReport != nil {
+                    // Update
                     try await repository.updateReport(report)
                 } else {
+                    // Save (Insert)
                     try await repository.saveReport(report)
                 }
                 await fetchAccidents()
@@ -133,7 +135,7 @@ class AccidentsCoordinator: AccidentsCoordinating {
         }
         viewState = .accidentList
     }
-
+    
     func removeReport(_ report: AccidentReport) {
         Task {
             do {
@@ -145,7 +147,7 @@ class AccidentsCoordinator: AccidentsCoordinating {
             }
         }
     }
-
+    
     func editReport(_ report: AccidentReport) {
         draft.load(from: report)
         withAnimation {
@@ -153,18 +155,18 @@ class AccidentsCoordinator: AccidentsCoordinating {
             viewState = .start
         }
     }
-
+    
     func exportPDF(for report: AccidentReport) {
         guard let url = PDFManager.shared.renderPDF(with: report, templateImageName: "form") else {
             return
         }
         PDFManager.shared.sharePDF(url)
     }
-
+    
     func showReportPreview(for report: AccidentReport) {
         reportToPreview = report
     }
-
+    
     func closeReportPreview() {
         reportToPreview = nil
     }
