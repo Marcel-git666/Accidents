@@ -24,7 +24,7 @@ struct AccidentListItemView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(report.driver.insuredName)
+                Text(report.driver?.insuredName ?? "No driver")
                     .font(.headline)
                 Text(formattedDate)
             }
@@ -39,6 +39,6 @@ struct AccidentListItemView: View {
 }
 
 #Preview {
-    AccidentListItemView(report: Binding<AccidentReport>(get: { AccidentReport.sampleData }, set: { _ in }))
+    AccidentListItemView(report: Binding<AccidentReport>(get: { PreviewData.sampleAccidentReport }, set: { _ in }))
         .padding()
 }

@@ -10,13 +10,13 @@ import SwiftUI
 class MockCoordinator: AccidentsCoordinating {
     var viewState: AccidentReportNavigationState = .accidentList
     var selectedTab: AccidentReportFillingState = .location
-    var accidentReports: [AccidentReport] = [.sampleData]
+    var accidentReports: [AccidentReport] = [PreviewData.sampleAccidentReport]
     var errorMessage: String? = "Optional error message"
     var reportToPreview: AccidentReport?
 
     let locationForm = LocationFormModel()
     let driverAForm = DriverFormModel()
-    let driverBForm = DriverFormModel(.sample2)
+    let driverBForm = DriverFormModel()
     let descriptionForm = DescriptionFormModel()
     let impactAForm = ImpactFormModel()
     let impactBForm = ImpactFormModel()
