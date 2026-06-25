@@ -37,19 +37,19 @@ struct UpperTabBarView<C: AccidentsCoordinating>: View {
 
             switch coordinator.selectedTab {
             case .location:
-                AccidentLocationView(model: coordinator.locationForm)
+                AccidentLocationView(model: coordinator.draft.location)
             case .driver1:
-                DriverView(model: coordinator.driverAForm)
+                DriverView(model: coordinator.draft.driverA)
             case .driver2:
-                DriverView(model: coordinator.driverBForm)
+                DriverView(model: coordinator.draft.driverB)
             case .description:
-                DescriptionView(model: coordinator.descriptionForm)
+                DescriptionView(model: coordinator.draft.description)
             case .pointOfImpact1:
-                AccidentCrashPointView(model: coordinator.impactAForm, isVehicleA: true)
+                AccidentCrashPointView(model: coordinator.draft.impactA, isVehicleA: true)
             case .pointOfImpact2:
-                AccidentCrashPointView(model: coordinator.impactBForm, isVehicleA: false)
+                AccidentCrashPointView(model: coordinator.draft.impactB, isVehicleA: false)
             case .mapView:
-                AccidentSituationView(model: coordinator.situationForm)
+                AccidentSituationView(model: coordinator.draft.situation)
             }
         }
         .gesture(DragGesture(minimumDistance: 10)

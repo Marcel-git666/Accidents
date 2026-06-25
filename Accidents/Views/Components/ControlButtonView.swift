@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ControlButtonView: View {
     @Binding var roadShape: RoadShapeSelector
-    let model: SituationFormModel
+    let model: SituationViewModel
     @Binding var selectedVehicle: Vehicle?
 
     var body: some View {
@@ -56,6 +56,6 @@ struct ControlButtonView: View {
 #Preview {
     ControlButtonView(
         roadShape: .constant(.crossroad),
-        model: SituationFormModel(),
+        model: SituationViewModel(),
         selectedVehicle: .constant(nil))
 }

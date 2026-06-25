@@ -6,7 +6,7 @@
 import SwiftUI
 
 struct AccidentSituationView: View {
-    @Bindable var model: SituationFormModel
+    @Bindable var model: SituationViewModel
     @State private var selectedVehicle: Vehicle?
 
     var body: some View {
@@ -44,7 +44,7 @@ struct AccidentSituationView: View {
 }
 
 #Preview {
-    let model = SituationFormModel()
+    let model = SituationViewModel()
     model.load(from: AccidentSituation(
         roadShape: .crossroad,
         vehicles: [

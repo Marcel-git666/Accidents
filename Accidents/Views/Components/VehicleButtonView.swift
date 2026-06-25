@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct VehicleButtonView: View {
-    let model: SituationFormModel
+    let model: SituationViewModel
 
     var body: some View {
         HStack(alignment: .top) {
@@ -98,5 +98,5 @@ struct VehicleButtonView: View {
 }
 
 #Preview {
-    VehicleButtonView(model: SituationFormModel())
+    VehicleButtonView(model: SituationViewModel())
 }

@@ -13,14 +13,7 @@ class MockCoordinator: AccidentsCoordinating {
     var accidentReports: [AccidentReport] = [PreviewData.sampleAccidentReport]
     var errorMessage: String? = "Optional error message"
     var reportToPreview: AccidentReport?
-
-    let locationForm = LocationFormModel()
-    let driverAForm = DriverFormModel()
-    let driverBForm = DriverFormModel()
-    let descriptionForm = DescriptionFormModel()
-    let impactAForm = ImpactFormModel()
-    let impactBForm = ImpactFormModel()
-    let situationForm = SituationFormModel()
+    let draft = ReportDraftViewModel()
 
     func goNext() {}
     func goBack() {}

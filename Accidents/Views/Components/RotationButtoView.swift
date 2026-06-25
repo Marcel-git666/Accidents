@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RotationButtoView: View {
-    let model: SituationFormModel
+    let model: SituationViewModel
     @Binding var selectedVehicle: Vehicle?
     
     var body: some View {
@@ -49,5 +49,5 @@ struct RotationButtoView: View {
 }
 
 #Preview {
-    RotationButtoView(model: SituationFormModel(), selectedVehicle: .constant(nil))
+    RotationButtoView(model: SituationViewModel(), selectedVehicle: .constant(nil))
 }

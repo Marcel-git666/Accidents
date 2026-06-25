@@ -7,6 +7,6 @@ import SwiftUI
 
 @MainActor
 @Observable
-class DescriptionFormModel {
+class DescriptionViewModel {
     var accidentDescription: AccidentDescription = .defaultValue
 }

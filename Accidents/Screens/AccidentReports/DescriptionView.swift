@@ -6,7 +6,7 @@
 import SwiftUI
 
 struct DescriptionView: View {
-    @Bindable var model: DescriptionFormModel
+    @Bindable var model: DescriptionViewModel
 
     let vehicleStatusDescription = [
         "Parked",
@@ -57,5 +57,5 @@ struct DescriptionView: View {
 }
 
 #Preview {
-    DescriptionView(model: DescriptionFormModel())
+    DescriptionView(model: DescriptionViewModel())
 }

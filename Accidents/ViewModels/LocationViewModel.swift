@@ -7,6 +7,6 @@ import SwiftUI
 
 @MainActor
 @Observable
-class LocationFormModel {
+class LocationViewModel {
     var location: AccidentLocation = .defaultValue
 }

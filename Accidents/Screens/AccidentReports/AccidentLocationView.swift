@@ -6,7 +6,7 @@
 import SwiftUI
 
 struct AccidentLocationView: View {
-    @Bindable var model: LocationFormModel
+    @Bindable var model: LocationViewModel
 
     var body: some View {
         ZStack {
@@ -86,6 +86,6 @@ struct AccidentLocationView: View {
 
 #Preview {
     NavigationView {
-        AccidentLocationView(model: LocationFormModel())
+        AccidentLocationView(model: LocationViewModel())
     }
 }

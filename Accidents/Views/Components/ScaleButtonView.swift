@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScaleButtonView: View {
-    let model: SituationFormModel
+    let model: SituationViewModel
     @Binding var selectedVehicle: Vehicle?
 
     var body: some View {
@@ -48,5 +48,5 @@ struct ScaleButtonView: View {
 }
 
 #Preview {
-    ScaleButtonView(model: SituationFormModel(), selectedVehicle: .constant(nil))
+    ScaleButtonView(model: SituationViewModel(), selectedVehicle: .constant(nil))
 }

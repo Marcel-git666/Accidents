@@ -7,7 +7,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-class DriverFormModel {
+class DriverViewModel {
     var driver: Driver
 
     init(_ driver: Driver = Driver()) {

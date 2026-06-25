@@ -6,7 +6,7 @@
 import SwiftUI
 
 struct DriverView: View {
-    @Bindable var model: DriverFormModel
+    @Bindable var model: DriverViewModel
 
     var body: some View {
         ZStack {
@@ -102,7 +102,7 @@ struct DriverView: View {
 
 #Preview {
     NavigationStack {
-        DriverView(model: DriverFormModel())
+        DriverView(model: DriverViewModel())
             .navigationTitle("Driver A")
     }
 }

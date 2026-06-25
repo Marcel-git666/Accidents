@@ -6,7 +6,7 @@
 import SwiftUI
 
 struct AccidentCrashPointView: View {
-    @Bindable var model: ImpactFormModel
+    @Bindable var model: ImpactViewModel
     let isVehicleA: Bool
 
     @State private var vanPosition: CGPoint = CGPoint(x: 300, y: 220)
@@ -110,5 +110,5 @@ struct AccidentCrashPointView: View {
 }
 
 #Preview {
-    AccidentCrashPointView(model: ImpactFormModel(), isVehicleA: true)
+    AccidentCrashPointView(model: ImpactViewModel(), isVehicleA: true)
 }

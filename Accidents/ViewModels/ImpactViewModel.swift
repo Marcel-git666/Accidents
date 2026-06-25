@@ -7,7 +7,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-class ImpactFormModel {
+class ImpactViewModel {
     var crashPoint: CGPoint = CGPoint(x: 200, y: 100)
     var arrowRotation: Double = 0
     var scale: CGFloat = 1

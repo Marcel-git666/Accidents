@@ -17,19 +17,19 @@ struct PageStyleTabView<C: AccidentsCoordinating>: View {
 
     var body: some View {
         TabView(selection: $selectedTabIndex) {
-            AccidentLocationView(model: coordinator.locationForm)
+            AccidentLocationView(model: coordinator.draft.location)
                 .tag(0)
-            DriverView(model: coordinator.driverAForm)
+            DriverView(model: coordinator.draft.driverA)
                 .tag(1)
-            DriverView(model: coordinator.driverBForm)
+            DriverView(model: coordinator.draft.driverB)
                 .tag(2)
-            DescriptionView(model: coordinator.descriptionForm)
+            DescriptionView(model: coordinator.draft.description)
                 .tag(3)
-            AccidentCrashPointView(model: coordinator.impactAForm, isVehicleA: true)
+            AccidentCrashPointView(model: coordinator.draft.impactA, isVehicleA: true)
                 .tag(4)
-            AccidentCrashPointView(model: coordinator.impactBForm, isVehicleA: false)
+            AccidentCrashPointView(model: coordinator.draft.impactB, isVehicleA: false)
                 .tag(5)
-            AccidentSituationView(model: coordinator.situationForm)
+            AccidentSituationView(model: coordinator.draft.situation)
                 .tag(6)
         }
         .tabViewStyle(.page(indexDisplayMode: .always))

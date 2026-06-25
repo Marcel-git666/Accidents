@@ -7,7 +7,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-class SituationFormModel {
+class SituationViewModel {
     var roadShape: RoadShapeSelector = .crossroad
     var vehicles: [Vehicle] = []
 
