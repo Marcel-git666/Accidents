@@ -10,7 +10,7 @@ import SwiftUI
 struct UpperTabBarButton: View {
     let color: Color
     let systemImage: String
-    let text: String
+    let text: LocalizedStringKey
     let isActive: Bool
     
     var body: some View {

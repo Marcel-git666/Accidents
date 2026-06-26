@@ -10,6 +10,7 @@
 		1F564B7D2D1829EC009504A0 /* MockAccidentReportRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B782D1829EC009504A0 /* MockAccidentReportRepository.swift */; };
 		1F564B7E2D1829EC009504A0 /* AccidentsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564B7B2D1829EC009504A0 /* AccidentsPresenterTests.swift */; };
 		1F564B7F2D1829EC009504A0 /* Accidents.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 1F564B7A2D1829EC009504A0 /* Accidents.xctestplan */; };
+		1F704FE92FEDE36700B4F66A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1F704FE82FEDE36700B4F66A /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +27,7 @@
 		1F564B782D1829EC009504A0 /* MockAccidentReportRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccidentReportRepository.swift; sourceTree = "<group>"; };
 		1F564B7A2D1829EC009504A0 /* Accidents.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Accidents.xctestplan; sourceTree = "<group>"; };
 		1F564B7B2D1829EC009504A0 /* AccidentsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccidentsPresenterTests.swift; sourceTree = "<group>"; };
+		1F704FE82FEDE36700B4F66A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		1FAEBB882B96159500659397 /* Accidents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accidents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAEBB982B96159700659397 /* AccidentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccidentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -73,6 +75,7 @@
 		1FAEBB7F2B96159500659397 = {
 			isa = PBXGroup;
 			children = (
+				1F704FE82FEDE36700B4F66A /* Localizable.xcstrings */,
 				1FBC4A212FAF31FE00D48176 /* Accidents */,
 				1F564B7C2D1829EC009504A0 /* AccidentsTests */,
 				1FAEBB892B96159500659397 /* Products */,
@@ -156,6 +159,7 @@
 			knownRegions = (
 				en,
 				Base,
+				cs,
 			);
 			mainGroup = 1FAEBB7F2B96159500659397;
 			productRefGroup = 1FAEBB892B96159500659397 /* Products */;
@@ -173,6 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F704FE92FEDE36700B4F66A /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +302,7 @@
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 6.0;
 			};
@@ -356,6 +362,7 @@
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				VALIDATE_PRODUCT = YES;
 			};

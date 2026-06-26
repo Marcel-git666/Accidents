@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct Vehicle: Codable, Identifiable {
     let id: String
     var x: Double

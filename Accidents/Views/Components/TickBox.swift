@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TickBox: View {
-    let text: String
+    let text: LocalizedStringKey
     @Binding var isSelected: Bool
     
     var body: some View {

@@ -21,7 +21,7 @@ struct UpperTabBarView<C: AccidentsCoordinating>: View {
                         UpperTabBarButton(
                             color: coordinator.selectedTab == tab ? Color.accentColor : Color.secondary,
                             systemImage: tab.systemImageName,
-                            text: tab.rawValue,
+                            text: LocalizedStringKey(tab.rawValue),
                             isActive: coordinator.selectedTab == tab)
                         .onTapGesture {
                             withAnimation(tapAnimation) {

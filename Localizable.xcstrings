@@ -1,0 +1,341 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "..." : {
+
+    },
+    "%@" : {
+
+    },
+    "%@, %@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@ %3$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "%lld/%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "0" : {
+
+    },
+    "Accident in %@" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nehoda v místě: %@"
+          }
+        }
+      }
+    },
+    "Accidents" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nehody"
+          }
+        }
+      }
+    },
+    "Add" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přidat"
+          }
+        }
+      }
+    },
+    "Add some damage" : {
+
+    },
+    "Address" : {
+
+    },
+    "Border insurance valid until" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Category" : {
+
+    },
+    "City" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Město"
+          }
+        }
+      }
+    },
+    "City, Street" : {
+
+    },
+    "Comprehensive Insurance Company" : {
+
+    },
+    "Data" : {
+
+    },
+    "Date and Time" : {
+
+    },
+    "Delete" : {
+
+    },
+    "Driver" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Řidič"
+          }
+        }
+      }
+    },
+    "Driver's license number" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Číslo řidičského průkazu"
+          }
+        }
+      }
+    },
+    "Driver's License Number" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Číslo řidičského průkazu"
+          }
+        }
+      }
+    },
+    "Exit and save" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukončit a uložit"
+          }
+        }
+      }
+    },
+    "First name" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Křestní jméno"
+          }
+        }
+      }
+    },
+    "Full name" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celé jméno"
+          }
+        }
+      }
+    },
+    "Green Card Number" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Číslo zelené karty"
+          }
+        }
+      }
+    },
+    "Has vehicle comprehensive insurance?" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Má vozidlo havarijní pojištění?"
+          }
+        }
+      }
+    },
+    "House number" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Číslo domu"
+          }
+        }
+      }
+    },
+    "House Number" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Číslo domu"
+          }
+        }
+      }
+    },
+    "Indicate the point of collision for Vehicle %@." : {
+
+    },
+    "Injuries?" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zranění?"
+          }
+        }
+      }
+    },
+    "Insurance Company" : {
+
+    },
+    "Insurance Company Name" : {
+
+    },
+    "Insurance Policy Number" : {
+
+    },
+    "Insurer" : {
+
+    },
+    "Insurer Address" : {
+
+    },
+    "Insurer name" : {
+
+    },
+    "Issued by" : {
+
+    },
+    "Km Reading" : {
+
+    },
+    "Manufacturer, type" : {
+
+    },
+    "Name" : {
+
+    },
+    "New Accident" : {
+
+    },
+    "No Accidents Reported Yet" : {
+
+    },
+    "Other damage than vehicle A and B?" : {
+
+    },
+    "Payer of VAT?" : {
+
+    },
+    "Phone from 9 to 16" : {
+
+    },
+    "Phone Number" : {
+
+    },
+    "Remove" : {
+
+    },
+    "Reports" : {
+
+    },
+    "Save" : {
+
+    },
+    "Save & Go next" : {
+
+    },
+    "Settings" : {
+
+    },
+    "Street" : {
+
+    },
+    "Surname" : {
+
+    },
+    "Tap the '+' button to create a new accident report." : {
+
+    },
+    "This is settings view" : {
+
+    },
+    "Vehicle" : {
+
+    },
+    "Vehicle (Check all that apply)" : {
+
+    },
+    "Vehicle 1" : {
+
+    },
+    "Vehicle 2" : {
+
+    },
+    "Vehicle A" : {
+
+    },
+    "Vehicle Registration Plate" : {
+
+    },
+    "Visible damage" : {
+
+    },
+    "Was police involved?" : {
+
+    },
+    "Witnesses" : {
+
+    },
+    "x" : {
+
+    },
+    "X" : {
+
+    },
+    "Year of manufacture" : {
+
+    },
+    "You can prefill your data here...." : {
+
+    },
+    "Your city" : {
+
+    }
+  },
+  "version" : "1.1"
+}

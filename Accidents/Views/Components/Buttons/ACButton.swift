@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ACButton: View {
-    let label: String
+    let label: LocalizedStringKey
     let systemImage: String
     var action: () -> Void
     

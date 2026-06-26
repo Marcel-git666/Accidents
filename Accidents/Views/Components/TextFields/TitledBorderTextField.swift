@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct TitledBorderTextField: View {
-    let title: String
+    let title: LocalizedStringKey
     @Binding var text: String
-    let placeholder: String
+    let placeholder: LocalizedStringKey
     let titleColor: Color
     
     var body: some View {
