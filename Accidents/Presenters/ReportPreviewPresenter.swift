@@ -62,8 +62,4 @@ class ReportPreviewPresenter {
         dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter.string(from: date)
     }
-
-    // swiftlint:disable identifier_name
-
-    // swiftlint:enable identifier_name
 }

@@ -15,11 +15,15 @@ struct AccidentsListView<C: AccidentsCoordinating>: View {
             List {
                 ForEach(coordinator.accidentReports) { accident in
                     HStack {
-                        Text("Accident in \(accident.accidentLocation.city)")
-                            .font(.headline)
-                            .onTapGesture {
-                                coordinator.editReport(accident)
-                            }
+                        // 1. Přidáme VStack pro Město a Datum pod sebou
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Accident in \(accident.accidentLocation.city)")
+                                .font(.headline)
+                            
+                            Text(accident.accidentLocation.date.formatted(date: .abbreviated, time: .shortened))
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                        }
 
                         Spacer()
 
@@ -28,17 +32,26 @@ struct AccidentsListView<C: AccidentsCoordinating>: View {
                         }) {
                             Image(systemName: "doc.text.magnifyingglass")
                                 .foregroundColor(.blue)
+                                .padding(.horizontal, 4)
                         }
+                        .buttonStyle(BorderlessButtonStyle())
 
                         Button(action: {
                             coordinator.exportPDF(for: accident)
                         }) {
                             Image(systemName: "square.and.arrow.up")
                                 .foregroundColor(.green)
+                                .padding(.horizontal, 4)
                         }
                         .buttonStyle(BorderlessButtonStyle())
                     }
-                    .swipeActions {
+                    // 2. Kouzlo pro UX: Udělá celý obdélník řádku klikatelný, i když je tam prázdné místo
+                    .contentShape(Rectangle())
+                    // 3. Přesunuli jsme TapGesture z Textu na celý HStack
+                    .onTapGesture {
+                        coordinator.editReport(accident)
+                    }
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                         Button(role: .destructive) {
                             coordinator.removeReport(accident)
                         } label: {
