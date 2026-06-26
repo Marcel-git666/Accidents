@@ -136,6 +136,9 @@
         }
       }
     },
+    "Enter your details here. They will be automatically prefilled as Driver A when you create a new accident report." : {
+
+    },
     "Exit and save" : {
       "localizations" : {
         "cs" : {
@@ -246,6 +249,9 @@
     "Manufacturer, type" : {
 
     },
+    "My Profile" : {
+
+    },
     "Name" : {
 
     },
@@ -253,6 +259,9 @@
 
     },
     "No Accidents Reported Yet" : {
+
+    },
+    "OK" : {
 
     },
     "Other damage than vehicle A and B?" : {
@@ -267,6 +276,9 @@
     "Phone Number" : {
 
     },
+    "Profile Saved" : {
+
+    },
     "Remove" : {
 
     },
@@ -277,6 +289,9 @@
 
     },
     "Save & Go next" : {
+
+    },
+    "Save Profile" : {
 
     },
     "Settings" : {
@@ -330,10 +345,10 @@
     "Year of manufacture" : {
 
     },
-    "You can prefill your data here...." : {
+    "Your city" : {
 
     },
-    "Your city" : {
+    "Your data has been saved securely on this device." : {
 
     }
   },

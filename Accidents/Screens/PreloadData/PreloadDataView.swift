@@ -8,26 +8,53 @@
 import SwiftUI
 
 struct PreloadDataView: View {
+    // Použijeme tvůj existující ViewModel
+    @State private var viewModel = DriverViewModel()
+    @State private var showSuccessAlert = false
     
     var body: some View {
-        ZStack {
-            Text("You can prefill your data here....")
-            ZStack {
-                Image("yellow_car")
-                    .renderingMode(.template)
-                    .foregroundColor(.purple)
-                    .position(CGPoint(x: 200, y: 200))
-                    .rotationEffect(Angle(degrees: 195), anchor: .center)
-                    .scaleEffect(0.2)
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 20) {
+                    Text("Enter your details here. They will be automatically prefilled as Driver A when you create a new accident report.")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .padding(.horizontal)
                     
-                Image("test")
-                    .renderingMode(.template)
-                    .foregroundColor(.red)
-                    .position(CGPoint(x: 200, y: 200))
-                    .rotationEffect(Angle(degrees: -45), anchor: .center)
-                    .scaleEffect(0.2)
+                    // Znovupoužití tvého formuláře pro řidiče
+                    DriverView(model: viewModel)
+                    
+                    Button(action: saveProfile) {
+                        Text("Save Profile")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.accentColor)
+                            .cornerRadius(10)
+                    }
+                    .padding(.horizontal)
+                    .padding(.bottom, 30)
+                }
+            }
+            .navigationTitle("My Profile")
+            .onAppear {
+                // Při zobrazení záložky načteme uložená data, pokud existují
+                if let savedProfile = ProfileManager.shared.loadProfile() {
+                    viewModel.driver = savedProfile
+                }
+            }
+            .alert("Profile Saved", isPresented: $showSuccessAlert) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text("Your data has been saved securely on this device.")
             }
         }
+    }
+    
+    private func saveProfile() {
+        ProfileManager.shared.saveProfile(viewModel.driver)
+        showSuccessAlert = true
     }
 }
 

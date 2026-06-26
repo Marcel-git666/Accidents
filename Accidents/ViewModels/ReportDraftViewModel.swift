@@ -34,16 +34,17 @@ class ReportDraftViewModel {
     }
 
     func reset() {
-        originalReport = nil
-        
-        location.location = .defaultValue
-        driverA.driver = Driver()
-        driverB.driver = Driver()
-        description.accidentDescription = .defaultValue
-        impactA.reset()
-        impactB.reset()
-        situation.reset()
-    }
+            originalReport = nil // Vynulujeme referenci
+            
+            location.location = .defaultValue
+            driverA.driver = ProfileManager.shared.loadProfile() ?? Driver()
+            
+            driverB.driver = Driver()
+            description.accidentDescription = .defaultValue
+            impactA.reset()
+            impactB.reset()
+            situation.reset()
+        }
 
 
     func createOrUpdateReport() -> AccidentReport {
