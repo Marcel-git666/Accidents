@@ -54,16 +54,38 @@ struct ReportPreviewView: View {
             )
             // Arrows for point of impact — Vehicle A and B
             if let impact = presenter.pointOfImpact1 {
+                // 1. O kolik musíme zmenšit souřadnice z telefonu, aby seděly do malého PDF (odhad 35%)
+                let diagramScale: CGFloat = 0.35
+                
+                // 2. Posun levého horního rohu na modrou sekci 10
+                let offsetXA: CGFloat = 25
+                let offsetYA: CGFloat = 540
+                
                 DraggableArrowView()
                     .rotationEffect(.degrees(impact.arrowRotation), anchor: .bottom)
-                    .scaleEffect(impact.scale)
-                    .position(impact.crashPoint)
+                // Zmenšíme samotnou šipku, aby nebyla obří
+                    .scaleEffect(impact.scale * diagramScale)
+                // Převodní vzorec: (původní_bod * zmenšení) + posun_na_papíře
+                    .position(
+                        x: (impact.x * diagramScale) + offsetXA,
+                        y: (impact.y * diagramScale) + offsetYA
+                    )
             }
+            
             if let impact = presenter.pointOfImpact2 {
+                let diagramScale: CGFloat = 0.35
+                
+                // Posun levého horního rohu na žlutou sekci 10 (Y musí být stejné jako u A)
+                let offsetXB: CGFloat = 420
+                let offsetYB: CGFloat = 540
+                
                 DraggableArrowView()
                     .rotationEffect(.degrees(impact.arrowRotation), anchor: .bottom)
-                    .scaleEffect(impact.scale)
-                    .position(impact.crashPoint)
+                    .scaleEffect(impact.scale * diagramScale)
+                    .position(
+                        x: (impact.x * diagramScale) + offsetXB,
+                        y: (impact.y * diagramScale) + offsetYB
+                    )
             }
             
         }
